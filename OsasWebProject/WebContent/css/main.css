@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+#bannerDiv {
+	background-image: url("../images/pup_banner.jpg");
+	height: 68px;
+}
+
+#loginDiv {
+	padding: 0px;
+	margin: 100px auto 0px;
+  	width: 50%;
+}
+
+#loginContent {
+	width: 400px;
+	border-style: solid;
+}
+
+.loginElement {
+	margin: 20px;
+}

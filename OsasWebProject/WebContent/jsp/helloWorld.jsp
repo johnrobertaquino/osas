@@ -5,9 +5,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>OSAS</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-${name}
+<div id="header">
+	<div id="bannerDiv"></div>
+</div>
+<div id="contentBody">
+	<div id="loginDiv">
+		<div id="loginContent">
+			<form>
+				<div class="loginElement">
+					<span>Username:</span><input type="text">
+				</div>
+				<div class="loginElement">
+					<span>Password:</span><input type="text">
+				</div>
+				<div style="clear:both"></div>
+			</form>
+		</div>
+	</div>
+
+</div>
+<div id="footer">footer</div>
 </body>
 </html>
