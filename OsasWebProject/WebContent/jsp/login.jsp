@@ -7,6 +7,8 @@
 <meta charset="ISO-8859-1">
 <title>OSAS</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
 <div id="header">
@@ -21,20 +23,18 @@
 	<div id="logoDiv"><img alt="" src="images/PUPLogo.png"></div>
 	<div style="clear:both"></div>
 	<div id="headerSeparatorDiv">
-		<div id="headerLinkDiv">
-			<a href="javascript:void(0);">Change Password</a>
-		</div>
 	</div>
 </div>
+<s:if test="%{errorMessage!=null}"><div id="errorMessage"><span>${errorMessage}</span></div></s:if>
 <div id="contentBody">
 	<div id="loginDiv">
 		<div id="loginContent">
-			<form class="contentForm">
+			<form class="contentForm" id="loginForm" action="processLogin" method="POST">
 				<div class="loginElement">
-					<span>Username:</span><input type="text">
+					<span>Username:</span><input name="userName" type="text">
 				</div>
 				<div class="loginElement">
-					<span>Password:</span><input type="password">
+					<span>Password:</span><input name="password" type="password">
 				</div>
 				<div class="loginElement">
 					<div id="loginButtonDiv">LOGIN</div>

@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>OSAS</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 </head>
 <body>
 <div id="header">
@@ -22,28 +23,12 @@
 	<div style="clear:both"></div>
 	<div id="headerSeparatorDiv">
 		<div id="headerLinkDiv">
-			<a href="javascript:void(0);">Change Password</a>
+			<a href="javascript:void(0);">Change Password</a><s:if test="%{user.userTypeId == 1}"><a href="javascript:void(0);">Manage Users</a></s:if>
 		</div>
 	</div>
 </div>
 <div id="contentBody">
-	<div id="loginDiv">
-		<div id="loginContent">
-			<form class="contentForm">
-				<div class="loginElement">
-					<span>Username:</span><input type="text">
-				</div>
-				<div class="loginElement">
-					<span>Password:</span><input type="password">
-				</div>
-				<div class="loginElement">
-					<div id="loginButtonDiv">LOGIN</div>
-					<div style="clear:both"></div>
-				</div>
-				<div style="clear:both"></div>
-			</form>
-		</div>
-	</div>
+	${user.userName}
 </div>
 <div id="footer">
 	<div id="headerSeparatorDiv"></div>

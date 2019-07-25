@@ -1,20 +1,144 @@
 @charset "ISO-8859-1";
+body {
+	margin: 0px;
+	font-family: 'Open Sans',Helvetica, Arial, sans-serif;
+}
+
+#header {
+	position: relative;
+}
+
 #bannerDiv {
 	background-image: url("../images/pup_banner.jpg");
 	height: 68px;
 }
 
+#logoDiv {
+	float: right;
+	margin: 5px 25px 5px 0px;
+}
+
+#logoDiv img {
+	height: 150px;
+	width: 150px;
+}
+
+#topHeaderDiv {
+	height: 10px;
+	background-image: url("../images/bg02.jpg");
+}
+
+#headerSeparatorDiv {
+	height: 20px;
+	/*background-color: rgba(230,230,230,0.9);*/
+	background-image: url("../images/bg02.jpg");
+}
+
+#bannerTitleDiv {
+	float: left;
+	position: relative;
+	height: 164px;
+}
+
+#bannerTitleDiv #bannerTitleSubDiv {
+	float: left;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 700px;
+	margin-left: 25px;
+}
+
+#bannerTitleDiv #bannerTitleSubDiv #bannerTitleMain, #bannerTitleDiv #bannerTitleSubDiv #bannerTitleSub {
+	font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+	color: #880000;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#bannerTitleDiv #bannerTitleSubDiv #bannerTitleMain span {
+	font-size: 40px;
+}
+
+#bannerTitleDiv #bannerTitleSubDiv #bannerTitleSub {
+	font-size: 20px;
+	color: firebrick;
+}
+
+#headerLinkDiv {
+	margin-left: 25px;
+	vertical-align: middle;
+	height: inherit;
+}
+
+#headerLinkDiv a {
+	margin: 0px 5px;
+	color: white;
+	text-decoration: none;
+	font-size: 11px;
+}
+
+#headerLinkDiv a:hover {
+	background-color: firebrick;
+}
+
 #loginDiv {
 	padding: 0px;
 	margin: 100px auto 0px;
-  	width: 50%;
+  	width: 450px;
 }
 
 #loginContent {
-	width: 400px;
-	border-style: solid;
+	border: 2px solid #800;
 }
 
 .loginElement {
 	margin: 20px;
 }
+
+.loginElement span {
+	font-weight: 700;
+	color: #555;
+	margin-right: 5px;
+}
+
+.loginElement input[type='text'], .loginElement input[type='password'] {
+	width: 310px;
+}
+
+.contentForm input[type='text'], .contentForm input[type='password'] {
+	color: #555;
+	border: 1px solid #800;
+	font-size: 13px;
+	height: 30px;
+	line-height: 30px;
+	font-weight: 700;
+	padding-left: 6px;
+}
+
+#loginButtonDiv {
+	float: right;
+	background-color: firebrick;
+	padding: 5px 8px;
+	color: white;
+	line-height: 150%;
+}
+
+#loginButtonDiv:hover {
+	background-color: #800;
+	cursor: pointer;
+}
+
+#loginButtonDiv input, #loginButtonDiv input:hover, #loginButtonDiv input:active {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;	
+}
+
+#footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+
