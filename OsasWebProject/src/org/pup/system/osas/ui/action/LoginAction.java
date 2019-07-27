@@ -1,8 +1,6 @@
 package org.pup.system.osas.ui.action;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public class LoginAction extends ActionSupport {
+public class LoginAction extends AbstractAction {
 
 	/**
 	 * 

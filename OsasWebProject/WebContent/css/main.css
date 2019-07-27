@@ -8,36 +8,49 @@ body {
 	position: relative;
 }
 
+#headerHomeDiv{
+	background-color: #420001;
+}
+
 #bannerDiv {
 	background-image: url("../images/pup_banner.jpg");
 	height: 68px;
 }
 
 #logoDiv {
-	float: right;
-	margin: 5px 25px 5px 0px;
+	float: left;
+    margin: 5px 5px 5px 25px;
 }
 
 #logoDiv img {
-	height: 150px;
-	width: 150px;
-}
-
-#topHeaderDiv {
-	height: 10px;
-	background-image: url("../images/bg02.jpg");
+	height: 70px;
+	width: 70px;
 }
 
 #headerSeparatorDiv {
-	height: 20px;
-	/*background-color: rgba(230,230,230,0.9);*/
-	background-image: url("../images/bg02.jpg");
+	height: 10px;
+	background-color: #ffbc01;
+	/*background-image: url("../images/bg02.jpg");*/
+}
+
+#headerMiddleSeparatorDiv {
+	height: 8px;
+	background-color: #420001;
+	/*background-image: url("../images/bg02.jpg");*/
 }
 
 #bannerTitleDiv {
 	float: left;
 	position: relative;
-	height: 164px;
+	height: 70px;
+}
+
+#bannerDateDiv{
+	float: right;
+    margin-top: 33px;
+    margin-right: 25px;
+    color: white;
+    font-size: 15px;
 }
 
 #bannerTitleDiv #bannerTitleSubDiv {
@@ -49,20 +62,51 @@ body {
 	margin-left: 25px;
 }
 
-#bannerTitleDiv #bannerTitleSubDiv #bannerTitleMain, #bannerTitleDiv #bannerTitleSubDiv #bannerTitleSub {
+#bannerTitleDiv #bannerTitleSubDiv #bannerTitleMain {
 	font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-	color: #880000;
+	color: #ffffff;
 	font-size: 30px;
 	font-weight: bold;
 }
 
 #bannerTitleDiv #bannerTitleSubDiv #bannerTitleMain span {
 	font-size: 40px;
+	color: #ffbc01;
 }
 
-#bannerTitleDiv #bannerTitleSubDiv #bannerTitleSub {
-	font-size: 20px;
-	color: firebrick;
+#navBar {
+	height: 45px;
+	background-color: #afabaa;
+	/*background-image: url("../images/bg02.jpg");*/
+}
+
+#accountSettings{
+	float: right;
+	margin: 15px 5px 2px 0px;
+}
+
+#accountSettings span{
+	padding: 0px 3px;
+	color: red;
+}
+#userAccount{
+	float: right;
+	margin-top: -6px;
+	text-align: center;
+}
+
+#userTypeDiv {
+    margin-top: -5px;
+    float: left;
+} 
+
+#accountSettings #firstname {
+	font-weight: bold;
+	color: black;
+}
+#accountSettings #userType {
+	font-size: 8px;
+	color: black;
 }
 
 #headerLinkDiv {
@@ -84,16 +128,13 @@ body {
 
 #loginDiv {
 	padding: 0px;
-	margin: 100px auto 0px;
-  	width: 450px;
-}
-
-#loginContent {
-	border: 2px solid #800;
+	margin: 40px auto 0px;
+  	width: 316px;
 }
 
 .loginElement {
-	margin: 20px;
+	margin: 20px 0px;
+	width: 316px;
 }
 
 .loginElement span {
@@ -106,9 +147,27 @@ body {
 	width: 310px;
 }
 
+#welcomeText{
+	text-align: center;
+	margin-bottom: 15px;
+}
+#welcomeText span {
+    font-size: 30px;
+    font-weight: bold;
+    color: #9a9c99
+}
+#loginAvatar{
+	text-align: center;
+}
+
+#loginAvatar img {
+	height: 150px;
+}
+
 .contentForm input[type='text'], .contentForm input[type='password'] {
 	color: #555;
-	border: 1px solid #800;
+	border: 0px;
+	border-bottom: 1px solid #577196;
 	font-size: 13px;
 	height: 30px;
 	line-height: 30px;
@@ -117,11 +176,12 @@ body {
 }
 
 #loginButtonDiv {
-	float: right;
 	background-color: firebrick;
-	padding: 5px 8px;
-	color: white;
-	line-height: 150%;
+    padding: 5px 8px;
+    text-align: center;
+    color: white;
+    line-height: 150%;
+    border-radius: 8px;
 }
 
 #loginButtonDiv:hover {
@@ -139,6 +199,25 @@ body {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
+}
+
+#officeDiv {
+	margin: 2px 0px 2px 2px;
+	float: left;
+	color: #ffbc01;
+}
+
+#copyrightDiv {
+	margin: 2px 2px 2px 0px;
+	float: right;
+	color: #ffbc01;
+}
+
+#footerSeparatorDiv {
+	height: 15px;
+	font-size: 10px;
+	background-color: #420001;
+	/*background-image: url("../images/bg02.jpg");*/
 }
 
 

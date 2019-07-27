@@ -12,29 +12,40 @@
 </head>
 <body>
 <div id="header">
-	<div id="topHeaderDiv"></div>
-	<div id="bannerTitleDiv">
-		<div id="bannerTitleSubDiv">
-			<div><span id="bannerTitleMain"><span>S</span>tudent <span>A</span>ffairs and <span>S</span>ervices <span>S</span>ystem</span></div>
-			<div><span id="bannerTitleSub">Office of the Student Affairs and Services</span></div>
+	<div id="headerHomeDiv">
+		<div id="logoDiv"><img alt="" src="images/PUPLogo.png"></div>
+		<div id="bannerTitleDiv">
+			<div id="bannerTitleSubDiv">
+				<div><span id="bannerTitleMain"><span>S</span>tudent <span>A</span>ffairs and <span>S</span>ervices <span>S</span>ystem</span></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div id="bannerDateDiv">
+		<span>${currentDate}</span>
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	<div id="logoDiv"><img alt="" src="images/PUPLogo.png"></div>
-	<div style="clear:both"></div>
-	<div id="headerSeparatorDiv">
+	<div id="headerSeparatorDiv"></div>
+	<div id="headerMiddleSeparatorDiv"></div>
+	<div id="headerSeparatorDiv"></div>
+	<div id="navBar">
+	
 	</div>
 </div>
 <s:if test="%{errorMessage!=null}"><div id="errorMessage"><span>${errorMessage}</span></div></s:if>
 <div id="contentBody">
 	<div id="loginDiv">
 		<div id="loginContent">
+			<div id="welcomeText"><span>WELCOME!</span></div>
+			<div id="loginAvatar">
+				<img alt="" src="images/account_icon.png">
+			</div>
 			<form class="contentForm" id="loginForm" action="processLogin" method="POST">
 				<div class="loginElement">
-					<span>Username:</span><input name="userName" type="text">
+					<input name="userName" type="text" placeholder="Username">
 				</div>
 				<div class="loginElement">
-					<span>Password:</span><input name="password" type="password">
+					<input name="password" type="password" placeholder="Password">
 				</div>
 				<div class="loginElement">
 					<div id="loginButtonDiv">LOGIN</div>
@@ -46,7 +57,11 @@
 	</div>
 </div>
 <div id="footer">
-	<div id="headerSeparatorDiv"></div>
+	<div id="footerSeparatorDiv">
+		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>
+		<div id="copyrightDiv"><span>copyright:2019v.02</span></div>
+		<div style="clear:both"></div>
+	</div>
 </div>
 </body>
 </html>

@@ -3,9 +3,7 @@ package org.pup.system.osas.ui.action;
 import org.pup.system.osas.core.dao.UserDAO;
 import org.pup.system.osas.core.domain.User;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public class ProcessLoginAction  extends ActionSupport {
+public class ProcessLoginAction extends AbstractAction {
 
 	/**
 	 * 
