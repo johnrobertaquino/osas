@@ -8,6 +8,8 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="helloworld" extends="struts-default">
+		<default-action-ref name="login" />
+		
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction"
 		method="execute">
 			<result name="success">/jsp/helloWorld.jsp</result>
