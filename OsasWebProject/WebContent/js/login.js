@@ -5,8 +5,20 @@ $(document).ready(function() {
 	
 	
 	$('#loginButtonDiv').click(function() {
-		$('#loginForm').submit();
+		if($('#userName').val() === '' && $('#password').val() === '') {
+			popUp('Username and password can\'t be blank.');
+		}
+		else if($('#userName').val() === '') {
+			popUp('Username can\'t be blank.');
+		}
+		else if($('#password').val() === '') {
+			popUp('Password can\'t be blank.');
+		}
+		else {
+			$('#loginForm').submit();
+		}
 	});
+	
 	
 	
 });

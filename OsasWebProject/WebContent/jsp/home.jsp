@@ -60,9 +60,10 @@
 </div>
 <div id="overlay">
 	<div id="popup">
-		<span id="errorMessage"></span>
 		<div id="xButton"><span>x</span></div>
+		<div id="errorMessageDiv"><span id="errorMessage"></span></div>
 		<div style="clear:both"></div>
+		<div id="popupOk" class="button">OK</div>
 	</div>
 </div>
 <s:if test="%{errorMessage!=null}"><script>popUp('${errorMessage}');</script></s:if>

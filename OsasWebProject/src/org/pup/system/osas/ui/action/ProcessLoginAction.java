@@ -10,6 +10,8 @@ public class ProcessLoginAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 7060200404061218541L;
 	
+	private static final String USER = "USER";
+	
 	private String userName;
 	
 	private String password;
@@ -28,11 +30,14 @@ public class ProcessLoginAction extends AbstractAction {
 			
 			if(user != null) {
 				this.user = user;
+				this.userSession.put(USER, user);
 			} else {
 				errorMessage = "Invalid user.";
 				actionResult = "error";
 			}
 		} catch (Exception e) {
+			errorMessage = "System error occurred. Contact administrator.";
+			actionResult = "error";
 			e.printStackTrace();
 		}
 		

@@ -42,13 +42,13 @@
 			</div>
 			<form class="contentForm" id="loginForm" action="processLogin" method="POST">
 				<div class="loginElement">
-					<input name="userName" type="text" placeholder="Username">
+					<input id="userName" name="userName" type="text" placeholder="Username">
 				</div>
 				<div class="loginElement">
-					<input name="password" type="password" placeholder="Password">
+					<input id="password" name="password" type="password" placeholder="Password">
 				</div>
 				<div class="loginElement">
-					<div id="loginButtonDiv">LOGIN</div>
+					<div id="loginButtonDiv" class="button">LOGIN</div>
 					<div style="clear:both"></div>
 				</div>
 				<div style="clear:both"></div>
@@ -65,9 +65,10 @@
 </div>
 <div id="overlay">
 	<div id="popup">
-		<span id="errorMessage"></span>
 		<div id="xButton"><span>x</span></div>
+		<div id="errorMessageDiv"><span id="errorMessage"></span></div>
 		<div style="clear:both"></div>
+		<div id="popupOk" class="button">OK</div>
 	</div>
 </div>
 <s:if test="%{errorMessage!=null}"><script>popUp('${errorMessage}');</script></s:if>
