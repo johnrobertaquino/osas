@@ -220,4 +220,29 @@ body {
 	/*background-image: url("../images/bg02.jpg");*/
 }
 
+#overlay {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0px;
+	background: rgba(0, 0, 0, 0.75);
+	display: none;
+}
+
+#overlay #popup {
+    position: relative;
+    min-height: 150px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    background-color: #ffffff;
+    transform: translate(-50%, -50%);
+}
+
+#overlay #popup #xButton {
+	float: right;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
 

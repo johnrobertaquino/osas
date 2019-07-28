@@ -8,6 +8,7 @@
 <title>OSAS</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
 <div id="header">
@@ -48,7 +49,6 @@
 		<div style="clear:both"></div>
 	</div>
 </div>
-<s:if test="%{errorMessage!=null}"><div id="errorMessage"><span>${errorMessage}</span></div></s:if>
 <div id="contentBody">
 </div>
 <div id="footer">
@@ -58,5 +58,13 @@
 		<div style="clear:both"></div>
 	</div>
 </div>
+<div id="overlay">
+	<div id="popup">
+		<span id="errorMessage"></span>
+		<div id="xButton"><span>x</span></div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+<s:if test="%{errorMessage!=null}"><script>popUp('${errorMessage}');</script></s:if>
 </body>
 </html>
