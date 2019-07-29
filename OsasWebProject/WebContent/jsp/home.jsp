@@ -50,6 +50,26 @@
 	</div>
 </div>
 <div id="contentBody">
+	<div id = Studentscholarship>
+		<span>Student Scholarship</span>
+		<span id = Studentscholarshipicon> <img alt="image" src="images/Scholarship.png"></span>
+	</div>
+		<div class ="Scholarshiplinks">
+			<span id= ScholarshipManagementAgency>Scholarship Management-Agency</span>
+	</div>
+		<div class ="Scholarshiplinks">
+			<span id= ScholarshipManagementScholarship>Scholarship Management-Scholarship</span>
+	</div>
+		<div class ="Scholarshiplinks">
+			<span id=Scholars>Scholars Management</span>
+	</div>
+		<div class ="Scholarshiplinks">
+			<span id=ApplicationStatus>Application Status</span>
+	</div>
+		<div class ="Scholarshiplinks">
+			<span id=Reports>Reports</span>
+	</div>
+		
 </div>
 <div id="footer">
 	<div id="footerSeparatorDiv">
