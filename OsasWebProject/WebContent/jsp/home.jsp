@@ -32,13 +32,13 @@
 		<div id="accountSettings">
 			<span>Home</span><span>|</span><span>Account Settings</span><span>|</span>
 			<div id="userAccount">
-				<div><span id="firstname">${user.userName}</span></div>
+				<div><span id="firstname">${session.USER.userName}</span></div>
 				<div id="userTypeDiv">
 					<span id="userType">
-						<s:if test="%{user.userTypeId == 1}">
+						<s:if test="%{#session.USER.userTypeId == 1}">
 							Administrator
 						</s:if>
-						<s:elseif test="%{user.userTypeId == 2}">
+						<s:elseif test="%{#session.USER.userTypeId == 2}">
 							User			
 						</s:elseif>
 					</span>

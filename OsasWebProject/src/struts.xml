@@ -8,11 +8,22 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="helloworld" extends="struts-default">
+	
+		<interceptors>
+			<interceptor name="userSessionInterceptor" class="org.pup.system.osas.ui.interceptor.UserSessionInterceptor"></interceptor>
+			<interceptor-stack name="userSessionStack">
+			    <interceptor-ref name="timer" /> 
+            	<interceptor-ref name="logger" /> 
+            	<interceptor-ref name="defaultStack" /> 
+				<interceptor-ref name="userSessionInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
 
 		<default-action-ref name="login" />
 		
 		<global-results>
    			<result name="redirectToLogin" type="redirect">/login</result>
+   			<result name="redirectToHome" type="redirect">/home</result>
   		</global-results>
 		
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction"
@@ -22,13 +33,27 @@
 		
 		<action name="login" class="org.pup.system.osas.ui.action.LoginAction"
 		method="execute">
+			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/login.jsp</result>
+		</action>
+		
+		<action name="logout" class="org.pup.system.osas.ui.action.LogoutAction"
+		method="execute">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">login</result>
 		</action>
 		
 		<action name="processLogin" class="org.pup.system.osas.ui.action.ProcessLoginAction"
 		method="execute">
-			<result name="success">/jsp/home.jsp</result>
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">home</result>
 			<result name="error">/jsp/login.jsp</result>
+		</action>
+		
+		<action name="home" class="org.pup.system.osas.ui.action.HomeAction"
+		method="execute">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/home.jsp</result>
 		</action>
 	</package>
 

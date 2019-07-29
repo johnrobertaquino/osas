@@ -18,10 +18,20 @@ public class UserSessionInterceptor extends AbstractInterceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, Object> userSession = invocation.getInvocationContext().getSession();
-			
-		if 	(userSession.get(USER) == null) {
-				return "redirectToLogin";
+		
+		String actionName = invocation.getInvocationContext().getName();
+		
+		if ("login".equalsIgnoreCase(actionName) || "processLogin".equalsIgnoreCase(actionName)) {
+			if (userSession.get(USER) != null) {
+				return "redirectToHome";
+			}
 		}
+		else {
+			if (userSession.get(USER) == null) {
+				return "redirectToLogin";
+			}
+		}
+		
 		return invocation.invoke();
 	}
 
