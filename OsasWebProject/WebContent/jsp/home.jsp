@@ -50,26 +50,92 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id = Studentscholarship>
-		<span>Student Scholarship</span>
-		<span id = Studentscholarshipicon> <img alt="image" src="images/Scholarship.png"></span>
+	<div id="homeContentBody">
+		<div id="contentBodyLeftPane">
+			<div class="linkHolder">
+				<div class="linkHeader">
+					<span>Student Scholarship</span>
+					<img alt="image" src="images/Scholarship.png">
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="scholarshipManagementAgencyLink">Scholarship Management-Agency</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="scholarshipManagementScholarshipLink">Scholarship Management-Scholarship</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="scholarsLink">Scholars Management</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="applicationStatusLink">Application Status</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="studentScholarShipReportsLink">Reports</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<!-- Admin Function -->
+				<div class="linkHeader">
+					<span>Administrator Functions</span>
+					<img alt="image" src="images/Scholarship.png">
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="adminFunctionsManageAccounts">Manage Accounts</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div id="contentBodyRightPane">
+			<div class="linkHolder">
+				<div class="linkHeader">
+					<span>Student Organization</span>
+					<img alt="image" src="images/Scholarship.png">
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="studentOrgTermManagementLink">Term Management</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="studentOrgRequirementsSubmissionLink">Requirements Submission/Reviews</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="studentOrgOrganizationManagementLink">Organization Management</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon">></div><div class="link" id="studentOrgReportsLink">Reports</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div style="clear:both"></div>
 	</div>
-		<div class ="Scholarshiplinks">
-			<span id= ScholarshipManagementAgency>Scholarship Management-Agency</span>
-	</div>
-		<div class ="Scholarshiplinks">
-			<span id= ScholarshipManagementScholarship>Scholarship Management-Scholarship</span>
-	</div>
-		<div class ="Scholarshiplinks">
-			<span id=Scholars>Scholars Management</span>
-	</div>
-		<div class ="Scholarshiplinks">
-			<span id=ApplicationStatus>Application Status</span>
-	</div>
-		<div class ="Scholarshiplinks">
-			<span id=Reports>Reports</span>
-	</div>
-		
 </div>
 <div id="footer">
 	<div id="footerSeparatorDiv">

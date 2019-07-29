@@ -272,23 +272,91 @@ body {
 	float: right;
 	margin-right: 10px;
 }
-#Studentscholarship{
-	margin-left: 320px;
-    margin-top: 40px;
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: 34px;
-    color: #420001;
-    font-weight: bold;
+
+#homeContentBody {
+	margin-top: 40px;
 }
-#Studentscholarshipicon img{
+
+#contentBodyLeftPane {
+	float: left;
+	width: 50%;
+}
+
+#contentBodyRightPane {
+	float: right;
+	width: 50%;
+}
+
+#contentBodyLeftPane .linkHolder, #contentBodyRightPane .linkHolder {
+	width: 500px;
+}
+
+#contentBodyLeftPane .linkHolder {
+	float: right;
+}
+
+#contentBodyRightPane .linkHolder {
+	float: left;
+}
+
+.linkHolder::after {
+	content: "";
+	clear: both;
+}
+
+.linkHolder .linkHeader {
+	font-weight: bold;
+	color: #420001;
+	font-size: 25px;
+	margin-bottom: 20px;
+}
+
+.linkHolder .linkHeader img {
+	position: relative;
+	top: 8px;
+	margin-left: 5px;
 	height: 40px;
 }
 
-.Scholarshiplinks{
-	height: 25px;
-    background-color: #e6dedc;
-	/*background-image: url("../images/bg02.jpg");*/	
-	margin-left: 400px;
-    margin-right: 1000px;
-    margin-top: 20px;
+.linkHolder .linkHeader span {
+	text-decoration: underline;
+}
+
+.linkHolder .menuLinks {
+	margin: 10px 0px;	
+}
+
+
+.linkHolder .menuLinks .linkItemHolder {
+	width: 400px;
+	margin-left: 10px;
+}
+
+.linkHolder .menuLinks .linkItemHolder div {
+	float: left;
+	padding: 10px 0px;
+	margin: 10px 0;
+}
+
+.linkHolder .menuLinks .linkItemHolder .linkIcon {
+	margin-right: 10px;
+	font-weight: bold;
+	color: #420001;
+	font-size: 24px;
+	font-family: Arial;
+	line-height: 18px;
+}
+
+.linkHolder .menuLinks .linkItemHolder .link {
+	background-color: #e6dedc;
+	width: 360px;
+	padding-left: 10px;
+	color: #420001;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.linkHolder .menuLinks .linkItemHolder .link:hover {
+	background-color: #ffbc01;
+	color: #FFFFFF;
 }
