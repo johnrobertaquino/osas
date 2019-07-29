@@ -16,8 +16,6 @@ public class ProcessLoginAction extends AbstractAction {
 	
 	private String password;
 	
-	private User user;
-	
 	private String errorMessage;
 
 	public String execute() {
@@ -29,7 +27,6 @@ public class ProcessLoginAction extends AbstractAction {
 			user = userDao.validate(userName, password);
 			
 			if(user != null) {
-				this.user = user;
 				this.userSession.put(USER, user);
 			} else {
 				errorMessage = "Invalid user.";
@@ -58,14 +55,6 @@ public class ProcessLoginAction extends AbstractAction {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getErrorMessage() {

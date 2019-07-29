@@ -21,6 +21,15 @@ public class UserSessionInterceptor extends AbstractInterceptor {
 		
 		String actionName = invocation.getInvocationContext().getName();
 		
+		if("".equalsIgnoreCase(actionName)) {
+			if (userSession.get(USER) != null) {
+				return "redirectToHome";
+			}
+			else {
+				return "redirectToLogin";
+			}
+		}
+		
 		if ("login".equalsIgnoreCase(actionName) || "processLogin".equalsIgnoreCase(actionName)) {
 			if (userSession.get(USER) != null) {
 				return "redirectToHome";
