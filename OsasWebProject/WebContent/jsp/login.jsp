@@ -32,7 +32,10 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-	
+		<div id="accountSettings">
+			<span class="clickable">Alumni Site</span>
+		</div>		
+		<div style="clear:both"></div>
 	</div>
 </div>
 <div id="contentBody">
