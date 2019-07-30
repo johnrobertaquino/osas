@@ -30,8 +30,8 @@
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
 		<div id="accountSettings">
-			<span>Home</span><span>|</span><span>Account Settings</span><span>|</span>
-			<div id="userAccount">
+			<span class="clickable">Home</span><span>|</span>
+			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.userName}</span></div>
 				<div id="userTypeDiv">
 					<span id="userType">
@@ -42,6 +42,12 @@
 							User			
 						</s:elseif>
 					</span>
+				</div>
+				<form id="logoutForm" action="logout" method="POST">
+				</form>
+				<div class="dropdownMenu">
+					<div id="changePasswordMenu">Change Password</div>
+					<div id="logoutMenu">Logout</div>
 				</div>
 				<div style="clear:both"></div>
 			</div>
@@ -59,45 +65,48 @@
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="scholarshipManagementAgencyLink">Scholarship Management-Agency</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="scholarshipManagementAgencyLink">Manage Scholarship Agency</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="scholarshipManagementScholarshipLink">Scholarship Management-Scholarship</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="scholarshipManagementScholarshipLink">Manage Scholarship</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="scholarsLink">Scholars Management</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="scholarsLink">Manage Scholars</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="applicationStatusLink">Application Status</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="applicationStatusLink">Application Status</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="studentScholarShipReportsLink">Reports</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentScholarShipReportsLink">Reports</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
+				<div style="clear:both"></div>
 				<!-- Admin Function -->
-				<div class="linkHeader">
-					<span>Administrator Functions</span>
-					<img alt="image" src="images/Scholarship.png">
-				</div>
-				<div class ="menuLinks">
-					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="adminFunctionsManageAccounts">Manage Accounts</div>
-						<div style="clear:both"></div>
+				<s:if test="%{#session.USER.userTypeId == 1}">
+					<div class="linkHeader">
+						<span>Administrator Functions</span>
+						<img alt="image" src="images/login-512.png">
 					</div>
-				</div>
+					<div class ="menuLinks">
+						<div class="linkItemHolder">
+							<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="adminFunctionsManageAccounts">Manage Accounts</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</s:if>
 			</div>
 			<div style="clear:both"></div>
 		</div>
@@ -105,29 +114,29 @@
 			<div class="linkHolder">
 				<div class="linkHeader">
 					<span>Student Organization</span>
-					<img alt="image" src="images/Scholarship.png">
+					<img alt="image" src="images/org.png">
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="studentOrgTermManagementLink">Term Management</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgTermManagementLink">Manage Term</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="studentOrgRequirementsSubmissionLink">Requirements Submission/Reviews</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgRequirementsSubmissionLink">Manage Requirements Submission/Reviews</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="studentOrgOrganizationManagementLink">Organization Management</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgOrganizationManagementLink">Manage Organization</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon">></div><div class="link" id="studentOrgReportsLink">Reports</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgReportsLink">Reports</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>

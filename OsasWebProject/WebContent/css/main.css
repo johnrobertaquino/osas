@@ -82,17 +82,25 @@ body {
 
 #accountSettings{
 	float: right;
-	margin: 15px 5px 2px 0px;
+	margin: 15px 25px 2px 0px;
 }
 
 #accountSettings span{
 	padding: 0px 3px;
 	color: 	#FFFFFF;
 }
-#userAccount{
+#userAccount {
 	float: right;
 	margin-top: -6px;
 	text-align: center;
+}
+
+#userAccount div {
+	cursor: pointer;
+}
+
+.clickable {
+	cursor: pointer;
 }
 
 #userTypeDiv {
@@ -102,11 +110,11 @@ body {
 
 #accountSettings #firstname {
 	font-weight: bold;
-	color: black;
+	color: #ffed00;
 }
 #accountSettings #userType {
 	font-size: 8px;
-	color: black;
+	color: #ffed00;
 }
 
 #headerLinkDiv {
@@ -124,6 +132,35 @@ body {
 
 #headerLinkDiv a:hover {
 	background-color: firebrick;
+}
+
+.dropdownMenu {
+	position: absolute;
+    margin-left: -100px;
+    margin-top: 12px;
+    background-color: #f2f2f2;
+    color: #840b0da6;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1;
+}
+
+#userAccount:hover > .dropdownMenu {
+	display: block;
+}
+
+.dropdownMenu div {
+	padding: 10px;
+	display: block;
+}
+
+.dropdownMenu div:hover {
+	background-color: #ffbc01;
+	color: #FFFFFF;
+}
+
+#logout {
+	float: right;
 }
 
 #loginDiv {
@@ -319,7 +356,9 @@ body {
 }
 
 .linkHolder .linkHeader span {
-	text-decoration: underline;
+	border-bottom: 1px solid #ff00006e;
+	padding-bottom: 5px;
+	text-transform: uppercase;
 }
 
 .linkHolder .menuLinks {
@@ -328,14 +367,14 @@ body {
 
 
 .linkHolder .menuLinks .linkItemHolder {
-	width: 400px;
-	margin-left: 10px;
+	width: 450px;
+	margin-left: 20px;
 }
 
 .linkHolder .menuLinks .linkItemHolder div {
 	float: left;
 	padding: 10px 0px;
-	margin: 10px 0;
+	margin: 10px 0px;
 }
 
 .linkHolder .menuLinks .linkItemHolder .linkIcon {
@@ -345,13 +384,21 @@ body {
 	font-size: 24px;
 	font-family: Arial;
 	line-height: 18px;
+	padding: 0px;
+	margin: 5px 10px 0px 0px;
+}
+
+.linkHolder .menuLinks .linkItemHolder .linkIcon img {
+	height: 20px;
+	position: relative;
+    top: 13px;
 }
 
 .linkHolder .menuLinks .linkItemHolder .link {
-	background-color: #e6dedc;
+	background-color: #F2F2F2;
 	width: 360px;
 	padding-left: 10px;
-	color: #420001;
+	color: #840b0da6;
 	font-weight: bold;
 	cursor: pointer;
 }

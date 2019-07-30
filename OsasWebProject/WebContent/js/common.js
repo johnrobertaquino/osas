@@ -1,6 +1,12 @@
 /**
  * 
  */
+$(document).ready(function() {
+	$('#logoutMenu').click(function() {
+		$('#logoutForm').submit();
+	});
+});
+
 function popUp(errorMessage) {
 	$('#errorMessage').html(errorMessage);
 	$('#overlay').show();
