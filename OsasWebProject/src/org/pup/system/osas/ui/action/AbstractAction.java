@@ -15,9 +15,17 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	 */
 	private static final long serialVersionUID = 8558423099927873090L;
 	
+	protected static final String USER = "USER";
+	
+	protected static final String FORWARD_SUCCESS = "success";
+	
+	protected static final String FORWARD_ERROR = "error";
+	
 	private String currentDate;
 	
 	protected Map<String, Object> userSession;
+	
+	protected String errorMessage;
 	
 	public String getCurrentDate() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE | MMMM dd, yyyy");  
@@ -29,5 +37,13 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	@Override
 	public void setSession(Map<String, Object> userSession) {
 		this.userSession = userSession;
+	}
+	
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }
