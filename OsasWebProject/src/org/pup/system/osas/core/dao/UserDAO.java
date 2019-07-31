@@ -30,10 +30,90 @@ public class UserDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			//Select userId, userName, password, userTypeId from users where usernName='value' and password='value'
-			resultSet = statement.executeQuery("Select userId, userName, password, firstName, middleName, lastName, birthday, contactNumber, position, firstTimeLoginCode from user where userName='" + userName + "' and password='" + password + "'");  
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName='" + userName + "' and Password='" + password + "'");  
+			
+			if (resultSet.next()) {
+				user = new User();
+				user.setUserId(resultSet.getInt("UserId"));
+				user.setUserName(resultSet.getString("Username"));
+				user.setPassword(resultSet.getString("Password"));
+				user.setFirstName(resultSet.getString("Firstname"));
+				user.setMiddleName(resultSet.getString("Middlename"));
+				user.setLastName(resultSet.getString("LastName"));
+				user.setBirthday(resultSet.getDate("Birthday"));
+				user.setContactNumber(resultSet.getString("ContactNumber"));
+				user.setPosition(resultSet.getString("Position"));
+				
+				FirstTimeLoginReference firstTimeLoginReference = new FirstTimeLoginReference();
+				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("FirstTimeLoginCode"));
+				user.setFirstTimeLoginReference(firstTimeLoginReference);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getUserByUserNameAndPassword method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return user;
+	}
+	
+	public User getUserByUserId(int userId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		User user = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserId=" + userId);  
+			
+			if (resultSet.next()) {
+				user = new User();
+				user.setUserId(resultSet.getInt("UserId"));
+				user.setUserName(resultSet.getString("Username"));
+				user.setPassword(resultSet.getString("Password"));
+				user.setFirstName(resultSet.getString("Firstname"));
+				user.setMiddleName(resultSet.getString("Middlename"));
+				user.setLastName(resultSet.getString("LastName"));
+				user.setBirthday(resultSet.getDate("Birthday"));
+				user.setContactNumber(resultSet.getString("ContactNumber"));
+				user.setPosition(resultSet.getString("Position"));
+				
+				FirstTimeLoginReference firstTimeLoginReference = new FirstTimeLoginReference();
+				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("FirstTimeLoginCode"));
+				user.setFirstTimeLoginReference(firstTimeLoginReference);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getUserByUserId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return user;
+	}
+	
+	public List<User> getUserList() throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		User user = null;
+		List<User> userList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user");  
 			
 			while (resultSet.next()) {
+				if (userList == null) {
+					userList = new ArrayList<User>();
+				}
+				
 				user = new User();
 				user.setUserId(resultSet.getInt("UserId"));
 				user.setUserName(resultSet.getString("Username"));
@@ -49,15 +129,15 @@ public class UserDAO extends DAO {
 				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("FirstTimeLoginCode"));
 				user.setFirstTimeLoginReference(firstTimeLoginReference);
 				
-				break;
+				userList.add(user);
 			}
 		} catch (Exception e) {
-			throw new Exception("Error occurred while doing getUserByUserNameAndPassword method", e);
+			throw new Exception("Error occurred while doing getUserList method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
 		
-		return user;
+		return userList;
 	}
 	
 	public FirstTimeLoginReference getFirstTimeLoginByFirstTimeLoginCode(String firstTimeLoginCode) throws Exception {
@@ -71,15 +151,13 @@ public class UserDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("Select firstTimeLoginCode, description from firstTimeLoginReference where firstTimeLoginCode='" + firstTimeLoginCode + "'");  
+			resultSet = statement.executeQuery("SELECT FirstTimeLoginCode, Description FROM firstTimeLoginReference WHERE FirstTimeLoginCode='" + firstTimeLoginCode + "'");  
 			
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				firstTimeLoginReference = new FirstTimeLoginReference();
 				
-				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("firstTimeLoginCode"));
-				firstTimeLoginReference.setDescription(resultSet.getString("description"));
-				
-				break;
+				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("FirstTimeLoginCode"));
+				firstTimeLoginReference.setDescription(resultSet.getString("Description"));
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getFirstTimeLoginByFirstTimeLoginCode method", e);
@@ -102,7 +180,7 @@ public class UserDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("Select userRoleId, userId, userRoleReferenceCode from userRole where userId=" + userId);  
+			resultSet = statement.executeQuery("SELECT UserRoleId, UserId, UserRoleReferenceCode FROM userRole WHERE userId=" + userId);  
 			
 			while (resultSet.next()) {
 				if (userRoleList == null) {
@@ -111,11 +189,11 @@ public class UserDAO extends DAO {
 				
 				userRole = new UserRole();
 				
-				userRole.setUserId(resultSet.getInt("userId"));
-				userRole.setUserRoleId(resultSet.getInt("userRoleId"));
+				userRole.setUserId(resultSet.getInt("UserId"));
+				userRole.setUserRoleId(resultSet.getInt("UserRoleId"));
 				
 				UserRoleReference userRoleReference = new UserRoleReference();
-				userRoleReference.setUserRoleReferenceCode(resultSet.getString("userRoleReferenceCode"));
+				userRoleReference.setUserRoleReferenceCode(resultSet.getString("UserRoleReferenceCode"));
 				userRole.setUserRoleReference(userRoleReference);
 
 				userRoleList.add(userRole);
@@ -140,16 +218,14 @@ public class UserDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("Select userRoleReferenceCode, userRoleName, verbiage from userRoleReference where userRoleReferenceCode='" + userRoleReferenceCode + "'");  
+			resultSet = statement.executeQuery("SELECT UserRoleReferenceCode, UserRoleName, Verbiage FROM userRoleReference WHERE UserRoleReferenceCode='" + userRoleReferenceCode + "'");  
 			
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				userRoleReference = new UserRoleReference();
 				
-				userRoleReference.setUserRoleName(resultSet.getString("userRoleName"));
-				userRoleReference.setUserRoleReferenceCode(resultSet.getString("userRoleReferenceCode"));
-				userRoleReference.setVerbiage(resultSet.getString("verbiage"));
-				
-				break;
+				userRoleReference.setUserRoleName(resultSet.getString("UserRoleName"));
+				userRoleReference.setUserRoleReferenceCode(resultSet.getString("UserRoleReferenceCode"));
+				userRoleReference.setVerbiage(resultSet.getString("Verbiage"));
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getFirstTimeLoginByFirstTimeLoginCode method", e);
@@ -168,7 +244,7 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO user(userName, password, firstName, middleName, lastName, birthday, contactNumber, position) values (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO user(UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, user.getUserName());
 			statement.setString(2, user.getPassword());
 			statement.setString(3, user.getFirstName());
@@ -181,11 +257,96 @@ public class UserDAO extends DAO {
 			statement.executeUpdate();
 			
 			resultSet = statement.getGeneratedKeys();
+			
 			if (resultSet.next()) {
 				user.setUserId(resultSet.getInt(1));
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getFirstTimeLoginByFirstTimeLoginCode method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+	}
+	
+	public void insertUserRole(UserRole userRole) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.prepareStatement("INSERT INTO userRole(UserId, UserRoleReferenceCode) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, userRole.getUserId());
+			statement.setString(2, userRole.getUserRoleReference().getUserRoleReferenceCode());
+			
+			statement.executeUpdate();
+			
+			resultSet = statement.getGeneratedKeys();
+			
+			if (resultSet.next()) {
+				userRole.setUserRoleId(resultSet.getInt(1));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing insertUserRole method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+	}
+	
+	public void saveUser(User user) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+
+			statement = connection.prepareStatement("UPDATE user SET UserName=?, Password=?, FirstName=?, MiddleName=?, LastName=?, Birthday=?, ContactNumber=?, Position=? WHERE UserId=?");
+			statement.setString(1, user.getUserName());
+			statement.setString(2, user.getPassword());
+			statement.setString(3, user.getFirstName());
+			statement.setString(4, user.getMiddleName());
+			statement.setString(5, user.getLastName());
+			statement.setDate(6, new Date(user.getBirthday().getTime()));
+			statement.setString(7, user.getContactNumber());
+			statement.setString(8, user.getPosition());
+			statement.setInt(9, user.getUserId());
+			
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing saveUser method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
+	
+	public void deleteUserRoleByUserId(int userId) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("DELETE FROM userRole WHERE UserId=?");
+			statement.setInt(1, userId);
+			
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing deleteUserRoleByUserId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
+	
+	public void deleteUserByUserId(int userId) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("DELETE FROM user WHERE UserId=?");
+			statement.setInt(1, userId);
+			
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing deleteUserByUserId method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(statement);
 		}
