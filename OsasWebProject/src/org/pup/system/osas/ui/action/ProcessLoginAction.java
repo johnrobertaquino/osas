@@ -1,7 +1,7 @@
 package org.pup.system.osas.ui.action;
 
-import org.pup.system.osas.core.dao.UserDAO;
 import org.pup.system.osas.core.domain.User;
+import org.pup.system.osas.core.manager.UserManager;
 
 public class ProcessLoginAction extends AbstractAction {
 
@@ -17,14 +17,14 @@ public class ProcessLoginAction extends AbstractAction {
 	private String password;
 	
 	private String errorMessage;
-
+	
 	public String execute() {
 		User user = null;
 		String actionResult = "success";
 
 		try {
-			UserDAO userDao = new UserDAO();
-			user = userDao.validate(userName, password);
+			UserManager userManager = new UserManager();
+			user = userManager.validate(userName, password);
 			
 			if(user != null) {
 				this.userSession.put(USER, user);

@@ -34,16 +34,9 @@
 			<span class="clickable">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
-				<div><span id="firstname">${session.USER.userName}</span></div>
+				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
-					<span id="userType">
-						<s:if test="%{#session.USER.userTypeId == 1}">
-							Administrator
-						</s:if>
-						<s:elseif test="%{#session.USER.userTypeId == 2}">
-							User			
-						</s:elseif>
-					</span>
+					<span id="userType">${session.USER.userRoleForDisplay}</span>
 				</div>
 				<form id="logoutForm" action="logout" method="POST">
 				</form>
@@ -97,7 +90,7 @@
 				</div>
 				<div style="clear:both"></div>
 				<!-- Admin Function -->
-				<s:if test="%{#session.USER.userTypeId == 1}">
+				<s:if test="%{#session.USER.admin}">
 					<div class="linkHeader">
 						<span>Administrator Functions</span>
 						<img alt="image" src="images/login-512.png">

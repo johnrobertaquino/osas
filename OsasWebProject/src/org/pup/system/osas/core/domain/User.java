@@ -1,5 +1,8 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.Date;
+import java.util.List;
+
 public class User {
 
 	private int userId;
@@ -8,7 +11,21 @@ public class User {
 	
 	private String password;
 	
-	private int userTypeId;
+	private String firstName;
+	
+	private String middleName;
+	
+	private String lastName;
+	
+	private Date birthday;
+	
+	private String contactNumber;
+	
+	private String position;
+	
+	private FirstTimeLoginReference firstTimeLoginReference;
+	
+	private List<UserRole> userRoleList;
 
 	public int getUserId() {
 		return userId;
@@ -34,13 +51,101 @@ public class User {
 		this.password = password;
 	}
 
-	public int getUserTypeId() {
-		return userTypeId;
+	public List<UserRole> getUserRoleList() {
+		return userRoleList;
 	}
 
-	public void setUserTypeId(int userTypeId) {
-		this.userTypeId = userTypeId;
+	public void setUserRoleList(List<UserRole> userRoleList) {
+		this.userRoleList = userRoleList;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public FirstTimeLoginReference getFirstTimeLoginReference() {
+		return firstTimeLoginReference;
+	}
+
+	public void setFirstTimeLoginReference(FirstTimeLoginReference firstTimeLoginReference) {
+		this.firstTimeLoginReference = firstTimeLoginReference;
 	}
 	
+	/**
+	 * Sample Output: Administrator, Approver
+	 * @return
+	 */
+	public String getUserRoleForDisplay() {
+		String userRoleForDisplay = "";
+		
+		if (this.userRoleList != null) {
+			for (UserRole userRole : this.userRoleList) {
+				if(!userRoleForDisplay.isEmpty()) {
+					userRoleForDisplay = userRoleForDisplay + ", ";
+				}
+				userRoleForDisplay = userRoleForDisplay + userRole.getUserRoleReference().getUserRoleName();
+			}
+		}
+		
+		return userRoleForDisplay;
+	}
+	
+	public boolean isAdmin() {
+		boolean admin = false;
+		
+		if (this.userRoleList != null) {
+			for (UserRole userRole : this.userRoleList) {
+				if ("AD".equalsIgnoreCase(userRole.getUserRoleReference().getUserRoleReferenceCode())) {
+					admin = true;
+				}
+			}
+		}
+		
+		return admin;
+	}
 	
 }
