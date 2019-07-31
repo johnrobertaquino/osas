@@ -1,6 +1,8 @@
 package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -156,5 +158,36 @@ public class UserDAO extends DAO {
 		}
 		
 		return userRoleReference;
+	}
+	
+	public void insertUser(User user) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = getConnection();
+
+			statement = connection.prepareStatement("INSERT INTO user(userName, password, firstName, middleName, lastName, birthday, contactNumber, position) values (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, user.getUserName());
+			statement.setString(2, user.getPassword());
+			statement.setString(3, user.getFirstName());
+			statement.setString(4, user.getMiddleName());
+			statement.setString(5, user.getLastName());
+			statement.setDate(6, new Date(user.getBirthday().getTime()));
+			statement.setString(7, user.getContactNumber());
+			statement.setString(8, user.getPosition());
+			
+			statement.executeUpdate();
+			
+			resultSet = statement.getGeneratedKeys();
+			if (resultSet.next()) {
+				user.setUserId(resultSet.getInt(1));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getFirstTimeLoginByFirstTimeLoginCode method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
 	}
 }
