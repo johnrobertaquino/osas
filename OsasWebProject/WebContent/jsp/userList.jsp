@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>OSAS</title>
+<title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />

@@ -6,6 +6,10 @@ body {
 	line-height: normal;
 }
 
+input {
+ 	outline:none;
+}
+
 #header {
 	position: relative;
 }
@@ -452,7 +456,7 @@ body {
 
 #userListContentBody #contentBodyLeftPane #title {
 	margin: 25px auto 0px auto;
-	width: 210px;
+	width: 182px;
 	font-weight: bold;
 	font-size: 30px;
 	color: #444444;
@@ -489,7 +493,7 @@ body {
 	margin-bottom: 35px;
 }
 
-#userListContentBody img {
+#userListContentBody #searchUser img {
 	height: 32px;
 	float: left;
 }
