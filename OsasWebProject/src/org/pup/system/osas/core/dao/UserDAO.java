@@ -140,6 +140,52 @@ public class UserDAO extends DAO {
 		return userList;
 	}
 	
+	public List<User> getUserListByUserSearchText(String userSearchText) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		User user = null;
+		List<User> userList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName LIKE '%"
+					+ userSearchText + "%' OR FirstName LIKE '%" + userSearchText + "%' OR MiddleName LIKE '%" + userSearchText + "%' OR LastName LIKE '%" + userSearchText + "%'");  
+			
+			while (resultSet.next()) {
+				if (userList == null) {
+					userList = new ArrayList<User>();
+				}
+				
+				user = new User();
+				user.setUserId(resultSet.getInt("UserId"));
+				user.setUserName(resultSet.getString("Username"));
+				user.setPassword(resultSet.getString("Password"));
+				user.setFirstName(resultSet.getString("Firstname"));
+				user.setMiddleName(resultSet.getString("Middlename"));
+				user.setLastName(resultSet.getString("LastName"));
+				user.setBirthday(resultSet.getDate("Birthday"));
+				user.setContactNumber(resultSet.getString("ContactNumber"));
+				user.setPosition(resultSet.getString("Position"));
+				
+				FirstTimeLoginReference firstTimeLoginReference = new FirstTimeLoginReference();
+				firstTimeLoginReference.setFirstTimeLoginCode(resultSet.getString("FirstTimeLoginCode"));
+				user.setFirstTimeLoginReference(firstTimeLoginReference);
+				
+				userList.add(user);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getUserList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return userList;
+	}
+	
 	public FirstTimeLoginReference getFirstTimeLoginByFirstTimeLoginCode(String firstTimeLoginCode) throws Exception {
 		Connection connection = null;
 		Statement statement = null;

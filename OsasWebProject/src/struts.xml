@@ -57,6 +57,12 @@
 			<result name="error">/jsp/userList.jsp</result>
 		</action>
 		
+		<action name="searchUser" class="org.pup.system.osas.ui.action.SearchUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/userList.jsp</result>
+			<result name="error">/jsp/userList.jsp</result>
+		</action>
+		
 		<action name="deleteUser" class="org.pup.system.osas.ui.action.DeleteUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayUserList</result>	
