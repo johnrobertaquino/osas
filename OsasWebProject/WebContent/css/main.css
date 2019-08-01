@@ -74,6 +74,13 @@ body {
 	color: #ffbc01;
 }
 
+#pageName {
+	float: left;
+    margin: 13px 0px 0 25px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
 #navBar {
 	height: 45px;
 	background-color: #afabaa;
@@ -406,4 +413,91 @@ body {
 .linkHolder .menuLinks .linkItemHolder .link:hover {
 	background-color: #ffbc01;
 	color: #FFFFFF;
+}
+
+/**user list page**/
+#userListContentBody {
+	margin-top: 50px;
+}
+
+#userListContentBody #contentBodyLeftPane, #userListContentBody #contentBodyRightPane {
+	float: left;
+}
+
+#userListContentBody #contentBodyLeftPane {
+	width: 300px;
+
+	border-right: 3px solid #420001;
+	min-height: 600px;
+}
+
+#userListContentBody #contentBodyLeftPane #icon {
+	width: 150px; 
+	margin: 50px auto 0px auto;
+}
+
+#userListContentBody #contentBodyLeftPane #icon img {
+	height: 150px;
+}
+
+#userListContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	width: 210px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #444444;
+}
+
+#userListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+
+#userListContentBody #contentBodyRightPane table {
+	color: #444444;
+	border-collapse: collapse;
+	margin-left: 100px;
+}
+
+#userListContentBody #contentBodyRightPane table tr {
+	height: 50px;
+}
+
+#userListContentBody #contentBodyRightPane table td, #userListContentBody #contentBodyRightPane table th {
+	padding: 0px 10px;
+}
+
+#userListContentBody #contentBodyRightPane table .odd {
+	background-color: #dae3f3;
+}
+
+#userListContentBody .tableMenu img {
+	height: 20px;
+}
+
+#userListContentBody #searchUser {
+	margin-left: 100px;
+	margin-bottom: 35px;
+}
+
+#userListContentBody img {
+	height: 32px;
+	float: left;
+}
+
+#userListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#userListContentBody #searchUserButton {
+	float: left;
+}
+
+#userListContentBody #addUserButton {
+	float: right;
 }

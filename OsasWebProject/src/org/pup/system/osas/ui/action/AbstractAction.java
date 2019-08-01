@@ -27,6 +27,10 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	
 	protected String errorMessage;
 	
+	protected String pageName;
+	
+	public abstract String execute() throws Exception;
+	
 	public String getCurrentDate() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE | MMMM dd, yyyy");  
 		LocalDateTime now = LocalDateTime.now(); 
@@ -46,4 +50,14 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+
+	public String getPageName() {
+		return pageName;
+	}
+
+	public void setPageName(String pageName) {
+		this.pageName = pageName;
+	}
+	
+	
 }

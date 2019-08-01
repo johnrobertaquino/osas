@@ -10,6 +10,7 @@
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
 </head>
 <body>
 <div id="header">
@@ -31,7 +32,7 @@
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
 		<div id="accountSettings">
-			<span class="clickable">Home</span><span>|</span>
+			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>

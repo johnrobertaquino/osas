@@ -55,6 +55,12 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/home.jsp</result>
 		</action>
+		
+		<action name="displayUserList" class="org.pup.system.osas.ui.action.DisplayUserListAction"
+		method="execute">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/userList.jsp</result>
+		</action>
 	</package>
 
 </struts>	
