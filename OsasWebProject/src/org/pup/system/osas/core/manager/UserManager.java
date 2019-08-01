@@ -130,6 +130,45 @@ public class UserManager {
 		return userList;
 	}
 	
+	public List<User> getUserListByUserSearchText(String userSearchText) throws Exception {
+		UserDAO userDAO = null;
+		List<User> userList = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			userDAO = new UserDAO(connection);
+			
+			userList = userDAO.getUserListByUserSearchText(userSearchText);
+			
+			if (userList != null) {
+				for (User user : userList) {
+					FirstTimeLoginReference firstTimeLoginReference = userDAO.getFirstTimeLoginByFirstTimeLoginCode(user.getFirstTimeLoginReference().getFirstTimeLoginCode());
+					user.setFirstTimeLoginReference(firstTimeLoginReference);
+					
+					List<UserRole> userRoleList = userDAO.getUserRoleListByUserId(user.getUserId());
+					
+					if (userRoleList != null) {
+						for (UserRole userRole : userRoleList) {
+							UserRoleReference userRoleReference = userDAO.getUserRoleReferenceByUserRoleReferenceCode(userRole.getUserRoleReference().getUserRoleReferenceCode());
+							userRole.setUserRoleReference(userRoleReference);
+						}
+						
+						user.setUserRoleList(userRoleList);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return userList;
+	}
+	
 	public void insertUser(User user) throws Exception {
 		UserDAO userDAO = null;
 		Connection connection = null;
