@@ -27,6 +27,15 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	
 	protected String errorMessage;
 	
+<<<<<<< HEAD
+=======
+	protected String notificationMessage;
+	
+	protected String pageName;
+	
+	public abstract String execute() throws Exception;
+	
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas
 	public String getCurrentDate() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE | MMMM dd, yyyy");  
 		LocalDateTime now = LocalDateTime.now(); 
@@ -46,4 +55,25 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+<<<<<<< HEAD
+=======
+
+	public String getPageName() {
+		return pageName;
+	}
+
+	public void setPageName(String pageName) {
+		this.pageName = pageName;
+	}
+
+	public String getNotificationMessage() {
+		return notificationMessage;
+	}
+
+	public void setNotificationMessage(String notificationMessage) {
+		this.notificationMessage = notificationMessage;
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas
 }

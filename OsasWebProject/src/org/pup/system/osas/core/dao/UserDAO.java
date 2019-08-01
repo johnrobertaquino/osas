@@ -329,6 +329,7 @@ public class UserDAO extends DAO {
 			statement = connection.prepareStatement("DELETE FROM userRole WHERE UserId=?");
 			statement.setInt(1, userId);
 			
+<<<<<<< HEAD
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing deleteUserRoleByUserId method", e);
 		} finally {
@@ -345,6 +346,26 @@ public class UserDAO extends DAO {
 			statement = connection.prepareStatement("DELETE FROM user WHERE UserId=?");
 			statement.setInt(1, userId);
 			
+=======
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing deleteUserRoleByUserId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
+	
+	public void deleteUserByUserId(int userId) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("DELETE FROM user WHERE UserId=?");
+			statement.setInt(1, userId);
+			
+			statement.executeUpdate();
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing deleteUserByUserId method", e);
 		} finally {

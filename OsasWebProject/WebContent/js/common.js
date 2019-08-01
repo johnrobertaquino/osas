@@ -2,18 +2,23 @@
  * 
  */
 $(document).ready(function() {
-	$('#logoutMenu').click(function() {
+	$('#logoutMenu').click(function(event) {
 		$('#logoutForm').submit();
+	});
+	
+	$('#homeLink').click(function(event) {
+		location.href = "home";
 	});
 });
 
 function popUp(errorMessage) {
 	$('#errorMessage').html(errorMessage);
 	$('#overlay').show();
-	$('#popupOk').click(function() {
+	$('#popupOk').off().click(function(event) {
 		popUpClose();
 	});
-	$('#xButton').click(function() {
+	$('#popupCancel').hide();
+	$('#xButton').off().click(function(event) {
 		popUpClose();
 	});
 }
@@ -21,10 +26,28 @@ function popUp(errorMessage) {
 function popUpOk(errorMessage, okFunction) {
 	$('#errorMessage').html(errorMessage);
 	$('#overlay').show();
-	$('#popupOk').click(function() {
+	$('#popupOk').off().click(function(event) {
 		okFunction();
+		popUpClose();
 	});
-	$('#xButton').click(function() {
+	$('#popupCancel').hide();
+	$('#xButton').off().click(function() {
+		popUpClose();
+	});
+}
+
+function popUpOkCancel(errorMessage, okFunction) {
+	$('#errorMessage').html(errorMessage);
+	$('#overlay').show();
+	$('#popupOk').off().click(function(event) {
+		okFunction();
+		popUpClose();
+	});
+	$('#popupCancel').show();
+	$('#popupCancel').off().click(function(event) {
+		popUpClose();
+	});
+	$('#xButton').off().click(function(event) {
 		popUpClose();
 	});
 }
@@ -33,3 +56,10 @@ function popUpClose() {
 	$('#errorMessage').html('');
 	$('#overlay').hide();
 }
+
+$(document).ready(function() {
+	$('#changePasswordMenu').click(function() {
+		event.stopPropagation();
+		location.href = "changePassword";
+	});
+});

@@ -27,7 +27,7 @@
   		</global-results>
 		
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction">
-			<result name="success">/jsp/home.jsp</result>
+			<result name="success">/jsp/helloWorld.jsp</result>
 		</action>
 		
 		<action name="login" class="org.pup.system.osas.ui.action.LoginAction">

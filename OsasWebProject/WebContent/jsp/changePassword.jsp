@@ -10,8 +10,7 @@
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
-
+<script type="text/javascript" src="js/home.js"></script>
 </head>
 <body>
 <div id="header">
@@ -33,32 +32,49 @@
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
 		<div id="accountSettings">
-			<span class="clickable">Alumni Site</span>
+			<span class="clickable" id="homeLink">Home</span><span>|</span>
+			<span class="clickable">Alumni Site</span><span>|</span>
+			<div id="userAccount" class="clickable">
+				<div><span id="firstname">${session.USER.firstName}</span></div>
+				<div id="userTypeDiv">
+					<span id="userType">${session.USER.userRoleForDisplay}</span>
+				</div>
+				<form id="logoutForm" action="logout" method="POST">
+				</form>
+				<div class="dropdownMenu">
+					<div id="changePasswordMenu">Change Password</div>
+					<div id="logoutMenu">Logout</div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
 		</div>		
 		<div style="clear:both"></div>
 	</div>
 </div>
 <div id="contentBody">
-	<div id="loginDiv">
-		<div id="loginContent">
-			<div id="welcomeText"><span>WELCOME!</span></div>
-			<div id="loginAvatar">
-				<img alt="" src="images/account_icon.png">
-			</div>
-			<form class="contentForm" id="loginForm" action="processLogin" method="POST">
-				<div class="loginElement">
-					<input id="userName" name="userName" type="text" placeholder="Username">
+	<div id="userListContentBody">
+		<div id="contentBodyLeftPane">
+			<div id="icon"><img src="images/change_password.png"/></div>
+			<div id="titlePassword">Change Password</div>
+		</div>
+		<div id="contentBodyRightPane">
+			<form class="changePasswordContent" id="changePasswordForm" action="processPassword" method="POST">
+				<div class="passwordElement">
+					<input id="changeUsername" name="userName" type="text" placeholder="Username">
 				</div>
-				<div class="loginElement">
-					<input id="password" name="password" type="password" placeholder="Password">
+				<div class="passwordElement">
+					<input id="changePassword" name="password" type="password" placeholder="Password">
 				</div>
-				<div class="loginElement">
-					<div id="loginButtonDiv" class="button">LOGIN</div>
-					<div style="clear:both"></div>
+				<div class="passwordElement">
+					<input id="changeCPassword" name="password" type="password" placeholder="Confirm Password">
+				</div>
+				<div class="passwordElement">
+					<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>
 				</div>
 				<div style="clear:both"></div>
 			</form>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 <div id="footer">
