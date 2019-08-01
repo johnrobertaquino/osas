@@ -3,7 +3,7 @@
  */
 $(document).ready(function() {
 	
-	$(document).click(function(){
+	$(document).click(function(event){
 		$(".tableMenuDropdown").each(function() {
 			if($(this).hasClass("w3-show")) {
 				$(this).toggleClass("w3-show");
@@ -14,7 +14,19 @@ $(document).ready(function() {
 	
 	$('.tableMenu .tableMenuButton').click(function(event) {
 		event.stopPropagation();
+		$(".tableMenuDropdown").each(function() {
+			if($(this).hasClass("w3-show")) {
+				$(this).toggleClass("w3-show");
+			}
+		});
 		$(this).parent().find(".tableMenuDropdown").toggleClass("w3-show");
 	});
 	
 });
+
+function showUserDeletePopup(userId) {
+	popUpOkCancel("Do you want to delete this user?", function() {
+		$("#deleteUserForm #userId").val(userId);
+		$("#deleteUserForm").submit();
+	});
+}

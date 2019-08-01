@@ -73,9 +73,12 @@
 		<div id="xButton"><span>x</span></div>
 		<div id="errorMessageDiv"><span id="errorMessage"></span></div>
 		<div style="clear:both"></div>
+		<div id="popupCancel" class="button">CANCEL</div>
 		<div id="popupOk" class="button">OK</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 <s:if test="%{errorMessage!=null}"><script>popUp('${errorMessage}');</script></s:if>
+<s:elseif test="%{notificationMessage!=null}"><script>popUp('${notificationMessage}');</script></s:elseif>
 </body>
 </html>

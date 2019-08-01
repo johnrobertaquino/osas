@@ -27,6 +27,8 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	
 	protected String errorMessage;
 	
+	protected String notificationMessage;
+	
 	protected String pageName;
 	
 	public abstract String execute() throws Exception;
@@ -57,6 +59,14 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 
 	public void setPageName(String pageName) {
 		this.pageName = pageName;
+	}
+
+	public String getNotificationMessage() {
+		return notificationMessage;
+	}
+
+	public void setNotificationMessage(String notificationMessage) {
+		this.notificationMessage = notificationMessage;
 	}
 	
 	

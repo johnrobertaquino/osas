@@ -2,13 +2,11 @@
  * 
  */
 $(document).ready(function() {
-	$('#logoutMenu').click(function() {
-		event.stopPropagation();
+	$('#logoutMenu').click(function(event) {
 		$('#logoutForm').submit();
 	});
 	
-	$('#homeLink').click(function() {
-		event.stopPropagation();
+	$('#homeLink').click(function(event) {
 		location.href = "home";
 	});
 });
@@ -16,12 +14,11 @@ $(document).ready(function() {
 function popUp(errorMessage) {
 	$('#errorMessage').html(errorMessage);
 	$('#overlay').show();
-	$('#popupOk').click(function() {
-		event.stopPropagation();
+	$('#popupOk').off().click(function(event) {
 		popUpClose();
 	});
-	$('#xButton').click(function() {
-		event.stopPropagation();
+	$('#popupCancel').hide();
+	$('#xButton').off().click(function(event) {
 		popUpClose();
 	});
 }
@@ -29,10 +26,28 @@ function popUp(errorMessage) {
 function popUpOk(errorMessage, okFunction) {
 	$('#errorMessage').html(errorMessage);
 	$('#overlay').show();
-	$('#popupOk').click(function() {
+	$('#popupOk').off().click(function(event) {
 		okFunction();
+		popUpClose();
 	});
-	$('#xButton').click(function() {
+	$('#popupCancel').hide();
+	$('#xButton').off().click(function() {
+		popUpClose();
+	});
+}
+
+function popUpOkCancel(errorMessage, okFunction) {
+	$('#errorMessage').html(errorMessage);
+	$('#overlay').show();
+	$('#popupOk').off().click(function(event) {
+		okFunction();
+		popUpClose();
+	});
+	$('#popupCancel').show();
+	$('#popupCancel').off().click(function(event) {
+		popUpClose();
+	});
+	$('#xButton').off().click(function(event) {
 		popUpClose();
 	});
 }

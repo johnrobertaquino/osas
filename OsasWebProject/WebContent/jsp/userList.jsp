@@ -6,8 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>OSAS</title>
+<link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
@@ -54,6 +54,9 @@
 	</div>
 </div>
 <div id="contentBody">
+	<form id="deleteUserForm" action="deleteUser" method="POST">
+  		<input type="hidden" id="userId" name="userId" />
+	</form>
 	<div id="userListContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
@@ -79,7 +82,7 @@
 					<th>Role</th>
 					<th>Action</th>
 				</tr>
-				<s:iterator value="userList" status="rowStatus">
+				<s:iterator value="userList" status="rowStatus" var="user">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="userName" /></td>
 						<td><s:property value="firstName" /></td>
@@ -97,7 +100,9 @@
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
 	    							<a href="#" class="w3-bar-item w3-button">Edit</a>
-    								<a href="#" class="w3-bar-item w3-button">Delete</a>
+	    							<s:if test="%{#session.USER.userId != #user.userId}">
+    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
+    								</s:if>
     								<a href="#" class="w3-bar-item w3-button">Reset Password</a>
   								</div>
 							</div>
@@ -121,9 +126,12 @@
 		<div id="xButton"><span>x</span></div>
 		<div id="errorMessageDiv"><span id="errorMessage"></span></div>
 		<div style="clear:both"></div>
+		<div id="popupCancel" class="button">CANCEL</div>
 		<div id="popupOk" class="button">OK</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 <s:if test="%{errorMessage!=null}"><script>popUp('${errorMessage}');</script></s:if>
+<s:elseif test="%{notificationMessage!=null}"><script>popUp('${notificationMessage}');</script></s:elseif>
 </body>
 </html>

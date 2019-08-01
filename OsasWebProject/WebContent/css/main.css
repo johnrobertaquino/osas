@@ -2,6 +2,8 @@
 body {
 	margin: 0px;
 	font-family: 'Open Sans',Helvetica, Arial, sans-serif;
+	font-size: initial;
+	line-height: normal;
 }
 
 #header {
@@ -315,6 +317,14 @@ body {
 	width: 50px;
 	float: right;
 	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#overlay #popup #popupCancel {
+	width: 78px;
+	float: right;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 #homeContentBody {
@@ -500,4 +510,8 @@ body {
 
 #userListContentBody #addUserButton {
 	float: right;
+}
+
+#userListContentBody .tableMenuDropdown {
+	top: 25px;
 }
