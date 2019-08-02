@@ -3,14 +3,12 @@
  **/
 $(document).ready(function() {
 	$('#passwordButtonDiv').click(function() {
-	if(document.getElementById('password').value == document.getElementbyId('confirmPassword').value)
-	{
-			$("#changePasswordForm #userId").val(userId);
+		if($("#password").val() == $("#confirmPassword").val()){
 			$("#changePasswordForm").submit();
-	}
-	else
+		}
+		else
 		{
-			popUp('Please check your password!');
+			popUp('Password and Confirm Password are not equal.');
 		}
 	});
 });

@@ -478,6 +478,7 @@ img {
 	color: #444444;
 	border-collapse: collapse;
 	margin-left: 100px;
+	width: 1083px;
 }
 
 #userListContentBody #contentBodyRightPane table tr {
@@ -528,56 +529,9 @@ img {
 	top: 25px;
 }
 
-<<<<<<< HEAD
 /** change password page **/
 #changePasswordContentBody {
 	margin-top: 50px;
-	font-size: 16px;
-=======
-/**Change Password **/
-#changePasswordContentBody #contentBodyLeftPane, #changePasswordContentBody #contentBodyRightPane {
-	float: left;
-}
-
-#changePasswordContentBody #contentBodyLeftPane {
-	width: 300px;
-
-	border-right: 3px solid #420001;
-	min-height: 600px;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #icon {
-	width: 150px; 
-	margin: 50px auto 0px auto;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #icon img {
-	height: 150px;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	width: 134px;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
-#changePasswordContentBody #contentBodyRightPane {
-	width: inherit;
-}
-
-#titlePassword {
-	margin: 25px auto 0px auto;
-    width: 267px;
-    font-weight: bold;
-    font-size: 30px;
-    color: #444444;
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
-}
-
-#changePasswordContentBody input {
-	font-size: 16px;
 }
 
 #changePasswordContentBody #contentBodyLeftPane, #changePasswordContentBody #contentBodyRightPane {

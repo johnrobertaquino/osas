@@ -22,6 +22,13 @@ $(document).ready(function() {
 		$(this).parent().find(".tableMenuDropdown").toggleClass("w3-show");
 	});
 	
+	$('#searchUserButton').click(function(event) {
+		if($('#userSearchText').val().trim() == '') {
+			$('#searchUserForm').attr("action","displayUserList");
+		}
+		$('#searchUserForm').submit();
+	});
+	
 });
 
 function showUserDeletePopup(userId) {

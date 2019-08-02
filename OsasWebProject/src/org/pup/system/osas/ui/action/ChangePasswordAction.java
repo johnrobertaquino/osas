@@ -14,6 +14,8 @@ public class ChangePasswordAction extends AbstractAction {
 	private String userId;
 	
 	private String password;
+	
+	private String oldPassword;
 
 	public String execute() throws Exception {
 		
@@ -24,10 +26,19 @@ public class ChangePasswordAction extends AbstractAction {
 
 			User user = userManager.getUser(Integer.parseInt(userId));
 			
-			user.setPassword(password);
-			
-			userManager.saveUser(user);
-			notificationMessage = "Password has been successfully updated.";
+			if (oldPassword.equals(user.getPassword())) {
+				user.setPassword(password);
+				
+				userManager.saveUser(user);
+				
+				user = userManager.getUser(Integer.parseInt(userId));
+				userSession.put(USER, user);
+				notificationMessage = "Password has been successfully updated.";
+			}
+			else {
+				errorMessage = "Old Password is incorrect.";
+				actionResult = FORWARD_ERROR;
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -41,6 +52,7 @@ public class ChangePasswordAction extends AbstractAction {
 		return actionResult;
 	}
 
+
 	public String getPassword() {
 		return password;
 	}
@@ -49,6 +61,16 @@ public class ChangePasswordAction extends AbstractAction {
 		this.password = password;
 	}
 	
+	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
+
 	public String getUserId() {
 		return userId;
 	}
@@ -56,4 +78,5 @@ public class ChangePasswordAction extends AbstractAction {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 }

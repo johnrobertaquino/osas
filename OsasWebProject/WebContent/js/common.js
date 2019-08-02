@@ -9,6 +9,10 @@ $(document).ready(function() {
 	$('#homeLink').click(function(event) {
 		location.href = "home";
 	});
+	
+	$('#changePasswordMenu').click(function() {
+		location.href = "displayChangePassword";
+	});
 });
 
 function popUp(errorMessage) {
@@ -56,10 +60,3 @@ function popUpClose() {
 	$('#errorMessage').html('');
 	$('#overlay').hide();
 }
-
-$(document).ready(function() {
-	$('#changePasswordMenu').click(function() {
-		event.stopPropagation();
-		location.href = "changePassword";
-	});
-});

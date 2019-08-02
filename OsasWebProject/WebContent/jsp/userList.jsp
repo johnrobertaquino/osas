@@ -65,7 +65,9 @@
 		<div id="contentBodyRightPane">
 			<div id="searchUser">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<input type="text" placeholder="Search User">
+				<form action="searchUser" method="POST" id="searchUserForm">
+					<input type="text" id="userSearchText" name="userSearchText" placeholder="Search User">
+				</form>
 				<div class="button" id="searchUserButton">SEARCH</div>
 				<div class="button" id="addUserButton">ADD USER</div>
     			<div style="clear:both"></div>

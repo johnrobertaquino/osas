@@ -60,15 +60,16 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="changePasswordFormHolder">
-				<form id="changePasswordForm" action="processChangePassword" method="POST">
+				<form id="changePasswordForm" action="changePassword" method="POST">
+					<input name="userId" type="hidden" value="${session.USER.userId}">
 					<div class="passwordElement">
-						<input id="changeUsername" name="userName" type="text" placeholder="Username">
+						<input id="oldPassword" name="oldPassword" type="password" placeholder="Old Password">
 					</div>
 					<div class="passwordElement">
-						<input id="changePassword" name="password" type="password" placeholder="Password">
+						<input id="password" name="password" type="password" placeholder="Password">
 					</div>
 					<div class="passwordElement">
-						<input id="changeCPassword" name="password" type="password" placeholder="Confirm Password">
+						<input id="confirmPassword" type="password" placeholder="Confirm Password">
 					</div>
 					<div class="passwordElement">
 						<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>
