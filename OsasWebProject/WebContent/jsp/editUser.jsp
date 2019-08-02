@@ -66,19 +66,19 @@
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div id="editUserElement">
     					<span>First Name</span>
-    					<div><input name="firstName" type="text" value="${user.firstName}"></div>
+    					<div><input id="firstName" name="firstName" type="text" value="${user.firstName}"></div>
     				</div>
     				<div id="editUserElement">
     					<span>Middle Name (optional)</span>
-    					<div><input name="middleName" type="text" value="${user.middleName}"></div>
+    					<div><input id="middleName" name="middleName" type="text" value="${user.middleName}"></div>
     				</div>
     				<div id="editUserElement">
     					<span>Last Name</span>
-    					<div><input name="lastName" type="text" value="${user.lastName}"></div>
+    					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
     				<div id="editUserElement">
     					<span>Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday"></div>
+    					<div><input type="text" id="birthday" name="birthday" id="birthday"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#birthday").datepicker();
@@ -88,11 +88,11 @@
     				</div>
     				<div id="editUserElement">
     					<span>Contact Number</span>
-    					<div><input name="contactNumber" type="text" value="${user.contactNumber}"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="number" maxlength="11" onKeyPress="if(this.value.length==11) return false;" value="${user.contactNumber}"></div>
     				</div>
     				<div id="editUserElement">
     					<span>Position</span>
-    					<div><input name="position" type="text" value="${user.position}"></div>
+    					<div><input id="position" name="position" type="text" value="${user.position}"></div>
     				</div>
     				<div id="editUserElement">
     					<span>Role</span>

@@ -347,7 +347,7 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE user SET UserName=?, Password=?, FirstName=?, MiddleName=?, LastName=?, Birthday=?, ContactNumber=?, Position=? WHERE UserId=?");
+			statement = connection.prepareStatement("UPDATE user SET UserName=?, Password=?, FirstName=?, MiddleName=?, LastName=?, Birthday=?, ContactNumber=?, Position=?, FirstTimeLoginCode=? WHERE UserId=?");
 			statement.setString(1, user.getUserName());
 			statement.setString(2, user.getPassword());
 			statement.setString(3, user.getFirstName());
@@ -356,7 +356,8 @@ public class UserDAO extends DAO {
 			statement.setDate(6, new Date(user.getBirthday().getTime()));
 			statement.setString(7, user.getContactNumber());
 			statement.setString(8, user.getPosition());
-			statement.setInt(9, user.getUserId());
+			statement.setString(9, user.getFirstTimeLoginReference().getFirstTimeLoginCode());
+			statement.setInt(10, user.getUserId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

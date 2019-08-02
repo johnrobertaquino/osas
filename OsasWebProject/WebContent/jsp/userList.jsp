@@ -60,6 +60,9 @@
 	<form id="editUserForm" action="displayEditUser" method="POST">
   		<input type="hidden" id="userId" name="userId" />
 	</form>
+	<form id="resetPasswordForm" action="resetPassword" method="POST">
+  		<input type="hidden" id="userId" name="userId" />
+	</form>
 	<div id="userListContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
@@ -107,8 +110,8 @@
 	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button">Edit</a>
 	    							<s:if test="%{#session.USER.userId != #user.userId}">
     									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
+    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Reset Password</a>
     								</s:if>
-    								<a href="#" class="w3-bar-item w3-button">Reset Password</a>
   								</div>
 							</div>
 						</td>

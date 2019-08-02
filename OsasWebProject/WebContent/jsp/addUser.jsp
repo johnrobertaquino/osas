@@ -62,18 +62,18 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="addUserDiv">
-				<form class="addUserContent" id="addUserForm" action="processUser" method="POST">
+				<form class="addUserContent" id="addUserForm" action="addUser" method="POST">
     				<div id="addUserElement">
     					<span>First Name</span>
-    					<div><input name="firstName" type="text"></div>
+    					<div><input id="firstName" name="firstName" type="text"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Middle Name (optional)</span>
-    					<div><input name="middleName" type="text"></div>
+    					<div><input id="middleName" name="middleName" type="text"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Last Name</span>
-    					<div><input name="lastName" type="text"></div>
+    					<div><input id="lastName" name="lastName" type="text"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Birthday</span>
@@ -87,21 +87,21 @@
     				</div>
     				<div id="addUserElement">
     					<span>Contact Number</span>
-    					<div><input name="contactNumber" type="text"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="number" maxlength="11" onKeyPress="if(this.value.length==11) return false;"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Position</span>
-    					<div><input name="position" type="text"></div>
+    					<div><input id="position" name="position" type="text"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Role</span>
 	    				<div id="roleDiv">
-		    				<input type="checkbox" id="adminCheck" name="administrator" value="Administrator">
-		    				<span id="adminSpan">Administrator</span>
-		    				<input type="checkbox" id="approverCheck" name="approver" value="Approver">
-		    				<span id="adminSpan">Approver</span>
-		    				<input type="checkbox" id="userCheck" name="user" value="User">
-		    				<span id="adminSpan">User</span>
+		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
+		    				<span>Administrator</span>
+		    				<input type="checkbox" id="apCheck" name="roleReferenceCodeList" value="AP" <s:if test="user.approver">checked</s:if>>
+		    				<span>Approver</span>
+		    				<input type="checkbox" id="usCheck" name="roleReferenceCodeList" value="US" <s:if test="user.user">checked</s:if>>
+		    				<span>User</span>
 		    			</div>
     				</div>
     				<div id="addUserElement">
@@ -110,7 +110,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id="addUserSaveButton" class="button">
-								<span>Save</span>
+								<span>Register</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

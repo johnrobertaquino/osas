@@ -41,6 +41,13 @@ function showUserDeletePopup(userId) {
 	});
 }
 
+function showUserResetPasswordPopup(userId) {
+	popUpOkCancel("Do you want to reset password of this user?", function() {
+		$("#resetPasswordForm #userId").val(userId);
+		$("#resetPasswordForm").submit();
+	});
+}
+
 function displayEditUser(userId) {
 	$("#editUserForm #userId").val(userId);
 	$("#editUserForm").submit();

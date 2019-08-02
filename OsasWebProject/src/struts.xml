@@ -69,6 +69,12 @@
 			<result name="error" type="chain">displayUserList</result>
 		</action>
 		
+		<action name="resetPassword" class="org.pup.system.osas.ui.action.ResetPasswordAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayUserList</result>	
+			<result name="error" type="chain">displayUserList</result>
+		</action>
+		
 		<action name="displayChangePassword" class="org.pup.system.osas.ui.action.DisplayChangePasswordAction">
 			<result name="success">/jsp/changePassword.jsp</result>
 		</action>
@@ -78,12 +84,15 @@
 			<result name="error">/jsp/changePassword.jsp</result>
 		</action>
 		
-		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
+		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
+			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addUser.jsp</result>
 		</action>
 		
-		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
-			<result name="success">/jsp/addUser.jsp</result>
+		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayUserList</result>
+			<result name="error">/jsp/addUser.jsp</result>
 		</action>
 		
 		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
@@ -92,6 +101,7 @@
 		
 		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
 			<result type="chain" name="success">displayUserList</result>
+			<result type="chain" name="error">displayUserList</result>
 		</action>
 	</package>
 
