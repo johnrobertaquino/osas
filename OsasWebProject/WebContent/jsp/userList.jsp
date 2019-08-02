@@ -57,6 +57,9 @@
 	<form id="deleteUserForm" action="deleteUser" method="POST">
   		<input type="hidden" id="userId" name="userId" />
 	</form>
+	<form id="editUserForm" action="displayEditUser" method="POST">
+  		<input type="hidden" id="userId" name="userId" />
+	</form>
 	<div id="userListContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
@@ -90,7 +93,7 @@
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
-						<td><s:property value="birthday" /></td>
+						<td><s:date name="#user.birthday" format="MM/dd/yyyy" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td><s:property value="position" /></td>
 						<td class="test"><s:property value="userRoleForDisplay" /></td>
@@ -101,7 +104,7 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a href="/" class="w3-bar-item w3-button">Edit</a>
+	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button">Edit</a>
 	    							<s:if test="%{#session.USER.userId != #user.userId}">
     									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
     								</s:if>

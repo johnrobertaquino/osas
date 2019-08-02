@@ -135,17 +135,29 @@ public class User {
 	}
 	
 	public boolean isAdmin() {
-		boolean admin = false;
+		return hasUserRole("AD");
+	}
+	
+	public boolean isApprover() {
+		return hasUserRole("AP");
+	}
+	
+	public boolean isUser() {
+		return hasUserRole("US");
+	}
+	
+	private boolean hasUserRole(String userRoleReferenceCode) {
+		boolean hasUserRole = false;
 		
 		if (this.userRoleList != null) {
 			for (UserRole userRole : this.userRoleList) {
-				if ("AD".equalsIgnoreCase(userRole.getUserRoleReference().getUserRoleReferenceCode())) {
-					admin = true;
+				if (userRoleReferenceCode.equalsIgnoreCase(userRole.getUserRoleReference().getUserRoleReferenceCode())) {
+					hasUserRole = true;
 				}
 			}
 		}
 		
-		return admin;
+		return hasUserRole;
 	}
 	
 }

@@ -29,6 +29,9 @@ $(document).ready(function() {
 		$('#searchUserForm').submit();
 	});
 	
+	$('#addUserButton').click(function() {
+		location.href = "displayAddUser";
+	});
 });
 
 function showUserDeletePopup(userId) {
@@ -38,12 +41,10 @@ function showUserDeletePopup(userId) {
 	});
 }
 
-$(document).ready(function() {
-	$('#addUserButton').click(function() {
-		event.stopPropagation();
-		location.href = "addUser";
-	});
-});
+function displayEditUser(userId) {
+	$("#editUserForm #userId").val(userId);
+	$("#editUserForm").submit();
+}
 
 function addUser(userId) {
 	$('#addUserSaveButton').click(function() {

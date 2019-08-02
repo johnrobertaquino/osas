@@ -81,6 +81,18 @@
 		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
 			<result name="success">/jsp/addUser.jsp</result>
 		</action>
+		
+		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
+			<result name="success">/jsp/addUser.jsp</result>
+		</action>
+		
+		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
+			<result name="success">/jsp/editUser.jsp</result>
+		</action>
+		
+		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
+			<result type="chain" name="success">displayUserList</result>
+		</action>
 	</package>
 
 </struts>	

@@ -18,6 +18,10 @@ img {
     box-sizing: initial;
 }
 
+.w3-bar-block .w3-bar-item {
+	width: inherit;
+}
+
 #header {
 	position: relative;
 }
@@ -157,7 +161,8 @@ img {
 
 .dropdownMenu {
 	position: absolute;
-    margin-left: -100px;
+    width: 160px;
+    right: 0px;
     margin-top: 12px;
     background-color: #f2f2f2;
     color: #840b0da6;
@@ -478,7 +483,6 @@ img {
 	color: #444444;
 	border-collapse: collapse;
 	margin-left: 100px;
-	width: 1083px;
 }
 
 #userListContentBody #contentBodyRightPane table tr {
@@ -573,9 +577,9 @@ img {
 #changePasswordFormHolder input {
 	border: 1px solid #420001;
     width: 400px;
-    padding-left: 10px;
-    height: 50px;
+    padding: 10px 0px 10px 10px;
 }
+
 #passwordButtonDiv {
     width: 300px;
     margin: 50px auto 0px auto;
@@ -624,90 +628,164 @@ img {
 
 #addUserDiv {
 	margin: 0px 0px 0px 380px;
-	width: 583px;
-    height: 707px;
+	width: 512px;
 }
 
 #addUserElement {
-	font-size: 17px;
-	font-weight: bold;
-	box-sizing: none;
-	border-radius: none;
+	font-size: 16px;
 }
 
 #addUserElement span {
-	font-size: 17px;
-	font-weight: bold;
-	padding-bottom: 5px;
-	margin-left: 30px;
-	box-sizing: none;
+	font-size: 16px;
 }
 
 #addUserElement input {
-	width: 500px;
-	height: 40px;
-    font-weight: normal;
-	margin: 10px 0px 10px 20px;
-	box-sizing: none;
-	border-radius: none;
+	border: 1px solid #420001;
+    width: 500px;
+    padding: 10px 0px 10px 10px;
+	margin: 10px 0px;
 }
 
-#roleElement {
-	float: left;
-	font-size: 17px;
-	font-weight: bold;
-	padding-bottom: 5px;
-	margin-left: 30px;
-	box-sizing: none;
-	width: 570px;
-	margin-bottom: 30px;
-}
-
-#addUserElement #month {
-    width: 192px;
-}
-
-#addUserElement #date {
+#addUserElement #birthday {
     width: 120px;
 }
 
-#addUserElement #year {
-    width: 140px;
+.ui-datepicker {
+	font-size: 14px;
 }
 
-#roleElement input {
-	height: 30px;
-	width: 30px
+#addUserContentBody #roleDiv {
+	padding-top: 10px;
+}
+#addUserContentBody #roleDiv input {
+	height: 20px;
+	width: 20px;
+	margin: 0px;
 }
 
-#roleSpan {
-	margin: 0px 0px 20px 0px;
+#addUserContentBody #roleDiv span {
+	margin: 0px 25px;
+    top: -3px;
+    position: relative;
 }
 
-#roleDiv span {
-	margin: 0px 25px 20px 25px;
+#addUserContentBody #roleButton {
+	margin-top: 40px;
 }
 
-#roleButton {
-	width: 700px;
-}
-
-#roleButton #addUserCancelButton {
-	background-color: #420001;
-    height: 40px;
+#addUserContentBody #roleButton #addUserCancelButton {
     width: 160px;
-    margin: 0px 178px 50px 90px;
-    float: left;
+    margin: 0px;
+    float: right;
     margin-left: 23px;
-    font-size: 20px;
+    font-weight: normal;
 }
 
+#addUserContentBody #roleButton #addUserCancelButton span, #addUserContentBody #roleButton #addUserSaveButton span {
+	font-weight: normal;
+}
 
-#roleButton #addUserSaveButton {
-	background-color: #420001;
-    height: 40px;
+#addUserContentBody #roleButton #addUserSaveButton {
     width: 160px;
-    margin: 0px 0px 50px 0px;
-    float: left;
-    font-size: 20px;
+    float: right;
+    font-weight: normal;
+}
+
+/** edit user **/
+#editUserContentBody {
+	margin-top: 50px;
+}
+
+#editUserContentBody #contentBodyLeftPane, #editUserContentBody #contentBodyRightPane {
+	float: left;
+}
+
+#editUserContentBody #contentBodyLeftPane {
+	width: 300px;
+
+	border-right: 3px solid #420001;
+	min-height: 600px;
+}
+
+#editUserContentBody #contentBodyLeftPane #icon {
+	width: 150px; 
+	margin: 50px auto 0px auto;
+}
+
+#editUserContentBody #contentBodyLeftPane #icon img {
+	height: 150px;
+}
+
+#editUserContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	width: 134px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #444444;
+}
+
+#editUserContentBody #contentBodyRightPane {
+	width: inherit;
+}
+
+#editUserDiv {
+	margin: 0px 0px 0px 380px;
+	width: 512px;
+}
+
+#editUserElement {
+	font-size: 16px;
+}
+
+#editUserElement span {
+	font-size: 16px;
+}
+
+#editUserElement input {
+	border: 1px solid #420001;
+    width: 500px;
+    padding: 10px 0px 10px 10px;
+	margin: 10px 0px;
+}
+
+#editUserElement #birthday {
+    width: 120px;
+}
+
+#editUserContentBody #roleDiv {
+	padding-top: 10px;
+}
+
+#editUserContentBody #roleDiv input {
+	height: 20px;
+	width: 20px;
+	margin: 0px;
+}
+
+#editUserContentBody #roleDiv span {
+	margin: 0px 25px;
+    top: -3px;
+    position: relative;
+}
+
+#editUserContentBody #roleButton {
+	margin-top: 40px;
+}
+
+#editUserContentBody #roleButton #editUserCancelButton {
+    width: 160px;
+    margin: 0px;
+    float: right;
+    margin-left: 23px;
+    font-weight: normal;
+}
+
+#editUserContentBody #roleButton #editUserCancelButton span, #editUserContentBody #roleButton #editUserSaveButton span {
+	font-weight: normal;
+}
+
+#editUserContentBody #roleButton #editUserSaveButton {
+    width: 160px;
+    float: right;
+    font-weight: normal;
 }

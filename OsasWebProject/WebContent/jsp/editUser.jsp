@@ -12,7 +12,7 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addUser.js"></script>
+<script type="text/javascript" src="js/editUser.js"></script>
 </head>
 <body>
 <div id="header">
@@ -55,61 +55,62 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addUserContentBody">
+	<div id="editUserContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
-			<div id="title">Add User</div>
+			<div id="title">Edit User</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="addUserDiv">
-				<form class="addUserContent" id="addUserForm" action="processUser" method="POST">
-    				<div id="addUserElement">
+			<div id="editUserDiv">
+				<form class="editUserContent" id="editUserForm" action="editUser" method="POST">
+					<input name="userId" type="hidden" value="${user.userId}">
+    				<div id="editUserElement">
     					<span>First Name</span>
-    					<div><input name="firstName" type="text"></div>
+    					<div><input name="firstName" type="text" value="${user.firstName}"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Middle Name (optional)</span>
-    					<div><input name="middleName" type="text"></div>
+    					<div><input name="middleName" type="text" value="${user.middleName}"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Last Name</span>
-    					<div><input name="lastName" type="text"></div>
+    					<div><input name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Birthday</span>
     					<div><input type="text" name="birthday" id="birthday"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#birthday").datepicker();
-    							
+    							$("#birthday").datepicker("setDate","<s:date name="user.birthday" format="MM/dd/yyyy" />");
     						});
     					</script>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Contact Number</span>
-    					<div><input name="contactNumber" type="text"></div>
+    					<div><input name="contactNumber" type="text" value="${user.contactNumber}"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Position</span>
-    					<div><input name="position" type="text"></div>
+    					<div><input name="position" type="text" value="${user.position}"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
     					<span>Role</span>
 	    				<div id="roleDiv">
-		    				<input type="checkbox" id="adminCheck" name="administrator" value="Administrator">
-		    				<span id="adminSpan">Administrator</span>
-		    				<input type="checkbox" id="approverCheck" name="approver" value="Approver">
-		    				<span id="adminSpan">Approver</span>
-		    				<input type="checkbox" id="userCheck" name="user" value="User">
-		    				<span id="adminSpan">User</span>
+		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
+		    				<span>Administrator</span>
+		    				<input type="checkbox" id="apCheck" name="roleReferenceCodeList" value="AP" <s:if test="user.approver">checked</s:if>>
+		    				<span>Approver</span>
+		    				<input type="checkbox" id="usCheck" name="roleReferenceCodeList" value="US" <s:if test="user.user">checked</s:if>>
+		    				<span>User</span>
 		    			</div>
     				</div>
-    				<div id="addUserElement">
+    				<div id="editUserElement">
 						<div id="roleButton">
-							<div id="addUserCancelButton" class="button">
+							<div id="editUserCancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id="addUserSaveButton" class="button">
+							<div id="editUserSaveButton" class="button">
 								<span>Save</span>
 							</div>
 							<div style="clear:both"></div>
