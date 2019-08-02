@@ -69,11 +69,11 @@
 			<result name="error" type="chain">displayUserList</result>
 		</action>
 		
-		<action name="changePassword" class="org.pup.system.osas.ui.action.HelloWorldAction">
+		<action name="changePassword" class="org.pup.system.osas.ui.action.ChangePasswordAction">
 			<result name="success">/jsp/changePassword.jsp</result>
 		</action>
 		
-		<action name="addUser" class="org.pup.system.osas.ui.action.HelloWorldAction">
+		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
 			<result name="success">/jsp/addUser.jsp</result>
 		</action>
 	</package>

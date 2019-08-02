@@ -37,3 +37,10 @@ $(document).ready(function() {
 		location.href = "addUser";
 	});
 });
+
+function addUser(userId) {
+	$('#addUserSaveButton').click(function() {
+		$("#addUserForm #userId").val(userId);
+		$("#addUserForm").submit();
+	});
+}

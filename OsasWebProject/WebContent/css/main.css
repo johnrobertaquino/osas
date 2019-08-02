@@ -528,10 +528,52 @@ img {
 	top: 25px;
 }
 
+<<<<<<< HEAD
 /** change password page **/
 #changePasswordContentBody {
 	margin-top: 50px;
 	font-size: 16px;
+=======
+/**Change Password **/
+#changePasswordContentBody #contentBodyLeftPane, #changePasswordContentBody #contentBodyRightPane {
+	float: left;
+}
+
+#changePasswordContentBody #contentBodyLeftPane {
+	width: 300px;
+
+	border-right: 3px solid #420001;
+	min-height: 600px;
+}
+
+#changePasswordContentBody #contentBodyLeftPane #icon {
+	width: 150px; 
+	margin: 50px auto 0px auto;
+}
+
+#changePasswordContentBody #contentBodyLeftPane #icon img {
+	height: 150px;
+}
+
+#changePasswordContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	width: 134px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #444444;
+}
+
+#changePasswordContentBody #contentBodyRightPane {
+	width: inherit;
+}
+
+#titlePassword {
+	margin: 25px auto 0px auto;
+    width: 267px;
+    font-weight: bold;
+    font-size: 30px;
+    color: #444444;
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 }
 
 #changePasswordContentBody input {
@@ -589,11 +631,12 @@ img {
 	margin-top: 30px;
 }
 
+/**Add User **/
 #addUserContentBody {
 	margin-top: 50px;
 }
 
-#addUserListContentBody #contentBodyLeftPane, #addUserContentBody #contentBodyRightPane {
+#addUserContentBody #contentBodyLeftPane, #addUserContentBody #contentBodyRightPane {
 	float: left;
 }
 
@@ -628,12 +671,12 @@ img {
 #addUserDiv {
 	margin: 0px 0px 0px 380px;
 	width: 583px;
+    height: 707px;
 }
 
 #addUserElement {
 	font-size: 17px;
 	font-weight: bold;
-	padding-bottom: 10px;
 	box-sizing: none;
 	border-radius: none;
 }
@@ -701,7 +744,7 @@ img {
     width: 160px;
     margin: 0px 178px 50px 90px;
     float: left;
-    margin-left: 13px;
+    margin-left: 23px;
     font-size: 20px;
 }
 
@@ -712,6 +755,5 @@ img {
     width: 160px;
     margin: 0px 0px 50px 0px;
     float: left;
-    margin-left: 13px;
     font-size: 20px;
 }
