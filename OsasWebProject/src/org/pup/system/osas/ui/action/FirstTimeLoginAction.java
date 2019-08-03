@@ -1,43 +1,44 @@
 package org.pup.system.osas.ui.action;
 
-import java.text.SimpleDateFormat;
-
 import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.User;
 import org.pup.system.osas.core.manager.UserManager;
 import org.pup.system.osas.exception.BusinessException;
 
-public class ResetPasswordAction extends AbstractAction {
-	
-/**
+public class FirstTimeLoginAction extends AbstractAction {
+
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5434792641181279093L;
+	private static final long serialVersionUID = 8239216729445991639L;
 
 	private String userId;
+	
+	private String password;
+	
+	private String userName;
 
-	@Override
 	public String execute() throws Exception {
-		pageName = "Manage User Account";
-
+		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			UserManager userManager = new UserManager();
+
 			User user = userManager.getUser(Integer.parseInt(userId));
 			
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddyyyy");
-			String birthday = simpleDateFormat.format(user.getBirthday());
-	
-			user.setPassword(birthday);
+			user.setPassword(password);
+			user.setUserName(userName);
 			
 			FirstTimeLoginReference firstTimeLoginReference = new FirstTimeLoginReference();
-			firstTimeLoginReference.setFirstTimeLoginCode("PR");
+			firstTimeLoginReference.setFirstTimeLoginCode("N");
 			user.setFirstTimeLoginReference(firstTimeLoginReference);
-			
+				
 			userManager.saveUser(user);
-			
-			notificationMessage = "Password Reset has been successfully done.";
+				
+			user = userManager.getUser(Integer.parseInt(userId));
+			userSession.put(USER, user);
+			notificationMessage = "User and Password have been successfully updated.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -51,6 +52,23 @@ public class ResetPasswordAction extends AbstractAction {
 		return actionResult;
 	}
 
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -58,5 +76,5 @@ public class ResetPasswordAction extends AbstractAction {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
+	
 }

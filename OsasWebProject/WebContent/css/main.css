@@ -589,6 +589,108 @@ img {
 	margin-top: 30px;
 }
 
+/** first time login page **/
+#firstTimeLoginContentBody {
+	margin-top: 50px;
+}
+
+#firstTimeLoginContentBody #contentBodyLeftPane, #firstTimeLoginContentBody #contentBodyRightPane {
+	float: left;
+}
+
+#firstTimeLoginContentBody #contentBodyLeftPane {
+	width: 300px;
+
+	border-right: 3px solid #420001;
+	min-height: 600px;
+}
+
+#firstTimeLoginContentBody #contentBodyLeftPane #icon {
+	width: 150px; 
+	margin: 50px auto 0px auto;
+}
+
+#firstTimeLoginContentBody #contentBodyLeftPane #icon img {
+	height: 150px;
+}
+
+#firstTimeLoginContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	width: 234px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #444444;
+}
+
+#firstTimeLoginContentBody #contentBodyRightPane {
+	width: inherit;
+}
+
+#firstTimeLoginFormHolder {
+	 margin: 100px 450px;
+}
+
+#firstTimeLoginFormHolder input {
+	border: 1px solid #420001;
+    width: 400px;
+    padding: 10px 0px 10px 10px;
+}
+
+#firstTimeLoginFormHolder .passwordElement {
+	margin-top: 30px;
+}
+
+/** first time login page **/
+#passwordResetContentBody {
+	margin-top: 50px;
+}
+
+#passwordResetContentBody #contentBodyLeftPane, #passwordResetContentBody #contentBodyRightPane {
+	float: left;
+}
+
+#passwordResetContentBody #contentBodyLeftPane {
+	width: 300px;
+
+	border-right: 3px solid #420001;
+	min-height: 600px;
+}
+
+#passwordResetContentBody #contentBodyLeftPane #icon {
+	width: 150px; 
+	margin: 50px auto 0px auto;
+}
+
+#passwordResetContentBody #contentBodyLeftPane #icon img {
+	height: 150px;
+}
+
+#passwordResetContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	width: 234px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #444444;
+}
+
+#passwordResetContentBody #contentBodyRightPane {
+	width: inherit;
+}
+
+#passwordResetFormHolder {
+	 margin: 100px 450px;
+}
+
+#passwordResetFormHolder input {
+	border: 1px solid #420001;
+    width: 400px;
+    padding: 10px 0px 10px 10px;
+}
+
+#passwordResetFormHolder .passwordElement {
+	margin-top: 30px;
+}
+
 /**Add User **/
 #addUserContentBody {
 	margin-top: 50px;

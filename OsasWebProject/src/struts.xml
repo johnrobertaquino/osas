@@ -11,11 +11,13 @@
 	
 		<interceptors>
 			<interceptor name="userSessionInterceptor" class="org.pup.system.osas.ui.interceptor.UserSessionInterceptor"></interceptor>
+			<interceptor name="firstTimeLoginInterceptor" class="org.pup.system.osas.ui.interceptor.FirstTimeLoginInterceptor"></interceptor>
 			<interceptor-stack name="userSessionStack">
 			    <interceptor-ref name="timer" /> 
             	<interceptor-ref name="logger" /> 
             	<interceptor-ref name="defaultStack" /> 
 				<interceptor-ref name="userSessionInterceptor"/>
+				<interceptor-ref name="firstTimeLoginInterceptor"/>
 			</interceptor-stack>
 		</interceptors>
 
@@ -24,6 +26,8 @@
 		<global-results>
    			<result name="redirectToLogin" type="redirect">/login</result>
    			<result name="redirectToHome" type="redirect">/home</result>
+   			<result name="redirectToFirstTimeLogin" type="redirect">/displayFirstTimeLogin</result>
+   			<result name="redirectToPasswordReset" type="redirect">/displayPasswordReset</result>
   		</global-results>
 		
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction">
@@ -76,12 +80,36 @@
 		</action>
 		
 		<action name="displayChangePassword" class="org.pup.system.osas.ui.action.DisplayChangePasswordAction">
+			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/changePassword.jsp</result>
 		</action>
 		
+		<action name="displayFirstTimeLogin" class="org.pup.system.osas.ui.action.DisplayFirstTimeLoginAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/firstTimeLogin.jsp</result>
+		</action>
+		
+		<action name="displayPasswordReset" class="org.pup.system.osas.ui.action.DisplayPasswordResetAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/passwordReset.jsp</result>
+		</action>
+		
 		<action name="changePassword" class="org.pup.system.osas.ui.action.ChangePasswordAction">
+			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">home</result>
 			<result name="error">/jsp/changePassword.jsp</result>
+		</action>
+		
+		<action name="firstTimeLogin" class="org.pup.system.osas.ui.action.FirstTimeLoginAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">home</result>
+			<result name="error" type="chain">displayFirstTimeLogin</result>
+		</action>
+		
+		<action name="passwordReset" class="org.pup.system.osas.ui.action.PasswordResetAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">home</result>
+			<result name="error" type="chain">displayPasswordReset</result>
 		</action>
 		
 		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
@@ -96,10 +124,13 @@
 		</action>
 		
 		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
+			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editUser.jsp</result>
+			<result name="error" type="chain">home</result>
 		</action>
 		
 		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
+			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayUserList</result>
 			<result type="chain" name="error">displayUserList</result>
 		</action>

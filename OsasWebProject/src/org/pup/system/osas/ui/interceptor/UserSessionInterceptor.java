@@ -16,7 +16,6 @@ public class UserSessionInterceptor extends AbstractInterceptor {
 	
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		// TODO Auto-generated method stub
 		Map<String, Object> userSession = invocation.getInvocationContext().getSession();
 		
 		String actionName = invocation.getInvocationContext().getName();
