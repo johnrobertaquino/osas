@@ -13,7 +13,6 @@ $(document).ready(function() {
 	$('#changePasswordMenu').click(function() {
 		location.href = "displayChangePassword";
 	});
-	$("#date").datepicker();
 });
 
 function popUp(errorMessage) {

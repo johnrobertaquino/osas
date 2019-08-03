@@ -13,33 +13,63 @@ $(document).ready(function() {
 			}
         });
 		
+		var errorMessage = '';
+		
 		if (selectedRoleCount > 1 && isUserRoleSelected) {
-			popUp("Administrator/Approver role can't be selected if User role is already selected.");
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Administrator/Approver role can't be selected if User role is already selected.";
 		}
-		else if($('#firstName').val() === '')
+		if($('#firstName').val() === '')
 		{
-			popUp('First name can\'t be blank.');
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "First name can\'t be blank.";
 		}
-		else if($('#lastName').val() === '')
+		if($('#lastName').val() === '')
 		{
-			popUp('Last name can\'t be blank.');
+			if (errorMessage != '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Last name can\'t be blank.";
 		}
-		else if($('#birthday').val() === '')
+		if($('#birthday').val() === '')
 		{
-			popUp('Birthday can\'t be blank.');
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Birthday can\'t be blank.";
 		}
-		else if($('#contactNumber').val() === '')
+		if($('#contactNumber').val() === '')
 		{
-			popUp('Contact Number can\'t be blank.');
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Contact Number can\'t be blank.";
 		}
-		else if($('#position').val() === '')
+		if($('#position').val() === '')
 		{
-			popUp('Position can\'t be blank.');
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Position can\'t be blank.";
 		}
-		else {
-			popUpOkCancel("Are you done??", function() {
+		if(selectedRoleCount === 0)
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "No User role selected.";
+		}
+		if (errorMessage == '') {
+			popUpOkCancel("Do you want to add this user?", function() {
 				$("#addUserForm").submit();
 			});
+		}
+		else {
+			popUp(errorMessage);
 		}
 	});
 	
