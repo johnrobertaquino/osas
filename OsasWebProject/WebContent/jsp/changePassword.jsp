@@ -6,12 +6,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/userList.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
 </head>
 <body>
 <div id="header">
@@ -32,7 +31,6 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -54,62 +52,27 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteUserForm" action="deleteUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
 	<div id="userListContentBody">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/manageuser.png"/></div>
-			<div id="title">List of Users</div>
+			<div id="icon"><img src="images/change_password.png"/></div>
+			<div id="titlePassword">Change Password</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchUser">
-				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<input type="text" placeholder="Search User">
-				<div class="button" id="searchUserButton">SEARCH</div>
-				<div class="button" id="addUserButton">ADD USER</div>
-    			<div style="clear:both"></div>
-			</div>
-			<table>
-				<tr>
-					<th>Username</th>
-					<th>First name</th>
-					<th>Middle name</th>
-					<th>Last name</th>
-					<th>Birthday</th>
-					<th>Contact number</th>
-					<th>Position</th>
-					<th>Role</th>
-					<th>Action</th>
-				</tr>
-				<s:iterator value="userList" status="rowStatus" var="user">
-					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="userName" /></td>
-						<td><s:property value="firstName" /></td>
-						<td><s:property value="middleName" /></td>
-						<td><s:property value="lastName" /></td>
-						<td><s:property value="birthday" /></td>
-						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="position" /></td>
-						<td class="test"><s:property value="userRoleForDisplay" /></td>
-						<td>
-							<div class="w3-dropdown-click tableMenu">
-  								<div class="tableMenuButton">
-  									<img src="images/setting_game_configuration_option-512.png" />
-  									<img src="images/arrow-down-01-512.png" />
-  								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a href="/" class="w3-bar-item w3-button">Edit</a>
-	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
-    								</s:if>
-    								<a href="#" class="w3-bar-item w3-button">Reset Password</a>
-  								</div>
-							</div>
-						</td>
-					</tr>
-				</s:iterator>
-			</table>
+			<form class="changePasswordContent" id="changePasswordForm" action="processPassword" method="POST">
+				<div class="passwordElement">
+					<input id="changeUsername" name="userName" type="text" placeholder="Username">
+				</div>
+				<div class="passwordElement">
+					<input id="changePassword" name="password" type="password" placeholder="Password">
+				</div>
+				<div class="passwordElement">
+					<input id="changeCPassword" name="password" type="password" placeholder="Confirm Password">
+				</div>
+				<div class="passwordElement">
+					<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>
+				</div>
+				<div style="clear:both"></div>
+			</form>
 		</div>
 		<div style="clear:both"></div>
 	</div>

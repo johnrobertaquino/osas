@@ -56,3 +56,10 @@ function popUpClose() {
 	$('#errorMessage').html('');
 	$('#overlay').hide();
 }
+
+$(document).ready(function() {
+	$('#changePasswordMenu').click(function() {
+		event.stopPropagation();
+		location.href = "changePassword";
+	});
+});

@@ -54,66 +54,67 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteUserForm" action="deleteUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<div id="userListContentBody">
+	<div id="addUserContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
-			<div id="title">List of Users</div>
+			<div id="title">Add User</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchUser">
-				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<input type="text" placeholder="Search User">
-				<div class="button" id="searchUserButton">SEARCH</div>
-				<div class="button" id="addUserButton">ADD USER</div>
-    			<div style="clear:both"></div>
+			<div id="addUserDiv">
+				<form class="addUserContent" id="addUserForm" action="processUser" method="POST">
+    				<div id="addUserElement">
+    					<span>First Name</span>
+    					<div><input name="firstName" type="text"></div>
+    				</div>
+    				<div id="addUserElement">
+    					<span>Middle Name (optional)</span>
+    					<div><input name="middleName" type="text"></div>
+    				</div>
+    				<div id="addUserElement">
+    					<span>Last Name</span>
+    					<div><input name="lastName" type="text"></div>
+    				</div>
+    				<div id="addUserElement">
+    					<div><span>Birthday</span></div>
+    					<input name="birthMonth" id="month" type="text">
+    					<input name="birthDate" id="date" type="text">
+    					<input name="birthYear" id="year" type="text">
+    				</div>
+    				<div id="addUserElement">
+    					<span>Contact Number</span>
+    					<div><input type="text"></div>
+    				</div>
+    				<div id="addUserElement">
+    					<span>Position</span>
+    					<div><input type="text"></div>
+    				</div>
+    				<div id="roleElement">
+    					<div id="roleSpan"><span>Role</span></div>
+    					<div id="roleDiv">
+	    					<input type="checkbox" id="adminCheck" name="administrator" value="Administrator" unchecked>
+	    					<span id="adminSpan">Administrator</span>
+	    					<input type="checkbox" id="approverCheck" name="approver" value="Approver" unchecked>
+	    					<span id="adminSpan">Approver</span>
+	    					<input type="checkbox" id="userCheck" name="user" value="User" unchecked>
+	    					<span id="adminSpan">User</span>
+	    				</div>
+    				</div>
+					<div id="roleButton">
+						<div id="addUserCancelButton" class="button">
+							<span>Cancel</span>
+						</div>
+						<div id="addUserSaveButton" class="button">
+							<span>Save</span>
+						</div>
+					</div>
+    			</form>
+    			</div>
+    				<div style="clear:both"></div>
 			</div>
-			<table>
-				<tr>
-					<th>Username</th>
-					<th>First name</th>
-					<th>Middle name</th>
-					<th>Last name</th>
-					<th>Birthday</th>
-					<th>Contact number</th>
-					<th>Position</th>
-					<th>Role</th>
-					<th>Action</th>
-				</tr>
-				<s:iterator value="userList" status="rowStatus" var="user">
-					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="userName" /></td>
-						<td><s:property value="firstName" /></td>
-						<td><s:property value="middleName" /></td>
-						<td><s:property value="lastName" /></td>
-						<td><s:property value="birthday" /></td>
-						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="position" /></td>
-						<td class="test"><s:property value="userRoleForDisplay" /></td>
-						<td>
-							<div class="w3-dropdown-click tableMenu">
-  								<div class="tableMenuButton">
-  									<img src="images/setting_game_configuration_option-512.png" />
-  									<img src="images/arrow-down-01-512.png" />
-  								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a href="/" class="w3-bar-item w3-button">Edit</a>
-	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
-    								</s:if>
-    								<a href="#" class="w3-bar-item w3-button">Reset Password</a>
-  								</div>
-							</div>
-						</td>
-					</tr>
-				</s:iterator>
-			</table>
 		</div>
 		<div style="clear:both"></div>
-	</div>
 </div>
+
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>

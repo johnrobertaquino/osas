@@ -30,3 +30,10 @@ function showUserDeletePopup(userId) {
 		$("#deleteUserForm").submit();
 	});
 }
+
+$(document).ready(function() {
+	$('#addUserButton').click(function() {
+		event.stopPropagation();
+		location.href = "addUser";
+	});
+});
