@@ -11,6 +11,7 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/changePassword.js"></script>
 </head>
 <body>
 <div id="header">
@@ -52,7 +53,7 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="userListContentBody">
+	<div id="changePasswordContentBody">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/change_password.png"/></div>
 			<div id="titlePassword">Change Password</div>
@@ -66,7 +67,7 @@
 					<input id="changePassword" name="password" type="password" placeholder="Password">
 				</div>
 				<div class="passwordElement">
-					<input id="changeCPassword" name="password" type="password" placeholder="Confirm Password">
+					<input id="changeCPassword" name="confirmPassword" type="password" placeholder="Confirm Password">
 				</div>
 				<div class="passwordElement">
 					<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>

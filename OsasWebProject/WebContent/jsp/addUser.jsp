@@ -82,11 +82,11 @@
     				</div>
     				<div id="addUserElement">
     					<span>Contact Number</span>
-    					<div><input type="text"></div>
+    					<div><input name="contactNumber" type="text"></div>
     				</div>
     				<div id="addUserElement">
     					<span>Position</span>
-    					<div><input type="text"></div>
+    					<div><input name="position" type="text"></div>
     				</div>
     				<div id="roleElement">
     					<div id="roleSpan"><span>Role</span></div>
