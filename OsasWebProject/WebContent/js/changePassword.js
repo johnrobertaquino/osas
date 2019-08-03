@@ -1,6 +1,6 @@
 /**
  * 
- */
+ **/
 $(document).ready(function() {
 	$('#passwordButtonDiv').click(function() {
 	if(document.getElementById('password').value == document.getElementbyId('confirmPassword').value)

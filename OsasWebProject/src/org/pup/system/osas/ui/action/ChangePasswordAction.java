@@ -8,7 +8,7 @@ public class ChangePasswordAction extends AbstractAction {
 
 	/**
 	 * 
-	 */
+	 **/
 	private static final long serialVersionUID = 7193689828446511089L;
 
 	private String userId;

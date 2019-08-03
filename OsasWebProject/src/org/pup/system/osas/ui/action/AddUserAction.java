@@ -7,7 +7,7 @@ import org.pup.system.osas.exception.BusinessException;
 public class AddUserAction extends AbstractAction{
 	
 	/**
-	 * 
+	 ** 
 	 */
 	private static final long serialVersionUID = 2407562318288998481L;
 
