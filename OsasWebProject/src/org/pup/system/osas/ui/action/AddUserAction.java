@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pup.system.osas.core.dao.UserDAO;
 import org.pup.system.osas.core.domain.User;
 import org.pup.system.osas.core.domain.UserRole;
 import org.pup.system.osas.core.domain.UserRoleReference;
@@ -48,10 +47,10 @@ public class AddUserAction extends AbstractAction{
 			user.setFirstName(firstName);
 			user.setMiddleName(middleName);
 			user.setLastName(lastName);
-			user.setBirthday(new SimpleDateFormat("MMddyyyy").parse(birthday));
-			password = birthday;
+			user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
+			password = (new SimpleDateFormat("MMddyyyy")).format(user.getBirthday());
 			user.setPassword(password);
-			userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3) + birthday.substring(3, 5) + birthday.substring(8, 10);
+			userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3) + (new SimpleDateFormat("MM")).format(user.getBirthday()) + (new SimpleDateFormat("yy")).format(user.getBirthday());
 			user.setUserName(userName);
 			user.setContactNumber(contactNumber);
 			user.setPosition(position);
