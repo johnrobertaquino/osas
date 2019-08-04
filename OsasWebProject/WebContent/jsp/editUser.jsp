@@ -89,7 +89,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="number" maxlength="11" onKeyPress="if(this.value.length==11) return false;" value="${user.contactNumber}"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>
