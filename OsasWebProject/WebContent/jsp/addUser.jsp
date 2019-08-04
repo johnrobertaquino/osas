@@ -8,6 +8,7 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/addUser.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
@@ -55,27 +56,27 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addUserContentBody">
+	<div id="addUserContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
 			<div id="title">Add User</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="addUserDiv">
+			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="addUserForm" action="addUser" method="POST">
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>First Name</span>
     					<div><input id="firstName" name="firstName" type="text"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Middle Name (optional)</span>
     					<div><input id="middleName" name="middleName" type="text"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Last Name</span>
     					<div><input id="lastName" name="lastName" type="text"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
     					<div><input type="text" name="birthday" id="birthday"></div>
     					<script type="text/javascript">
@@ -85,15 +86,15 @@
     						});
     					</script>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="number" maxlength="11" onKeyPress="if(this.value.length==11) return false;"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Position</span>
     					<div><input id="position" name="position" type="text"></div>
     				</div>
-    				<div id="addUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Role</span>
 	    				<div id="roleDiv">
 		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
@@ -104,12 +105,12 @@
 		    				<span>User</span>
 		    			</div>
     				</div>
-    				<div id="addUserElement">
-						<div id="roleButton">
-							<div id="addUserCancelButton" class="button">
+    				<div class="rightPaneElement withTitle">
+						<div id="buttonHolder">
+							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id="addUserSaveButton" class="button">
+							<div id=submitButton class="button left">
 								<span>Register</span>
 							</div>
 							<div style="clear:both"></div>

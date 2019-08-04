@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+#addUserContentBody #contentBodyLeftPane #title {
+	width: 134px;
+}
+
+#addUserContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement input {
+    width: 500px;
+}
+
+#addUserContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #birthday {
+    width: 120px;
+}
+
+#addUserContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv {
+	padding-top: 10px;
+}
+#addUserContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv input {
+	height: 20px;
+	width: 20px;
+	margin: 0px;
+}
+
+#addUserContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv span {
+	margin: 0px 25px;
+    top: -3px;
+    position: relative;
+}

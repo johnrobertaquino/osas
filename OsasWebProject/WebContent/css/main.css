@@ -21,6 +21,9 @@ img {
 .w3-bar-block .w3-bar-item {
 	width: inherit;
 }
+.w3-dropdown-click:hover {
+	background: none;
+}
 
 #header {
 	position: relative;
@@ -691,203 +694,76 @@ img {
 	margin-top: 30px;
 }
 
-/**Add User **/
-#addUserContentBody {
-	margin-top: 50px;
-}
-
-#addUserContentBody #contentBodyLeftPane, #addUserContentBody #contentBodyRightPane {
-	float: left;
-}
-
-#addUserContentBody #contentBodyLeftPane {
-	width: 300px;
-
-	border-right: 3px solid #420001;
-	min-height: 600px;
-}
-
-#addUserContentBody #contentBodyLeftPane #icon {
-	width: 150px; 
-	margin: 50px auto 0px auto;
-}
-
-#addUserContentBody #contentBodyLeftPane #icon img {
-	height: 150px;
-}
-
-#addUserContentBody #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	width: 134px;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
-#addUserContentBody #contentBodyRightPane {
-	width: inherit;
-}
-
-#addUserDiv {
-	margin: 0px 0px 0px 380px;
-	width: 512px;
-}
-
-#addUserElement {
-	font-size: 16px;
-}
-
-#addUserElement span {
-	font-size: 16px;
-}
-
-#addUserElement input {
-	border: 1px solid #420001;
-    width: 500px;
-    padding: 10px 0px 10px 10px;
-	margin: 10px 0px;
-}
-
-#addUserElement #birthday {
-    width: 120px;
-}
-
+/** FeatureContent Common **/
 .ui-datepicker {
 	font-size: 14px;
 }
 
-#addUserContentBody #roleDiv {
-	padding-top: 10px;
-}
-#addUserContentBody #roleDiv input {
-	height: 20px;
-	width: 20px;
-	margin: 0px;
-}
-
-#addUserContentBody #roleDiv span {
-	margin: 0px 25px;
-    top: -3px;
-    position: relative;
-}
-
-#addUserContentBody #roleButton {
-	margin-top: 40px;
-}
-
-#addUserContentBody #roleButton #addUserCancelButton {
-    width: 160px;
-    margin: 0px;
-    float: right;
-    margin-left: 23px;
-    font-weight: normal;
-}
-
-#addUserContentBody #roleButton #addUserCancelButton span, #addUserContentBody #roleButton #addUserSaveButton span {
-	font-weight: normal;
-}
-
-#addUserContentBody #roleButton #addUserSaveButton {
-    width: 160px;
-    float: right;
-    font-weight: normal;
-}
-
-/** edit user **/
-#editUserContentBody {
+.featureContent {
 	margin-top: 50px;
 }
 
-#editUserContentBody #contentBodyLeftPane, #editUserContentBody #contentBodyRightPane {
+.featureContent #contentBodyLeftPane, .featureContent #contentBodyRightPane {
 	float: left;
 }
 
-#editUserContentBody #contentBodyLeftPane {
+.featureContent #contentBodyLeftPane {
 	width: 300px;
-
 	border-right: 3px solid #420001;
 	min-height: 600px;
 }
 
-#editUserContentBody #contentBodyLeftPane #icon {
+.featureContent #contentBodyLeftPane #icon {
 	width: 150px; 
 	margin: 50px auto 0px auto;
 }
 
-#editUserContentBody #contentBodyLeftPane #icon img {
+.featureContent #contentBodyLeftPane #icon img {
 	height: 150px;
 }
 
-#editUserContentBody #contentBodyLeftPane #title {
+.featureContent #contentBodyLeftPane #title {
 	margin: 25px auto 0px auto;
-	width: 134px;
 	font-weight: bold;
 	font-size: 30px;
 	color: #444444;
 }
 
-#editUserContentBody #contentBodyRightPane {
+.featureContent #contentBodyRightPane {
 	width: inherit;
 }
 
-#editUserDiv {
+.featureContent #contentBodyRightPane #rightPaneContentHolder {
 	margin: 0px 0px 0px 380px;
 	width: 512px;
 }
 
-#editUserElement {
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 	font-size: 16px;
 }
-
-#editUserElement span {
-	font-size: 16px;
-}
-
-#editUserElement input {
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement input {
 	border: 1px solid #420001;
-    width: 500px;
     padding: 10px 0px 10px 10px;
-	margin: 10px 0px;
 }
 
-#editUserElement #birthday {
-    width: 120px;
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle input {
+    margin: 10px 0px;
+    width: 500px;
 }
 
-#editUserContentBody #roleDiv {
-	padding-top: 10px;
-}
-
-#editUserContentBody #roleDiv input {
-	height: 20px;
-	width: 20px;
-	margin: 0px;
-}
-
-#editUserContentBody #roleDiv span {
-	margin: 0px 25px;
-    top: -3px;
-    position: relative;
-}
-
-#editUserContentBody #roleButton {
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder {
 	margin-top: 40px;
 }
 
-#editUserContentBody #roleButton #editUserCancelButton {
-    width: 160px;
-    margin: 0px;
-    float: right;
-    margin-left: 23px;
-    font-weight: normal;
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder .button {
+	float: right;
+	margin: 0px;
 }
 
-#editUserContentBody #roleButton #editUserCancelButton span, #editUserContentBody #roleButton #editUserSaveButton span {
-	font-weight: normal;
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder .button.left {
+	margin-right: 23px;
 }
 
-#editUserContentBody #roleButton #editUserSaveButton {
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle #buttonHolder .button {
     width: 160px;
-    float: right;
-    font-weight: normal;
 }

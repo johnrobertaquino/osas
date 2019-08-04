@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	$('#addUserCancelButton').click(function(event) {
+	$('#cancelButton').click(function(event) {
 			location.href = "displayUserList";
 	});
 	
-	$('#addUserSaveButton').click(function(event) {
+	$('#submitButton').click(function(event) {
 		var selectedRoleCount = 0;
 		var isUserRoleSelected = false;
 		$.each($("input[name='roleReferenceCodeList']:checked"), function(){

@@ -8,6 +8,7 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/editUser.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
@@ -55,28 +56,28 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="editUserContentBody">
+	<div id="editUserContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/manageuser.png"/></div>
 			<div id="title">Edit User</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="editUserDiv">
+			<div id="rightPaneContentHolder">
 				<form class="editUserContent" id="editUserForm" action="editUser" method="POST">
 					<input name="userId" type="hidden" value="${user.userId}">
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>First Name</span>
     					<div><input id="firstName" name="firstName" type="text" value="${user.firstName}"></div>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Middle Name (optional)</span>
     					<div><input id="middleName" name="middleName" type="text" value="${user.middleName}"></div>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
     					<div><input type="text" id="birthday" name="birthday" id="birthday"></div>
     					<script type="text/javascript">
@@ -86,15 +87,15 @@
     						});
     					</script>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="number" maxlength="11" onKeyPress="if(this.value.length==11) return false;" value="${user.contactNumber}"></div>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Position</span>
     					<div><input id="position" name="position" type="text" value="${user.position}"></div>
     				</div>
-    				<div id="editUserElement">
+    				<div class="rightPaneElement withTitle">
     					<span>Role</span>
 	    				<div id="roleDiv">
 		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
@@ -105,12 +106,12 @@
 		    				<span>User</span>
 		    			</div>
     				</div>
-    				<div id="editUserElement">
-						<div id="roleButton">
-							<div id="editUserCancelButton" class="button">
+    				<div class="rightPaneElement withTitle">
+						<div id="buttonHolder">
+							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id="editUserSaveButton" class="button">
+							<div id="submitButton" class="button left">
 								<span>Save</span>
 							</div>
 							<div style="clear:both"></div>
