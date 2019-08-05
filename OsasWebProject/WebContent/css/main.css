@@ -741,6 +741,7 @@ img {
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 	font-size: 16px;
 }
+
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement input {
 	border: 1px solid #420001;
     padding: 10px 0px 10px 10px;
@@ -766,4 +767,31 @@ img {
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle #buttonHolder .button {
     width: 160px;
+}
+
+@media only screen and (max-width: 1550px) {
+	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
+		font-size: 12px;
+	}
+  	.featureContent #contentBodyRightPane #rightPaneContentHolder {
+  		width: inherit;
+  		margin-left: 150px;
+  	}
+  	
+  	.featureContent #contentBodyLeftPane {
+		width: 200px;
+	}
+
+	.featureContent #contentBodyLeftPane #icon img {
+		height: 100px;
+	}
+	
+	.featureContent #contentBodyLeftPane #icon {
+		width: 100px;
+	}
+
+	.featureContent #contentBodyLeftPane #title {
+		font-size: 20px;
+		width: 124px;
+	}
 }

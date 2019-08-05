@@ -25,3 +25,9 @@
     top: -3px;
     position: relative;
 }
+
+@media only screen and (max-width: 1550px) {
+  	#addUserContentBody #contentBodyLeftPane #title {
+		width: 92px;
+	}
+}

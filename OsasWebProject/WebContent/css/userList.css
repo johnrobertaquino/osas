@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+@media only screen and (max-width: 1550px) {
+  	#userListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#userListContentBody #contentBodyRightPane {
+		font-size: 12px;
+	}
+	#userListContentBody #searchUser, #userListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	}
+	#userListContentBody #contentBodyLeftPane #icon img {
+		height: 100px;
+	}
+	#userListContentBody #contentBodyLeftPane #icon {
+		width: 100px;
+	}
+	#userListContentBody #contentBodyLeftPane #title {
+		font-size: 20px;
+		width: 124px;
+	}
+}
