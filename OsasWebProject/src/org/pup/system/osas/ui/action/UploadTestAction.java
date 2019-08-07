@@ -20,6 +20,7 @@ public class UploadTestAction extends AbstractAction {
 	private static final long serialVersionUID = 2407562318288998481L;
 
 	private File file;
+<<<<<<< HEAD
 	
 	private List<Agency> agencyList;
 
@@ -84,6 +85,75 @@ public class UploadTestAction extends AbstractAction {
 
 	public void setAgencyList(List<Agency> agencyList) {
 		this.agencyList = agencyList;
+=======
+
+	public String execute() throws Exception {
+		FileInputStream fis = null;
+		XSSFWorkbook workbook = null;
+		List<Agency> agencyList = null;
+
+		try {
+			fis = new FileInputStream(file);
+
+			workbook = new XSSFWorkbook(fis);
+
+			XSSFSheet sheet = workbook.getSheetAt(0);
+
+			int index = 0;
+
+			AgencyExcelRowToDomainTransformer transformer = null;
+
+			agencyList = null;
+
+			for (Row row : sheet) {
+				if (index == 0) {
+					transformer = new AgencyExcelRowToDomainTransformer(row);
+				} else {
+					Agency agency = transformer.transform(row);
+
+					if (agencyList == null) {
+						agencyList = new ArrayList<Agency>();
+					}
+					agencyList.add(agency);
+				}
+
+				index++;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (workbook != null) {
+				workbook.close();
+			}
+			if (fis != null) {
+				fis.close();
+			}
+		}
+
+		int ctr = 0;
+		if (agencyList != null) {
+			for (Agency agency : agencyList) {
+				ctr++;
+
+				System.out.println("AGENCY NO. " + ctr);
+				System.out.println("agencyName:" + agency.getAgencyName());
+				System.out.println("address:" + agency.getAddress());
+				System.out.println("contactPerson:" + agency.getContactPerson());
+				System.out.println("contactNumber:" + agency.getContactNumber());
+			}
+		}
+
+		return null;
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas
 	}
 
 }
