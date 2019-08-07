@@ -180,6 +180,14 @@
 			<result type="chain" name="success">displayAgencyList</result>
 			<result type="chain" name="error">displayAgencyList</result>
 		</action>
+		
+		<action name="uploadTest" class="org.pup.system.osas.test.ui.action.UploadTestAction">
+			<result name="success">/testjsp/upload.jsp</result>
+		</action>
+		
+		<action name="displayUploadTest">
+			<result name="success">/testjsp/displayupload.jsp</result>
+		</action>
 	</package>
 
 </struts>	
