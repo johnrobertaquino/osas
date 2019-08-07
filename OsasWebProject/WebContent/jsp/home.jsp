@@ -57,7 +57,7 @@
 			<div class="linkHolder">
 				<div class="linkHeader">
 					<span>Student Scholarship</span>
-					<img alt="image" src="images/Scholarship.png">
+					<img alt="image" src="images/studentScholarship.png">
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
@@ -94,7 +94,7 @@
 				<s:if test="%{#session.USER.admin}">
 					<div class="linkHeader">
 						<span>Administrator Functions</span>
-						<img alt="image" src="images/login-512.png">
+						<img alt="image" src="images/manageAccount.png">
 					</div>
 					<div class ="menuLinks">
 						<div class="linkItemHolder">
@@ -110,7 +110,7 @@
 			<div class="linkHolder">
 				<div class="linkHeader">
 					<span>Student Organization</span>
-					<img alt="image" src="images/org.png">
+					<img alt="image" src="images/studentOrganization.png">
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.UserDAO;
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.User;
 import org.pup.system.osas.core.domain.UserRole;

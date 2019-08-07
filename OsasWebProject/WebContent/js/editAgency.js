@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		location.href = "displayUserList";
+		location.href = "displayAgencyList";
 	});
 	
 	$("#contactNumber").keypress(function (e) {
@@ -14,29 +14,29 @@ $(document).ready(function() {
         return isValid;
     });
 	
-	$('#submitButton').click(function(event) {
+	$('#submitButton').click(function(event) {		
 		var errorMessage = '';
-
-		if($('#firstName').val() === '')
+		
+		if($('#agencyName').val() === '')
 		{
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "First name can\'t be blank.";
+			errorMessage = errorMessage + "Agency name can\'t be blank.";
 		}
-		if($('#lastName').val() === '')
+		if($('#address').val() === '')
 		{
 			if (errorMessage != '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Last name can\'t be blank.";
+			errorMessage = errorMessage + "Address can\'t be blank.";
 		}
-		if($('#birthday').val() === '')
+		if($('#contactPerson').val() === '')
 		{
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Birthday can\'t be blank.";
+			errorMessage = errorMessage + "Contact person can\'t be blank.";
 		}
 		if($('#contactNumber').val() === '')
 		{
@@ -45,23 +45,9 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Contact Number can\'t be blank.";
 		}
-		if($('#position').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Position can\'t be blank.";
-		}
-		if(selectedRoleCount === 0)
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "No User role selected.";
-		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to save changes to this user?", function() {
-				$("#editUserForm").submit();
+				$("#editAgencyForm").submit();
 			});
 		}
 		else {

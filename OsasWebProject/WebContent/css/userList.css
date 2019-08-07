@@ -4,19 +4,33 @@
 		width: 200px;
 	}
 	#userListContentBody #contentBodyRightPane {
-		font-size: 12px;
+		font-size: 13px;
 	}
 	#userListContentBody #searchUser, #userListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
 	}
-	#userListContentBody #contentBodyLeftPane #icon img {
-		height: 100px;
+}
+
+@media only screen and (max-width: 1100px) {
+  	#userListContentBody #contentBodyLeftPane	{
+		width: 200px;
 	}
-	#userListContentBody #contentBodyLeftPane #icon {
-		width: 100px;
+	#userListContentBody #contentBodyRightPane {
+		font-size: 10px;
 	}
-	#userListContentBody #contentBodyLeftPane #title {
-		font-size: 20px;
-		width: 124px;
+	#userListContentBody #searchUser, #userListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#userListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#userListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#userListContentBody #searchUser, #userListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
 	}
 }

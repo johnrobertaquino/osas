@@ -8,11 +8,11 @@
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/userList.css">
+<link rel="stylesheet" type="text/css" href="css/agencyList.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/userList.js"></script>
+<script type="text/javascript" src="js/agencyList.js"></script>
 </head>
 <body>
 <div id="header">
@@ -55,53 +55,41 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteUserForm" action="deleteUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
+	<form id="deleteAgencyForm" action="deleteAgency" method="POST">
+  		<input type="hidden" id="agencyId" name="agencyId" />
 	</form>
-	<form id="editUserForm" action="displayEditUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
+	<form id="editAgencyForm" action="displayEditAgency" method="POST">
+  		<input type="hidden" id="agencyId" name="agencyId" />
 	</form>
-	<form id="resetPasswordForm" action="resetPassword" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<div id="userListContentBody" class="featureContent">
+	<div id="agencyListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF USERS</div>
+			<div id="title">LIST OF AGENCY</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchUser">
+			<div id="searchAgency">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchUser" method="POST" id="searchUserForm">
-					<input type="text" id="userSearchText" name="userSearchText" placeholder="Search User">
+				<form action="searchAgency" method="POST" id="searchAgencyForm">
+					<input type="text" id="agencySearchText" name="agencySearchText" placeholder="Search agency">
 				</form>
-				<div class="button" id="searchUserButton">SEARCH</div>
-				<div class="button" id="addUserButton">ADD USER</div>
+				<div class="button" id="searchAgencyButton">SEARCH</div>
+				<div class="button" id="addAgencyButton">ADD AGENCY</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
-					<th>Username</th>
-					<th>First name</th>
-					<th>Middle name</th>
-					<th>Last name</th>
-					<th>Birthday</th>
+					<th>Agency name</th>
+					<th>Address</th>
 					<th>Contact number</th>
-					<th>Position</th>
-					<th>Role</th>
-					<th>Action</th>
+					<th>Contact person</th>
 				</tr>
-				<s:iterator value="userList" status="rowStatus" var="user">
+				<s:iterator value="agencyList" status="rowStatus" var="agency">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="userName" /></td>
-						<td><s:property value="firstName" /></td>
-						<td><s:property value="middleName" /></td>
-						<td><s:property value="lastName" /></td>
-						<td><s:date name="#user.birthday" format="MM/dd/yyyy" /></td>
+						<td><s:property value="agencyName" /></td>
+						<td><s:property value="address" /></td>
 						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="position" /></td>
-						<td class="test"><s:property value="userRoleForDisplay" /></td>
+						<td><s:property value="contactPerson" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
@@ -109,11 +97,8 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button">Edit</a>
-	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
-    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Reset Password</a>
-    								</s:if>
+	    							<a onclick="displayEditAgency('<s:property value="agencyId" />')" class="w3-bar-item w3-button">Edit</a>
+    									<a onclick="showAgencyDeletePopup('<s:property value="agencyId" />')" class="w3-bar-item w3-button">Delete</a>
   								</div>
 							</div>
 						</td>

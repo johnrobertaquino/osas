@@ -6,13 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/userList.css">
+<link rel="stylesheet" type="text/css" href="css/editAgency.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/userList.js"></script>
+<script type="text/javascript" src="js/editAgency.js"></script>
 </head>
 <body>
 <div id="header">
@@ -55,76 +56,51 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteUserForm" action="deleteUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<form id="editUserForm" action="displayEditUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<form id="resetPasswordForm" action="resetPassword" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<div id="userListContentBody" class="featureContent">
-	<div id="contentBodyHolder">
+	<div id="editAgencyContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF USERS</div>
+			<div id="title">EDIT AGENCY</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchUser">
-				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchUser" method="POST" id="searchUserForm">
-					<input type="text" id="userSearchText" name="userSearchText" placeholder="Search User">
-				</form>
-				<div class="button" id="searchUserButton">SEARCH</div>
-				<div class="button" id="addUserButton">ADD USER</div>
-    			<div style="clear:both"></div>
-			</div>
-			<table>
-				<tr>
-					<th>Username</th>
-					<th>First name</th>
-					<th>Middle name</th>
-					<th>Last name</th>
-					<th>Birthday</th>
-					<th>Contact number</th>
-					<th>Position</th>
-					<th>Role</th>
-					<th>Action</th>
-				</tr>
-				<s:iterator value="userList" status="rowStatus" var="user">
-					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="userName" /></td>
-						<td><s:property value="firstName" /></td>
-						<td><s:property value="middleName" /></td>
-						<td><s:property value="lastName" /></td>
-						<td><s:date name="#user.birthday" format="MM/dd/yyyy" /></td>
-						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="position" /></td>
-						<td class="test"><s:property value="userRoleForDisplay" /></td>
-						<td>
-							<div class="w3-dropdown-click tableMenu">
-  								<div class="tableMenuButton">
-  									<img src="images/setting_game_configuration_option-512.png" />
-  									<img src="images/arrow-down-01-512.png" />
-  								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button">Edit</a>
-	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
-    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Reset Password</a>
-    								</s:if>
-  								</div>
+			<div id="rightPaneContentHolder">
+				<form class="editAgencyContent" id="editAgencyForm" action="editAgency" method="POST">
+					<input name="agencyId" type="hidden" value="${agency.agencyId}">
+    				<div class="rightPaneElement withTitle">
+    					<span>Agency name</span>
+    					<div><input id="agencyName" name="agencyName" type="text" value="${agency.agencyName}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Address</span>
+    					<div><input id="address" name="address" type="text" value="${agency.address}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Contact Person</span>
+    					<div><input id="contactPerson" name="contactPerson" type="text" value="${agency.contactPerson}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Contact Number</span>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}"></div>
+    				</div>
+    				
+    				<div class="rightPaneElement withTitle">
+						<div id="buttonHolder">
+							<div id="cancelButton" class="button">
+								<span>Cancel</span>
 							</div>
-						</td>
-					</tr>
-				</s:iterator>
-			</table>
+							<div id="submitButton" class="button left">
+								<span>Save</span>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+    			</form>
+    		</div>
+    		<div style="clear:both"></div>
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	</div>
 </div>
+
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>

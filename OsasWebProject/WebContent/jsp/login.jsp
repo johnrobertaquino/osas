@@ -43,7 +43,7 @@
 		<div id="loginContent">
 			<div id="welcomeText"><span>WELCOME!</span></div>
 			<div id="loginAvatar">
-				<img alt="" src="images/account_icon.png">
+				<img alt="" src="images/accountIcon.png">
 			</div>
 			<form class="contentForm" id="loginForm" action="processLogin" method="POST">
 				<div class="loginElement">

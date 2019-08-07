@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+@media only screen and (max-width: 1550px) {
+  	#agencyListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#agencyListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#agencyListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#agencyListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#agencyListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#agencyListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+}

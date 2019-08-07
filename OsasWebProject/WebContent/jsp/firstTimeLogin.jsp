@@ -53,10 +53,10 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="firstTimeLoginContentBody">
+	<div id="firstTimeLoginContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/change_password.png"/></div>
-			<div id="title">First Time Login</div>
+			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="title">FIRST TIME LOGIN</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="firstTimeLoginFormHolder">

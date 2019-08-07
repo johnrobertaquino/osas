@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.domain;
 
 public class UserRoleReference {
+	
 	private String userRoleReferenceCode;
 	
 	private String userRoleName;

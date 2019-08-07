@@ -95,9 +95,11 @@ img {
 	color: #ffbc01;
 }
 
+
+
 #pageName {
 	float: left;
-    margin: 13px 0px 0 25px;
+    margin: 13px 0px 0 10px;
     color: #FFFFFF;
     font-weight: bold;
 }
@@ -106,6 +108,12 @@ img {
 	height: 45px;
 	background-color: #afabaa;
 	/*background-image: url("../images/bg02.jpg");*/
+}
+
+#navBar img {
+	height: 25px;
+    float: left;
+    margin: 10px 0px 0 25px;
 }
 
 #accountSettings {
@@ -350,6 +358,9 @@ img {
 #homeContentBody {
 	margin-top: 40px;
 }
+#contentBody {
+	height: 100vh;
+}
 
 #contentBodyLeftPane {
 	float: left;
@@ -446,75 +457,32 @@ img {
 }
 
 /**user list page**/
-#userListContentBody {
-	margin-top: 50px;
-}
-
-#userListContentBody #contentBodyLeftPane, #userListContentBody #contentBodyRightPane {
-	float: left;
-}
-
-#userListContentBody #contentBodyLeftPane {
-	width: 300px;
-
-	border-right: 3px solid #420001;
-	min-height: 600px;
-}
-
-#userListContentBody #contentBodyLeftPane #icon {
-	width: 150px; 
-	margin: 50px auto 0px auto;
-}
-
-#userListContentBody #contentBodyLeftPane #icon img {
-	height: 150px;
-}
-
-#userListContentBody #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	width: 182px;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
 #userListContentBody #contentBodyRightPane {
+		width: inherit;
+}
+#userListContentBody #searchUserButton {
+		float: left;
+}
+#userListContentBody #addUserButton {
+		float: right;
+}
+/** Agency List **/
+#agencyListContentBody #contentBodyRightPane {
 	width: inherit;
 }
-
-#userListContentBody #contentBodyRightPane table {
-	color: #444444;
-	border-collapse: collapse;
-	margin-left: 100px;
+#agencyListContentBody #searchUserButton {
+		float: left;
+}
+#agencyListContentBody #addAgencyButton {
+		float: right;
 }
 
-#userListContentBody #contentBodyRightPane table tr {
-	height: 50px;
-}
-
-#userListContentBody #contentBodyRightPane table td, #userListContentBody #contentBodyRightPane table th {
-	padding: 0px 10px;
-}
-
-#userListContentBody #contentBodyRightPane table .odd {
-	background-color: #dae3f3;
-}
-
-#userListContentBody .tableMenu img {
-	height: 20px;
-}
-
-#userListContentBody #searchUser {
+#agencyListContentBody #searchAgency {
 	margin-left: 100px;
 	margin-bottom: 35px;
+	margin-top: 50px;
 }
-
-#userListContentBody #searchUser img {
-	height: 32px;
-	float: left;
-}
-
-#userListContentBody input {
+#agencyListContentBody input {
 	border: 1px solid #420001;
 	border-radius: 20px;
 	width: 300px;
@@ -524,57 +492,13 @@ img {
 	margin-right: 20px;
 }
 
-#userListContentBody #searchUserButton {
+#agencyListContentBody #searchAgencyButton {
 	float: left;
-}
-
-#userListContentBody #addUserButton {
-	float: right;
-}
-
-#userListContentBody .tableMenuDropdown {
-	top: 25px;
 }
 
 /** change password page **/
-#changePasswordContentBody {
-	margin-top: 50px;
-}
-
-#changePasswordContentBody #contentBodyLeftPane, #changePasswordContentBody #contentBodyRightPane {
-	float: left;
-}
-
-#changePasswordContentBody #contentBodyLeftPane {
-	width: 300px;
-
-	border-right: 3px solid #420001;
-	min-height: 600px;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #icon {
-	width: 150px; 
-	margin: 50px auto 0px auto;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #icon img {
-	height: 150px;
-}
-
-#changePasswordContentBody #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	width: 262px;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
-#changePasswordContentBody #contentBodyRightPane {
-	width: inherit;
-}
-
 #changePasswordFormHolder {
-	 margin: 100px 450px;
+	 margin: 140px 250px;
 }
 
 #changePasswordFormHolder input {
@@ -585,52 +509,24 @@ img {
 
 #passwordButtonDiv {
     width: 300px;
-    margin: 50px auto 0px auto;
+    margin: 50px auto 0px 45px;
 }
 
-#changePasswordFormHolder .passwordElement {
-	margin-top: 30px;
+#changePasswordFormHolder input {
+    margin-bottom: 20px;
+}
+
+#changePasswordFormHolder .button {
+   margin: 50px 50px auto 50px;
+   background-color: firebrick;
 }
 
 /** first time login page **/
-#firstTimeLoginContentBody {
-	margin-top: 50px;
-}
-
 #firstTimeLoginContentBody #contentBodyLeftPane, #firstTimeLoginContentBody #contentBodyRightPane {
 	float: left;
 }
-
-#firstTimeLoginContentBody #contentBodyLeftPane {
-	width: 300px;
-
-	border-right: 3px solid #420001;
-	min-height: 600px;
-}
-
-#firstTimeLoginContentBody #contentBodyLeftPane #icon {
-	width: 150px; 
-	margin: 50px auto 0px auto;
-}
-
-#firstTimeLoginContentBody #contentBodyLeftPane #icon img {
-	height: 150px;
-}
-
-#firstTimeLoginContentBody #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	width: 234px;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
-#firstTimeLoginContentBody #contentBodyRightPane {
-	width: inherit;
-}
-
 #firstTimeLoginFormHolder {
-	 margin: 100px 450px;
+	 margin: 100px 300px;
 }
 
 #firstTimeLoginFormHolder input {
@@ -638,12 +534,11 @@ img {
     width: 400px;
     padding: 10px 0px 10px 10px;
 }
-
 #firstTimeLoginFormHolder .passwordElement {
 	margin-top: 30px;
 }
 
-/** first time login page **/
+/** PASSWORD RESET **/
 #passwordResetContentBody {
 	margin-top: 50px;
 }
@@ -653,8 +548,7 @@ img {
 }
 
 #passwordResetContentBody #contentBodyLeftPane {
-	width: 300px;
-
+	width: 200px;
 	border-right: 3px solid #420001;
 	min-height: 600px;
 }
@@ -694,52 +588,232 @@ img {
 	margin-top: 30px;
 }
 
+@media only screen and (max-width: 1550px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 30px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+	#editUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 30px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+	#changePasswordContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#firstTimeLoginContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#userListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#AgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#editAgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+@media only screen and (max-width: 1100px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 35px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+	#editUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 30px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+	#changePasswordContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#firstTimeLoginContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#userListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#AgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+	#editAgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+@media only screen and (max-width: 1000px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 22px;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+	}
+	#editUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 22px;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+	}
+	#changePasswordContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#firstTimeLoginContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#userListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: 20px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#AgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#editAgencyContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}
+
 /** FeatureContent Common **/
 .ui-datepicker {
 	font-size: 14px;
 }
 
 .featureContent {
-	margin-top: 50px;
+    background-color: #a7a7a71c;
+    height: 100%;
+}
+
+.featureContent #contentBodyHolder {
+    height: 100%;
 }
 
 .featureContent #contentBodyLeftPane, .featureContent #contentBodyRightPane {
 	float: left;
+	height: 100%;
 }
 
 .featureContent #contentBodyLeftPane {
-	width: 300px;
-	border-right: 3px solid #420001;
+	background-color: #ffffff;
+	width: 200px;
 	min-height: 600px;
 }
 
 .featureContent #contentBodyLeftPane #icon {
 	width: 150px; 
-	margin: 50px auto 0px auto;
+	margin: 150px auto 0px auto;
 }
 
 .featureContent #contentBodyLeftPane #icon img {
 	height: 150px;
 }
 
-.featureContent #contentBodyLeftPane #title {
-	margin: 25px auto 0px auto;
-	font-weight: bold;
-	font-size: 30px;
-	color: #444444;
-}
-
-.featureContent #contentBodyRightPane {
-	width: inherit;
-}
-
 .featureContent #contentBodyRightPane #rightPaneContentHolder {
-	margin: 0px 0px 0px 380px;
+	margin: 80px 0px 0px 380px;
 	width: 512px;
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 	font-size: 16px;
+	width: 500px;
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement input {
@@ -753,14 +827,15 @@ img {
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder {
-	margin-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder .button {
+	 background-color: firebrick;
 	float: right;
 	margin: 0px;
 }
-
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder .button.left {
 	margin-right: 23px;
 }
@@ -769,13 +844,101 @@ img {
     width: 160px;
 }
 
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv {
+	padding-top: 10px;
+}
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv input {
+	height: 20px;
+	width: 20px;
+	margin: 0px;
+}
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #roleDiv span {
+	margin: 0px 25px;
+    top: -3px;
+    position: relative;
+}
+
 @media only screen and (max-width: 1550px) {
+	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
+		font-size: 16px;
+	}
+  	.featureContent #contentBodyRightPane #rightPaneContentHolder {
+  		width: inherit;
+  		margin-left: 250px;
+  	}
+  	
+  	.featureContent #contentBodyLeftPane {
+		width: 200px;
+	}
+	.featureContent #contentBodyRightPane {
+		 margin-left: 20px;
+	}
+
+	.featureContent #contentBodyLeftPane #icon img {
+		height: 150px;
+	}
+	
+	.featureContent #contentBodyLeftPane #icon {
+		width: 140px;
+	}
+	
+	.featureContent #contentBodyRightPane table {
+		color: #444444;
+		border-collapse: collapse;
+		margin-left: 100px;
+	}
+	
+	.featureContent #contentBodyRightPane table tr {
+		height: 50px;
+	}
+	
+	.featureContent #contentBodyRightPane table td, .featureContent #contentBodyRightPane table th {
+		padding: 0px 10px;
+	}
+	
+	.featureContent #contentBodyRightPane table .odd {
+		background-color: #dae3f3;
+	}
+	
+	.featureContent .tableMenu img {
+		height: 20px;
+	}
+	
+	.featureContent #searchUser {
+		margin-left: 100px;
+		margin-bottom: 35px;
+		margin-top: 50px;
+	}
+	
+	.featureContent #searchUser img {
+		height: 32px;
+		float: left;
+	}
+	
+	#userListContentBody input {
+		border: 1px solid #420001;
+		border-radius: 20px;
+		width: 300px;
+		padding-left: 10px;
+		float: left;
+		height: 32px;
+		margin-right: 20px;
+	}
+	
+	.featureContent .button {
+		background-color: firebrick;
+	}
+	.featureContent .tableMenuDropdown {
+		top: 25px;
+	}
+}
+@media only screen and (max-width: 1100px) {
 	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 		font-size: 12px;
 	}
   	.featureContent #contentBodyRightPane #rightPaneContentHolder {
   		width: inherit;
-  		margin-left: 150px;
+  		margin-left: 250px;
   	}
   	
   	.featureContent #contentBodyLeftPane {
@@ -783,15 +946,136 @@ img {
 	}
 
 	.featureContent #contentBodyLeftPane #icon img {
-		height: 100px;
+		height: 150px;
 	}
 	
 	.featureContent #contentBodyLeftPane #icon {
-		width: 100px;
+		width: 140px;
+	}
+		.featureContent #contentBodyRightPane table {
+		color: #444444;
+		border-collapse: collapse;
+		margin-left: 100px;
+	}
+	
+	.featureContent #contentBodyRightPane table tr {
+		height: 50px;
+	}
+	
+	.featureContent #contentBodyRightPane table td, .featureContent #contentBodyRightPane table th {
+		padding: 0px 10px;
+	}
+	
+	.featureContent #contentBodyRightPane table .odd {
+		background-color: #dae3f3;
+	}
+	
+	.featureContent .tableMenu img {
+		height: 20px;
+	}
+	
+	.featureContent #searchUser {
+		margin-left: 100px;
+		margin-bottom: 35px;
+		margin-top: 50px;
+	}
+	
+	.featureContent #searchUser img {
+		height: 32px;
+		float: left;
+	}
+	
+	#userListContentBody input {
+		border: 1px solid #420001;
+		border-radius: 20px;
+		width: 300px;
+		padding-left: 10px;
+		float: left;
+		height: 32px;
+		margin-right: 20px;
+	}
+	
+	.featureContent .button {
+		background-color: firebrick;
+	}
+	.featureContent .tableMenuDropdown {
+		top: 25px;
+	}
+}
+@media only screen and (max-width: 1000px) {
+	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
+		font-size: 12px;
+	}
+  	.featureContent #contentBodyRightPane #rightPaneContentHolder {
+  		width: inherit;
+  		margin-left: 250px;
+  	}
+  	
+  	.featureContent #contentBodyLeftPane {
+		width: 160px;
+	}
+	
+	.featureContent #contentBodyRightPane {
+		margin-left: -84px;
 	}
 
-	.featureContent #contentBodyLeftPane #title {
-		font-size: 20px;
-		width: 124px;
+	.featureContent #contentBodyLeftPane #icon img {
+		height: 120px;
+	}
+	
+	.featureContent #contentBodyLeftPane #icon {
+		width: 125px;
+	}
+		.featureContent #contentBodyRightPane table {
+		color: #444444;
+		border-collapse: collapse;
+		margin-left: 150px;
+	}
+	
+	.featureContent #contentBodyRightPane table tr {
+		height: 50px;
+	}
+	.featureContent #searchUser, .featureContent #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+	
+	.featureContent #contentBodyRightPane table td, .featureContent #contentBodyRightPane table th {
+		padding: 0px 10px;
+	}
+	
+	.featureContent #contentBodyRightPane table .odd {
+		background-color: #dae3f3;
+	}
+	
+	.featureContent .tableMenu img {
+		height: 20px;
+	}
+	
+	.featureContent #searchUser {
+		margin-left: 100px;
+		margin-bottom: 35px;
+		margin-top: 50px;
+	}
+	
+	.featureContent #searchUser img {
+		height: 32px;
+		float: left;
+	}
+	
+	#userListContentBody input {
+		border: 1px solid #420001;
+		border-radius: 20px;
+		width: 300px;
+		padding-left: 10px;
+		float: left;
+		height: 32px;
+		margin-right: 20px;
+	}
+	
+	.featureContent .button {
+		background-color: firebrick;
+	}
+	.featureContent .tableMenuDropdown {
+		top: 25px;
 	}
 }

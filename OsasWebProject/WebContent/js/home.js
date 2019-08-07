@@ -6,4 +6,8 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayUserList";
 	});
+	$('#scholarshipManagementAgencyLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayAgencyList";
+	});
 });

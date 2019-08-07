@@ -6,11 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/agencyList.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/passwordReset.js"></script>
+<script type="text/javascript" src="js/addAgency.js"></script>
 </head>
 <body>
 <div id="header">
@@ -53,31 +56,48 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="passwordResetContentBody" class="featureContent">
+	<div id="AgencyContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">Password Reset</div>
+			<div id="icon"><img src="images/list.png"/></div>
+			<div id="title">ADD AGENCY</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="passwordResetFormHolder">
-				<form id="passwordResetForm" action="passwordReset" method="POST">
-					<input name="userId" type="hidden" value="${session.USER.userId}">
-					<div class="passwordElement">
-						<input id="password" name="password" type="password" placeholder="New password">
+			<div id="rightPaneContentHolder">
+				<form class="addUserContent" id="agencyForm" action="addAgency" method="POST">
+    				<div class="rightPaneElement withTitle">
+    					<span>Agency Name</span>
+    					<div><input id="agencyName" name="agencyName" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Address</span>
+    					<div><input id="address" name="address" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Contact Person</span>
+    					<div><input id="contactPerson" name="contactPerson" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Contact Number</span>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+						<div id="buttonHolder">
+							<div id="cancelButton" class="button">
+								<span>Cancel</span>
+							</div>
+							<div id=submitButton class="button left">
+								<span>Add Agency</span>
+							</div>
+							<div style="clear:both"></div>
+						</div>
 					</div>
-					<div class="passwordElement">
-						<input id="confirmPassword" type="password" placeholder="Confirm Password">
-					</div>
-					<div class="passwordElement">
-						<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>
-					</div>
-					<div style="clear:both"></div>
-				</form>
-			</div>
+    			</form>
+    		</div>
+    		<div style="clear:both"></div>
 		</div>
-		<div style="clear:both"></div>
 	</div>
 </div>
+
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>

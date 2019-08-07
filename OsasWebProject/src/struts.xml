@@ -122,17 +122,63 @@
 			<result name="success" type="chain">displayUserList</result>
 			<result name="error">/jsp/addUser.jsp</result>
 		</action>
+		<action name="displayUserList" class="org.pup.system.osas.ui.action.DisplayUserListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/userList.jsp</result>
+			<result name="error">/jsp/userList.jsp</result>
+		</action>
+		
+		<action name="displayAgencyList" class="org.pup.system.osas.ui.action.DisplayAgencyListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/agencyList.jsp</result>
+		</action>
+		
+		<action name="addAgency" class="org.pup.system.osas.ui.action.AddAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayAgencyList</result>
+			<result name="error"  type="chain">/jsp/addAgency.jsp</result>
+		</action>
+		
+		<action name="displayAddAgency" class="org.pup.system.osas.ui.action.DisplayAddAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addAgency.jsp</result>
+		</action>
 		
 		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editUser.jsp</result>
-			<result name="error" type="chain">home</result>
+			<result name="error" type="chain">displayUserList</result>
 		</action>
 		
 		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayUserList</result>
 			<result type="chain" name="error">displayUserList</result>
+		</action>
+		
+		<action name="displayEditAgency" class="org.pup.system.osas.ui.action.DisplayEditAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editAgency.jsp</result>
+			<result name="error" type="chain">home</result>
+		</action>
+		
+		<action name="searchAgency" class="org.pup.system.osas.ui.action.SearchAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/agencyList.jsp</result>
+			<result name="error">/jsp/agencyList.jsp</result>
+		</action>
+		
+		<action name="deleteAgency" class="org.pup.system.osas.ui.action.DeleteAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayAgencyList</result>	
+			<result name="error" type="chain">displayAgencyList</result>
+		</action>
+		
+		
+		<action name="editAgency" class="org.pup.system.osas.ui.action.EditAgencyAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayAgencyList</result>
+			<result type="chain" name="error">displayAgencyList</result>
 		</action>
 	</package>
 

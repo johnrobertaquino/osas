@@ -6,7 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/addUser.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
@@ -53,25 +55,25 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="changePasswordContentBody">
+	<div id="changePasswordContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/change_password.png"/></div>
-			<div id="title">Change Password</div>
+			<div id="icon"><img src="images/changeMyPassword.png"/></div>
+			<div id="title">CHANGE PASSWORD</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="changePasswordFormHolder">
 				<form id="changePasswordForm" action="changePassword" method="POST">
 					<input name="userId" type="hidden" value="${session.USER.userId}">
-					<div class="passwordElement">
+					<div class="rightPaneElement withTitle">
 						<input id="oldPassword" name="oldPassword" type="password" placeholder="Old Password">
 					</div>
-					<div class="passwordElement">
+					<div class="rightPaneElement withTitle">
 						<input id="password" name="password" type="password" placeholder="Password">
 					</div>
-					<div class="passwordElement">
+					<div class="rightPaneElement withTitle">
 						<input id="confirmPassword" type="password" placeholder="Confirm Password">
 					</div>
-					<div class="passwordElement">
+					<div class="rightPaneElement withTitle">
 						<div id="passwordButtonDiv" class="button"><span>Change Password</span></div>
 					</div>
 					<div style="clear:both"></div>
