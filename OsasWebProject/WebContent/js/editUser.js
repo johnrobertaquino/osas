@@ -15,8 +15,24 @@ $(document).ready(function() {
     });
 	
 	$('#submitButton').click(function(event) {
+		var selectedRoleCount = 0;
+		var isUserRoleSelected = false;
+		$.each($("input[name='roleReferenceCodeList']:checked"), function(){
+			selectedRoleCount++;
+			if($(this).val() == 'US') {
+				isUserRoleSelected = true;
+			}
+        });
+		
 		var errorMessage = '';
-
+		
+		if (selectedRoleCount > 1 && isUserRoleSelected) {
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Administrator/Approver role can't be selected if User role is already selected.";
+		}
+		
 		if($('#firstName').val() === '')
 		{
 			if (errorMessage !== '') {

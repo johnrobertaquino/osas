@@ -14,7 +14,8 @@ $(document).ready(function() {
         return isValid;
     });
 	
-	$('#submitButton').click(function(event) {		
+	$('#submitButton').click(function(event) {	
+		
 		var errorMessage = '';
 		
 		if($('#agencyName').val() === '')

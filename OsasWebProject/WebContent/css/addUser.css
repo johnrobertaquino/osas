@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1550px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 30px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+}
+@media only screen and (max-width: 1110px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 35px;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+	}
+}
+@media only screen and (max-width: 1000px) {
+	#addUserContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px 22px;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+	}
+}
