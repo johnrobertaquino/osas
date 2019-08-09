@@ -188,6 +188,11 @@
 		<action name="displayUploadTest">
 			<result name="success">/testjsp/displayupload.jsp</result>
 		</action>
+	
+		<action name="displayScholarshipProgramList" class="org.pup.system.osas.ui.action.DisplayScholarshipProgramListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipProgram.jsp</result>
+		</action>
 	</package>
 
 </struts>	

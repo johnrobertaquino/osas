@@ -1,0 +1,37 @@
+#loginDiv {
+	padding: 0px;
+	margin: 40px auto 0px;
+  	width: 316px;
+}
+
+.loginElement {
+	margin: 20px 0px;
+	width: 316px;
+}
+
+.loginElement span {
+	font-weight: 700;
+	color: #555;
+	margin-right: 5px;
+}
+
+.loginElement input[type='text'], .loginElement input[type='password'] {
+	width: 310px;
+}
+
+#welcomeText{
+	text-align: center;
+	margin-bottom: 15px;
+}
+#welcomeText span {
+    font-size: 30px;
+    font-weight: bold;
+    color: #9a9c99
+}
+#loginAvatar{
+	text-align: center;
+}
+
+#loginAvatar img {
+	height: 150px;
+}

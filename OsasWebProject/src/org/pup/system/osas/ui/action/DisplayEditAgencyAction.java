@@ -17,7 +17,7 @@ public class DisplayEditAgencyAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage User Account";
+		pageName = "Manage Scholarship Agency";
 		
 		String actionResult = FORWARD_SUCCESS;
 

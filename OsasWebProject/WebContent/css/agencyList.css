@@ -1,4 +1,33 @@
 @charset "ISO-8859-1";
+#agencyListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#agencyListContentBody #searchAgencyButton {
+		float: left;
+}
+#agencyListContentBody #addAgencyButton {
+		float: right;
+}
+
+#agencyListContentBody #searchAgency {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#agencyListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#agencyListContentBody #searchAgencyButton {
+	float: left;
+}
+
 @media only screen and (max-width: 1550px) {
   	#agencyListContentBody #contentBodyLeftPane	{
 		width: 200px;
@@ -6,8 +35,20 @@
 	#agencyListContentBody #contentBodyRightPane {
 		font-size: 13px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
 	}
 }
 
@@ -18,8 +59,20 @@
 	#agencyListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
 	}
 }
 
@@ -30,7 +83,19 @@
 	#agencyListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 120px;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: 20px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
 	}
 }

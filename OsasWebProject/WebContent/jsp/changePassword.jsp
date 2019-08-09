@@ -8,7 +8,7 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/addUser.css">
+<link rel="stylesheet" type="text/css" href="css/changePassword.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>

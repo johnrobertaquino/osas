@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/passwordReset.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
@@ -56,7 +57,7 @@
 	<div id="passwordResetContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">Password Reset</div>
+			<div id="title">PASSWORD RESET</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="passwordResetFormHolder">
