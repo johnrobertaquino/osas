@@ -2,7 +2,7 @@
 #agencyListContentBody #contentBodyRightPane {
 	width: inherit;
 }
-#agencyListContentBody #searchUserButton {
+#agencyListContentBody #searchAgencyButton {
 		float: left;
 }
 #agencyListContentBody #addAgencyButton {
@@ -33,15 +33,15 @@
 		width: 200px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 13px;
+		font-size: 14px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
+		width: 730px;
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: -36px;
+		height: 32px;
+		float: left;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -57,15 +57,14 @@
 		width: 200px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 10px;
+		font-size: 14px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: -36px;
+		height: 32px;
+		float: left;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -81,15 +80,15 @@
 		width: 160px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 10px;
+		font-size: 14px;
 	}
-	#agencyListContentBody #searchUser, #agencyListContentBody #contentBodyRightPane table {
+	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 120px;
+		
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: 20px;
+		height: 32px;
+		float: left;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

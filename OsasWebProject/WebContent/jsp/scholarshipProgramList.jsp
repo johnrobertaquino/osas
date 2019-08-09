@@ -8,11 +8,11 @@
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/agencyList.css">
+<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/agencyList.js"></script>
+<script type="text/javascript" src="js/scholarshipProgramList.js"></script>
 </head>
 <body>
 <div id="header">
@@ -55,41 +55,38 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteAgencyForm" action="deleteAgency" method="POST">
-  		<input type="hidden" id="agencyId" name="agencyId" />
+	<form id="deleteScholarshipProgramForm" action="deleteScholarshipProgram" method="POST">
+  		<input type="hidden" id="scholarshipProgramId" name="scholarshipProgramId" />
 	</form>
-	<form id="editAgencyForm" action="displayEditAgency" method="POST">
-  		<input type="hidden" id="agencyId" name="agencyId" />
+	<form id="editScholarshipProgramForm" action="displayEditScholarshipProgram" method="POST">
+  		<input type="hidden" id="scholarshipProgramId" name="scholarshipProgramId" />
 	</form>
-	<div id="agencyListContentBody" class="featureContent" >
+	<div id="scholarshipProgramListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF AGENCY</div>
+			<div id="title">LIST OF SCHOLARSHIP</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchAgency">
+			<div id="searchScholarshipProgram">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchAgency" method="POST" id="searchAgencyForm">
-					<input type="text" id="agencySearchText" name="agencySearchText" placeholder="Search agency">
+				<form action="searchScholarshipProgram" method="POST" id="searchScholarshipProgramForm">
+					<input type="text" id="scholarshipProgramSearchText" name="scholarshipProgramSearchText" placeholder="Search scholarshipProgram">
 				</form>
-				<div class="button" id="searchAgencyButton">SEARCH</div>
-				<div class="button" id="addAgencyButton">ADD AGENCY</div>
+				<div class="button" id="searchScholarshipProgramButton">SEARCH</div>
+				<div class="button" id="addScholarshipProgramButton">ADD SCHOLARSHIP PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
-					<th>Agency name</th>
-					<th>Address</th>
-					<th>Contact number</th>
-					<th>Contact person</th>
+					<th>Scholarship Program name</th>
+					<th>Agency Id</th>
 				</tr>
-				<s:iterator value="agencyList" status="rowStatus" var="agency">
+				<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="agencyName" /></td>
-						<td><s:property value="address" /></td>
-						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="contactPerson" /></td>
+						<td><s:property value="scholarshipProgramName" /></td>
+						<td><s:property value="agencyId" /></td>
+						
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
@@ -97,8 +94,8 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-	    							<a onclick="displayEditAgency('<s:property value="agencyId" />')" class="w3-bar-item w3-button">Edit</a>
-    									<a onclick="showAgencyDeletePopup('<s:property value="agencyId" />')" class="w3-bar-item w3-button">Delete</a>
+	    							<a onclick="displayEditScholarshipProgram('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Edit</a>
+    									<a onclick="showScholarshipProgramDeletePopup('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Delete</a>
   								</div>
 							</div>
 						</td>

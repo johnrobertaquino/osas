@@ -1,3 +1,6 @@
 Banner Color 
 #420001 Maroon
 #ffbc01 Yellow
+#afabaa1f Transparent Gray
+
+SET GLOBAL TIME ZONE = "+8:00";

@@ -174,11 +174,15 @@
 			<result name="error" type="chain">displayAgencyList</result>
 		</action>
 		
-		
 		<action name="editAgency" class="org.pup.system.osas.ui.action.EditAgencyAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayAgencyList</result>
 			<result type="chain" name="error">displayAgencyList</result>
+		</action>
+		
+		<action name="displayScholarshipProgramList" class="org.pup.system.osas.ui.action.DisplayScholarshipProgramListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipProgramList.jsp</result>
 		</action>
 		
 		<action name="uploadTest" class="org.pup.system.osas.ui.action.UploadTestAction">
@@ -188,6 +192,7 @@
 		<action name="displayUploadTest">
 			<result name="success">/testjsp/displayupload.jsp</result>
 		</action>
+
 	</package>
 
 </struts>	

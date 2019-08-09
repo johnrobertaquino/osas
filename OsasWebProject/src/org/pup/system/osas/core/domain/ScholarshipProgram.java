@@ -7,7 +7,8 @@ public class ScholarshipProgram {
 	private String scholarshipProgramName;
 	
 	private String agencyId;
-
+	
+	
 	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
 	}
@@ -31,4 +32,5 @@ public class ScholarshipProgram {
 	public void setAgencyId(String agencyId) {
 		this.agencyId = agencyId;
 	}
+
 }

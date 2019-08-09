@@ -9,7 +9,7 @@ public class DisplayAddAgencyAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Scholarship Management - Agency";
+		pageName = "Manage Scholarship Agency";
 		
 		return FORWARD_SUCCESS;
 	}
