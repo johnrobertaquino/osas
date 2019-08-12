@@ -53,7 +53,7 @@ public void insertScholarshipProgram(ScholarshipProgram scholarshipProgram) thro
 	try {
 		connection = getConnection();
 
-		statement = connection.prepareStatement("INSERT INTO scholarshipProgram(ScholarshipProgramName, AgencyId) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+		statement = connection.prepareStatement("INSERT INTO scholarshipprogram(ScholarshipProgramName, AgencyId) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1, scholarshipProgram.getScholarshipProgramName());
 		statement.setString(2, scholarshipProgram.getAgencyId());
 		
@@ -122,7 +122,7 @@ public List<ScholarshipProgram> getScholarshipProgramListByScholarshipProgramSea
 		
 		statement = connection.createStatement(); 
 		
-		resultSet = statement.executeQuery("SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM cholarshiprogram WHERE ScholarshipProgramName LIKE '%"
+		resultSet = statement.executeQuery("SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshiprogram WHERE ScholarshipProgramName LIKE '%"
 				+ scholarshipProgramSearchText + "%' OR Address LIKE '%" + scholarshipProgramSearchText + "%'");  
 		
 		while (resultSet.next()) {
@@ -154,11 +154,11 @@ public void saveScholarshipProgram(ScholarshipProgram scholarshipProgram) throws
 	try {
 		connection = getConnection();
 
-		statement = connection.prepareStatement("UPDATE agency SET ScholarshipProgramName=?, AgencyId=? WHERE  ScholarshipProgramId=?");
+		statement = connection.prepareStatement("UPDATE scholarshipprogram SET ScholarshipProgramName=?, AgencyId=?  WHERE ScholarshipProgramId=?");
 		statement.setString(1, scholarshipProgram.getScholarshipProgramName());
 		statement.setString(2, scholarshipProgram.getAgencyId());
 	
-		statement.setInt(5, scholarshipProgram.getScholarshipProgramId());
+		statement.setInt(3, scholarshipProgram.getScholarshipProgramId());
 		
 		statement.executeUpdate();
 	} catch (Exception e) {
@@ -175,7 +175,7 @@ public void deleteScholarshipProgramByScholarshipProgramId(int scholarshipProgra
 	
 	try {
 		connection = getConnection();
-		statement = connection.prepareStatement("DELETE FROM scholarshiprogram WHERE ScholarshipProgramId=?");
+		statement = connection.prepareStatement("DELETE FROM scholarshipprogram WHERE ScholarshipProgramId=?");
 		statement.setInt(1, scholarshipProgramId);
 		
 		statement.executeUpdate();

@@ -37,6 +37,7 @@
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
+		width: 650px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
 	height: 32px;
@@ -82,14 +83,18 @@
 	}
 	#scholarshipProgramListContentBody #contentBodyRightPane {
 		font-size: 10px;
+
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
 		margin-left: 120px;
+		width: 630px;
+		
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
-	height: 32px;
-	float: left;
-	margin-left: 20px;
+		height: 32px;
+		float: left;
+		margin-left: 20px;
+		
 	}
 	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
