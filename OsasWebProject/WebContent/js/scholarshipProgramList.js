@@ -34,7 +34,7 @@ $(document).ready(function() {
 	});
 });
 
-function showAgencyDeletePopup(scholarshipProgramId) {
+function showScholarshipProgramDeletePopup(scholarshipProgramId) {
 	popUpOkCancel("Do you want to delete this scholarship program?", function() {
 		$("#deleteScholarshipProgramForm #scholarshipProgramId").val(scholarshipProgramId);
 		$("#deleteScholarshipProgramForm").submit();
@@ -42,7 +42,7 @@ function showAgencyDeletePopup(scholarshipProgramId) {
 }
 
 
-function displayEditAgency(scholarshipProgramId) {
+function displayEditScholarshipProgram(scholarshipProgramId) {
 	$("#editScholarshipProgramForm #scholarshipProgramId").val(scholarshipProgramId);
 	$("#editScholarshipProgramForm").submit();
 }

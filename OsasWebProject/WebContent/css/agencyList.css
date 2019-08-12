@@ -37,6 +37,7 @@
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
+		width: 600px;
 	}
 	#agencyListContentBody #searchAgency img {
 	height: 32px;

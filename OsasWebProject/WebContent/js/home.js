@@ -15,10 +15,13 @@ $(document).ready(function() {
 	$('#scholarshipManagementScholarshipLink').click(function() {
 		event.stopPropagation();
 		location.href = "displayScholarshipProgramList";
+<<<<<<< HEAD
 	});
 	$('#scholarsLink').click(function() {
 		event.stopPropagation();
 		location.href = "displayScholarList";
+=======
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 	});
 });
 
