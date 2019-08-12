@@ -14,6 +14,11 @@ $(document).ready(function() {
 	
 	$('#scholarshipManagementScholarshipLink').click(function() {
 		event.stopPropagation();
-		location.href = "displayScholarshipProgramLists";
+		location.href = "displayScholarshipProgramList";
+	});
+	$('#scholarsLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayScholarList";
 	});
 });
+
