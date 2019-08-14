@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.domain;
 
 public class UserRole {
+	
 	private int userRoleId;
 	
 	private int userId;

@@ -3,12 +3,9 @@ package org.pup.system.osas.core.domain;
 public class ScholarshipProgram {
 
 	private int scholarshipProgramId;
-	
+
 	private String scholarshipProgramName;
-	
-	private String agencyId;
-	
-	
+
 	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
 	}
@@ -23,14 +20,6 @@ public class ScholarshipProgram {
 
 	public void setScholarshipProgramName(String scholarshipProgramName) {
 		this.scholarshipProgramName = scholarshipProgramName;
-	}
-
-	public String getAgencyId() {
-		return agencyId;
-	}
-
-	public void setAgencyId(String agencyId) {
-		this.agencyId = agencyId;
 	}
 
 }

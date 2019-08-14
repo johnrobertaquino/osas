@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.domain;
 
 public class Scholar {
+	
 	private int scholarId;
 	
 	private String studentNumber;
