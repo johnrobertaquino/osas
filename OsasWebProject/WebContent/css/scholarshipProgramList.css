@@ -1,0 +1,99 @@
+@charset "ISO-8859-1";
+#scholarshipProgramListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#scholarshipProgramListContentBody #searchScholarshipProgramButton {
+		float: left;
+}
+#scholarshipProgramListContentBody #addScholarshipProgramButton {
+		float: right;
+}
+
+#scholarshipProgramListContentBody #searchScholarshipProgram {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#scholarshipProgramListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#scholarshipProgramListContentBody #searchScholarshipProgramButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#scholarshipProgramListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarshipProgramListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+		width: 730px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram img {
+		height: 32px;
+		float: left;
+	}
+	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarshipProgramListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarshipProgramListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram img {
+		height: 32px;
+		float: left;
+	}
+	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarshipProgramListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarshipProgramListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+	#scholarshipProgramListContentBody #searchScholarshipProgram img {
+			height: 32px;
+			float: left;
+	}
+	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}
