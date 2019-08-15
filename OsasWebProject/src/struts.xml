@@ -30,6 +30,8 @@
    			<result name="redirectToPasswordReset" type="redirect">/displayPasswordReset</result>
   		</global-results>
 		
+		<!-- MAIN ACTIONS -->	
+			
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction">
 			<result name="success">/jsp/helloWorld.jsp</result>
 		</action>
@@ -38,7 +40,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/login.jsp</result>
 		</action>
-		
+
 		<action name="logout" class="org.pup.system.osas.ui.action.LogoutAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">login</result>
@@ -55,13 +57,9 @@
 			<result name="success">/jsp/home.jsp</result>
 		</action>
 		
+			<!-- USER -->	
+
 		<action name="displayUserList" class="org.pup.system.osas.ui.action.DisplayUserListAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/userList.jsp</result>
-			<result name="error">/jsp/userList.jsp</result>
-		</action>
-		
-		<action name="searchUser" class="org.pup.system.osas.ui.action.SearchUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/userList.jsp</result>
 			<result name="error">/jsp/userList.jsp</result>
@@ -72,6 +70,39 @@
 			<result name="success" type="chain">displayUserList</result>	
 			<result name="error" type="chain">displayUserList</result>
 		</action>
+				
+			<!-- ADD USER -->	
+			
+		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addUser.jsp</result>
+		</action>
+		
+		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayUserList</result>
+			<result name="error">/jsp/addUser.jsp</result>
+		</action>
+         	<!-- EDIT USER -->
+		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editUser.jsp</result>
+			<result name="error" type="chain">displayUserList</result>
+		</action>
+	
+		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayUserList</result>
+			<result type="chain" name="error">displayUserList</result>
+		</action>
+				
+		<action name="searchUser" class="org.pup.system.osas.ui.action.SearchUserAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/userList.jsp</result>
+			<result name="error">/jsp/userList.jsp</result>
+		</action>
+		
+			<!-- PASSWORD  -->	
 		
 		<action name="resetPassword" class="org.pup.system.osas.ui.action.ResetPasswordAction">
 			<interceptor-ref name="userSessionStack"/>
@@ -112,22 +143,8 @@
 			<result name="error" type="chain">displayPasswordReset</result>
 		</action>
 		
-		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/addUser.jsp</result>
-		</action>
-		
-		<action name="addUser" class="org.pup.system.osas.ui.action.AddUserAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result name="success" type="chain">displayUserList</result>
-			<result name="error">/jsp/addUser.jsp</result>
-		</action>
-		<action name="displayUserList" class="org.pup.system.osas.ui.action.DisplayUserListAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/userList.jsp</result>
-			<result name="error">/jsp/userList.jsp</result>
-		</action>
-		
+			<!-- ADD AGENCY -->	
+			
 		<action name="displayAgencyList" class="org.pup.system.osas.ui.action.DisplayAgencyListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/agencyList.jsp</result>
@@ -142,18 +159,6 @@
 		<action name="displayAddAgency" class="org.pup.system.osas.ui.action.DisplayAddAgencyAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addAgency.jsp</result>
-		</action>
-		
-		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/editUser.jsp</result>
-			<result name="error" type="chain">displayUserList</result>
-		</action>
-		
-		<action name="editUser" class="org.pup.system.osas.ui.action.EditUserAction">
-			<interceptor-ref name="userSessionStack"/>
-			<result type="chain" name="success">displayUserList</result>
-			<result type="chain" name="error">displayUserList</result>
 		</action>
 		
 		<action name="displayEditAgency" class="org.pup.system.osas.ui.action.DisplayEditAgencyAction">
@@ -177,12 +182,129 @@
 		<action name="editAgency" class="org.pup.system.osas.ui.action.EditAgencyAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayAgencyList</result>
-			<result type="chain" name="error">displayAgencyList</result>
+			<result type="chain" name="error">/jsp/editAgency.jsp</result>
 		</action>
 		
+			<!-- SCHOLARSHIP PROGRAM -->	
 		<action name="displayScholarshipProgramList" class="org.pup.system.osas.ui.action.DisplayScholarshipProgramListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipProgramList.jsp</result>
+		</action>
+		
+		<action name="displayEditScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayEditScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editScholarshipProgram.jsp</result>
+			<result name="error" type="chain">home</result>
+		</action>
+		
+		<action name="editScholarshipProgram" class="org.pup.system.osas.ui.action.EditScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayScholarshipProgramList</result>
+			<result type="chain" name="error">displayScholarshipProgramList</result>
+		</action>
+		<action name="deleteScholarshipProgram" class="org.pup.system.osas.ui.action.DeleteScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarshipProgramList</result>	
+			<result name="error" type="chain">displayScholarshipProgramList</result>
+		</action>
+		
+		<action name="displayAddScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayAddScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarshipProgram.jsp</result>
+		</action>
+		
+		<action name="addScholarshipProgram" class="org.pup.system.osas.ui.action.AddScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarshipProgramList</result>
+			<result name="error"  type="chain">/jsp/addScholarshipProgram.jsp</result>
+		</action>
+				
+		<action name="displayAddScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayAddScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarshipProgram.jsp</result>
+		</action>
+
+		<action name="searchScholarshipProgram" class="org.pup.system.osas.ui.action.SearchScholarshipProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipProgramList.jsp</result>
+			<result name="error">/jsp/scholarshipProgramList.jsp</result>
+		</action>
+		
+					<!-- MANAGE SCHOLARSHIP TERM -->	
+			
+		<action name="displayScholarshipTermList" class="org.pup.system.osas.ui.action.DisplayScholarshipTermListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipTermList.jsp</result>
+		</action>
+		
+		<action name="displayAddScholarshipTerm" class="org.pup.system.osas.ui.action.DisplayAddScholarshipTermAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarshipTerm.jsp</result>
+		</action>
+		
+		<action name="addScholarshipTerm" class="org.pup.system.osas.ui.action.AddScholarshipTermAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarshipTermList</result>
+			<result name="error">/jsp/addScholarshipTerm.jsp</result>
+		</action>
+		
+		<action name="displayEditScholarshipTerm" class="org.pup.system.osas.ui.action.DisplayEditScholarshipTermAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editScholarshipTerm.jsp</result>
+			<result name="error" type="chain">displayScholarshipTermList</result>
+		</action>
+		
+		<action name="editScholarshipTerm" class="org.pup.system.osas.ui.action.EditScholarshipTermAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayScholarshipTermList</result>
+			<result type="chain" name="error">/jsp/editScholarshipTerm.jsp</result>
+		</action>
+		
+		<action name="searchScholarshipTerm" class="org.pup.system.osas.ui.action.SearchScholarshipTermAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipTermList.jsp</result>
+			<result name="error">/jsp/scholarshipTermList.jsp</result>
+		</action>
+						<!-- MANAGE SCHOLARSHIP PROGRAM -->	
+						
+		 <action name="displayScholarList" class="org.pup.system.osas.ui.action.DisplayScholarListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarList.jsp</result> 
+		</action>		
+		
+		<action name="displayAddScholar" class="org.pup.system.osas.ui.action.DisplayAddScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholar.jsp</result>
+		</action> 
+		
+		<action name="addScholar" class="org.pup.system.osas.ui.action.AddScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarList</result>
+			<result name="error"  type="chain">/jsp/addScholar.jsp</result>
+		</action>
+				
+		<action name="displayEditScholar" class="org.pup.system.osas.ui.action.DisplayEditScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editScholar.jsp</result>
+			<result name="error" type="chain">home</result>
+		</action>
+		
+		<action name="editScholar" class="org.pup.system.osas.ui.action.EditScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayScholarList</result>
+			<result type="chain" name="error">displayScholarList</result>
+		</action>
+		
+		<action name="searchScholar" class="org.pup.system.osas.ui.action.SearchScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarList.jsp</result>
+			<result name="error">/jsp/scholarList.jsp</result>
+		</action>
+		
+		<action name="deleteScholar" class="org.pup.system.osas.ui.action.DeleteScholarAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarList</result>	
+			<result name="error" type="chain">displayScholarList</result>
 		</action>
 		
 		<action name="uploadTest" class="org.pup.system.osas.ui.action.UploadTestAction">
@@ -192,7 +314,7 @@
 		<action name="displayUploadTest">
 			<result name="success">/testjsp/displayupload.jsp</result>
 		</action>
-
+		
 	</package>
 
 </struts>	

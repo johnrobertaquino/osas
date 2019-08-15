@@ -10,7 +10,6 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayAgencyList";
 	});
-	
 	$('#scholarshipManagementScholarshipLink').click(function() {
 		event.stopPropagation();
 		location.href = "displayScholarshipProgramList";
