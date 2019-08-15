@@ -55,8 +55,4 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#addAgencyButton').click(function() {
-		location.href = "displayAgencyList";
-	});
-	
 });

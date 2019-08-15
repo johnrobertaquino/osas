@@ -14,4 +14,8 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayScholarshipProgramList";
 	});
+	$('#scholarsLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayScholarList";
+	});
 });

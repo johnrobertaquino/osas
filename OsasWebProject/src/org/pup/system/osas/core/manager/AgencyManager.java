@@ -56,7 +56,7 @@ public class AgencyManager {
 	public List<Agency> getAgencyList() throws Exception {
 		AgencyDAO agencyDAO = null;
 		List<Agency> agencyList = null;
-		
+
 		Connection connection = null;
 		
 		try {

@@ -11,8 +11,6 @@ public class Agency {
 	private String contactPerson;
 	
 	private String contactNumber;
-	
-	private ScholarshipProgram scholarshipProgram;
 
 	public int getAgencyId() {
 		return agencyId;
@@ -46,14 +44,6 @@ public class Agency {
 		this.contactPerson = contactPerson;
 	}
 
-	public ScholarshipProgram getScholarshipProgram() {
-		return scholarshipProgram;
-	}
-
-	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
-		this.scholarshipProgram = scholarshipProgram;
-	}
-
 	public String getContactNumber() {
 		return contactNumber;
 	}
@@ -61,6 +51,5 @@ public class Agency {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
 	
 }

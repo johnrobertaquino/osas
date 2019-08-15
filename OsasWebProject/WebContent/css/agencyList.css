@@ -24,6 +24,12 @@
 	margin-right: 20px;
 }
 
+#scholarshipTermButton {
+	float: right;
+	margin-right: 150px;
+	width: 400px;
+	margin-top: 20px;
+}
 #agencyListContentBody #searchAgencyButton {
 	float: left;
 }

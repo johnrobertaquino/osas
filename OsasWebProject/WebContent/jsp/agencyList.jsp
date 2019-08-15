@@ -68,6 +68,8 @@
 			<div id="title">LIST OF AGENCY</div>
 		</div>
 		<div id="contentBodyRightPane">
+			<div class="button" id="scholarshipTermButton">MANAGE SCHOLARSHIP TERM</div>
+			<div style="clear:both"></div>
 			<div id="searchAgency">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchAgency" method="POST" id="searchAgencyForm">
