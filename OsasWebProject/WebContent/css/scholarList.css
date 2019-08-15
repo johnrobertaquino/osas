@@ -1,0 +1,101 @@
+@charset "ISO-8859-1";
+#scholarListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#scholarListContentBody #searchScholarButton {
+		float: left;
+}
+#scholarListContentBody #addScholarButton {
+		float: right;
+}
+
+#scholarListContentBody #searchScholar {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#scholarListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#scholarListContentBody #searchScholarButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#scholarListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	}
+	#scholarListContentBody #searchScholar img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#scholarListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+	#scholarListContentBody #searchScholar img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+	}
+	#scholarListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+	#scholarListContentBody #searchScholar img {
+	height: 32px;
+	float: left;
+	margin-left: 20px;
+	}
+	#scholarListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}
