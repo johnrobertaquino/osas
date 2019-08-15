@@ -6,7 +6,12 @@ public class ScholarshipProgram {
 	
 	private String scholarshipProgramName;
 	
+<<<<<<< HEAD
 	private Agency agency;
+=======
+	private String agencyId;
+	
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 	
 	public int getScholarshipProgramId() {
 		return scholarshipProgramId;

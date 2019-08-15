@@ -24,12 +24,15 @@
 	margin-right: 20px;
 }
 
+<<<<<<< HEAD
 #scholarshipTermButton {
 	float: right;
 	margin-right: 150px;
 	width: 400px;
 	margin-top: 20px;
 }
+=======
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 #agencyListContentBody #searchAgencyButton {
 	float: left;
 }
@@ -43,11 +46,20 @@
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
+<<<<<<< HEAD
 		width: 730px;
 	}
 	#agencyListContentBody #searchAgency img {
 		height: 32px;
 		float: left;
+=======
+		width: 600px;
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -69,8 +81,14 @@
 		margin-left: 40px;
 	}
 	#agencyListContentBody #searchAgency img {
+<<<<<<< HEAD
 		height: 32px;
 		float: left;
+=======
+	height: 32px;
+	float: left;
+	margin-left: -36px;
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -95,6 +113,18 @@
 	#agencyListContentBody #searchAgency img {
 		height: 32px;
 		float: left;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+	margin-left: 20px;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

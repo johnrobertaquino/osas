@@ -16,6 +16,7 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
+<<<<<<< HEAD
 	
 		if($('#scholarshipProgram').val() === '')
 		{
@@ -43,3 +44,35 @@ $(document).ready(function() {
 });
 
 
+=======
+		
+		if($('#scholarshipProgramName').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Scholarship Program name can\'t be blank.";
+		}
+		if($('#agencyId').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Agency Id can\'t be blank.";
+		}
+		if (errorMessage == '') {
+			popUpOkCancel("Do you want to add this scholarship program?", function() {
+				$("#scholarshipProgramForm").submit();
+			});
+		}
+		else {
+			popUp(errorMessage);
+		}
+	});
+	
+	$('#addScholarshipProgramButton').click(function() {
+		location.href = "displayScholarshipProgramList";
+	});
+	
+});
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git

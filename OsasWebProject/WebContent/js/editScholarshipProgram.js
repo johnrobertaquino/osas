@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
+<<<<<<< HEAD
 		location.href = "displayScholarshipProgramList";
+=======
+		location.href = "displayScholarshipProgram";
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 	});
 	
 	$("#contactNumber").keypress(function (e) {

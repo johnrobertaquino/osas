@@ -70,6 +70,14 @@
     					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgram.scholarshipProgramName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+<<<<<<< HEAD
+=======
+    					<span>AgencyId</span>
+    					<div><input id="agencyId" name="agencyId" type="text" value="${scholarshipProgram.agencyId}"></div>
+    				</div>
+    				
+    				<div class="rightPaneElement withTitle">
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>

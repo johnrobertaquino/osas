@@ -71,6 +71,7 @@
 			<div id="searchScholarshipProgram">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchScholarshipProgram" method="POST" id="searchScholarshipProgramForm">
+<<<<<<< HEAD
 					<input type="text" id="scholarshipProgramSearchText" name="scholarshipProgramSearchText" placeholder="Search Scholarship Program">
 				</form>
 				<div class="button" id="searchScholarshipProgramButton">SEARCH</div>
@@ -86,6 +87,24 @@
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="agency.agencyName" /></td>
 						<td><s:property value="scholarshipProgramName" /></td>
+=======
+					<input type="text" id="scholarshipProgramSearchText" name="scholarshipProgramSearchText" placeholder="Search scholarshipProgram">
+				</form>
+				<div class="button" id="searchScholarshipProgramButton">SEARCH</div>
+				<div class="button" id="addScholarshipProgramButton">ADD SCHOLARSHIP PROGRAM</div>
+    			<div style="clear:both"></div>
+			</div>
+			<table>
+				<tr>
+					<th>Scholarship Program name</th>
+					<th>Agency Id</th>
+				</tr>
+				<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
+					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="scholarshipProgramName" /></td>
+						<td><s:property value="agencyId" /></td>
+						
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
