@@ -18,5 +18,10 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayScholarList";
 	});
+	
+	$('#studentOrgTermManagementLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayOrganizationList";
+	});
 });
 

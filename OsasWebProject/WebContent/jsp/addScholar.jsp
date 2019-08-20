@@ -57,7 +57,7 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="ScholarContentBody" class="featureContent">
+	<div id="addScholarContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
 			<div id="title">ADD SCHOLAR</div>
@@ -66,20 +66,18 @@
 			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="scholarForm" action="addScholar" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Student Number</span>
-    					<div><input id="studentNumber" name="studentNumber" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>FirstName</span>
-    					<div><input id="firstName" name="firstName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Middle Name</span>
-    					<div><input id="middleName" name="middleName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text"></div>
+	    				<div>
+	    					<span>First Name</span>
+	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    				</div>
+	    				<div>
+	    					<span>Middle Name</span>
+	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    				</div>
+	    				<div>
+	    					<span>Last Name</span>
+	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Email</span>
@@ -87,7 +85,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
     				</div>
 
     				<div class="rightPaneElement withTitle">

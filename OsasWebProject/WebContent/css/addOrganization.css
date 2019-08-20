@@ -1,5 +1,17 @@
+#addOrganizationContentBody #contentBodyRightPane #orglogo  {
+	border: 1px solid;
+	height: 100px;
+	width: 100px;
+	margin: 0px auto 0px auto;
+}
+#addOrganizationContentBody #contentBodyRightPane #orglogoInput input {
+    border: none;
+    margin-left: 151px;
+    width: 180px;
+}
+
 @media only screen and (max-width: 1550px) {
-	#addScholarContentBody #contentBodyLeftPane #title {
+	#addOrganizationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 25px;
@@ -8,7 +20,7 @@
 	}
 }
 @media only screen and (max-width: 1110px) {
-	#addScholarContentBody #contentBodyLeftPane #title {
+	#addOrganizationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 22px;
@@ -17,12 +29,11 @@
 	}
 }
 @media only screen and (max-width: 1000px) {
-	#addScholarContentBody #contentBodyLeftPane #title {
+	#addOrganizationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center
 	}
-
 }

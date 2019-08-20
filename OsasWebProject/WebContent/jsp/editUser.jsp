@@ -66,16 +66,15 @@
 				<form class="editUserContent" id="editUserForm" action="editUser" method="POST">
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div class="rightPaneElement withTitle">
-    					<span>First Name</span>
-    					<div><input id="firstName" name="firstName" type="text" value="${user.firstName}"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Middle Name (optional)</span>
-    					<div><input id="middleName" name="middleName" type="text" value="${user.middleName}"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
+    					<div id="fullName">
+	    					<span>Last Name</span>
+	    					<span>First Name</span>
+	    					<span>Middle Name</span>
+	    				</div>
+    					<div id="fullNameInput"><input id="lastName" name="lastName" type="text"value="${user.lastName}">
+    						<input id="firstName" name="firstName" type="text" value="${user.firstName}">
+    						<input id="middleName" name="middleName" type="text" value="${user.middleName}">
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
@@ -89,7 +88,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${user.contactNumber}"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${user.contactNumber}" placeholder="+63"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>

@@ -37,7 +37,6 @@
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-<<<<<<< HEAD
 		width: 730px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
@@ -47,7 +46,7 @@
 	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
-		font-size: 25px;
+		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
@@ -87,15 +86,13 @@
 		margin-left: 120px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
-			height: 32px;
-			float: left;
-=======
+		height: 32px;
+		float: left;
 		width: 650px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
 	height: 32px;
 	float: left;
-	margin-left: -36px;
 	}
 	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -117,9 +114,8 @@
 		margin-left: 40px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
-	height: 32px;
-	float: left;
-	margin-left: -36px;
+		height: 32px;
+		float: left;
 	}
 	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -147,8 +143,7 @@
 		height: 32px;
 		float: left;
 		margin-left: 20px;
-		
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
+		width: 32px;
 	}
 	#scholarshipProgramListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

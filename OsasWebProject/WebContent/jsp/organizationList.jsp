@@ -6,14 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/addUser.css">
+<link rel="stylesheet" type="text/css" href="css/organizationList.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addUser.js"></script>
+<script type="text/javascript" src="js/organizationList.js"></script>
 </head>
 <body>
 <div id="header">
@@ -56,76 +55,62 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addUserContentBody" class="featureContent">
+	<form id="deleteOrganizationForm" action="deleteOrganization" method="POST">
+  		<input type="hidden" id="organizationId" name="organizationId" />
+	</form>
+	<form id="editOrganizationForm" action="displayEditOrganization" method="POST">
+  		<input type="hidden" id="organizationId" name="organizationId" />
+	</form>
+	<div id="organizationListContentBody" class="featureContent" >
+	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/addUserIcon.png"/></div>
-			<div id="title">ADD USER</div>
+			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="title">LIST OF ORGANIZATION</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="rightPaneContentHolder">
-				<form class="addUserContent" id="addUserForm" action="addUser" method="POST">
-    				<div class="rightPaneElement withTitle">
-	    				<div>
-	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
-	    				</div>
-	    				<div>
-	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
-	    				</div>
-	    				<div>
-	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
-	    			    </div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday"></div>
-    					<script type="text/javascript">
-    						$(document).ready(function() {
-    							$("#birthday").datepicker();
-    							
-    						});
-    					</script>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Position</span>
-    					<div><input id="position" name="position" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Role</span>
-	    				<div id="roleDiv">
-		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
-		    				<span>Administrator</span>
-		    				<input type="checkbox" id="apCheck" name="roleReferenceCodeList" value="AP" <s:if test="user.approver">checked</s:if>>
-		    				<span>Approver</span>
-		    				<input type="checkbox" id="usCheck" name="roleReferenceCodeList" value="US" <s:if test="user.user">checked</s:if>>
-		    				<span>User</span>
-		    			</div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-						<div id="buttonHolder">
-							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+			<div style="clear:both"></div>
+			<div id="searchOrganization">
+				<img src="images/Search_Magnifying_Glass_Find-512.png">
+				<form action="searchOrganization" method="POST" id="searchOrganizationForm">
+					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization">
+				</form>
+				<div class="button" id="searchOrganizationButton">SEARCH</div>
+				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
+    			<div style="clear:both"></div>
+			</div>
+			<table>
+				<tr>
+					<th>Organization name</th>
+					<th>Organization Type</th>
+					<th>Program </th>
+					<th>Adviser</th>
+				</tr>
+				<s:iterator value="organizationList" status="rowStatus" var="organization">
+					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="organizationName" /></td>
+						<td><s:property value="organizationTypeCode" /></td>
+						<td><s:property value="program" /></td>
+ 						<td><s:property value="adviser" /></td>
+						<td>
+							<div class="w3-dropdown-click tableMenu">
+  								<div class="tableMenuButton">
+  									<img src="images/setting_game_configuration_option-512.png" />
+  									<img src="images/arrow-down-01-512.png" />
+  								</div>
+  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+	    							<a onclick="displayEditOrganization('<s:property value="organizationId" />')" class="w3-bar-item w3-button">Edit</a>
+    									<a onclick="showOrganizationDeletePopup('<s:property value="organizationId" />')" class="w3-bar-item w3-button">Delete</a>
+  								</div>
 							</div>
-							<div id=submitButton class="button left">
-								<span>Register</span>
-							</div>
-							<div style="clear:both"></div>
-						</div>
-					</div>
-    			</form>
-    		</div>
-    		<div style="clear:both"></div>
+						</td>
+					</tr>
+				</s:iterator>
+			</table>
 		</div>
 		<div style="clear:both"></div>
 	</div>
+	</div>
 </div>
-
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>

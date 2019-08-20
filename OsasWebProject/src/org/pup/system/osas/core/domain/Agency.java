@@ -12,6 +12,8 @@ public class Agency {
 	
 	private String contactNumber;
 
+	private SemTerm semTerm;
+	
 	public int getAgencyId() {
 		return agencyId;
 	}
@@ -50,6 +52,20 @@ public class Agency {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the semTerm
+	 */
+	public SemTerm getSemTerm() {
+		return semTerm;
+	}
+
+	/**
+	 * @param semTerm the semTerm to set
+	 */
+	public void setSemTerm(SemTerm semTerm) {
+		this.semTerm = semTerm;
 	}
 	
 }

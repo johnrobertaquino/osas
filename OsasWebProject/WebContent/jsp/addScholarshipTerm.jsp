@@ -67,19 +67,31 @@
 					<input name="scholarshipTermId" type="hidden" value="${scholarshipTerm.scholarshipTermId}">
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Term name</span>
-    					<div><input id="scholarshipTermName" name="scholarshipTermName" type="text" value="${scholarshipTerm.scholarshipTermName}"></div>
+    					<div><input id="scholarshipTermName" name="scholarshipTermName" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Start Date</span>
-    					<div><input id="startDate" name="startDate" type="text" value="${scholarshipTerm.startDate}"></div>
+    					<div><input id="startDate" name="startDate" type="text"></div>
+    					<script type="text/javascript">
+    						$(document).ready(function() {
+    							$("#startDate").datepicker();
+    							
+    						});
+    					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>End Date</span>
-    					<div><input id="endDate" name="endDate" type="text" value="${scholarshipTerm.endDate}"></div>
+    					<div><input id="endDate" name="endDate" type="text"></div>
+    					<script type="text/javascript">
+    						$(document).ready(function() {
+    							$("#endDate").datepicker();
+    							
+    						});
+    					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Active</span>
-    					<div><input id="active" name="active" type="text" maxlength="11" value="${scholarshipTerm.active}"></div>
+    					<div><input id="active" name="active" type="text" maxlength="11"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

@@ -8,12 +8,13 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/addUser.css">
+<link rel="stylesheet" type="text/css" href="css/organizationList.css">
+<link rel="stylesheet" type="text/css" href="css/addOrganization.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addUser.js"></script>
+<script type="text/javascript" src="js/addOrganization.js"></script>
 </head>
 <body>
 <div id="header">
@@ -34,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -56,64 +57,44 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addUserContentBody" class="featureContent">
+	<div id="addOrganizationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/addUserIcon.png"/></div>
-			<div id="title">ADD USER</div>
+			<div id="icon"><img src="images/list.png"/></div>
+			<div id="title">ADD ORGANIZATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addUserContent" id="addUserForm" action="addUser" method="POST">
+				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST">
     				<div class="rightPaneElement withTitle">
-	    				<div>
-	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
-	    				</div>
-	    				<div>
-	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
-	    				</div>
-	    				<div>
-	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
-	    			    </div>
+    					<div>
+    						<div id="orglogo"><img src="" alt="logo"/></div>
+    						<div id="orglogoInput"><input id="organizationLogo" name="organizationLogo" type="file"></div>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday"></div>
-    					<script type="text/javascript">
-    						$(document).ready(function() {
-    							$("#birthday").datepicker();
-    							
-    						});
-    					</script>
+    					<span>Organization Name</span>
+    					<div><input id="organizationName" name="organizationName" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
+    					<span>Organization Type</span>
+    					<div><input id="organizationTypeCode" name="organizationTypeCode" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Position</span>
-    					<div><input id="position" name="position" type="text"></div>
+    					<span>Program</span>
+    					<div><input id="program" name="program" type="text"></div>
     				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Role</span>
-	    				<div id="roleDiv">
-		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
-		    				<span>Administrator</span>
-		    				<input type="checkbox" id="apCheck" name="roleReferenceCodeList" value="AP" <s:if test="user.approver">checked</s:if>>
-		    				<span>Approver</span>
-		    				<input type="checkbox" id="usCheck" name="roleReferenceCodeList" value="US" <s:if test="user.user">checked</s:if>>
-		    				<span>User</span>
-		    			</div>
+    			    <div class="rightPaneElement withTitle">
+    					<span>Adviser</span>
+    					<div><input id="adviser" name="adviser" type="text"></div>
     				</div>
+    				
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Register</span>
+								<span>Add Organization</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
@@ -122,7 +103,6 @@
     		</div>
     		<div style="clear:both"></div>
 		</div>
-		<div style="clear:both"></div>
 	</div>
 </div>
 

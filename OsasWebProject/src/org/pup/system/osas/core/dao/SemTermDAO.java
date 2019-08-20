@@ -11,48 +11,45 @@ import java.util.List;
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.SemTerm;
 
-public class AgencyDAO extends DAO {
+public class SemTermDAO extends DAO {
 
-	public AgencyDAO(Connection connection) {
+	public SemTermDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Agency getAgencyByAgencyId(int agencyId) throws Exception {
+	public SemTerm getSemTermBySemTermId(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
-		Agency agency = null;
+		SemTerm semTerm = null;
 		
 		try {
 			connection = getConnection();
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyId=" + agencyId);  
+			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, Active FROM semterm WHERE SemTermId=" + semTermId);  
 			
 			if (resultSet.next()) {
-				agency = new Agency();
-				agency.setAgencyId(resultSet.getInt("AgencyId"));
-				agency.setAddress(resultSet.getString("Address"));
-				agency.setAgencyName(resultSet.getString("AgencyName"));
-				agency.setContactPerson(resultSet.getString("ContactPerson"));
-				agency.setContactNumber(resultSet.getString("ContactNumber"));
-
-				SemTerm semTerm = new SemTerm();
+				semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
-				agency.setSemTerm(semTerm);
+				semTerm.setSemTermName(resultSet.getString("SemTermName"));
+				semTerm.setDeadline(resultSet.getString("Deadline"));
+				semTerm.setStartDate(resultSet.getString("StartDate"));
+				semTerm.setEndDate(resultSet.getString("EndDate"));
+				semTerm.setSemTermId(resultSet.getInt("Active"));
 			}
 		} catch (Exception e) {
-			throw new Exception("Error occurred while doing getAgencyByAgencyId method", e);
+			throw new Exception("Error occurred while doing getSemTermBySemTermId method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
 		
-		return agency;
+		return semTerm;
 	}
 	
-	public void insertAgency(Agency agency) throws Exception {
+	public void insertSemTerm(SemTerm semTerm) throws Exception {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -60,60 +57,55 @@ public class AgencyDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-			statement.setString(1, agency.getAgencyName());
-			statement.setString(2, agency.getAddress());
-			statement.setString(3, agency.getContactPerson());
-			statement.setString(4, agency.getContactNumber());
-
+			statement = connection.prepareStatement("INSERT INTO semterm(SemTermName, Deadline, StartDate, EndDate, Active) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, semTerm.getSemTermName());
+			statement.setString(2, semTerm.getDeadline());
+			statement.setString(3, semTerm.getStartDate());
+			statement.setString(4, semTerm.getEndDate());
 			
 			statement.executeUpdate();
 			
 			resultSet = statement.getGeneratedKeys();
 			
 			if (resultSet.next()) {
-				agency.setAgencyId(resultSet.getInt(1));
+				semTerm.setSemTermId(resultSet.getInt(1));
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("Error occurred while doing insertAgency method", e);
+			throw new Exception("Error occurred while doing insertSemTerm method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
 	}
 
-	public List<Agency> getAgencyList() throws Exception {
+	public List<SemTerm> getSemTermList() throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
-		Agency agency = null;
-		List<Agency> agencyList = null;
+		SemTerm semTerm = null;
+		List<SemTerm> semTermList = null;
 		
 		try {
 			connection = getConnection();
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson, SemTermId FROM agency");  
+			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, SemTermId FROM semterm WHERE SemTermId=1");  
 			
 			while (resultSet.next()) {
-				if (agencyList == null) {
-					agencyList = new ArrayList<Agency>();
+				if (semTermList == null) {
+					semTermList = new ArrayList<SemTerm>();
 				}
 				
-				agency = new Agency();
-				agency.setAgencyId(resultSet.getInt("AgencyId"));
-				agency.setAgencyName(resultSet.getString("AgencyName"));
-				agency.setAddress(resultSet.getString("Address"));
-				agency.setContactNumber(resultSet.getString("ContactNumber"));
-				agency.setContactPerson(resultSet.getString("ContactPerson"));
-
-				SemTerm semTerm = new SemTerm();
+				semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
-				agency.setSemTerm(semTerm);
+				semTerm.setSemTermName(resultSet.getString("SemTermName"));
+				semTerm.setDeadline(resultSet.getString("Deadline"));
+				semTerm.setEndDate(resultSet.getString("EndDate"));
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
 				
-				agencyList.add(agency);
+				semTermList.add(semTerm);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getAgencyList method", e);
@@ -121,7 +113,7 @@ public class AgencyDAO extends DAO {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
 		
-		return agencyList;
+		return semTermList;
 	}
 	
 	public List<Agency> getAgencyListByAgencySearchText(String agencySearchText) throws Exception {
@@ -179,24 +171,6 @@ public class AgencyDAO extends DAO {
 			statement.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing saveUser method", e);
-		} finally {
-			ConnectionUtil.closeDbResources(statement);
-		}
-	}
-	
-	
-	public void deleteAgencyByAgencyId(int agencyId) throws Exception {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = getConnection();
-			statement = connection.prepareStatement("DELETE FROM agency WHERE AgencyId=?");
-			statement.setInt(1, agencyId);
-			
-			statement.executeUpdate();
-		} catch (Exception e) {
-			throw new Exception("Error occurred while doing deleteAgencyByAgencyId method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(statement);
 		}

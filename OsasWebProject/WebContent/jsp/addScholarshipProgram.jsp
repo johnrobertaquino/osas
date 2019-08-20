@@ -57,8 +57,7 @@
 	</div>
 </div>
 <div id="contentBody">
-<<<<<<< HEAD
-	<div id="scholarshipProgramContentBody" class="featureContent">
+	<div id="addScholarshipProgramContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
 			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
@@ -67,25 +66,19 @@
 			<div id="rightPaneContentHolder">
 				<form class="addScholarhipProgramContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
     				<div class="rightPaneElement withTitle">
+    				    <span>Agency</span>
+	    				<div>
+		    				<select>
+							  <option value="volvo"></option>
+							  <option value="volvo">Municipality of Sto. Tomas</option>
+							  <option value="saab">Department of Science and Technology</option>
+							  <option value="opel">Batangas Capitol</option>
+							</select>
+						</div>
+					</div>
+    				<div class="rightPaneElement withTitle">
     					<span>Scholarship Program</span>
     					<div><input id="scholarshipProgram" name="scholarshipProgram" type="text"></div>
-=======
-	<div id="ScholarshipProgramContentBody" class="featureContent">
-		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
-		</div>
-		<div id="contentBodyRightPane">
-			<div id="rightPaneContentHolder">
-				<form class="addUserContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
-    				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Agency Id</span>
-    					<div><input id="agencyId" name="address" type="text"></div>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

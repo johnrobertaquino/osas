@@ -57,7 +57,7 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="AgencyContentBody" class="featureContent">
+	<div id="addAgencyContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
 			<div id="title">ADD AGENCY</div>
@@ -79,7 +79,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
