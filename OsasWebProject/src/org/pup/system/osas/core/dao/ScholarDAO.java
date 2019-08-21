@@ -81,7 +81,7 @@ public class ScholarDAO extends DAO {
 		}
 	}
 
-	public List<Scholar> getScholarList() throws Exception {
+	public List<Scholar> getScholarList(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -93,7 +93,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber FROM scholar");  
+			resultSet = statement.executeQuery("SELECT * FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId);
 			
 			while (resultSet.next()) {
 				if (scholarList == null) {

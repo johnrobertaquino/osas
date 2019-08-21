@@ -14,6 +14,7 @@ public class ScholarshipProgramManager {
 	public void insertScholarshipProgram(ScholarshipProgram scholarshipProgram) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		Connection connection = null;
+		int semTermId = 1;
 
 		try {
 			connection = ConnectionUtil.createConnection();
@@ -22,7 +23,8 @@ public class ScholarshipProgramManager {
 
 			scholarshipProgramDAO.insertScholarshipProgram(scholarshipProgram);
 			
-			List<ScholarshipProgram> scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramList();
+
+			List<ScholarshipProgram> scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramList(semTermId);
 
 			if (scholarshipProgramList != null) {
 				AgencyDAO agencyDAO = new AgencyDAO(connection);
@@ -42,7 +44,6 @@ public class ScholarshipProgramManager {
 			ConnectionUtil.closeDbConnection(connection);
 		}
 	}
-
 	public ScholarshipProgram getScholarshipProgram(int scholarshipProgramId) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		ScholarshipProgram scholarshipProgram = null;
@@ -66,7 +67,7 @@ public class ScholarshipProgramManager {
 		return scholarshipProgram;
 	}
 
-	public List<ScholarshipProgram> getScholarshipProgramList() throws Exception {
+	public List<ScholarshipProgram> getScholarshipProgramList(int semTermId) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		AgencyDAO agencyDAO = null;
 		List<ScholarshipProgram> scholarshipProgramList = null;
@@ -78,7 +79,7 @@ public class ScholarshipProgramManager {
 
 			scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
 
-			scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramList();
+			scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramList(semTermId);
 
 			if (scholarshipProgramList != null) {
 				agencyDAO = new AgencyDAO(connection);

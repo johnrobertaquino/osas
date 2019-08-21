@@ -56,7 +56,7 @@ public class AgencyManager {
 		return agency;
 	}
 	
-	public List<Agency> getAgencyList() throws Exception {
+	public List<Agency> getAgencyList(int semTermId) throws Exception {
 		AgencyDAO agencyDAO = null;
 		List<Agency> agencyList = null;
 
@@ -67,7 +67,7 @@ public class AgencyManager {
 			
 			agencyDAO = new AgencyDAO(connection);
 			
-			agencyList = agencyDAO.getAgencyList();
+			agencyList = agencyDAO.getAgencyList(semTermId);
 
 			if (agencyList != null) {
 				SemTermDAO semTermDAO = new SemTermDAO(connection);

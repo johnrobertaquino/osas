@@ -6,6 +6,8 @@ public class ScholarshipProgram {
 	
 	private String scholarshipProgramName;
 	
+	private int agencyId;
+	
 	private Agency agency;
 	
 	public int getScholarshipProgramId() {
@@ -36,6 +38,20 @@ public class ScholarshipProgram {
 	 */
 	public void setAgency(Agency agency) {
 		this.agency = agency;
+	}
+
+	/**
+	 * @return the agencyId
+	 */
+	public int getAgencyId() {
+		return agencyId;
+	}
+
+	/**
+	 * @param agencyId the agencyId to set
+	 */
+	public void setAgencyId(int agencyId) {
+		this.agencyId = agencyId;
 	}
 
 }

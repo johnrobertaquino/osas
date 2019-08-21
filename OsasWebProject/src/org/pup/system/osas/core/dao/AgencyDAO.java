@@ -83,7 +83,7 @@ public class AgencyDAO extends DAO {
 		}
 	}
 
-	public List<Agency> getAgencyList() throws Exception {
+	public List<Agency> getAgencyList(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -95,7 +95,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson, SemTermId FROM agency");  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson, SemTermId FROM agency WHERE SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (agencyList == null) {

@@ -64,7 +64,7 @@ public class OrganizationManager {
 			
 		organizationDAO = new OrganizationDAO(connection);
 			
-		organizationList = organizationDAO.getOrganizationList();
+		organizationList = organizationDAO.getOrganizationList(2);
 			
 		} catch (Exception e) {
 			throw e;

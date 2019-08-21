@@ -24,7 +24,7 @@ public class DisplayScholarshipProgramListAction extends AbstractAction{
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList();
+			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(1);
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

@@ -53,7 +53,7 @@ public class ScholarManager
 		return scholar;
 	}
 	
-	public List<Scholar> getScholarList() throws Exception {
+	public List<Scholar> getScholarList(int semTermId) throws Exception {
 		ScholarDAO scholarDAO = null;
 		List<Scholar> scholarList = null;
 		
@@ -64,7 +64,7 @@ public class ScholarManager
 			
 			scholarDAO = new ScholarDAO(connection);
 			
-			scholarList = scholarDAO.getScholarList();
+			scholarList = scholarDAO.getScholarList(semTermId);
 			
 		} catch (Exception e) {
 			throw e;

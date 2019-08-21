@@ -69,10 +69,7 @@
     				    <span>Agency</span>
 	    				<div>
 		    				<select>
-							  <option value="volvo"></option>
-							  <option value="volvo">Municipality of Sto. Tomas</option>
-							  <option value="saab">Department of Science and Technology</option>
-							  <option value="opel">Batangas Capitol</option>
+							  <option value="agencyID">${agency.agencyName}</option>
 							</select>
 						</div>
 					</div>
@@ -80,6 +77,29 @@
     					<span>Scholarship Program</span>
     					<div><input id="scholarshipProgram" name="scholarshipProgram" type="text"></div>
     				</div>
+    				<table>
+						<tr>
+							<th>Qualification Name</th>
+						</tr>
+						<s:iterator value="scholarshipQualification" status="rowStatus" var="scholarshipQualification">
+							<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+								<td><s:property value="scholarshipQualificationName" /></td>
+								<td>Birth Certificate</td>
+								<td>
+									<div class="w3-dropdown-click tableMenu">
+		  								<div class="tableMenuButton">
+		  									<img src="images/setting_game_configuration_option-512.png" />
+		  									<img src="images/arrow-down-01-512.png" />
+		  								</div>
+		  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+			    							<a onclick="displayEditScholar('<s:property value="scholarId" />')" class="w3-bar-item w3-button">Edit</a>
+		    									<a onclick="showScholarDeletePopup('<s:property value="scholarId" />')" class="w3-bar-item w3-button">Delete</a>
+		  								</div>
+									</div>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">

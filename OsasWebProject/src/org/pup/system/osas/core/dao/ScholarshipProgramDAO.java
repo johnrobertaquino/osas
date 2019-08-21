@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class ScholarshipProgramDAO extends DAO {
 
@@ -83,7 +84,7 @@ public class ScholarshipProgramDAO extends DAO {
 		}
 	}
 
-	public List<ScholarshipProgram> getScholarshipProgramList() throws Exception {
+	public List<ScholarshipProgram> getScholarshipProgramList(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -96,7 +97,7 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshipprogram");
+					"SELECT * FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
 
 			while (resultSet.next()) {
 				if (scholarshipProgramList == null) {

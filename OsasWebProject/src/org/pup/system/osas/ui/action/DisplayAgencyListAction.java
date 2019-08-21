@@ -23,7 +23,7 @@ public class DisplayAgencyListAction extends AbstractAction {
 
 		try {
 			AgencyManager agencyManager = new AgencyManager();
-			agencyList = agencyManager.getAgencyList();
+			agencyList = agencyManager.getAgencyList(1);
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
