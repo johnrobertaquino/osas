@@ -68,14 +68,16 @@
     				<div class="rightPaneElement withTitle">
     				    <span>Agency</span>
 	    				<div>
-		    				<select>
-							  <option value="agencyID">${agency.agencyName}</option>
+		    				<select name="agencyId">
+		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
+		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
+		    					</s:iterator>
 							</select>
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Program</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgram" type="text"></div>
+    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
     				</div>
     				<table>
 						<tr>

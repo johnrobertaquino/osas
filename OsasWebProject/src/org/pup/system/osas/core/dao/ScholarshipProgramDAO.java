@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.SemTerm;
 
 public class ScholarshipProgramDAO extends DAO {
 
@@ -63,10 +62,7 @@ public class ScholarshipProgramDAO extends DAO {
 					"INSERT INTO scholarshipProgram(ScholarshipProgramName, AgencyId) VALUES (?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, scholarshipProgram.getScholarshipProgramName());
-
-			Agency agency = new Agency();
-			statement.setInt(2, agency.getAgencyId());
-			scholarshipProgram.setAgency(agency);
+			statement.setInt(2, scholarshipProgram.getAgency().getAgencyId());
 
 			statement.executeUpdate();
 
@@ -97,7 +93,7 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT * FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
+					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.	AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
 
 			while (resultSet.next()) {
 				if (scholarshipProgramList == null) {
@@ -171,9 +167,10 @@ public class ScholarshipProgramDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"UPDATE scholarshipprogram SET ScholarshipProgramName=? WHERE ScholarshipProgramId=?");
+					"UPDATE scholarshipprogram SET ScholarshipProgramName=?, AgencyId=? WHERE ScholarshipProgramId=?");
 			statement.setString(1, scholarshipProgram.getScholarshipProgramName());
-			statement.setInt(2, scholarshipProgram.getScholarshipProgramId());
+			statement.setInt(2, scholarshipProgram.getAgency().getAgencyId());
+			statement.setInt(3, scholarshipProgram.getScholarshipProgramId());
 
 			statement.executeUpdate();
 		} catch (Exception e) {

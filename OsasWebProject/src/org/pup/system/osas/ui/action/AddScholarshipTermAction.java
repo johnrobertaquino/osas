@@ -1,9 +1,5 @@
 package org.pup.system.osas.ui.action;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
-import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipTerm;
 import org.pup.system.osas.core.manager.ScholarshipTermManager;
 import org.pup.system.osas.exception.BusinessException;
@@ -19,7 +15,7 @@ public class AddScholarshipTermAction extends AbstractAction {
 	
 	private String scholarshipTermName;
 	
-	private String startDate;
+	private String startDate;	
 	
 	private String endDate;
 	

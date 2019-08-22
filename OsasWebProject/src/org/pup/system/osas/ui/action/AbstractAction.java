@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.pup.system.osas.core.domain.SemTerm;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -16,6 +17,8 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 	private static final long serialVersionUID = 8558423099927873090L;
 	
 	protected static final String USER = "USER";
+	
+	private static final String SEMTERM = "SEMTERM";
 	
 	protected static final String FORWARD_SUCCESS = "success";
 	
@@ -67,6 +70,16 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 
 	public void setNotificationMessage(String notificationMessage) {
 		this.notificationMessage = notificationMessage;
+	}
+	
+	protected SemTerm getCurrentActiveTerm() {
+		Object semTermObject = userSession.get(SEMTERM);
+		
+		if (semTermObject != null) {
+			return (SemTerm) semTermObject;
+		} else {
+			return null;
+		}	
 	}
 	
 	

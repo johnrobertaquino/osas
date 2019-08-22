@@ -1,6 +1,8 @@
 package org.pup.system.osas.ui.action;
 
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.manager.AgencyManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -10,8 +12,6 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
-
-	private String scholarshipProgramId;
 
 	private String scholarshipProgramName;
 
@@ -24,9 +24,12 @@ public class AddScholarshipProgramAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
+			AgencyManager agencyManager = new AgencyManager();
+			Agency agency = agencyManager.getAgency(Integer.parseInt(agencyId));
+			
 			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
 			scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
-			//scholarshipProgram.setAgencyId(agencyId);
+			scholarshipProgram.setAgency(agency);
 
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
@@ -43,14 +46,6 @@ public class AddScholarshipProgramAction extends AbstractAction {
 		}
 
 		return actionResult;
-	}
-
-	public String getScholarshipProgramId() {
-		return scholarshipProgramId;
-	}
-
-	public void setScholarshipProgramId(String scholarshipProgramId) {
-		this.scholarshipProgramId = scholarshipProgramId;
 	}
 
 	public String getScholarshipProgramName() {

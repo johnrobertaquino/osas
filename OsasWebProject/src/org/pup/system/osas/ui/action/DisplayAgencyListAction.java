@@ -23,7 +23,7 @@ public class DisplayAgencyListAction extends AbstractAction {
 
 		try {
 			AgencyManager agencyManager = new AgencyManager();
-			agencyList = agencyManager.getAgencyList(1);
+			agencyList = agencyManager.getAgencyList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

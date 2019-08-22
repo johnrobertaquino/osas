@@ -1,116 +1,77 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.Date;
+
 public class SemTerm {
-	
+
 	private int semTermId;
-	
+
 	private String semTermName;
-	
-	private String deadline;
-	
-	private String startDate;
-	
-	private String endDate;
-	
-	private String yearlyTermId;
+
+	private Date deadline;
+
+	private Date startDate;
+
+	private Date endDate;
+
+	private int yearlyTermId;
 
 	private boolean active;
 
-	/**
-	 * @return the semTermId
-	 */
 	public int getSemTermId() {
 		return semTermId;
 	}
 
-	/**
-	 * @param semTermId the semTermId to set
-	 */
 	public void setSemTermId(int semTermId) {
 		this.semTermId = semTermId;
 	}
 
-	/**
-	 * @return the semTermName
-	 */
 	public String getSemTermName() {
 		return semTermName;
 	}
 
-	/**
-	 * @param semTermName the semTermName to set
-	 */
 	public void setSemTermName(String semTermName) {
 		this.semTermName = semTermName;
 	}
 
-	/**
-	 * @return the deadline
-	 */
-	public String getDeadline() {
+	public Date getDeadline() {
 		return deadline;
 	}
 
-	/**
-	 * @param deadline the deadline to set
-	 */
-	public void setDeadline(String deadline) {
+	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 
-	/**
-	 * @return the startDate
-	 */
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	/**
-	 * @param startDate the startDate to set
-	 */
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	/**
-	 * @return the endDate
-	 */
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	/**
-	 * @param endDate the endDate to set
-	 */
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
-	/**
-	 * @return the yearlyTermId
-	 */
-	public String getYearlyTermId() {
+	public int getYearlyTermId() {
 		return yearlyTermId;
 	}
 
-	/**
-	 * @param yearlyTermId the yearlyTermId to set
-	 */
-	public void setYearlyTermId(String yearlyTermId) {
+	public void setYearlyTermId(int yearlyTermId) {
 		this.yearlyTermId = yearlyTermId;
 	}
 
-	/**
-	 * @return the active
-	 */
 	public boolean isActive() {
 		return active;
 	}
 
-	/**
-	 * @param active the active to set
-	 */
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-}
+
+}	

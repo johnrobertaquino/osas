@@ -53,6 +53,33 @@ public class SemTermManager {
 		return semTerm;
 	}
 	
+	public SemTerm getSemTermByActive(boolean active) throws Exception {
+		SemTermDAO semTermDAO = null;
+		SemTerm semTerm = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			semTermDAO = new SemTermDAO(connection);
+			
+			semTerm = semTermDAO.getSemTermByActive(active);
+			
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return semTerm;	
+	}
+	
+	public SemTerm getCurrentActiveSemTerm() throws Exception {
+		return this.getSemTermByActive(true);	
+	}
+	
 	public List<SemTerm> getSemTermList() throws Exception {
 		SemTermDAO semTermDAO = null;
 		List<SemTerm> semTermList = null;

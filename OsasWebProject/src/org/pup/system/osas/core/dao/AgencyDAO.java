@@ -1,7 +1,6 @@
-package org.pup.system.osas.core.dao;
+	package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -60,12 +59,12 @@ public class AgencyDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber, SemTermId) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, agency.getAgencyName());
 			statement.setString(2, agency.getAddress());
 			statement.setString(3, agency.getContactPerson());
 			statement.setString(4, agency.getContactNumber());
-
+			statement.setInt(5, agency.getSemTerm().getSemTermId());
 			
 			statement.executeUpdate();
 			
