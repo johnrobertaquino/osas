@@ -186,9 +186,15 @@
 		</action>
 		
 			<!-- SCHOLARSHIP PROGRAM -->	
+		
 		<action name="displayScholarshipProgramList" class="org.pup.system.osas.ui.action.DisplayScholarshipProgramListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipProgramList.jsp</result>
+		</action>
+		
+		<action name="displayAddScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarshipProgram.jsp</result>
 		</action>
 		
 		<action name="displayEditScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayEditScholarshipProgramAction">

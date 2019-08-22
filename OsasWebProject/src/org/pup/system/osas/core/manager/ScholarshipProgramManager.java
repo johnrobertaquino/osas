@@ -14,7 +14,7 @@ public class ScholarshipProgramManager {
 	public void insertScholarshipProgram(ScholarshipProgram scholarshipProgram) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		Connection connection = null;
-		int semTermId = 1;
+		int semTermId = (Integer) null;
 
 		try {
 			connection = ConnectionUtil.createConnection();
