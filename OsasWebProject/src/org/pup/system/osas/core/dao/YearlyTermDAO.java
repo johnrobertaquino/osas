@@ -1,15 +1,12 @@
 package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pup.system.osas.core.domain.Agency;
-import org.pup.system.osas.core.domain.SemTerm;
 import org.pup.system.osas.core.domain.YearlyTerm;
 
 public class YearlyTermDAO extends DAO {

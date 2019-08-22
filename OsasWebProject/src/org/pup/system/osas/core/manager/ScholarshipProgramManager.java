@@ -14,26 +14,13 @@ public class ScholarshipProgramManager {
 	public void insertScholarshipProgram(ScholarshipProgram scholarshipProgram) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		Connection connection = null;
-		int semTermId = (Integer) null;
-
+	
 		try {
 			connection = ConnectionUtil.createConnection();
 
 			scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
 
 			scholarshipProgramDAO.insertScholarshipProgram(scholarshipProgram);
-			
-
-			List<ScholarshipProgram> scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramList(semTermId);
-
-			if (scholarshipProgramList != null) {
-				AgencyDAO agencyDAO = new AgencyDAO(connection);
-
-				for (ScholarshipProgram scholarshipProgram1 : scholarshipProgramList) {
-					Agency agency = agencyDAO.getAgencyByAgencyId(scholarshipProgram1.getAgency().getAgencyId());
-					scholarshipProgram1.setAgency(agency);
-				}
-			}
 
 			connection.commit();
 

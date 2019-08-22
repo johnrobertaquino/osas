@@ -33,6 +33,7 @@ public class AddAgencyAction extends AbstractAction {
 			agency.setAddress(address);
 			agency.setContactPerson(contactPerson);
 			agency.setContactNumber(contactNumber);
+			agency.setSemTerm(getCurrentActiveTerm());
 		
 			AgencyManager agencyManager = new AgencyManager();
 			agencyManager.insertAgency(agency);

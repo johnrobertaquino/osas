@@ -40,7 +40,7 @@ public class EditAgencyAction extends AbstractAction {
 			
 			agencyManager.saveAgency(agency);
 			
-			notificationMessage = "Changes to scholarship term has been saved successfully.";
+			notificationMessage = "Changes to agency has been saved successfully.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

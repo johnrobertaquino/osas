@@ -1,4 +1,4 @@
-package org.pup.system.osas.core.dao;
+	package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.SemTerm;
 
 public class SemTermDAO extends DAO {
@@ -29,19 +28,52 @@ public class SemTermDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, Active FROM semterm WHERE SemTermId=" + semTermId);  
+			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, Active, YearlyTermId FROM semterm WHERE SemTermId=" + semTermId);  
 			
 			if (resultSet.next()) {
 				semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
 				semTerm.setSemTermName(resultSet.getString("SemTermName"));
-				semTerm.setDeadline(resultSet.getString("Deadline"));
-				semTerm.setStartDate(resultSet.getString("StartDate"));
-				semTerm.setEndDate(resultSet.getString("EndDate"));
-				semTerm.setSemTermId(resultSet.getInt("Active"));
+				semTerm.setDeadline(resultSet.getDate("Deadline"));
+				semTerm.setStartDate(resultSet.getDate("StartDate"));
+				semTerm.setEndDate(resultSet.getDate("EndDate"));
+				semTerm.setActive(resultSet.getBoolean("Active"));	
+				semTerm.setYearlyTermId(resultSet.getInt("YearlyTermId"));
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getSemTermBySemTermId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return semTerm;
+	}
+	
+	public SemTerm getSemTermByActive(boolean active) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		SemTerm semTerm = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, Active, YearlyTermId FROM semterm WHERE Active=" + active);  
+			
+			if (resultSet.next()) {
+				semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				semTerm.setSemTermName(resultSet.getString("SemTermName"));
+				semTerm.setDeadline(resultSet.getDate("Deadline"));
+				semTerm.setStartDate(resultSet.getDate("StartDate"));
+				semTerm.setEndDate(resultSet.getDate("EndDate"));
+				semTerm.setActive(resultSet.getBoolean("Active"));	
+				semTerm.setYearlyTermId(resultSet.getInt("YearlyTermId"));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getSemTermByActive method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
@@ -57,11 +89,13 @@ public class SemTermDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO semterm(SemTermName, Deadline, StartDate, EndDate, Active) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO semterm(SemTermName, Deadline, StartDate, EndDate, Active, YearlyTermId) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, semTerm.getSemTermName());
-			statement.setString(2, semTerm.getDeadline());
-			statement.setString(3, semTerm.getStartDate());
-			statement.setString(4, semTerm.getEndDate());
+			statement.setDate(2, new Date(semTerm.getDeadline().getTime()));
+			statement.setDate(3, new Date(semTerm.getStartDate().getTime()));
+			statement.setDate(4, new Date(semTerm.getEndDate().getTime()));
+			statement.setBoolean(5, semTerm.isActive());
+			statement.setInt(6, semTerm.getYearlyTermId());
 			
 			statement.executeUpdate();
 			
@@ -91,7 +125,7 @@ public class SemTermDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, SemTermId FROM semterm WHERE SemTermId=1");  
+			resultSet = statement.executeQuery("SELECT SemTermId, SemTermName, Deadline, StartDate, EndDate, Active, YearlyTermId FROM semterm");  
 			
 			while (resultSet.next()) {
 				if (semTermList == null) {
@@ -101,14 +135,16 @@ public class SemTermDAO extends DAO {
 				semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
 				semTerm.setSemTermName(resultSet.getString("SemTermName"));
-				semTerm.setDeadline(resultSet.getString("Deadline"));
-				semTerm.setEndDate(resultSet.getString("EndDate"));
-				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				semTerm.setDeadline(resultSet.getDate("Deadline"));
+				semTerm.setStartDate(resultSet.getDate("StartDate"));
+				semTerm.setEndDate(resultSet.getDate("EndDate"));
+				semTerm.setActive(resultSet.getBoolean("Active"));
+				semTerm.setYearlyTermId(resultSet.getInt("YearlyTermId"));
 				
 				semTermList.add(semTerm);
 			}
 		} catch (Exception e) {
-			throw new Exception("Error occurred while doing getAgencyList method", e);
+			throw new Exception("Error occurred while doing getSemTermList method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}

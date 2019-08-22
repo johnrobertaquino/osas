@@ -11,12 +11,14 @@
 	
 		<interceptors>
 			<interceptor name="userSessionInterceptor" class="org.pup.system.osas.ui.interceptor.UserSessionInterceptor"></interceptor>
+			<interceptor name="termInterceptor" class="org.pup.system.osas.ui.interceptor.TermInterceptor"></interceptor>
 			<interceptor name="firstTimeLoginInterceptor" class="org.pup.system.osas.ui.interceptor.FirstTimeLoginInterceptor"></interceptor>
 			<interceptor-stack name="userSessionStack">
 			    <interceptor-ref name="timer" /> 
             	<interceptor-ref name="logger" /> 
             	<interceptor-ref name="defaultStack" /> 
 				<interceptor-ref name="userSessionInterceptor"/>
+				<interceptor-ref name="termInterceptor"/>
 				<interceptor-ref name="firstTimeLoginInterceptor"/>
 			</interceptor-stack>
 		</interceptors>
