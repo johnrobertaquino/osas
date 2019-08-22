@@ -132,7 +132,7 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT * FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE ScholarshipProgramName LIKE '%"
+					"SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshipprogram WHERE ScholarshipProgramName LIKE '%"
 							+ scholarshipProgramSearchText + "%'");
 
 			while (resultSet.next()) {
