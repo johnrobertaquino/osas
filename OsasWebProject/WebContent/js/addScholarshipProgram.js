@@ -16,20 +16,20 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
-		
-		if($('#scholarshipProgramName').val() === '')
+	
+		if($('#scholarshipProgram').val() === '')
 		{
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Scholarship Program name can\'t be blank.";
+			errorMessage = errorMessage + "Scholarship Program can\'t be blank.";
 		}
 		if($('#agencyId').val() === '')
 		{
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Agency Id can\'t be blank.";
+			errorMessage = errorMessage + "Agency name can\'t be blank.";
 		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this scholarship program?", function() {
@@ -40,9 +40,4 @@ $(document).ready(function() {
 			popUp(errorMessage);
 		}
 	});
-	
-	$('#addScholarshipProgramButton').click(function() {
-		location.href = "displayScholarshipProgramList";
-	});
-	
 });

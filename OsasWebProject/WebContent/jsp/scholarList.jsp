@@ -85,6 +85,7 @@
 					<th>Last Name</th>
 					<th>Email</th>
 					<th>Contact Number</th>
+					<th>Status</th>
 				</tr>
 				<s:iterator value="scholarList" status="rowStatus" var="scholar">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -94,6 +95,7 @@
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="email" /></td>
 						<td><s:property value="contactNumber" /></td>
+						<td>Incomplete</td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

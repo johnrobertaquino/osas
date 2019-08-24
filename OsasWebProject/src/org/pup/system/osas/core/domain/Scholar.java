@@ -55,19 +55,25 @@ public class Scholar {
 		this.middleName = middleName;
 	}
 
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	/**
+	 * @return the contactNumber
+	 */
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	/**
+	 * @param contactNumber the contactNumber to set
+	 */
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 }

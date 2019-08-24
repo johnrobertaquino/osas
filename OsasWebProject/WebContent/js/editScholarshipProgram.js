@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		location.href = "displayScholarshipProgram";
+		location.href = "displayScholarshipProgramList";
 	});
 	
 	$("#contactNumber").keypress(function (e) {

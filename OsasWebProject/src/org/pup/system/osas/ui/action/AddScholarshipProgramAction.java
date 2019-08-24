@@ -1,6 +1,8 @@
 package org.pup.system.osas.ui.action;
 
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.manager.AgencyManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -11,27 +13,28 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
 
-	private String scholarshipProgramId;
-	
 	private String scholarshipProgramName;
-	
+
 	private String agencyId;
-	
+
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship";
-		
+
 		String actionResult = FORWARD_SUCCESS;
-		
+
 		try {
+			AgencyManager agencyManager = new AgencyManager();
+			Agency agency = agencyManager.getAgency(Integer.parseInt(agencyId));
+			
 			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
 			scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
-			scholarshipProgram.setAgencyId(agencyId);
-		
+			scholarshipProgram.setAgency(agency);
+
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
-			
-			notificationMessage = "Agency has been saved successfully added.";
+
+			notificationMessage = "Scholarship Program has been saved successfully added.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -41,16 +44,8 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			actionResult = FORWARD_ERROR;
 			e.printStackTrace();
 		}
-		
+
 		return actionResult;
-	}
-
-	public String getScholarshipProgramId() {
-		return scholarshipProgramId;
-	}
-
-	public void setScholarshipProgramId(String scholarshipProgramId) {
-		this.scholarshipProgramId = scholarshipProgramId;
 	}
 
 	public String getScholarshipProgramName() {
@@ -68,5 +63,5 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	public void setAgencyId(String agencyId) {
 		this.agencyId = agencyId;
 	}
-	
+
 }

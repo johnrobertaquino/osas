@@ -3,7 +3,7 @@ package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
-import org.pup.system.osas.exception.BusinessException;
+import org.pup.system.osas.exception.BusinessException;	
 
 public class EditScholarshipProgramAction extends AbstractAction {
 
@@ -30,7 +30,7 @@ public class EditScholarshipProgramAction extends AbstractAction {
 			
 			scholarshipProgram.setScholarshipProgramId(scholarshipProgramId);
 			scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
-			scholarshipProgram.setAgencyId(agencyId);
+			//scholarshipProgram.setAgencyId(agencyId);
 
 			scholarshipProgramManager.saveScholarshipProgram(scholarshipProgram);
 			
@@ -79,6 +79,5 @@ public class EditScholarshipProgramAction extends AbstractAction {
 	public void setAgencyId(String agencyId) {
 		this.agencyId = agencyId;
 	}
-
 
 }

@@ -65,16 +65,18 @@
 			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="addUserForm" action="addUser" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>First Name</span>
-    					<div><input id="firstName" name="firstName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Middle Name (optional)</span>
-    					<div><input id="middleName" name="middleName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text"></div>
+	    				<div>
+	    					<span>First Name</span>
+	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    				</div>
+	    				<div>
+	    					<span>Middle Name</span>
+	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    				</div>
+	    				<div>
+	    					<span>Last Name</span>
+	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
@@ -88,7 +90,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>

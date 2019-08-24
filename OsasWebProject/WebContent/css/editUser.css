@@ -5,6 +5,19 @@
 		font-size: 25px;
 		color: #4d4d4d;
 	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullName {
+	width: 548px;
+	}
+	#editUserContentBody #fullName span {
+		margin-right: 92px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput {
+		width: 548px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput input {
+		width: 156px;
+		margin: 10px 0px;
+	}
 }
 @media only screen and (max-width: 1110px) {
 	#editUserContentBody #contentBodyLeftPane #title {
@@ -14,6 +27,19 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
+		#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullName {
+	width: 548px;
+	}
+	#editUserContentBody #fullName span {
+		margin-right: 111px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput {
+		width: 548px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput input {
+		width: 156px;
+		margin: 10px 0px;
+	}
 }
 @media only screen and (max-width: 1000px) {
 	#editUserContentBody #contentBodyLeftPane #title {
@@ -22,5 +48,18 @@
 		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center
+	}
+		#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullName {
+	width: 548px;
+	}
+	#editUserContentBody #fullName span {
+		margin-right: 111px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput {
+		width: 548px;
+	}
+	#editUserContentBody #rightPaneContentHolder .rightPaneElement #fullNameInput input {
+		width: 156px;
+		margin: 10px 0px;
 	}
 }

@@ -21,7 +21,7 @@ public class DisplayScholarListAction extends AbstractAction
 
 		try {
 			ScholarManager scholarManager = new ScholarManager();
-			scholarList = scholarManager.getScholarList();
+			scholarList = scholarManager.getScholarList(1);
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

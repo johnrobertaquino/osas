@@ -33,16 +33,16 @@
 		width: 200px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 13px;
+		font-size: 14px;
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 600px;
+		width: 730px;
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: -36px;
+		height: 32px;
+		float: left;
+    	width: 32px;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -58,15 +58,15 @@
 		width: 200px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 10px;
+		font-size: 14px;
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: -36px;
+		height: 32px;
+		float: left;
+	    width: 32px;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -82,15 +82,28 @@
 		width: 160px;
 	}
 	#agencyListContentBody #contentBodyRightPane {
-		font-size: 10px;
+		font-size: 14px;
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 120px;
+		
 	}
 	#agencyListContentBody #searchAgency img {
-	height: 32px;
-	float: left;
-	margin-left: 20px;
+		height: 32px;
+		float: left;
+		width: 32px;
+	}
+	#agencyListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#agencyListContentBody #searchAgency img {
+		height: 32px;
+		float: left;
+		margin-left: 20px;
 	}
 	#agencyListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

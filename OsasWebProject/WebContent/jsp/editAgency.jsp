@@ -79,7 +79,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}" placeholder="+63"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

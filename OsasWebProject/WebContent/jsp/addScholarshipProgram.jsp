@@ -57,22 +57,51 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="ScholarshipProgramContentBody" class="featureContent">
+	<div id="addScholarshipProgramContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
 			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addUserContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
+				<form class="addScholarhipProgramContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text"></div>
-    				</div>
+    				    <span>Agency</span>
+	    				<div>
+		    				<select name="agencyId">
+		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
+		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
+					</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Agency Id</span>
-    					<div><input id="agencyId" name="address" type="text"></div>
+    					<span>Scholarship Program</span>
+    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
     				</div>
+    				<table>
+						<tr>
+							<th>Qualification Name</th>
+						</tr>
+						<s:iterator value="scholarshipQualification" status="rowStatus" var="scholarshipQualification">
+							<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+								<td><s:property value="scholarshipQualificationName" /></td>
+								<td>Birth Certificate</td>
+								<td>
+									<div class="w3-dropdown-click tableMenu">
+		  								<div class="tableMenuButton">
+		  									<img src="images/setting_game_configuration_option-512.png" />
+		  									<img src="images/arrow-down-01-512.png" />
+		  								</div>
+		  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+			    							<a onclick="displayEditScholar('<s:property value="scholarId" />')" class="w3-bar-item w3-button">Edit</a>
+		    									<a onclick="showScholarDeletePopup('<s:property value="scholarId" />')" class="w3-bar-item w3-button">Delete</a>
+		  								</div>
+									</div>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">

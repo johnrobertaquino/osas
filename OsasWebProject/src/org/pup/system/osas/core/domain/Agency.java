@@ -11,9 +11,9 @@ public class Agency {
 	private String contactPerson;
 	
 	private String contactNumber;
-	
-	private ScholarshipProgram scholarshipProgram;
 
+	private SemTerm semTerm;
+	
 	public int getAgencyId() {
 		return agencyId;
 	}
@@ -46,14 +46,6 @@ public class Agency {
 		this.contactPerson = contactPerson;
 	}
 
-	public ScholarshipProgram getScholarshipProgram() {
-		return scholarshipProgram;
-	}
-
-	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
-		this.scholarshipProgram = scholarshipProgram;
-	}
-
 	public String getContactNumber() {
 		return contactNumber;
 	}
@@ -62,5 +54,18 @@ public class Agency {
 		this.contactNumber = contactNumber;
 	}
 
+	/**
+	 * @return the semTerm
+	 */
+	public SemTerm getSemTerm() {
+		return semTerm;
+	}
+
+	/**
+	 * @param semTerm the semTerm to set
+	 */
+	public void setSemTerm(SemTerm semTerm) {
+		this.semTerm = semTerm;
+	}
 	
 }

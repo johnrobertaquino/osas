@@ -1,7 +1,6 @@
-package org.pup.system.osas.core.dao;
+	package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class AgencyDAO extends DAO {
 
@@ -28,7 +28,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber FROM agency WHERE AgencyId=" + agencyId);  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyId=" + agencyId);  
 			
 			if (resultSet.next()) {
 				agency = new Agency();
@@ -37,6 +37,10 @@ public class AgencyDAO extends DAO {
 				agency.setAgencyName(resultSet.getString("AgencyName"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
+
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				agency.setSemTerm(semTerm);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getAgencyByAgencyId method", e);
@@ -55,12 +59,12 @@ public class AgencyDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber, SemTermId) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, agency.getAgencyName());
 			statement.setString(2, agency.getAddress());
 			statement.setString(3, agency.getContactPerson());
 			statement.setString(4, agency.getContactNumber());
-
+			statement.setInt(5, agency.getSemTerm().getSemTermId());
 			
 			statement.executeUpdate();
 			
@@ -78,7 +82,7 @@ public class AgencyDAO extends DAO {
 		}
 	}
 
-	public List<Agency> getAgencyList() throws Exception {
+	public List<Agency> getAgencyList(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -90,7 +94,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson FROM agency");  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson, SemTermId FROM agency WHERE SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (agencyList == null) {
@@ -103,6 +107,10 @@ public class AgencyDAO extends DAO {
 				agency.setAddress(resultSet.getString("Address"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
+
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				agency.setSemTerm(semTerm);
 				
 				agencyList.add(agency);
 			}

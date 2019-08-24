@@ -70,11 +70,6 @@
     					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgram.scholarshipProgramName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>AgencyId</span>
-    					<div><input id="agencyId" name="agencyId" type="text" value="${scholarshipProgram.agencyId}"></div>
-    				</div>
-    				
-    				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>

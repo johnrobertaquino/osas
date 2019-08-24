@@ -32,6 +32,7 @@ $(document).ready(function() {
 	$('#addAgencyButton').click(function() {
 		location.href = "displayAddAgency";
 	});
+
 });
 
 function showAgencyDeletePopup(agencyId) {

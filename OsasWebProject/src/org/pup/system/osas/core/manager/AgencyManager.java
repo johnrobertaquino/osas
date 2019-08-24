@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.AgencyDAO;
 import org.pup.system.osas.core.dao.ConnectionUtil;
+import org.pup.system.osas.core.dao.SemTermDAO;
 import org.pup.system.osas.core.domain.Agency;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class AgencyManager {
 	
@@ -53,10 +55,10 @@ public class AgencyManager {
 		return agency;
 	}
 	
-	public List<Agency> getAgencyList() throws Exception {
+	public List<Agency> getAgencyList(int semTermId) throws Exception {
 		AgencyDAO agencyDAO = null;
 		List<Agency> agencyList = null;
-		
+
 		Connection connection = null;
 		
 		try {
@@ -64,7 +66,16 @@ public class AgencyManager {
 			
 			agencyDAO = new AgencyDAO(connection);
 			
-			agencyList = agencyDAO.getAgencyList();
+			agencyList = agencyDAO.getAgencyList(semTermId);
+
+			if (agencyList != null) {
+				SemTermDAO semTermDAO = new SemTermDAO(connection);
+
+				for (Agency agency : agencyList) {
+					SemTerm semTerm = semTermDAO.getSemTermBySemTermId(agency.getSemTerm().getSemTermId());
+					agency.setSemTerm(semTerm);
+				}
+			}
 			
 		} catch (Exception e) {
 			throw e;

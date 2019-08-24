@@ -6,8 +6,7 @@ public class ScholarshipProgram {
 	
 	private String scholarshipProgramName;
 	
-	private String agencyId;
-	
+	private Agency agency;
 	
 	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
@@ -25,12 +24,18 @@ public class ScholarshipProgram {
 		this.scholarshipProgramName = scholarshipProgramName;
 	}
 
-	public String getAgencyId() {
-		return agencyId;
+	/**
+	 * @return the agency
+	 */
+	public Agency getAgency() {
+		return agency;
 	}
 
-	public void setAgencyId(String agencyId) {
-		this.agencyId = agencyId;
+	/**
+	 * @param agency the agency to set
+	 */
+	public void setAgency(Agency agency) {
+		this.agency = agency;
 	}
 
 }
