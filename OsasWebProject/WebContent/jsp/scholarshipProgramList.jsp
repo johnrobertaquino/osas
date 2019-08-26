@@ -92,7 +92,8 @@
   									<img src="images/setting_game_configuration_option-512.png" />
   									<img src="images/arrow-down-01-512.png" />
   								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
+  									<a onclick="displayScholarshipQualification('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button" id="displayScholarshipQualification">View Qualifications</a>	
 	    							<a onclick="displayEditScholarshipProgram('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Edit</a>
     									<a onclick="showScholarshipProgramDeletePopup('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Delete</a>
   								</div>

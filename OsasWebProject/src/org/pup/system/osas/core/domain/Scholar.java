@@ -14,6 +14,16 @@ public class Scholar {
 	private String email;
 	
 	private String contactNumber;
+	
+	private String program;
+	
+	private int year;
+	
+	private String section;
+	
+	private float gwa;
+	
+	private ScholarshipProgram scholarshipProgram;
 
 	public int getScholarId() {
 		return scholarId;
@@ -75,5 +85,75 @@ public class Scholar {
 	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public ScholarshipProgram getScholarshipProgram() {
+		return scholarshipProgram;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
+		this.scholarshipProgram = scholarshipProgram;
+	}
+
+	/**
+	 * @return the program
+	 */
+	public String getProgram() {
+		return program;
+	}
+
+	/**
+	 * @param program the program to set
+	 */
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	/**
+	 * @return the section
+	 */
+	public String getSection() {
+		return section;
+	}
+
+	/**
+	 * @param section the section to set
+	 */
+	public void setSection(String section) {
+		this.section = section;
+	}
+
+	/**
+	 * @return the gwa
+	 */
+	public float getGwa() {
+		return gwa;
+	}
+
+	/**
+	 * @param gwa the gwa to set
+	 */
+	public void setGwa(float gwa) {
+		this.gwa = gwa;
 	}
 }

@@ -8,13 +8,13 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarshipProgram.css">
+<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css">
+<link rel="stylesheet" type="text/css" href="css/addScholarshipQualification.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarshipProgram.js"></script>
+<script type="text/javascript" src="js/addScholarshipQualification.js"></script>
 </head>
 <body>
 <div id="header">
@@ -57,27 +57,27 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addScholarshipProgramContentBody" class="featureContent">
+	<div id="addScholarshipQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
+			<div id="title">ADD SCHOLARSHIP QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addScholarhipProgramContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
+				<form class="addScholarhipQualificationContent" id="scholarshipQualificationForm" action="addScholarshipQualification" method="POST">
     				<div class="rightPaneElement withTitle">
-    				    <span>Agency</span>
+    				    <span>Scholarship Program</span>
 	    				<div>
 		    				<select name="agencyId">
 		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
+		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
+    					<span>Scholarship Qualification Name</span>
+    					<div><input id="scholarshipQualification" name="scholarshipQualificationName" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
@@ -85,7 +85,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Scholarship Program</span>
+								<span>Add Scholarship Qualification</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

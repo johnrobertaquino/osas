@@ -1,29 +1,29 @@
 package org.pup.system.osas.ui.action;
 
-import java.util.List;
-
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
-public class DisplayAddScholarAction extends AbstractAction  {
-	
+public class DeleteScholarshipQualificationAction extends AbstractAction{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2936689632600612372L;
-
-	private List<ScholarshipProgram> scholarshipProgramList;
+	private static final long serialVersionUID = -4998330923614620844L;
+	
+	private int scholarshipProgramId;
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Scholarship";
 		
 		String actionResult = FORWARD_SUCCESS;
-		
+
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());	
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
+			scholarshipProgramManager.deleteScholarshipProgram(scholarshipProgram);
+			notificationMessage = "User has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -38,16 +38,18 @@ public class DisplayAddScholarAction extends AbstractAction  {
 	}
 
 	/**
-	 * @return the scholarshipProgramList
+	 * @return the scholarshipProgramId
 	 */
-	public List<ScholarshipProgram> getScholarshipProgramList() {
-		return scholarshipProgramList;
+	public int getScholarshipProgramId() {
+		return scholarshipProgramId;
 	}
 
 	/**
-	 * @param scholarshipProgramList the scholarshipProgramList to set
+	 * @param agencyId the agencyId to set
 	 */
-	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
-		this.scholarshipProgramList = scholarshipProgramList;
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
 	}
+	
 }
+

@@ -7,7 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 
 public class ScholarDAO extends DAO {
 
@@ -27,7 +29,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber FROM scholar WHERE ScholarId=" + scholarId);  
+			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber, Program, Year, Section, GWA, ScholarshipProgramId FROM scholar WHERE ScholarId=" + scholarId);  
 			
 			if (resultSet.next()) {
 				scholar = new Scholar();
@@ -38,6 +40,15 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
+				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setYear(resultSet.getInt("Year"));
+				scholar.setSection(resultSet.getString("Section"));
+				scholar.setGwa(resultSet.getFloat("GWA"));
+
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholar.setScholarshipProgram(scholarshipProgram);
+			
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getScholarByScholarId method", e);
@@ -56,14 +67,18 @@ public class ScholarDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO scholar(StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO scholar(StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber, Program, Year, Section, GWA, ScholarshipProgramId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, scholar.getStudentNumber());
 			statement.setString(2, scholar.getFirstName());
 			statement.setString(3, scholar.getMiddleName());
 			statement.setString(4, scholar.getLastName());
 			statement.setString(5, scholar.getEmail());
 			statement.setString(6, scholar.getContactNumber());
-
+			statement.setString(7, scholar.getProgram());
+			statement.setInt(8, scholar.getYear());
+			statement.setString(9, scholar.getSection());
+			statement.setFloat(10, scholar.getGwa());
+			statement.setInt(11, scholar.getScholarshipProgram().getScholarshipProgramId());
 			
 			statement.executeUpdate();
 			
@@ -93,7 +108,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT * FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId);
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId);
 			
 			while (resultSet.next()) {
 				if (scholarList == null) {
@@ -108,6 +123,14 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
+				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setYear(resultSet.getInt("Year"));
+				scholar.setSection(resultSet.getString("Section"));
+				scholar.setGwa(resultSet.getFloat("GWA"));
+				
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholar.setScholarshipProgram(scholarshipProgram);
 				
 				scholarList.add(scholar);
 			}
@@ -132,7 +155,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber FROM scholar WHERE StudentNumber LIKE '%"
+			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber, Program, Year, Section, GWA, ScholarshipProgramId FROM scholar WHERE StudentNumber LIKE '%"
 					+ scholarSearchText + "%' OR FirstName LIKE '%" + scholarSearchText + "%'");  
 			
 			while (resultSet.next()) {
@@ -148,6 +171,14 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
+				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setYear(resultSet.getInt("Year"));
+				scholar.setSection(resultSet.getString("Section"));
+				scholar.setGwa(resultSet.getFloat("GWA"));
+				
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholar.setScholarshipProgram(scholarshipProgram);
 	
 				scholarList.add(scholar);
 			}
@@ -167,18 +198,22 @@ public class ScholarDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE scholar SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Email=?, ContactNumber=? WHERE ScholarId=?");
+			statement = connection.prepareStatement("UPDATE scholar SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Email=?, ContactNumber=?, Program=?, Year=?, Section, GWA=?, ScholarshipProgramId=? WHERE ScholarId=?");
 			statement.setString(1, scholar.getStudentNumber());
 			statement.setString(2, scholar.getFirstName());
 			statement.setString(3, scholar.getMiddleName());
 			statement.setString(4, scholar.getLastName());
 			statement.setString(5, scholar.getEmail());
 			statement.setString(6, scholar.getContactNumber());
-			statement.setInt(7, scholar.getScholarId());
+			statement.setString(7, scholar.getProgram());
+			statement.setInt(8, scholar.getYear());
+			statement.setString(9, scholar.getSection());
+			statement.setFloat(10, scholar.getGwa());
+			statement.setInt(11, scholar.getScholarshipProgram().getScholarshipProgramId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {
-			throw new Exception("Error occurred while doing saveUser method", e);
+			throw new Exception("Error occurred while doing saveScholar method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(statement);
 		}

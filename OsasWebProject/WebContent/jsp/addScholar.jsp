@@ -66,6 +66,22 @@
 			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="scholarForm" action="addScholar" method="POST">
     				<div class="rightPaneElement withTitle">
+    				    <span>Scholarship Program</span>
+	    				<div>
+		    				<select name="scholarshipProgramId">
+		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="sholarshipProgram">
+		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
+					</div>
+					<div class="rightPaneElement withTitle">
+	    				<div>
+	    					<span>Student Number</span>
+	    					<div><input id="studentNumber" name="studentNumber" type="text"></div>
+	    				</div>
+	    			</div>
+    				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
 	    					<div><input id="firstName" name="firstName" type="text"></div>
@@ -87,7 +103,22 @@
     					<span>Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
     				</div>
-
+    				<div class="rightPaneElement withTitle">
+    					<span>Program</span>
+    					<div><input id="program" name="program" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Year</span>
+    					<div><input id="year" name="year" type="text"></div>
+    				</div>
+    			   <div class="rightPaneElement withTitle">
+    					<span>Section</span>
+    					<div><input id="section" name="section" type="text"></div>
+    				</div>
+    			    <div class="rightPaneElement withTitle">
+    					<span>GWA</span>
+    					<div><input id="gwa" name="gwa" type="text"></div>
+    				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">

@@ -1,0 +1,155 @@
+@charset "ISO-8859-1";
+#scholarshipQualificationListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#scholarshipQualificationListContentBody #searchScholarshipQualificationButton {
+		float: left;
+}
+#scholarshipQualificationListContentBody #addScholarshipQualificationButton {
+		float: right;
+}
+
+#scholarshipQualificationListContentBody #searchScholarshipQualification {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#scholarshipQualificationListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#scholarshipQualificationListContentBody #searchScholarshipQualificationButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#scholarshipQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+		width: 730px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarshipQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarshipQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarshipQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarshipQualificationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+		height: 32px;
+		float: left;
+		width: 650px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+	height: 32px;
+	float: left;
+	}
+	#scholarshipQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarshipQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarshipQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarshipQualificationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+		width: 630px;
+		
+	}
+	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
+		height: 32px;
+		float: left;
+		margin-left: 20px;
+		width: 32px;
+	}
+	#scholarshipQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}

@@ -3,7 +3,9 @@ package org.pup.system.osas.ui.action;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarManager;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 
@@ -20,8 +22,8 @@ public class DisplayScholarListAction extends AbstractAction
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			ScholarManager scholarManager = new ScholarManager();
-			scholarList = scholarManager.getScholarList(1);
+			ScholarManager scholarshipProgramManager = new ScholarManager();
+			setScholarList(scholarshipProgramManager.getScholarList(getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -35,11 +37,17 @@ public class DisplayScholarListAction extends AbstractAction
 		return actionResult;
 		
 	}
-	
+
+	/**
+	 * @return the scholarList
+	 */
 	public List<Scholar> getScholarList() {
 		return scholarList;
 	}
 
+	/**
+	 * @param scholarList the scholarList to set
+	 */
 	public void setScholarList(List<Scholar> scholarList) {
 		this.scholarList = scholarList;
 	}
