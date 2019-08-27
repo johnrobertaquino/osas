@@ -156,7 +156,7 @@ public class ScholarDAO extends DAO {
 			statement = connection.createStatement(); 
 			
 			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Email, ContactNumber, Program, Year, Section, GWA, ScholarshipProgramId FROM scholar WHERE StudentNumber LIKE '%"
-					+ scholarSearchText + "%' OR FirstName LIKE '%" + scholarSearchText + "%'");  
+					+ scholarSearchText + "%' OR FirstName LIKE '%" + scholarSearchText + "%' OR MiddleName LIKE '%" + scholarSearchText + "%' OR LastName LIKE '%" + scholarSearchText + "%' OR Program LIKE '%" + scholarSearchText + "%'");  
 			
 			while (resultSet.next()) {
 				if (scholarList == null) {
@@ -198,7 +198,7 @@ public class ScholarDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE scholar SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Email=?, ContactNumber=?, Program=?, Year=?, Section, GWA=?, ScholarshipProgramId=? WHERE ScholarId=?");
+			statement = connection.prepareStatement("UPDATE scholar SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Email=?, ContactNumber=?, Program=?, Year=?, Section=?, GWA=? WHERE ScholarId=?");
 			statement.setString(1, scholar.getStudentNumber());
 			statement.setString(2, scholar.getFirstName());
 			statement.setString(3, scholar.getMiddleName());
@@ -209,7 +209,7 @@ public class ScholarDAO extends DAO {
 			statement.setInt(8, scholar.getYear());
 			statement.setString(9, scholar.getSection());
 			statement.setFloat(10, scholar.getGwa());
-			statement.setInt(11, scholar.getScholarshipProgram().getScholarshipProgramId());
+			statement.setInt(11, scholar.getScholarId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

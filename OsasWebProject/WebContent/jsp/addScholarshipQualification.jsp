@@ -68,8 +68,8 @@
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
 	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
+		    				<select name="scholarshipProgramId">
+		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>
@@ -77,7 +77,7 @@
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Qualification Name</span>
-    					<div><input id="scholarshipQualification" name="scholarshipQualificationName" type="text"></div>
+    					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

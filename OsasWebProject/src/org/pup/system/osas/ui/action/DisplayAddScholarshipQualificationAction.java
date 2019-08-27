@@ -2,8 +2,8 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
-import org.pup.system.osas.core.domain.ScholarshipQualification;
-import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class DisplayAddScholarshipQualificationAction extends AbstractAction  {
@@ -13,7 +13,7 @@ public class DisplayAddScholarshipQualificationAction extends AbstractAction  {
 	 */
 	private static final long serialVersionUID = 2936689632600612372L;
 	
-	private List<ScholarshipQualification> scholarshipQualificationList;
+	private List<ScholarshipProgram> scholarshipProgramList;
 
 	@Override
 	public String execute() throws Exception {
@@ -22,8 +22,8 @@ public class DisplayAddScholarshipQualificationAction extends AbstractAction  {
 		String actionResult = FORWARD_SUCCESS;
 		
 		try {
-			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			scholarshipQualificationList = scholarshipQualificationManager.getScholarshipQualificationList(getCurrentActiveTerm().getSemTermId());	
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId()));	
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -38,18 +38,17 @@ public class DisplayAddScholarshipQualificationAction extends AbstractAction  {
 	}
 
 	/**
-	 * @return the scholarshipQualificationList
+	 * @return the scholarshipProgramList
 	 */
-	public List<ScholarshipQualification> getScholarshipQualificationList() {
-		return scholarshipQualificationList;
+	public List<ScholarshipProgram> getScholarshipProgramList() {
+		return scholarshipProgramList;
 	}
 
 	/**
-	 * @param scholarshipQualificationList the scholarshipQualificationList to set
+	 * @param scholarshipProgramList the scholarshipProgramList to set
 	 */
-	public void setScholarshipQualificationList(List<ScholarshipQualification> scholarshipQualificationList) {
-		this.scholarshipQualificationList = scholarshipQualificationList;
+	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
+		this.scholarshipProgramList = scholarshipProgramList;
 	}
-	
 	
 }

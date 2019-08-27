@@ -22,8 +22,8 @@ public class DisplayScholarListAction extends AbstractAction
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			ScholarManager scholarshipProgramManager = new ScholarManager();
-			setScholarList(scholarshipProgramManager.getScholarList(getCurrentActiveTerm().getSemTermId()));
+			ScholarManager scholarshipManager = new ScholarManager();
+			scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

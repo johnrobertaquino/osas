@@ -16,7 +16,6 @@ public class ScholarshipQualificationManager {
 	public void insertScholarshipQualification(ScholarshipQualification scholarshipQualificatio) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		Connection connection = null;
-		int semTermId = 1;
 
 		try {
 			connection = ConnectionUtil.createConnection();
@@ -25,18 +24,6 @@ public class ScholarshipQualificationManager {
 
 			ScholarshipQualification scholarshipQualification = null;
 			scholarshipQualificationDAO.insertScholarshipQualification(scholarshipQualification);
-			
-
-			List<ScholarshipQualification> scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationList(semTermId);
-
-			if (scholarshipQualificationList != null) {
-				ScholarshipProgramDAO scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
-
-				for (ScholarshipQualification scholarshipQualification1 : scholarshipQualificationList) {
-					ScholarshipProgram scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramId(scholarshipQualification1.getScholarshipProgram().getScholarshipProgramId());
-					scholarshipQualification1.setScholarshipProgram(scholarshipProgram);
-				}
-			}
 
 			connection.commit();
 

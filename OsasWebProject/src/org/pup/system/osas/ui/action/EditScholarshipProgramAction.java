@@ -35,6 +35,7 @@ public class EditScholarshipProgramAction extends AbstractAction {
 			scholarshipProgramManager.saveScholarshipProgram(scholarshipProgram);
 			
 			notificationMessage = "Changes to scholarship program has been saved successfully.";
+			
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

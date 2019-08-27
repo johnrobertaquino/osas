@@ -1,7 +1,7 @@
 package org.pup.system.osas.ui.action;
 
-import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.manager.ScholarshipProgramManager;
+import org.pup.system.osas.core.domain.ScholarshipQualification;
+import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class DeleteScholarshipQualificationAction extends AbstractAction{
@@ -11,7 +11,7 @@ public class DeleteScholarshipQualificationAction extends AbstractAction{
 	 */
 	private static final long serialVersionUID = -4998330923614620844L;
 	
-	private int scholarshipProgramId;
+	private int scholarshipQualificationId;
 	
 	@Override
 	public String execute() throws Exception {
@@ -20,10 +20,10 @@ public class DeleteScholarshipQualificationAction extends AbstractAction{
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
-			scholarshipProgramManager.deleteScholarshipProgram(scholarshipProgram);
-			notificationMessage = "User has been successfully deleted.";
+			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
+			ScholarshipQualification scholarshipQualification = scholarshipQualificationManager.getScholarshipQualification(scholarshipQualificationId);
+			scholarshipQualificationManager.deleteScholarshipQualification(scholarshipQualification);
+			notificationMessage = "Scholarship qualification has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -38,17 +38,17 @@ public class DeleteScholarshipQualificationAction extends AbstractAction{
 	}
 
 	/**
-	 * @return the scholarshipProgramId
+	 * @return the scholarshipQualificationId
 	 */
-	public int getScholarshipProgramId() {
-		return scholarshipProgramId;
+	public int getScholarshipQualificationId() {
+		return scholarshipQualificationId;
 	}
 
 	/**
 	 * @param agencyId the agencyId to set
 	 */
-	public void setScholarshipProgramId(int scholarshipProgramId) {
-		this.scholarshipProgramId = scholarshipProgramId;
+	public void setScholarshipQualificationId(int scholarshipQualificationId) {
+		this.scholarshipQualificationId = scholarshipQualificationId;
 	}
 	
 }

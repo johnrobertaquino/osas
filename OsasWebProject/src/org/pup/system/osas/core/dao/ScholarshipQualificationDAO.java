@@ -60,13 +60,10 @@ public class ScholarshipQualificationDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO scholarshipqualification(ScholarshipQualificationName, ScholarshipQualificationId) VALUES (?, ?)",
+					"INSERT INTO scholarshipqualification(ScholarshipQualificationName, ScholarshipProgramId) VALUES (?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, scholarshipQualification.getScholarshipQualificationName());
-
-			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
-			statement.setInt(2, scholarshipProgram.getScholarshipProgramId());
-			scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+			statement.setInt(2, scholarshipQualification.getScholarshipProgram().getScholarshipProgramId());
 
 			statement.executeUpdate();
 
@@ -171,7 +168,7 @@ public class ScholarshipQualificationDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"UPDATE scholarshipprogram SET ScholarshipProgramName=? WHERE ScholarshipProgramId=?");
+					"UPDATE scholarshipqualification SET ScholarshipQualificationName=? WHERE ScholarshipQualificationId=?");
 			statement.setString(1, scholarshipQualification.getScholarshipQualificationName());
 			statement.setInt(2, scholarshipQualification.getScholarshipQualificationId());
 

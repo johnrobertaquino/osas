@@ -17,12 +17,12 @@ $(document).ready(function() {
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
 	
-		if($('#scholarshipQualification').val() === '')
+		if($('#scholarshipQualificationName').val() === '')
 		{
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Scholarship Qualification can\'t be blank.";
+			errorMessage = errorMessage + "Scholarship Qualification Name can\'t be blank.";
 		}
 		if($('#agencyId').val() === '')
 		{

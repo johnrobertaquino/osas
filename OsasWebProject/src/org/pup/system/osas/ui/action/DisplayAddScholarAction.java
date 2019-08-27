@@ -23,7 +23,7 @@ public class DisplayAddScholarAction extends AbstractAction  {
 		
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());	
+			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId()));	
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
