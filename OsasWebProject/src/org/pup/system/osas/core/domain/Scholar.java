@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.domain;
 
 public class Scholar {
+	
 	private int scholarId;
 	
 	private String studentNumber;
@@ -17,11 +18,11 @@ public class Scholar {
 	
 	private String program;
 	
-	private int year;
+	private String year;
 	
 	private String section;
 	
-	private float gwa;
+	private String gwa;
 	
 	private ScholarshipProgram scholarshipProgram;
 
@@ -118,14 +119,14 @@ public class Scholar {
 	/**
 	 * @return the year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
 	/**
 	 * @param year the year to set
 	 */
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
@@ -146,14 +147,14 @@ public class Scholar {
 	/**
 	 * @return the gwa
 	 */
-	public float getGwa() {
+	public String getGwa() {
 		return gwa;
 	}
 
 	/**
 	 * @param gwa the gwa to set
 	 */
-	public void setGwa(float gwa) {
+	public void setGwa(String gwa) {
 		this.gwa = gwa;
 	}
 }

@@ -3,6 +3,7 @@ package org.pup.system.osas.ui.action;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.manager.AgencyManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -23,7 +24,7 @@ public class DisplayAddScholarAction extends AbstractAction  {
 		
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId()));	
+			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());	
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

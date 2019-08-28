@@ -69,7 +69,7 @@
     				    <span>Scholarship Program</span>
 	    				<div>
 		    				<select name="scholarshipProgramId">
-		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="sholarshipProgram">
+		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>

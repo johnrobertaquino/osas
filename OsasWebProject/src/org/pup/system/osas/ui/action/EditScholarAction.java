@@ -29,13 +29,13 @@ public class EditScholarAction extends AbstractAction {
 	
 	private String program;
 	
-	private int year;
+	private String year;
 	
 	private String section;
 	
 	private ScholarshipProgram scholarshipProgram;
 	
-	private float gwa;
+	private String gwa;
 	
 	@Override
 	public String execute() throws Exception {
@@ -185,7 +185,7 @@ public class EditScholarAction extends AbstractAction {
 	/**
 	 * @return the year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
@@ -194,7 +194,7 @@ public class EditScholarAction extends AbstractAction {
 	/**
 	 * @param year the year to set
 	 */
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
@@ -239,7 +239,7 @@ public class EditScholarAction extends AbstractAction {
 	/**
 	 * @return the gwa
 	 */
-	public float getGwa() {
+	public String getGwa() {
 		return gwa;
 	}
 
@@ -248,7 +248,7 @@ public class EditScholarAction extends AbstractAction {
 	/**
 	 * @param gwa the gwa to set
 	 */
-	public void setGwa(float gwa) {
+	public void setGwa(String gwa) {
 		this.gwa = gwa;
 	}
 

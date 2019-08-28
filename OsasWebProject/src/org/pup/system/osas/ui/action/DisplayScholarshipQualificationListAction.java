@@ -24,7 +24,7 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 
 		try {
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			scholarshipQualificationList = scholarshipQualificationManager.getScholarshipQualificationList(getCurrentActiveTerm().getSemTermId());
+			setScholarshipQualificationList(scholarshipQualificationManager.getScholarshipQualificationList(getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

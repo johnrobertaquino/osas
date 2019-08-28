@@ -29,11 +29,11 @@ public class AddScholarAction extends AbstractAction {
 	
 	private String program;
 	
-	private int year;
+	private String year;
 	
 	private String section;
 	
-	private float gwa;
+	private String gwa;
 	
 	private String scholarshipProgramId;
 	
@@ -57,6 +57,7 @@ public class AddScholarAction extends AbstractAction {
 			scholar.setProgram(program);
 			scholar.setYear(year);
 			scholar.setSection(section);
+			scholar.setGwa(gwa);
 			scholar.setScholarshipProgram(scholarshipProgram);
 			
 			ScholarManager scholarManager = new ScholarManager();
@@ -159,14 +160,14 @@ public class AddScholarAction extends AbstractAction {
 	/**
 	 * @return the year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
 	/**
 	 * @param year the year to set
 	 */
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
@@ -187,14 +188,14 @@ public class AddScholarAction extends AbstractAction {
 	/**
 	 * @return the gwa
 	 */
-	public float getGwa() {
+	public String getGwa() {
 		return gwa;
 	}
 
 	/**
 	 * @param gwa the gwa to set
 	 */
-	public void setGwa(float gwa) {
+	public void setGwa(String gwa) {
 		this.gwa = gwa;
 	}
 }

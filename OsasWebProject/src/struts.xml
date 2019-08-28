@@ -230,7 +230,7 @@
 		
 					<!-- QUALIFICATION -->
 		
-		<action name="displayScholarshipQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
+		<action name="displayScholarshipQualification" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipQualificationList.jsp</result>
 		</action>

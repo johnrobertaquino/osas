@@ -13,7 +13,7 @@ import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarshipQualificationManager {
 
-	public void insertScholarshipQualification(ScholarshipQualification scholarshipQualificatio) throws Exception {
+	public void insertScholarshipQualification(ScholarshipQualification scholarshipQualification) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		Connection connection = null;
 
@@ -22,7 +22,6 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
-			ScholarshipQualification scholarshipQualification = null;
 			scholarshipQualificationDAO.insertScholarshipQualification(scholarshipQualification);
 
 			connection.commit();

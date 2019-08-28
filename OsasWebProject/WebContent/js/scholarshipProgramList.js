@@ -32,21 +32,19 @@ $(document).ready(function() {
 	$('#addScholarshipProgramButton').click(function() {
 		location.href = "displayAddScholarshipProgram";
 	});
-	
-	$('#displayScholarshipQualification').click(function() {
-		location.href = "displayScholarshipQualificationList";
-	});
-});
 
-function displayScholarshipQualification(scholarshipProgramId) {
-	location.href = "displayScholarshipQualificationList";
-}
+});
 
 function showScholarshipProgramDeletePopup(scholarshipProgramId) {
 	popUpOkCancel("Do you want to delete this scholarship program?", function() {
 		$("#deleteScholarshipProgramForm #scholarshipProgramId").val(scholarshipProgramId);
 		$("#deleteScholarshipProgramForm").submit();
 	});
+}
+
+function displayScholarshipQualification(scholarshipProgramId) {
+	$("#scholarshipQualificationForm #scholarshipProgramId").val(scholarshipProgramId);
+	$("#scholarshipQualificationForm").submit();
 }
 
 function displayEditScholarshipProgram(scholarshipProgramId) {

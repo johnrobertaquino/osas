@@ -36,7 +36,16 @@ public class AddAgencyAction extends AbstractAction {
 			agency.setSemTerm(getCurrentActiveTerm());
 		
 			AgencyManager agencyManager = new AgencyManager();
+			agency = agencyManager.validate(agencyName);
 			agencyManager.insertAgency(agency);
+			
+			if(agency != null) {
+				if(agency.getAgencyName() == agencyName) {
+					throw new BusinessException("Agency name is already exist.");
+				}
+			} else {
+				throw new BusinessException("Agency has been saved successfully added.");
+			}
 			
 			notificationMessage = "Agency has been saved successfully added.";
 		} catch (BusinessException be) {
