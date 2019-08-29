@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.domain;
 
 public class Scholar {
+	
 	private int scholarId;
 	
 	private String studentNumber;
@@ -14,6 +15,16 @@ public class Scholar {
 	private String email;
 	
 	private String contactNumber;
+	
+	private String program;
+	
+	private String year;
+	
+	private String section;
+	
+	private String gwa;
+	
+	private ScholarshipProgram scholarshipProgram;
 
 	public int getScholarId() {
 		return scholarId;
@@ -75,5 +86,75 @@ public class Scholar {
 	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public ScholarshipProgram getScholarshipProgram() {
+		return scholarshipProgram;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
+		this.scholarshipProgram = scholarshipProgram;
+	}
+
+	/**
+	 * @return the program
+	 */
+	public String getProgram() {
+		return program;
+	}
+
+	/**
+	 * @param program the program to set
+	 */
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	/**
+	 * @return the section
+	 */
+	public String getSection() {
+		return section;
+	}
+
+	/**
+	 * @param section the section to set
+	 */
+	public void setSection(String section) {
+		this.section = section;
+	}
+
+	/**
+	 * @return the gwa
+	 */
+	public String getGwa() {
+		return gwa;
+	}
+
+	/**
+	 * @param gwa the gwa to set
+	 */
+	public void setGwa(String gwa) {
+		this.gwa = gwa;
 	}
 }

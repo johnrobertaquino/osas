@@ -58,6 +58,9 @@
 	<form id="deleteScholarshipProgramForm" action="deleteScholarshipProgram" method="POST">
   		<input type="hidden" id="scholarshipProgramId" name="scholarshipProgramId" />
 	</form>
+	<form id="scholarshipQualificationForm" action="displayScholarshipQualification" method="POST">
+  		<input type="hidden" id="scholarshipProgramId" name="scholarshipProgramId" />
+	</form>
 	<form id="editScholarshipProgramForm" action="displayEditScholarshipProgram" method="POST">
   		<input type="hidden" id="scholarshipProgramId" name="scholarshipProgramId" />
 	</form>
@@ -92,7 +95,8 @@
   									<img src="images/setting_game_configuration_option-512.png" />
   									<img src="images/arrow-down-01-512.png" />
   								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
+  									<a onclick="displayScholarshipQualification('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">View Qualifications</a>	
 	    							<a onclick="displayEditScholarshipProgram('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Edit</a>
     									<a onclick="showScholarshipProgramDeletePopup('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button">Delete</a>
   								</div>

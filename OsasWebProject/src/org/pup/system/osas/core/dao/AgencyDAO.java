@@ -8,13 +8,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
+import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.SemTerm;
+import org.pup.system.osas.core.domain.User;
 
 public class AgencyDAO extends DAO {
 
 	public AgencyDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Agency getAgencyByAgencyName(String agencyName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Agency agency = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName=" + agencyName);  
+			
+			if (resultSet.next()) {
+				agency = new Agency();
+				agency.setAgencyId(resultSet.getInt("AgencyId"));
+				agency.setAddress(resultSet.getString("Address"));
+				agency.setAgencyName(resultSet.getString("AgencyName"));
+				agency.setContactPerson(resultSet.getString("ContactPerson"));
+				agency.setContactNumber(resultSet.getString("ContactNumber"));
+
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				agency.setSemTerm(semTerm);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getAgencyByAgencyName method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return agency;
 	}
 	
 	public Agency getAgencyByAgencyId(int agencyId) throws Exception {

@@ -93,7 +93,7 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.	AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
+					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
 
 			while (resultSet.next()) {
 				if (scholarshipProgramList == null) {

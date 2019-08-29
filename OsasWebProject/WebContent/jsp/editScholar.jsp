@@ -67,14 +67,10 @@
 			<div id="rightPaneContentHolder">
 				<form class="editScholarContent" id="editScholarForm" action="editScholar" method="POST">
 					<input name="scholarId" type="hidden" value="${scholar.scholarId}">
-    				
-    				
     				<div class="rightPaneElement withTitle">
     					<span>Student Number</span>
     					<div><input id="studentNumber" name="studentNumber" type="text" value="${scholar.studentNumber}"></div>
     				</div>
-    				
-    				
     				<div class="rightPaneElement withTitle">
     					<span>First Name</span>
     					<div><input id="firstName" name="firstName" type="text" value="${scholar.firstName}"></div>
@@ -98,6 +94,22 @@
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${scholar.contactNumber}" placeholder="+63"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Program</span>
+    					<div><input id="program" name="program" type="text" value="${scholar.program}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Year</span>
+    					<div><input id="year" name="year" type="text" value="${scholar.year}"></div>
+    				</div>
+    			   	<div class="rightPaneElement withTitle">
+    					<span>Section</span>
+    					<div><input id="section" name="section" type="text" value="${scholar.section}"></div>
+    				</div>
+    			    <div class="rightPaneElement withTitle">
+    					<span>GWA</span>
+    					<div><input id="gwa" name="gwa" type="text" value="${scholar.gwa}"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

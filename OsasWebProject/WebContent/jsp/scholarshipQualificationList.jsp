@@ -6,15 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarshipProgram.css">
+<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarshipProgram.js"></script>
+<script type="text/javascript" src="js/scholarshipQualificationList.js"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -57,46 +55,55 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addScholarshipProgramContentBody" class="featureContent">
+	<form id="deleteScholarshipQualificationForm" action="deleteScholarshipQualification" method="POST">
+  		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+	</form>
+	<form id="editScholarshipQualificationForm" action="displayEditScholarshipQualification" method="POST">
+  		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+	</form>
+	<div id="scholarshipQualificationListContentBody" class="featureContent" >
+	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
+			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="title">LIST OF SCHOLARSHIP</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="rightPaneContentHolder">
-				<form class="addScholarhipProgramContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
-    				<div class="rightPaneElement withTitle">
-    				    <span>Agency</span>
-	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-					</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-						<div id="buttonHolder">
-							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+			<div id="searchScholarshipQualification">
+				<img src="images/Search_Magnifying_Glass_Find-512.png">
+				<form action="searchScholarshipQualification" method="POST" id="searchScholarshipQualificationForm">
+					<input type="text" id="scholarshipQualificationSearchText" name="scholarshipQualificationSearchText" placeholder="Search Scholarship Qualification">
+				</form>
+				<div class="button" id="searchScholarshipQualificationButton">SEARCH</div>
+				<div class="button" id="addScholarshipQualificationButton">ADD SCHOLARSHIP QUALIFICATION</div>
+    			<div style="clear:both"></div>
+			</div>
+			<table>
+				<tr>
+					<th>Qualification Name</th>
+				</tr>
+				<s:iterator value="scholarshipQualificationList" status="rowStatus" var="scholarshipQualification">
+					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="scholarshipQualificationName" /></td>
+						<td>
+							<div class="w3-dropdown-click tableMenu">
+  								<div class="tableMenuButton">
+  									<img src="images/setting_game_configuration_option-512.png" />
+  									<img src="images/arrow-down-01-512.png" />
+  								</div>
+  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
+	    							<a onclick="displayEditScholarshipQualification('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button">Edit</a>
+    									<a onclick="showScholarshipQualificationDeletePopup('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button">Delete</a>
+  								</div>
 							</div>
-							<div id=submitButton class="button left">
-								<span>Add Scholarship Program</span>
-							</div>
-							<div style="clear:both"></div>
-						</div>
-					</div>
-    			</form>
-    		</div>
-    		<div style="clear:both"></div>
+						</td>
+					</tr>
+				</s:iterator>
+			</table>
 		</div>
+		<div style="clear:both"></div>
+	</div>
 	</div>
 </div>
-
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>
