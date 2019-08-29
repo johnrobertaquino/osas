@@ -30,7 +30,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName=" + agencyName);  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName='" + agencyName + "'");  
 			
 			if (resultSet.next()) {
 				agency = new Agency();

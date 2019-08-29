@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class ScholarshipProgramDAO extends DAO {
 
@@ -17,6 +18,39 @@ public class ScholarshipProgramDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ScholarshipProgram getScholarshipProgramByScholarshipProgramName(String scholarshipProgramName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ScholarshipProgram scholarshipProgram = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshipprogram WHERE ScholarshipProgramName='"
+							+ scholarshipProgramName +"'");
+
+			if (resultSet.next()) {
+				scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholarshipProgram.setScholarshipProgramName(resultSet.getString("ScholarshipProgramName"));
+
+				Agency agency = new Agency();
+				agency.setAgencyId(resultSet.getInt("AgencyId"));
+				scholarshipProgram.setAgency(agency);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarshipProgramByScholarshipProgramId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return scholarshipProgram;
+	}
+	
 	public ScholarshipProgram getScholarshipProgramByScholarshipProgramId(int scholarshipProgramId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;

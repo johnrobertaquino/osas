@@ -29,25 +29,24 @@ public class AddAgencyAction extends AbstractAction {
 		
 		try {
 			Agency agency = new Agency();
-			agency.setAgencyName(agencyName);
-			agency.setAddress(address);
-			agency.setContactPerson(contactPerson);
-			agency.setContactNumber(contactNumber);
-			agency.setSemTerm(getCurrentActiveTerm());
-		
 			AgencyManager agencyManager = new AgencyManager();
 			agency = agencyManager.validate(agencyName);
-			agencyManager.insertAgency(agency);
 			
-			if(agency != null) {
-				if(agency.getAgencyName() == agencyName) {
-					throw new BusinessException("Agency name is already exist.");
-				}
-			} else {
-				throw new BusinessException("Agency has been saved successfully added.");
+			if(agency != null) { 
+				notificationMessage = "Agency is already exist.";
 			}
-			
-			notificationMessage = "Agency has been saved successfully added.";
+			else
+			{
+				agency = new Agency();
+				agency.setAgencyName(agencyName);
+				agency.setAddress(address);
+				agency.setContactPerson(contactPerson);
+				agency.setContactNumber(contactNumber);
+				agency.setSemTerm(getCurrentActiveTerm());
+				agencyManager.insertAgency(agency);
+				notificationMessage = "Agency has been saved successfully added.";
+			}
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
