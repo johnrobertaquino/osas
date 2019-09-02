@@ -349,6 +349,13 @@
 			<result name="error" type="chain">displayOrganizationList</result>
 		</action>
 		
+					       <!--  MEMBER -->
+		
+		<action name="displayMemberList" class="org.pup.system.osas.ui.action.DisplayMemberListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/memberList.jsp</result> 
+		</action>	
+		
 		<action name="uploadTest" class="org.pup.system.osas.ui.action.UploadTestAction">
 			<result name="success">/testjsp/upload.jsp</result>
 		</action>
