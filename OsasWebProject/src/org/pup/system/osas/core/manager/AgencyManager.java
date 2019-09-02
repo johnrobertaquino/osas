@@ -7,10 +7,31 @@ import org.pup.system.osas.core.dao.AgencyDAO;
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.SemTermDAO;
 import org.pup.system.osas.core.domain.Agency;
-import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.SemTerm;
 
 public class AgencyManager {
+	
+	public Agency validate(String agencyName) throws Exception {
+		AgencyDAO agencyDAO = null;
+		Agency agency;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			agencyDAO = new AgencyDAO(connection);
+			
+			agency = agencyDAO.getAgencyByAgencyName(agencyName);
+			
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return agency;
+	}
 	
 	public void insertAgency(Agency agency) throws Exception {
 		AgencyDAO agencyDAO = null;

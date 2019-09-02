@@ -79,12 +79,6 @@
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="applicationStatusLink">Application Status</div>
-						<div style="clear:both"></div>
-					</div>
-				</div>
-				<div class ="menuLinks">
-					<div class="linkItemHolder">
 						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentScholarShipReportsLink">Reports</div>
 						<div style="clear:both"></div>
 					</div>

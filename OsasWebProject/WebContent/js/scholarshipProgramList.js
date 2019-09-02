@@ -32,6 +32,7 @@ $(document).ready(function() {
 	$('#addScholarshipProgramButton').click(function() {
 		location.href = "displayAddScholarshipProgram";
 	});
+
 });
 
 function showScholarshipProgramDeletePopup(scholarshipProgramId) {
@@ -41,6 +42,10 @@ function showScholarshipProgramDeletePopup(scholarshipProgramId) {
 	});
 }
 
+function displayScholarshipQualification(scholarshipProgramId) {
+	$("#scholarshipQualificationForm #scholarshipProgramId").val(scholarshipProgramId);
+	$("#scholarshipQualificationForm").submit();
+}
 
 function displayEditScholarshipProgram(scholarshipProgramId) {
 	$("#editScholarshipProgramForm #scholarshipProgramId").val(scholarshipProgramId);

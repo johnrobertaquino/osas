@@ -32,10 +32,7 @@ $(document).ready(function() {
 	$('#addAgencyButton').click(function() {
 		location.href = "displayAddAgency";
 	});
-	
-	$('#scholarshipTermButton').click(function() {
-		location.href = "displayScholarshipTermList";
-	});
+
 });
 
 function showAgencyDeletePopup(agencyId) {

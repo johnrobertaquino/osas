@@ -23,7 +23,7 @@ public class DeleteAgencyAction extends AbstractAction {
 			AgencyManager agencyManager = new AgencyManager();
 			Agency agency = agencyManager.getAgency(agencyId);
 			agencyManager.deleteAgency(agency);
-			notificationMessage = "User has been successfully deleted.";
+			notificationMessage = "Agency has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

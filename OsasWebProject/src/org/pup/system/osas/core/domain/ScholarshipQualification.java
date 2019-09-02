@@ -8,6 +8,8 @@ public class ScholarshipQualification {
 	private String scholarshipQualificationName;
 
 	private int scholarshipProgramId;
+	
+	private ScholarshipProgram scholarshipProgram;
 
 	/**
 	 * @return the scholarshipQualificationId
@@ -49,5 +51,19 @@ public class ScholarshipQualification {
 	 */
 	public void setScholarshipProgramId(int scholarshipProgramId) {
 		this.scholarshipProgramId = scholarshipProgramId;
+	}
+
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public ScholarshipProgram getScholarshipProgram() {
+		return scholarshipProgram;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
+		this.scholarshipProgram = scholarshipProgram;
 	}
 }

@@ -8,13 +8,12 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarshipProgram.css">
+<link rel="stylesheet" type="text/css" href="css/editScholarshipQualification.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarshipProgram.js"></script>
+<script type="text/javascript" src="js/editScholarshipQualification.js"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -57,35 +56,26 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addScholarshipProgramContentBody" class="featureContent">
+	<div id="editScholarshipQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
+			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="title">EDIT SCHOLARSHIP Qualification</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addScholarhipProgramContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
+				<form class="editScholarshipQualificationContent" id="editScholarshipQualificationForm" action="editScholarshipQualification" method="POST">
+					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
     				<div class="rightPaneElement withTitle">
-    				    <span>Agency</span>
-	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-					</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
+    					<span>Scholarship Qualification name</span>
+    					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id=submitButton class="button left">
-								<span>Add Scholarship Program</span>
+							<div id="submitButton" class="button left">
+								<span>Save</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
@@ -94,6 +84,7 @@
     		</div>
     		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 

@@ -79,21 +79,29 @@
 			</div>
 			<table>
 				<tr>
+					<th>Scholarship Program</th>
 					<th>Student Number</th>
 					<th>First Name</th>
 					<th>Middle Name </th>
 					<th>Last Name</th>
-					<th>Email</th>
 					<th>Contact Number</th>
+					<th>Program </th>
+					<th>Year</th>
+					<th>Section</th>
+					<th>Status</th>
 				</tr>
 				<s:iterator value="scholarList" status="rowStatus" var="scholar">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="scholarshipProgram.scholarshipProgramName" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
-						<td><s:property value="email" /></td>
 						<td><s:property value="contactNumber" /></td>
+						<td><s:property value="program" /></td>
+						<td><s:property value="year" /></td>
+						<td><s:property value="section" /></td>
+						<td>Incomplete</td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -26,6 +27,16 @@ public class EditScholarAction extends AbstractAction {
 	
 	private String contactNumber;
 	
+	private String program;
+	
+	private String year;
+	
+	private String section;
+	
+	private ScholarshipProgram scholarshipProgram;
+	
+	private String gwa;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -42,6 +53,10 @@ public class EditScholarAction extends AbstractAction {
 			scholar.setLastName(lastName);
 			scholar.setEmail(email);
 			scholar.setContactNumber(contactNumber);
+			scholar.setProgram(program);
+			scholar.setYear(year);
+			scholar.setSection(section);
+			scholar.setGwa(gwa);
 			
 			scholarManager.saveScholar(scholar);
 			
@@ -97,7 +112,7 @@ public class EditScholarAction extends AbstractAction {
 	/**
 	 * @return the address
 	 */
-	public String getmiddleName() {
+	public String getMiddlename() {
 		return middleName;
 	}
 
@@ -107,18 +122,19 @@ public class EditScholarAction extends AbstractAction {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+	
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	/**
 	 * @return the address
 	 */
 	public String getLastName() {
 		return lastName;
-	}
-
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setLaststName(String lastName) {
-		this.lastName = lastName;
 	}
 	/**
 	 * @return the address
@@ -146,6 +162,94 @@ public class EditScholarAction extends AbstractAction {
 	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the program
+	 */
+	public String getProgram() {
+		return program;
+	}
+
+
+
+	/**
+	 * @param program the program to set
+	 */
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+
+
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
+
+	/**
+	 * @return the section
+	 */
+	public String getSection() {
+		return section;
+	}
+
+
+
+	/**
+	 * @param section the section to set
+	 */
+	public void setSection(String section) {
+		this.section = section;
+	}
+
+
+
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public ScholarshipProgram getScholarshipProgram() {
+		return scholarshipProgram;
+	}
+
+
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
+		this.scholarshipProgram = scholarshipProgram;
+	}
+
+
+
+	/**
+	 * @return the gwa
+	 */
+	public String getGwa() {
+		return gwa;
+	}
+
+
+
+	/**
+	 * @param gwa the gwa to set
+	 */
+	public void setGwa(String gwa) {
+		this.gwa = gwa;
 	}
 
 }

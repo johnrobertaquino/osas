@@ -1,7 +1,9 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarManager;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddScholarAction extends AbstractAction {
@@ -25,6 +27,16 @@ public class AddScholarAction extends AbstractAction {
 	
 	private String contactNumber;
 	
+	private String program;
+	
+	private String year;
+	
+	private String section;
+	
+	private String gwa;
+	
+	private String scholarshipProgramId;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -32,6 +44,9 @@ public class AddScholarAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 		
 		try {
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(Integer.parseInt(scholarshipProgramId));
+			
 			Scholar scholar = new Scholar();
 			scholar.setStudentNumber(studentNumber);
 			scholar.setFirstName(firstName);
@@ -39,7 +54,12 @@ public class AddScholarAction extends AbstractAction {
 			scholar.setLastName(lastName);
 			scholar.setEmail(email);
 			scholar.setContactNumber(contactNumber);
-		
+			scholar.setProgram(program);
+			scholar.setYear(year);
+			scholar.setSection(section);
+			scholar.setGwa(gwa);
+			scholar.setScholarshipProgram(scholarshipProgram);
+			
 			ScholarManager scholarManager = new ScholarManager();
 			scholarManager.insertScholar(scholar);
 			
@@ -112,5 +132,70 @@ public class AddScholarAction extends AbstractAction {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+	
+	public String getScholarshipProgramId() {
+		return scholarId;
+	}
+
+	public void setScholarshipProgramId(String scholarshipProgramId) 
+	{
+		this.scholarshipProgramId = scholarshipProgramId;
+	}
+
+	/**
+	 * @return the program
+	 */
+	public String getProgram() {
+		return program;
+	}
+
+	/**
+	 * @param program the program to set
+	 */
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	/**
+	 * @return the section
+	 */
+	public String getSection() {
+		return section;
+	}
+
+	/**
+	 * @param section the section to set
+	 */
+	public void setSection(String section) {
+		this.section = section;
+	}
+
+	/**
+	 * @return the gwa
+	 */
+	public String getGwa() {
+		return gwa;
+	}
+
+	/**
+	 * @param gwa the gwa to set
+	 */
+	public void setGwa(String gwa) {
+		this.gwa = gwa;
 	}
 }
