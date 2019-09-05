@@ -42,9 +42,9 @@ function showScholarshipProgramDeletePopup(scholarshipProgramId) {
 	});
 }
 
-function displayScholarshipQualification(scholarshipProgramId) {
-	$("#scholarshipQualificationForm #scholarshipProgramId").val(scholarshipProgramId);
-	$("#scholarshipQualificationForm").submit();
+function displayScholarshipQualificationList(scholarshipProgramId) {
+	$("#showScholarshipQualificationForm #scholarshipProgramId").val(scholarshipProgramId);
+	$("#showScholarshipQualificationForm").submit();
 }
 
 function displayEditScholarshipProgram(scholarshipProgramId) {

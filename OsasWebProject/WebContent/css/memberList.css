@@ -1,20 +1,20 @@
 @charset "ISO-8859-1";
-#scholarListContentBody #contentBodyRightPane {
+#memberListContentBody #contentBodyRightPane {
 	width: inherit;
 }
-#scholarListContentBody #searchScholarButton {
+#memberListContentBody #searchMemberButton {
 		float: left;
 }
-#scholarListContentBody #addScholarButton {
+#memberListContentBody #addMemberButton {
 		float: right;
 }
 
-#scholarListContentBody #searchScholar {
+#memberListContentBody #searchMember {
 	margin-left: 100px;
 	margin-bottom: 35px;
 	margin-top: 50px;
 }
-#scholarListContentBody input {
+#memberListContentBody input {
 	border: 1px solid #420001;
 	border-radius: 20px;
 	width: 300px;
@@ -24,31 +24,31 @@
 	margin-right: 20px;
 }
 
-#scholarListContentBody #searchScholarButton {
+#memberListContentBody #searchMemberButton {
 	float: left;
 }
 
 @media only screen and (max-width: 1550px) {
-  	#scholarListContentBody #contentBodyLeftPane	{
+  	#memberListContentBody #contentBodyLeftPane	{
 		width: 200px;
 	}
-	#scholarListContentBody #contentBodyRightPane {
+	#memberListContentBody #contentBodyRightPane {
 		font-size: 13px;
 	}
-	#scholarListContentBody #searchScholar {
+	#memberListContentBody #searchMember {
 		margin-left: 50px;
 		width: 632px;
 	}
-	#scholarListContentBody #contentBodyRightPane table {
+	#memberListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
 		width: inherit;
 	}
-	#scholarListContentBody #searchScholar img {
+	#memberListContentBody #searchMember img {
 		height: 32px;
 		float: left;
 		margin-left: 0px;
 	}
-	#scholarListContentBody #contentBodyLeftPane #title {
+	#memberListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 25px;
@@ -58,28 +58,28 @@
 }
 
 @media only screen and (max-width: 1100px) {
-  	#scholarListContentBody #contentBodyLeftPane	{
+  	#memberListContentBody #contentBodyLeftPane	{
 		width: 200px;
 	}
-	#scholarListContentBody #contentBodyRightPane {
+	#memberListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#scholarListContentBody #searchScholar {
+	#memberListContentBody #searchMember {
 		margin-left: 40px;
 		width: 598px;
 	}
 	
-	#scholarListContentBody #contentBodyRightPane table {
+	#memberListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
 		width: inherit;
 	}
 	
-	#scholarListContentBody #searchScholar img {
+	#memberListContentBody #searchMember img {
 		height: 32px;
 		float: left;
 		margin-left: 0px;
 	}
-	#scholarListContentBody #contentBodyLeftPane #title {
+	#memberListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 22px;
@@ -89,26 +89,26 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  	#scholarListContentBody #contentBodyLeftPane	{
+  	#memberListContentBody #contentBodyLeftPane	{
 		width: 160px;
 	}
-	#scholarListContentBody #contentBodyRightPane {
+	#memberListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#scholarListContentBody #searchScholar {
+	#memberListContentBody #searchMember {
 		margin-left: 120px;
 		 width: 598px;
 	}
-	#scholarListContentBody #contentBodyRightPane table {
+	#memberListContentBody #contentBodyRightPane table {
 			margin-left: 120px;
 			width: inherit;
 	}
-	#scholarListContentBody #searchScholar img {
+	#memberListContentBody #searchMember img {
 		height: 32px;
 		float: left;
 		margin-left: 0px;
 	}
-	#scholarListContentBody #contentBodyLeftPane #title {
+	#memberListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
 		font-size: 22px;

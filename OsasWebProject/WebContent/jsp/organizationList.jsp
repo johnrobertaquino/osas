@@ -58,6 +58,9 @@
 	<form id="deleteOrganizationForm" action="deleteOrganization" method="POST">
   		<input type="hidden" id="organizationId" name="organizationId" />
 	</form>
+	<form id="showOrganizationRequirementForm" action="displayOrganizationRequirementList" method="POST">
+  		<input type="hidden" id="organizationId" name="organizationId" />
+	</form>
 	<form id="editOrganizationForm" action="displayEditOrganization" method="POST">
   		<input type="hidden" id="organizationId" name="organizationId" />
 	</form>
@@ -88,7 +91,7 @@
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="organizationName" /></td>
-						<td><s:property value="organizationTypeCode" /></td>
+						<td><s:property value="organizationTypeCode.organizationTypeName" /></td>
 						<td><s:property value="program" /></td>
  						<td><s:property value="adviser" /></td>
 						<td>
@@ -98,8 +101,9 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-	    							<a onclick="displayEditOrganization('<s:property value="organizationId" />')" class="w3-bar-item w3-button">Edit</a>
-    									<a onclick="showOrganizationDeletePopup('<s:property value="organizationId" />')" class="w3-bar-item w3-button">Delete</a>
+  									<a onclick="displayOrganizationRequirementList('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Requirements</a>	
+	    							<a onclick="displayEditOrganization('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showOrganizationDeletePopup('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

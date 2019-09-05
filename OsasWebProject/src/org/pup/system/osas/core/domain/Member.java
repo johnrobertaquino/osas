@@ -15,7 +15,9 @@ public class Member {
 	
 	private String position;
 
-	private Boolean officer;
+	private boolean officer;
+	
+	private String officerPhoto;
 	
 	private String gender;
 	
@@ -25,7 +27,7 @@ public class Member {
 	
 	private int contactNumber;
 	
-	private int organizationId;
+	private Organization organization;
 
 	public int getMemberId() {
 		return memberId;
@@ -83,11 +85,11 @@ public class Member {
 		this.position = position;
 	}
 
-	public Boolean getOfficer() {
+	public boolean getOfficer() {
 		return officer;
 	}
 
-	public void setOfficer(Boolean officer) {
+	public void setOfficer(boolean officer) {
 		this.officer = officer;
 	}
 
@@ -123,12 +125,33 @@ public class Member {
 		this.contactNumber = contactNumber;
 	}
 
-	public int getOrganizationId() {
-		return organizationId;
+	/**
+	 * @return the organization
+	 */
+	public Organization getOrganization() {
+		return organization;
 	}
 
-	public void setOrganizationId(int organizationId) {
-		this.organizationId = organizationId;
+	/**
+	 * @param organization the organization to set
+	 */
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
+
+	/**
+	 * @return the officerPhoto
+	 */
+	public String getOfficerPhoto() {
+		return officerPhoto;
+	}
+
+	/**
+	 * @param officerPhoto the officerPhoto to set
+	 */
+	public void setOfficerPhoto(String officerPhoto) {
+		this.officerPhoto = officerPhoto;
+	}
+
 	
 	}

@@ -109,10 +109,10 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button">Edit</a>
+	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/><span> Edit</span></a>
 	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Delete</a>
-    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button">Reset Password</a>
+    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/><span> Delete</span></a>
+    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/reset_icon.png" class="dropdownicon"/><span> Reset Password</span></a>
     								</s:if>
   								</div>
 							</div>

@@ -7,13 +7,57 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationTypeCode;
+import org.pup.system.osas.core.domain.SemTerm;
+import org.pup.system.osas.core.domain.UserRole;
 
 public class OrganizationDAO extends DAO {
 
 	public OrganizationDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Organization getOrganizationByOrganizationName(String organizationName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Organization organization = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeName, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationName='" + organizationName +"'");  
+			
+			if (resultSet.next()) {
+				organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+				organization.setOrganizationName(resultSet.getString("OrganizationName"));
+				organization.setProgram(resultSet.getString("Program"));
+				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
+				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organization.setAdviser(resultSet.getString("Adviser"));
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
+				
+				OrganizationTypeCode organizationTypeCode = new OrganizationTypeCode();
+				organizationTypeCode.setOrganizationTypeName(resultSet.getString("OrganizationTypeName"));
+				organization.setOrganizationTypeCode(organizationTypeCode);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationByOrganizationId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return organization;
 	}
 	
 	public Organization getOrganizationByOrganizationId(int organizationId) throws Exception {
@@ -27,18 +71,25 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId  FROM organization WHERE OrganizationId=" + organizationId);  
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeName, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationId=" + organizationId);  
 			
 			if (resultSet.next()) {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
 				organization.setProgram(resultSet.getString("Program"));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
-				organization.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
+				
+				OrganizationTypeCode organizationTypeCode = new OrganizationTypeCode();
+				organizationTypeCode.setOrganizationTypeName(resultSet.getString("OrganizationTypeName"));
+				organization.setOrganizationTypeCode(organizationTypeCode);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getOrganizationByOrganizationId method", e);
@@ -57,15 +108,15 @@ public class OrganizationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO organization(OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId) VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO organization(OrganizationName, OrganizationTypeName, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, organization.getOrganizationName());
-			statement.setString(2, organization.getOrganizationTypeCode());
+			statement.setString(2, organization.getOrganizationTypeCode().getOrganizationTypeName());
 			statement.setString(3, organization.getProgram());
 			statement.setInt(4, organization.getOrganizationTermId());
 			statement.setInt(5, organization.getOrganizationRequirementId());
 			statement.setString(6, organization.getAdviser());
-			statement.setInt(7, organization.getSemTermId());
-
+			statement.setInt(7, organization.getSemTerm().getSemTermId());
+			statement.setString(8, organization.getLogoFileName());
 			
 			statement.executeUpdate();
 			
@@ -95,7 +146,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT  OrganizationId,  OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId FROM organization WHERE SemTermId=" + semTermId);  
+			resultSet = statement.executeQuery("SELECT  OrganizationId,  OrganizationName, OrganizationTypeName, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE SemTermId=" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {
@@ -105,13 +156,19 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
 				organization.setProgram(resultSet.getString("Program"));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
 				
-				organization.setSemTermId(resultSet.getInt("SemTermId"));
+				OrganizationTypeCode organizationTypeCode = new OrganizationTypeCode();
+				organizationTypeCode.setOrganizationTypeName(resultSet.getString("OrganizationTypeName"));
+				organization.setOrganizationTypeCode(organizationTypeCode);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
 				
 				organizationList.add(organization);
 			}
@@ -136,7 +193,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId  FROM organization WHERE OrganizationName LIKE '%"
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeName, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE OrganizationName LIKE '%"
 					+ organizationSearchText + "%'");  
 			
 			while (resultSet.next()) {
@@ -147,13 +204,20 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
 				organization.setProgram(resultSet.getString("Program"));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
-				organization.setSemTermId(resultSet.getInt("SemTermId"));
-	
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
+				
+				OrganizationTypeCode organizationTypeCode = new OrganizationTypeCode();
+				organizationTypeCode.setOrganizationTypeName(resultSet.getString("OrganizationTypeName"));
+				organization.setOrganizationTypeCode(organizationTypeCode);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
+				
 				organizationList.add(organization);
 			}
 		} catch (Exception e) {
@@ -172,12 +236,13 @@ public class OrganizationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=? Adviser=? WHERE OrganizationId=?");
+			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=? Adviser=?, LogoFileName=? WHERE OrganizationId=?");
 			statement.setString(1, organization.getOrganizationName());
-			statement.setString(2, organization.getOrganizationTypeCode());
+			statement.setString(2, organization.getOrganizationTypeCode().getOrganizationTypeName());
 			statement.setString(3, organization.getProgram());
-			statement.setString(6, organization.getAdviser());
-
+			statement.setString(4, organization.getAdviser());
+			statement.setString(5, organization.getLogoFileName());
+			
 			statement.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing saveUser method", e);
@@ -202,6 +267,34 @@ public class OrganizationDAO extends DAO {
 		} finally {
 			ConnectionUtil.closeDbResources(statement);
 		}
+	}
+	
+	public OrganizationTypeCode getOrganizationTypeNameByOrganizationTypeCode(String organizationTypeCode) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		OrganizationTypeCode organizationType = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT OrganizationTypeCode, OrganizationTypeName FROM organizationtypecode WHERE OrganizationTypeCode='" + organizationTypeCode + "'");  
+			
+			if (resultSet.next()) {
+				organizationType = new OrganizationTypeCode();
+				
+				organizationType.setOrganizationTypeCode(resultSet.getInt("OrganizationTypeCode"));
+				organizationType.setOrganizationTypeName(resultSet.getString("OrganizationTypeName"));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizatioTypenNameByOrganizationTypeCode method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return organizationType;
 	}
 
 }

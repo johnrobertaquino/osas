@@ -23,7 +23,7 @@ public class DisplayOrganizationListAction extends AbstractAction {
 
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
-			organizationList = organizationManager.getOrganizationList();
+			organizationList = organizationManager.getOrganizationList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

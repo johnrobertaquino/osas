@@ -1,11 +1,12 @@
 package org.pup.system.osas.core.domain;
 
 public class Organization {
+	
 	private int organizationId;
 	
 	private String organizationName;
 	
-	private String organizationTypeCode;
+	private OrganizationTypeCode organizationTypeCode;
 	
 	private String program;
 	
@@ -15,7 +16,9 @@ public class Organization {
 	
 	private String adviser;
 	
-	private int semTermId;
+	private SemTerm semTerm;
+	
+	private String logoFileName;
 
 	/**
 	 * @return the organizationId
@@ -48,14 +51,14 @@ public class Organization {
 	/**
 	 * @return the organizationTypeCode
 	 */
-	public String getOrganizationTypeCode() {
+	public OrganizationTypeCode getOrganizationTypeCode() {
 		return organizationTypeCode;
 	}
 
 	/**
 	 * @param organizationTypeCode the organizationTypeCode to set
 	 */
-	public void setOrganizationTypeCode(String organizationTypeCode) {
+	public void setOrganizationTypeCode(OrganizationTypeCode organizationTypeCode) {
 		this.organizationTypeCode = organizationTypeCode;
 	}
 
@@ -115,17 +118,32 @@ public class Organization {
 		this.adviser = adviser;
 	}
 
+
 	/**
-	 * @return the semTermId
+	 * @return the logoFileName
 	 */
-	public int getSemTermId() {
-		return semTermId;
+	public String getLogoFileName() {
+		return logoFileName;
 	}
 
 	/**
-	 * @param semTermId the semTermId to set
+	 * @param logoFileName the logoFileName to set
 	 */
-	public void setSemTermId(int semTermId) {
-		this.semTermId = semTermId;
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
+	}
+
+	/**
+	 * @return the semTerm
+	 */
+	public SemTerm getSemTerm() {
+		return semTerm;
+	}
+
+	/**
+	 * @param semTerm the semTerm to set
+	 */
+	public void setSemTerm(SemTerm semTerm) {
+		this.semTerm = semTerm;
 	}
 }

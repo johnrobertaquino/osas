@@ -44,31 +44,41 @@ public class AddUserAction extends AbstractAction{
 
 		try {
 			User user = new User();
-			user.setFirstName(firstName);
-			user.setMiddleName(middleName);
-			user.setLastName(lastName);
-			user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
-			password = (new SimpleDateFormat("MMddyyyy")).format(user.getBirthday());
-			user.setPassword(password);
-			userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3) + (new SimpleDateFormat("MM")).format(user.getBirthday()) + (new SimpleDateFormat("yy")).format(user.getBirthday());
-			user.setUserName(userName);
-			user.setContactNumber(contactNumber);
-			user.setPosition(position);
-			
-			user.setUserRoleList(new ArrayList<UserRole>());
-			if(roleReferenceCodeList != null) {
-				for (String roleReferenceCode : roleReferenceCodeList) {
-					UserRole userRole = new UserRole();
-					userRole.setUserId(user.getUserId());
-					userRole.setUserRoleReference(new UserRoleReference());
-					userRole.getUserRoleReference().setUserRoleReferenceCode(roleReferenceCode);
-					user.getUserRoleList().add(userRole);
-				}
-			}
 			UserManager userManager = new UserManager();
-			userManager.insertUser(user);
+			user = userManager.checkFullName(firstName, lastName);
 			
-			notificationMessage = "User has been saved successfully registered.";
+			if(user != null)
+			{
+				notificationMessage = "User is already exist.";
+			}
+			else
+			{
+				user = new User();
+				user.setFirstName(firstName);
+				user.setMiddleName(middleName);
+				user.setLastName(lastName);
+				user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
+				password = (new SimpleDateFormat("MMddyyyy")).format(user.getBirthday());
+				user.setPassword(password);
+				userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3) + (new SimpleDateFormat("MM")).format(user.getBirthday()) + (new SimpleDateFormat("yy")).format(user.getBirthday());
+				user.setUserName(userName);
+				user.setContactNumber(contactNumber);
+				user.setPosition(position);
+				
+				user.setUserRoleList(new ArrayList<UserRole>());
+				if(roleReferenceCodeList != null) {
+					for (String roleReferenceCode : roleReferenceCodeList) {
+						UserRole userRole = new UserRole();
+						userRole.setUserId(user.getUserId());
+						userRole.setUserRoleReference(new UserRoleReference());
+						userRole.getUserRoleReference().setUserRoleReferenceCode(roleReferenceCode);
+						user.getUserRoleList().add(userRole);
+					}
+				}
+				userManager.insertUser(user);
+				notificationMessage = "User has been saved successfully registered.";
+			}			
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

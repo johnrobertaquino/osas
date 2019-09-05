@@ -20,6 +20,8 @@ public class AddOrganizationAction extends AbstractAction {
 	private String program;
 	
 	private String adviser;
+	 
+	private String logoFileName;
 	
 	@Override
 	public String execute() throws Exception {
@@ -28,16 +30,26 @@ public class AddOrganizationAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 		
 		try {
-			Organization organization = new Organization();
-			organization.setOrganizationName(organizationName);
-			organization.setOrganizationTypeCode(organizationTypeCode);
-			organization.setProgram(program);
-			organization.setAdviser(adviser);
-		
-			OrganizationManager organizationManager = new OrganizationManager();
-			organizationManager.insertOrganization(organization);
 			
-			notificationMessage = "Agency has been saved successfully added.";
+			Organization organization = new Organization();
+			OrganizationManager organizationManager = new OrganizationManager();
+			organization = organizationManager.validate(organizationName);
+			
+			if(organization != null) { 
+				notificationMessage = "Agency is already exist.";
+			}
+			else
+			{
+				organization = new Organization();
+				organization.setOrganizationName(organizationName);
+				//organization.setOrganizationTypeCode(organizationTypeCode);
+				organization.setProgram(program);
+				organization.setAdviser(adviser);
+				organization.setLogoFileName(logoFileName);
+				organization.setSemTerm(getCurrentActiveTerm());
+				organizationManager.insertOrganization(organization);
+				notificationMessage = "Organization has been saved successfully added.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -120,6 +132,20 @@ public class AddOrganizationAction extends AbstractAction {
 	 */
 	public void setAdviser(String adviser) {
 		this.adviser = adviser;
+	}
+	
+	/**
+	 * @return the adviser
+	 */
+	public String getLogoFileName() {
+		return logoFileName;
+	}
+
+	/**
+	 * @param adviser the adviser to set
+	 */
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
 	}
 
 }

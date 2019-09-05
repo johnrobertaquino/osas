@@ -230,7 +230,7 @@
 		
 					<!-- QUALIFICATION -->
 		
-		<action name="displayScholarshipQualification" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
+		<action name="displayScholarshipQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipQualificationList.jsp</result>
 		</action>
@@ -359,6 +359,84 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/memberList.jsp</result> 
 		</action>	
+		
+		<action name="displayAddMember" class="org.pup.system.osas.ui.action.DisplayAddMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addMember.jsp</result>
+		</action> 
+		
+		<action name="addMember" class="org.pup.system.osas.ui.action.AddMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayMemberList</result>
+			<result name="error"  type="chain">/jsp/addMember.jsp</result>
+		</action>
+		
+		<action name="displayEditMember" class="org.pup.system.osas.ui.action.DisplayEditMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editMember.jsp</result>
+			<result name="error" type="chain">displayMemberList</result>
+		</action>
+		
+		<action name="editMember" class="org.pup.system.osas.ui.action.EditMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayMemberList</result>
+			<result type="chain" name="error">displayMemberList</result>
+		</action>
+		
+		<action name="searchMember" class="org.pup.system.osas.ui.action.SearchMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/memberList.jsp</result>
+			<result name="error">/jsp/memberList.jsp</result>
+		</action>
+		
+		<action name="deleteMember" class="org.pup.system.osas.ui.action.DeleteMemberAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayMemberList</result>	
+			<result name="error" type="chain">displayMemberList</result>
+		</action>
+		
+		
+					<!-- ORGANIZATION REQUIREMENT -->
+		
+		<action name="displayOrganizationRequirementList" class="org.pup.system.osas.ui.action.DisplayOrganizationRequirementListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/organizationRequirementList.jsp</result>
+		</action>
+		
+		<action name="displayEditOrganizationRequirement" class="org.pup.system.osas.ui.action.DisplayEditOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editOrganizationRequirement.jsp</result>
+			<result name="error" type="chain">displayOrganizationRequirementList</result>
+		</action>
+		
+		<action name="editOrganizationRequirement" class="org.pup.system.osas.ui.action.EditOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayOrganizationRequirementList</result>
+			<result type="chain" name="error">displayOrganizationRequirementList</result>
+		</action>
+		<action name="deleteOrganizationRequirement" class="org.pup.system.osas.ui.action.DeleteOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayOrganizationRequirementList</result>	
+			<result name="error" type="chain">displayOrganizationRequirementList</result>
+		</action>
+		
+		<action name="displayAddOrganizationRequirement" class="org.pup.system.osas.ui.action.DisplayAddOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addOrganizationRequirement.jsp</result>
+		</action>
+		
+		<action name="addOrganizationRequirement" class="org.pup.system.osas.ui.action.AddOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayOrganizationRequirementList</result>
+			<result name="error"  type="chain">/jsp/addOrganizationRequirement.jsp</result>
+		</action>
+
+		<action name="searchOrganizationRequirement" class="org.pup.system.osas.ui.action.SearchOrganizationRequirementAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/organizationRequirementList.jsp</result>
+			<result name="error">/jsp/organizationRequirementList.jsp</result>
+		</action>
+					       <!--  Test Upload -->
 		
 		<action name="uploadTest" class="org.pup.system.osas.ui.action.UploadTestAction">
 			<result name="success">/testjsp/upload.jsp</result>

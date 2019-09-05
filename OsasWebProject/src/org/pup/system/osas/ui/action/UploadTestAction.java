@@ -50,8 +50,12 @@ public class UploadTestAction extends AbstractAction {
 
 					if (agencyList == null) {
 						agencyList = new ArrayList<Agency>();
+
 					}
 					agencyList.add(agency);
+					agency.setSemTerm(getCurrentActiveTerm());
+					AgencyManager agencyManager = new AgencyManager();
+					agencyManager.insertAgency(agency);
 				}
 
 				index++;

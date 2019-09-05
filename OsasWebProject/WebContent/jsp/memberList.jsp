@@ -71,7 +71,7 @@
 			<div id="searchMember">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchMember" method="POST" id="searchMemberForm">
-					<input type="text" id="MemberSearchText" name="MemberSearchText" placeholder="Search member">
+					<input type="text" id="memberSearchText" name="memberSearchText" placeholder="Search member">
 				</form>
 				<div class="button" id="searchMemberButton">SEARCH</div>
 				<div class="button" id="addMemberButton">ADD MEMBER</div>
@@ -90,7 +90,7 @@
 				 	<th>Gender </th>
 				 	<th>Year </th>
 				 	<th>Section </th>
-				 	<th>Contact </th>
+				 	<th>Contact Number</th>
 				 	<th>Organization Id</th>
 					
 				</tr>
@@ -116,8 +116,8 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-	    							<a onclick="displayEditMember('<s:property value="memberId" />')" class="w3-bar-item w3-button">Edit</a>
-    									<a onclick="showScholarDeletePopup('<s:property value="memberId" />')" class="w3-bar-item w3-button">Delete</a>
+	    							<a onclick="displayEditMember('<s:property value="memberId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showMemberDeletePopup('<s:property value="memberId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

@@ -2,10 +2,8 @@ package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
-import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.core.manager.OrganizationManager;
-import org.pup.system.osas.core.manager.ScholarManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddMemberAction extends AbstractAction {
@@ -32,6 +30,8 @@ public class AddMemberAction extends AbstractAction {
 
 	private Boolean officer;
 	
+	private String officerPhoto;
+	
 	private String gender;
 	
 	private String year;
@@ -40,7 +40,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private int contactNumber;
 	
-	private Organization organization;
+	private String organizationId;
 	
 	@Override
 	public String execute() throws Exception {
@@ -49,6 +49,9 @@ public class AddMemberAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 		
 		try {
+			OrganizationManager organizationManager = new OrganizationManager();
+			Organization organization = organizationManager.getOrganization(Integer.parseInt(organizationId));
+			
 			Member member = new Member();
 			member.setStudentNumber(studentNumber);
 			member.setFirstName(firstName);
@@ -57,11 +60,12 @@ public class AddMemberAction extends AbstractAction {
 			member.setProgram(program);
 			member.setPosition(position);
 			member.setOfficer(officer);
+			member.setOfficerPhoto(officerPhoto);
 			member.setGender(gender);
 			member.setYear(year);
 			member.setSection(section);
 			member.setContactNumber(contactNumber);
-		
+			member.setOrganization(organization);
 		
 			MemberManager memberManager = new MemberManager();
 			memberManager.insertMember(member);
@@ -169,12 +173,33 @@ public class AddMemberAction extends AbstractAction {
 		this.section = section;
 	}
 
-	public Organization getOrganization() {
-		return organization;
+	public String getOrganizationId() {
+		return organizationId;
 	}
 
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
+	public void setOrganizationId(String organizationId) {
+		this.organizationId = organizationId;
 	}
 
+	/**
+	 * @return the officerPhoto
+	 */
+	public String getOfficerPhoto() {
+		return officerPhoto;
+	}
+
+	/**
+	 * @param officerPhoto the officerPhoto to set
+	 */
+	public void setOfficerPhoto(String officerPhoto) {
+		this.officerPhoto = officerPhoto;
+	}
+	
+	public int getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(int contactNumber) {
+		this.contactNumber = contactNumber;
+	}
 }
