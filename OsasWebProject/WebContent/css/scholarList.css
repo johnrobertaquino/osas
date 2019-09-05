@@ -42,6 +42,7 @@
 	#scholarListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
 		width: inherit;
+		overflow-x: auto;
 	}
 	#scholarListContentBody #searchScholar img {
 		height: 32px;

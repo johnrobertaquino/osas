@@ -64,7 +64,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addUserContent" id="scholarForm" action="addScholar" method="POST">
+				<form class="addScholarContent" id="scholarForm" action="addScholar" method="POST">
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
 	    				<div>

@@ -12,6 +12,28 @@ import org.pup.system.osas.core.domain.UserRoleReference;
 
 public class UserManager {
 
+	public User checkFullName(String firstName, String lastName) throws Exception {
+		UserDAO userDAO = null;
+		User user = null;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			userDAO = new UserDAO(connection);
+			
+			user = userDAO.getUserByFullName(firstName, lastName);
+		
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return user;
+	}
+	
 	public User validate(String userName, String password) throws Exception {
 		UserDAO userDAO = null;
 		User user = null;

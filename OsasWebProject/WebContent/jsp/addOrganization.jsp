@@ -77,7 +77,12 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Type</span>
-    					<div><input id="organizationTypeCode" name="organizationTypeCode" type="text"></div>
+	    				<div id="roleDiv">
+		    				<input type="checkbox" id="acadCheck" name="organizationTypeCode" value="AD" checked>
+		    				<span>Academic</span>
+		    				<input type="checkbox" id="nonAcadCheck" name="organizationTypeCode" value="AP" checked>
+		    				<span>Non-Academic</span>
+		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>

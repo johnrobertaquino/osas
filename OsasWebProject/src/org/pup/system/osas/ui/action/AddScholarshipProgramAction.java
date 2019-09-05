@@ -28,13 +28,21 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			Agency agency = agencyManager.getAgency(Integer.parseInt(agencyId));
 			
 			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
-			scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
-			scholarshipProgram.setAgency(agency);
-
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
+			scholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
 
-			notificationMessage = "Scholarship Program has been saved successfully added.";
+			if(scholarshipProgram != null) { 
+				notificationMessage = "Scholarship program is already exist.";
+			}
+			else
+			{			
+				scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
+				scholarshipProgram.setAgency(agency);
+				scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
+				notificationMessage = "Scholarship Program has been saved successfully added.";
+			}
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

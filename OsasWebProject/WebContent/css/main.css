@@ -234,6 +234,10 @@ img {
 	padding: 10px;
 	display: block;
 }
+.dropdownicon {
+	width: 20px;
+	margin-bottom: -5px;
+}
 
 .dropdownMenu div:hover {
 	background-color: #ffbc01;

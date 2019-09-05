@@ -91,8 +91,8 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditScholarshipQualification('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button">Edit</a>
-    									<a onclick="showScholarshipQualificationDeletePopup('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button">Delete</a>
+	    							<a onclick="displayEditScholarshipQualification('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showScholarshipQualificationDeletePopup('<s:property value="scholarshipQualificationId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

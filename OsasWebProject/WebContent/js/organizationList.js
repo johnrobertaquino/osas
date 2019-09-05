@@ -32,10 +32,6 @@ $(document).ready(function() {
 	$('#addOrganizationButton').click(function() {
 		location.href = "displayAddOrganization";
 	});
-	
-	$('#scholarshipTermButton').click(function() {
-		location.href = "displayScholarshipTermList";
-	});
 });
 
 function showOrganizationDeletePopup(organizationId) {
@@ -43,6 +39,11 @@ function showOrganizationDeletePopup(organizationId) {
 		$("#deleteOrganizationForm #organizationId").val(organizationId);
 		$("#deleteOrganizationForm").submit();
 	});
+}
+
+function displayOrganizationRequirementList(organizationId) {
+	$("#showOrganizationRequirementForm #organizationId").val(organizationId);
+	$("#showOrganizationRequirementForm").submit();
 }
 
 function displayEditOrganization(organizationId) {

@@ -108,7 +108,7 @@
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgTermManagementLink">Manage Term</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgTermManagementLink">Manage Organization</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>
@@ -120,7 +120,7 @@
 				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
-						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgOrganizationManagementLink">Manage Organization</div>
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgOrganizationManagementLink">Manage Members</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>

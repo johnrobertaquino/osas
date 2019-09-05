@@ -19,6 +19,40 @@ public class UserDAO extends DAO {
 		super(connection);
 	}
 
+	public User getUserByFullName(String firstName, String lastName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		User user = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND LastName='" + lastName + "'");  
+			
+			if (resultSet.next()) {
+				user = new User();
+				user.setUserId(resultSet.getInt("UserId"));
+				user.setUserName(resultSet.getString("Username"));
+				user.setPassword(resultSet.getString("Password"));
+				user.setFirstName(resultSet.getString("Firstname"));
+				user.setMiddleName(resultSet.getString("Middlename"));
+				user.setLastName(resultSet.getString("LastName"));
+				user.setBirthday(resultSet.getDate("Birthday"));
+				user.setContactNumber(resultSet.getString("ContactNumber"));
+				user.setPosition(resultSet.getString("Position"));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getUserByUserName method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return user;
+	}
+	
 	public User getUserByUserNameAndPassword(String userName, String password) throws Exception {
 		Connection connection = null;
 		Statement statement = null;

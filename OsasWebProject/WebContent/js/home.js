@@ -23,5 +23,10 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayOrganizationList";
 	});
+	
+	$('#studentOrgOrganizationManagementLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayMemberList";
+	});
 });
 

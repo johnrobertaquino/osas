@@ -33,7 +33,7 @@ public class EditOrganizationAction extends AbstractAction {
 			
 			organization.setOrganizationId(organizationId);
 			organization.setOrganizationName(organizationName);
-			organization.setOrganizationTypeCode(organizationTypeCode);
+			//organization.setOrganizationTypeCode(organizationTypeCode);;
 			organization.setProgram(program);
 			organization.setAdviser(adviser);
 			
