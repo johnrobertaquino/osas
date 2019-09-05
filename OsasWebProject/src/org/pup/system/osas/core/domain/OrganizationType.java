@@ -1,22 +1,22 @@
 package org.pup.system.osas.core.domain;
 
-public class OrganizationTypeCode {
+public class OrganizationType {
 
-	private int organizationTypeCode;
+	private String organizationTypeCode;
 	
 	private String organizationTypeName;
 
 	/**
 	 * @return the organizationTypeCode
 	 */
-	public int getOrganizationTypeCode() {
+	public String getOrganizationTypeCode() {
 		return organizationTypeCode;
 	}
 
 	/**
 	 * @param organizationTypeCode the organizationTypeCode to set
 	 */
-	public void setOrganizationTypeCode(int organizationTypeCode) {
+	public void setOrganizationTypeCode(String organizationTypeCode) {
 		this.organizationTypeCode = organizationTypeCode;
 	}
 

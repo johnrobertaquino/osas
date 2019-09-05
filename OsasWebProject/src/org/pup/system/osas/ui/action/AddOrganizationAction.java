@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -36,13 +37,14 @@ public class AddOrganizationAction extends AbstractAction {
 			organization = organizationManager.validate(organizationName);
 			
 			if(organization != null) { 
-				notificationMessage = "Agency is already exist.";
+				notificationMessage = "Organization is already exist.";
 			}
 			else
 			{
 				organization = new Organization();
 				organization.setOrganizationName(organizationName);
-				//organization.setOrganizationTypeCode(organizationTypeCode);
+				organization.setOrganizationType(new OrganizationType());
+				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
 				organization.setProgram(program);
 				organization.setAdviser(adviser);
 				organization.setLogoFileName(logoFileName);

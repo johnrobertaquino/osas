@@ -81,7 +81,7 @@ public class ScholarshipQualificationDAO extends DAO {
 		}
 	}
 
-	public List<ScholarshipQualification> getScholarshipQualificationList(int semTermId) throws Exception {
+	public List<ScholarshipQualification> getScholarshipQualificationList(int scholashipProgramId, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -94,7 +94,8 @@ public class ScholarshipQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT scholarshipqualification.ScholarshipQualificationId, scholarshipqualification.ScholarshipQualificationName, scholarshipqualification.ScholarshipProgramId FROM scholarshipqualification JOIN scholarshipprogram on scholarshipqualification.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId);
+					"SELECT scholarshipqualification.ScholarshipQualificationId, scholarshipqualification.ScholarshipQualificationName, scholarshipqualification.ScholarshipProgramId FROM scholarshipqualification JOIN scholarshipprogram on "
+					+ "scholarshipqualification.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholarshipProgram.ScholarshipProgramId =" + scholashipProgramId + " AND agency.SemTermId =" + semTermId);
 
 			while (resultSet.next()) {
 				if (scholarshipQualificationList == null) {
