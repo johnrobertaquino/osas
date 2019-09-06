@@ -56,7 +56,7 @@ public class ScholarshipQualificationManager {
 		return scholarshipQualification;
 	}
 
-	public List<ScholarshipQualification> getScholarshipQualificationList(int semTermId) throws Exception {
+	public List<ScholarshipQualification> getScholarshipQualificationList(int scholasrshipProgramId, int semTermId) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		List<ScholarshipQualification> scholarshipQualificationList = null;
@@ -68,7 +68,7 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
-			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationList(semTermId);
+			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationList(scholasrshipProgramId, semTermId);
 
 			if (scholarshipQualificationList != null) {
 				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);

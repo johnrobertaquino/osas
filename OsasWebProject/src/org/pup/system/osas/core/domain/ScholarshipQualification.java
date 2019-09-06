@@ -6,8 +6,6 @@ public class ScholarshipQualification {
 	private int scholarshipQualificationId;
 	
 	private String scholarshipQualificationName;
-
-	private int scholarshipProgramId;
 	
 	private ScholarshipProgram scholarshipProgram;
 
@@ -37,20 +35,6 @@ public class ScholarshipQualification {
 	 */
 	public void setScholarshipQualificationName(String scholarshipQualificationName) {
 		this.scholarshipQualificationName = scholarshipQualificationName;
-	}
-
-	/**
-	 * @return the scholarshipProgramId
-	 */
-	public int getScholarshipProgramId() {
-		return scholarshipProgramId;
-	}
-
-	/**
-	 * @param scholarshipProgramId the scholarshipProgramId to set
-	 */
-	public void setScholarshipProgramId(int scholarshipProgramId) {
-		this.scholarshipProgramId = scholarshipProgramId;
 	}
 
 	/**

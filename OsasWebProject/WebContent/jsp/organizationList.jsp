@@ -91,7 +91,7 @@
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="organizationName" /></td>
-						<td><s:property value="organizationTypeCode.organizationTypeName" /></td>
+						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program" /></td>
  						<td><s:property value="adviser" /></td>
 						<td>
