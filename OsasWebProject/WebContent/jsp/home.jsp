@@ -112,12 +112,6 @@
 						<div style="clear:both"></div>
 					</div>
 				</div>
-				<div class="menuLinks">
-					<div class="linkItemHolder">
-						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgRequirementsSubmissionLink">Manage Requirements Submission/Reviews</div>
-						<div style="clear:both"></div>
-					</div>
-				</div>
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
 						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgOrganizationManagementLink">Manage Members</div>

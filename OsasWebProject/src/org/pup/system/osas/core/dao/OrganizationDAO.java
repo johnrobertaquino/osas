@@ -210,9 +210,9 @@ public class OrganizationDAO extends DAO {
 				organization.setAdviser(resultSet.getString("Adviser"));
 				organization.setLogoFileName(resultSet.getString("LogoFileName"));
 				
-				OrganizationType organizationTypeCode = new OrganizationType();
-				organizationTypeCode.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
-				organization.setOrganizationType(organizationTypeCode);
+				OrganizationType organizationType = new OrganizationType();
+				organizationType.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
+				organization.setOrganizationType(organizationType);
 				
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
@@ -236,13 +236,13 @@ public class OrganizationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=? Adviser=?, LogoFileName=? WHERE OrganizationId=?");
+			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=?, Adviser=?, LogoFileName=? WHERE OrganizationId=?");
 			statement.setString(1, organization.getOrganizationName());
 			statement.setString(2, organization.getOrganizationType().getOrganizationTypeName());
 			statement.setString(3, organization.getProgram());
 			statement.setString(4, organization.getAdviser());
 			statement.setString(5, organization.getLogoFileName());
-			
+			statement.setInt(6, organization.getOrganizationId());
 			statement.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing saveUser method", e);

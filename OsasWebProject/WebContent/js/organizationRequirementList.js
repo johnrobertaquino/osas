@@ -42,7 +42,6 @@ function showOrganizationRequirementDeletePopup(organizationRequirementId) {
 	});
 }
 
-
 function displayEditOrganizationRequirement(organizationRequirementId) {
 	$("#editOrganizationRequirementForm #organizationRequirementId").val(organizationRequirementId);
 	$("#editOrganizationRequirementForm").submit();

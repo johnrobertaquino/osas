@@ -5,9 +5,20 @@
 #scholarListContentBody #searchScholarButton {
 		float: left;
 }
+#scholarListContentBody #addScholarExcelFileButton {
+		float: right;
+		margin-left: 5px;
+}
+
+#scholarListContentBody #excelImage {
+		height: 20px;
+}
+
+
 #scholarListContentBody #addScholarButton {
 		float: right;
 }
+
 
 #scholarListContentBody #searchScholar {
 	margin-left: 100px;
@@ -37,7 +48,7 @@
 	}
 	#scholarListContentBody #searchScholar {
 		margin-left: 50px;
-		width: 632px;
+		width: 900px;
 	}
 	#scholarListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
@@ -67,7 +78,7 @@
 	}
 	#scholarListContentBody #searchScholar {
 		margin-left: 40px;
-		width: 598px;
+		width: 800px;
 	}
 	
 	#scholarListContentBody #contentBodyRightPane table {
@@ -98,7 +109,7 @@
 	}
 	#scholarListContentBody #searchScholar {
 		margin-left: 120px;
-		 width: 598px;
+		 width: 800px;
 	}
 	#scholarListContentBody #contentBodyRightPane table {
 			margin-left: 120px;
