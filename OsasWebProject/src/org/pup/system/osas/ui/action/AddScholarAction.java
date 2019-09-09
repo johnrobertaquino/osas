@@ -135,7 +135,7 @@ public class AddScholarAction extends AbstractAction {
 	}
 	
 	public String getScholarshipProgramId() {
-		return scholarId;
+		return scholarshipProgramId;
 	}
 
 	public void setScholarshipProgramId(String scholarshipProgramId) 

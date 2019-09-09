@@ -54,7 +54,7 @@ public class OrganizationRequirementManager {
 		return organizationRequirement;
 	}
 
-	public List<OrganizationRequirement> getOrganizationRequirementList(int semTermId) throws Exception {
+	public List<OrganizationRequirement> getOrganizationRequirementList(int organizationId, int semTermId) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
 		OrganizationDAO organizationDAO = null;
 		List<OrganizationRequirement> organizationRequirementList = null;
@@ -66,7 +66,7 @@ public class OrganizationRequirementManager {
 
 			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
 
-			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementList(semTermId);
+			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementList(organizationId, semTermId);
 
 			if (organizationRequirementList != null) {
 				organizationDAO = new OrganizationDAO(connection);

@@ -5,6 +5,7 @@ import java.util.List;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
+import org.pup.system.osas.core.domain.UserRoleReference;
 import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -17,8 +18,7 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 	
 	private List<ScholarshipQualification> scholarshipQualificationList;
 	
-	private ScholarshipProgram scholarshipProgram;
-	
+	private int scholarshipProgramId;
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship";
@@ -26,10 +26,11 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			ScholarshipProgram scholasrhipProgram = new ScholarshipProgram();
-			//scholasrhipProgram.setScholarshipQualification(new ScholarshipQualification);
+			ScholarshipQualification scholarshipQualification = new ScholarshipQualification();
+			scholarshipQualification.setScholarshipProgram(new ScholarshipProgram());
+			scholarshipQualification.getScholarshipProgram().setScholarshipProgramId(scholarshipProgramId);
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			setScholarshipQualificationList(scholarshipQualificationManager.getScholarshipQualificationList(scholarshipProgram.getScholarshipProgramId(), getCurrentActiveTerm().getSemTermId()));
+			setScholarshipQualificationList(scholarshipQualificationManager.getScholarshipQualificationList(scholarshipProgramId, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -57,18 +58,19 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 	public void setScholarshipQualificationList(List<ScholarshipQualification> scholarshipQualificationList) {
 		this.scholarshipQualificationList = scholarshipQualificationList;
 	}
-	
+
 	/**
-	 * @return the scholarshipQualificationList
+	 * @return the scholarshipProgram
 	 */
-	public ScholarshipProgram getScholarshipProgram() {
-		return scholarshipProgram;
+	public int getScholarshipProgramId() {
+		return scholarshipProgramId;
 	}
 
 	/**
-	 * @param scholarshipQualificationList the scholarshipQualificationList to set
+	 * @param scholarshipProgram the scholarshipProgram to set
 	 */
-	public void setScholarshipQualificationList(ScholarshipProgram scholarshipProgram) {
-		this.scholarshipProgram = scholarshipProgram;
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
 	}
+	
 }

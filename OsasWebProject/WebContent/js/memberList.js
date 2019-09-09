@@ -32,6 +32,10 @@ $(document).ready(function() {
 	$('#addMemberButton').click(function() {
 		location.href = "displayAddMember";
 	});
+	
+	$('#addMemberExcelFileButton').click(function() {
+		location.href = "displayAddMemberExcelFile";
+	});
 });
 
 function showMemberDeletePopup(memberId) {
@@ -50,5 +54,12 @@ function addMember(memberId) {
 	$('#addMemberSaveButton').click(function() {
 		$("#addMemberForm #memberId").val(memberId);
 		$("#addMemberForm").submit();
+	});
+}
+
+function addMemberExcelFile(memberId) {
+	$('#addMemberExcelFileSaveButton').click(function() {
+		$("#addMemberExcelFileForm #memberId").val(memberId);
+		$("#addMemberExcelFileForm").submit();
 	});
 }

@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -21,9 +22,11 @@ public class EditOrganizationAction extends AbstractAction {
 	
 	private String adviser;
 	
+	private String logoFileName;
+	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship Agency";
+		pageName = "Manage Organization";
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -33,7 +36,9 @@ public class EditOrganizationAction extends AbstractAction {
 			
 			organization.setOrganizationId(organizationId);
 			organization.setOrganizationName(organizationName);
-			//organization.setOrganizationTypeCode(organizationTypeCode);;
+			organization.setOrganizationType(new OrganizationType());
+			organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
+			organization.setLogoFileName(logoFileName);
 			organization.setProgram(program);
 			organization.setAdviser(adviser);
 			
@@ -122,6 +127,21 @@ public class EditOrganizationAction extends AbstractAction {
 	public void setOrganizationTypeCode(String organizationTypeCode) {
 		this.organizationTypeCode = organizationTypeCode;
 	}
+	
+	/**
+	 * @return the adviser
+	 */
+	public String getLogoFileName() {
+		return logoFileName;
+	}
+
+	/**
+	 * @param adviser the adviser to set
+	 */
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
+	}
+
 	
 
 }

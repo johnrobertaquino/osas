@@ -123,7 +123,7 @@ public class OrganizationManager {
 	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		List<Organization> organizationList = null;
-		OrganizationType organizationTypeCode = null;
+		OrganizationType organizationType = null;
 		Connection connection = null;
 		
 		try {
@@ -135,8 +135,8 @@ public class OrganizationManager {
 			
 			if (organizationList != null) {
 				for(Organization organization : organizationList) {
-					organizationTypeCode = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeName());
-					organization.setOrganizationType(organizationTypeCode);
+					organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
+					organization.setOrganizationType(organizationType);
 				}
 			}
 			

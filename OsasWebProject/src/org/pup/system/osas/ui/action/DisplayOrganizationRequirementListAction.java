@@ -16,6 +16,7 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 	
 	private List<OrganizationRequirement> organizationRequirementList;
 	
+	private int organizationId;
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization > Requirements";
@@ -23,9 +24,11 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			Organization organization = new Organization();
+			OrganizationRequirement organizationRequirement = new OrganizationRequirement();
+			organizationRequirement.setOrganization(new Organization());
+			organizationRequirement.getOrganization().setOrganizationId(organizationId);
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementList(getCurrentActiveTerm().getSemTermId()));
+			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementList(organizationId, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -53,4 +56,19 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 	public void setOrganizationRequirementList(List<OrganizationRequirement> organizationRequirementList) {
 		this.organizationRequirementList = organizationRequirementList;
 	}
+	
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public int getOrganizationId() {
+		return organizationId;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setOrganizationId(int organizationId) {
+		this.organizationId = organizationId;
+	}
+
 }

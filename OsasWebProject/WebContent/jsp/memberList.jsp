@@ -74,12 +74,12 @@
 					<input type="text" id="memberSearchText" name="memberSearchText" placeholder="Search member">
 				</form>
 				<div class="button" id="searchMemberButton">SEARCH</div>
+				<div class="button" id="addMemberExcelFileButton">ADD MEMBER via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addMemberButton">ADD MEMBER</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
-				 	<th>Member Id</th>
 				 	<th>Student Number</th>
 					<th>First Name</th>
 					<th>Middle Name </th>
@@ -91,12 +91,10 @@
 				 	<th>Year </th>
 				 	<th>Section </th>
 				 	<th>Contact Number</th>
-				 	<th>Organization Id</th>
 					
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="memberId" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
@@ -108,7 +106,6 @@
 						<td><s:property value="year" /></td>
 						<td><s:property value="section" /></td>
 						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="organizationId" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

@@ -1,9 +1,18 @@
 package org.pup.system.osas.ui.action;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
+
+import com.itextpdf.io.codec.Base64.InputStream;
 
 public class AddOrganizationAction extends AbstractAction {
 
@@ -30,6 +39,26 @@ public class AddOrganizationAction extends AbstractAction {
 		
 		String actionResult = FORWARD_SUCCESS;
 		
+	    /*protected void doPost(HttpServletRequest request,
+	            HttpServletResponse response) throws ServletException, IOException {
+	        // gets values of text fields
+	        String firstName = request.getParameter("firstName");
+	        String lastName = request.getParameter("lastName");
+	         
+	        InputStream inputStream = null; // input stream of the upload file
+	         
+	        // obtains the upload file part in this multipart request
+	        Part filePart = request.getPart("photo");
+	        if (filePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(filePart.getName());
+	            System.out.println(filePart.getSize());
+	            System.out.println(filePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            inputStream = (InputStream) filePart.getInputStream();
+	        }*/
+	         
 		try {
 			
 			Organization organization = new Organization();
