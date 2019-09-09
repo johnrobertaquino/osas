@@ -6,7 +6,7 @@ public class Organization {
 	
 	private String organizationName;
 	
-	private OrganizationType organizationTypeCode;
+	private OrganizationType organizationType;
 	
 	private String program;
 	
@@ -52,14 +52,14 @@ public class Organization {
 	 * @return the organizationTypeCode
 	 */
 	public OrganizationType getOrganizationType() {
-		return organizationTypeCode;
+		return organizationType;
 	}
 
 	/**
 	 * @param organizationTypeCode the organizationTypeCode to set
 	 */
 	public void setOrganizationType(OrganizationType organizationTypeCode) {
-		this.organizationTypeCode = organizationTypeCode;
+		this.organizationType = organizationTypeCode;
 	}
 
 	/**

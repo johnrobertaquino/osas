@@ -30,8 +30,7 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			
 			organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
 			organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
-			//OrganizationRequirement.setOrganizationId(OrganizationId);
-
+			
 			organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
 			
 			notificationMessage = "Changes to organization requirement has been saved successfully.";

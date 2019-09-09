@@ -3,4 +3,4 @@ Banner Color
 #ffbc01 Yellow
 #afabaa1f Transparent Gray
 
-SET GLOBAL TIME ZONE = "+8:00";
+SET GLOBAL TIME_ZONE = "+8:00";

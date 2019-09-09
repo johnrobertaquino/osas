@@ -32,6 +32,10 @@ $(document).ready(function() {
 	$('#addScholarButton').click(function() {
 		location.href = "displayAddScholar";
 	});
+	
+	$('#addScholarExcelFileButton').click(function() {
+		location.href = "displayAddScholarExcelFile";
+	});
 });
 
 function showScholarDeletePopup(scholarId) {
@@ -50,5 +54,12 @@ function addScholar(scholarId) {
 	$('#addScholarSaveButton').click(function() {
 		$("#addScholarForm #scholarId").val(scholarId);
 		$("#addScholarForm").submit();
+	});
+}
+
+function addScholarExcelFile(scholarId) {
+	$('#addScholarSaveButton').click(function() {
+		$("#addScholarExcelFileForm #scholarId").val(scholarId);
+		$("#addScholarExcelForm").submit();
 	});
 }

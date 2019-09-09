@@ -446,6 +446,27 @@
 			<result name="success">/testjsp/displayupload.jsp</result>
 		</action>
 		
+		<action name="addScholarExcelFile" class="org.pup.system.osas.ui.action.AddScholarExcelFileAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarList</result>
+			<result name="error"  type="chain">/jsp/addScholarExcelFile.jsp</result>
+		</action>
+		
+		<action name="displayAddScholarExcelFile" class="org.pup.system.osas.ui.action.DisplayAddScholarExcelFileAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarExcelFile.jsp</result>
+		</action>
+				
+		<action name="addMemberExcelFile" class="org.pup.system.osas.ui.action.AddMemberExcelFileAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayMemberList</result>
+			<result name="error"  type="chain">/jsp/addMemberExcelFile.jsp</result>
+		</action>
+		
+		<action name="displayAddMemberExcelFile" class="org.pup.system.osas.ui.action.DisplayAddMemberExcelFileAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addMemberExcelFile.jsp</result>
+		</action>
 		<action name="sampleReport" class="org.pup.system.osas.ui.action.TestPrintAction">
 		</action>
 	</package>

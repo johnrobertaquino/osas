@@ -8,6 +8,14 @@
 #memberListContentBody #addMemberButton {
 		float: right;
 }
+#memberListContentBody #addMemberExcelFileButton {
+		float: right;
+		margin-left: 5px;
+}
+
+#memberListContentBody #excelImage {
+		height: 20px;
+}
 
 #memberListContentBody #searchMember {
 	margin-left: 100px;
@@ -37,7 +45,7 @@
 	}
 	#memberListContentBody #searchMember {
 		margin-left: 50px;
-		width: 632px;
+		width: 800px;
 	}
 	#memberListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
@@ -66,7 +74,7 @@
 	}
 	#memberListContentBody #searchMember {
 		margin-left: 40px;
-		width: 598px;
+		width: 750px;
 	}
 	
 	#memberListContentBody #contentBodyRightPane table {
@@ -97,7 +105,7 @@
 	}
 	#memberListContentBody #searchMember {
 		margin-left: 120px;
-		 width: 598px;
+		 width: 750px;
 	}
 	#memberListContentBody #contentBodyRightPane table {
 			margin-left: 120px;

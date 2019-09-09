@@ -80,7 +80,7 @@ public class OrganizationRequirementDAO extends DAO {
 		}
 	}
 
-	public List<OrganizationRequirement> getOrganizationRequirementList(int semTermId) throws Exception {
+	public List<OrganizationRequirement> getOrganizationRequirementList(int organizationId, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -93,7 +93,7 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT organizationrequirement.OrganizationRequirementId, organizationrequirement.OrganizationRequirementName, organizationrequirement.OrganizationId FROM organizationrequirement JOIN organization on organizationrequirement.OrganizationId = organization.OrganizationId WHERE organization.SemTermId =" + semTermId);
+					"SELECT organizationrequirement.OrganizationRequirementId, organizationrequirement.OrganizationRequirementName, organizationrequirement.OrganizationId FROM organizationrequirement JOIN organization on organizationrequirement.OrganizationId = organization.OrganizationId WHERE organization.OrganizationId =" + organizationId + " AND organization.SemTermId =" + semTermId);
 
 			while (resultSet.next()) {
 				if (organizationRequirementList == null) {

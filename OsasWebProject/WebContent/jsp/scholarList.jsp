@@ -74,6 +74,7 @@
 					<input type="text" id="scholarSearchText" name="scholarSearchText" placeholder="Search scholar">
 				</form>
 				<div class="button" id="searchScholarButton">SEARCH</div>
+				<div class="button" id="addScholarExcelFileButton">ADD SCHOLAR via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addScholarButton">ADD SCHOLAR</div>
     			<div style="clear:both"></div>
 			</div>

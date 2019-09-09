@@ -8,12 +8,13 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/editOrganization.css">
+<link rel="stylesheet" type="text/css" href="css/memberList.css">
+<link rel="stylesheet" type="text/css" href="css/addMember.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/editOrganization.js"></script>
+<script type="text/javascript" src="js/addMember.js"></script>
 </head>
 <body>
 <div id="header">
@@ -34,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -56,50 +57,35 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="editOrganizationContentBody" class="featureContent">
+	<div id="addMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">EDIT ORGANIZATION</div>
+			<div id="icon"><img src="images/list.png"/></div>
+			<div id="title">ADD MEMBER via EXCEL FILE</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="editOrganizationContent" id="editOrganizationForm" action="editOrganization" method="POST">
-					<input name="organizationId" type="hidden" value="${organization.organizationId}">
-    				 <div class="rightPaneElement withTitle">
-    					<div>
-    						<div id="orglogo"><img src="" alt="logo"/></div>
-    						<div id="orglogoInput"><input id="organizationLogo" name="logoFileName" type="file"></div>
-    					</div>
-    				</div>
+				<form class="addMemberExcelFileContent" id="memberExcelFileForm" action="addMemberExcelFile" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Organization name</span>
-    					<div><input id="organizationName" name="organizationName" type="text" value="${organization.organizationName}"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Organization Type</span>
-	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" checked>
-		    				<span>Academic</span>
-		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N">
-		    				<span>Non-Academic</span>
-		    			</div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
-    					<div><input id="program" name="program" type="text" value="${organization.program}"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span>Adviser</span>
-    					<div><input id="adviser" name="adviser" type="text" value="${organization.adviser}"></div>
-    				</div>
-    				
+    				    <span>Organization</span>
+	    				<div>
+		    				<select name="organizationId">
+		    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+		    						<option value="${organization.organizationId}">${organization.organizationName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
+					</div>
+					<div><br>
+						<input type="file" name="file">
+						<input type="submit">
+					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id="submitButton" class="button left">
-								<span>Save</span>
+							<div id=submitButton class="button left">
+								<span>Add Member</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
@@ -108,7 +94,6 @@
     		</div>
     		<div style="clear:both"></div>
 		</div>
-		<div style="clear:both"></div>
 	</div>
 </div>
 

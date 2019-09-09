@@ -64,7 +64,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST">
+				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST" enotype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     					<div>
     						<div id="orglogo"><img src="" alt="logo"/></div>
