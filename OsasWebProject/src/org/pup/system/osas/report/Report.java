@@ -2,6 +2,8 @@ package org.pup.system.osas.report;
 
 import java.io.OutputStream;
 
+import org.pup.system.osas.core.domain.User;
+
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -23,10 +25,18 @@ public abstract class Report<T> {
 
 	private String reportTitle;
 
-	public Report(String imagePath, String reportTitle) {
+	private T data;
+
+	private User preparedBy;
+
+	public Report(String imagePath, String reportTitle, T data, User preparedBy) {
 		this.imagePath = imagePath;
 		this.reportTitle = reportTitle;
+		this.data = data;
+		this.preparedBy = preparedBy;
 	}
+
+	public abstract Table generateContentTable(T data) throws Exception;
 
 	public abstract Paragraph generateContent(T data) throws Exception;
 
@@ -41,7 +51,45 @@ public abstract class Report<T> {
 		SolidLine line = new SolidLine(1f);
 		document.add(new LineSeparator(line));
 		document.add(generateTitle());
+		document.add(new Paragraph("\n"));
+
+		Table table = generateContentTable(data);
+
+		if (table != null) {
+			document.add(table);
+		} else {
+			document.add(generateContent(data));
+		}
+
+		document.add(new Paragraph("\n"));
+		if (preparedBy != null) {
+			document.add(generatePreparedBy(preparedBy));
+		}
 		document.close();
+	}
+
+	protected Paragraph generatePreparedBy(User preparedBy) {
+		Paragraph paragraph = new Paragraph();
+
+		Text preparedByText = new Text("Prepared by:");
+		preparedByText.setFontSize(10f);
+		preparedByText.setItalic();
+
+		Text nameText = new Text(preparedBy.getFirstName() + " " + preparedBy.getLastName());
+		nameText.setFontSize(10f);
+		nameText.setItalic();
+
+		Text positionText = new Text(preparedBy.getPosition());
+		positionText.setFontSize(9f);
+		positionText.setItalic();
+
+		paragraph.add(preparedByText);
+		paragraph.add("\n");
+		paragraph.add(nameText);
+		paragraph.add("\n");
+		paragraph.add(positionText);
+
+		return paragraph;
 	}
 
 	protected Paragraph generateTitle() throws Exception {
@@ -108,4 +156,32 @@ public abstract class Report<T> {
 
 		return paragraph;
 	}
+
+	protected Cell generateTableCell(String text) {
+		Text textObj = new Text(text);
+		textObj.setFontSize(9f);
+
+		Paragraph paragraph = new Paragraph();
+		paragraph.add(textObj);
+
+		Cell cell = new Cell(1, 1);
+		cell.add(paragraph);
+
+		return cell;
+	}
+
+	protected Cell generateTableCellHeader(String text) {
+		Text textObj = new Text(text);
+		textObj.setFontSize(9f);
+		textObj.setBold();
+
+		Paragraph paragraph = new Paragraph();
+		paragraph.add(textObj);
+
+		Cell cell = new Cell(1, 1);
+		cell.add(paragraph);
+
+		return cell;
+	}
+
 }
