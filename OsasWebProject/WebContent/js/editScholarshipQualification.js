@@ -25,15 +25,8 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Scholarship Qualification name can\'t be blank.";
 		}
-		if($('#agencyId').val() === '')
-		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency Id can\'t be blank.";
-		}
 		if (errorMessage == '') {
-			popUpOkCancel("Do you want to save changes to this scholarship Qualification?", function() {
+			popUpOkCancel("Do you want to save changes to this scholarship qualification?", function() {
 				$("#editScholarshipQualificationForm").submit();
 			});
 		}

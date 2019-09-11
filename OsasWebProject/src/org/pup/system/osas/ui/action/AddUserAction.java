@@ -49,7 +49,7 @@ public class AddUserAction extends AbstractAction{
 			
 			if(user != null)
 			{
-				notificationMessage = "User is already exist.";
+				notificationMessage = "User already exist.";
 			}
 			else
 			{
@@ -76,7 +76,7 @@ public class AddUserAction extends AbstractAction{
 					}
 				}
 				userManager.insertUser(user);
-				notificationMessage = "User has been saved successfully registered.";
+				notificationMessage = "User has been successfully registered.";
 			}			
 
 		} catch (BusinessException be) {

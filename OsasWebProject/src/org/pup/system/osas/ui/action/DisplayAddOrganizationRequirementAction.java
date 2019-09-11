@@ -17,7 +17,7 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization > Requirement";
+		pageName = "Manage Organization > Requirements";
 		
 		String actionResult = FORWARD_SUCCESS;
 		

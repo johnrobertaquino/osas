@@ -40,7 +40,7 @@ public class EditMemberAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Organization Member";
 		String actionResult = FORWARD_SUCCESS;
 
 		try {

@@ -20,7 +20,7 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -34,7 +34,7 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 
 			scholarshipQualificationManager.saveScholarshipQualification(scholarshipQualification);
 			
-			notificationMessage = "Changes to scholarship Qualification has been saved successfully.";
+			notificationMessage = "Changes to scholarship qualification has been saved successfully.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

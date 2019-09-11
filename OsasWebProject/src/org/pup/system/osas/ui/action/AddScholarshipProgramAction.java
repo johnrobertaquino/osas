@@ -32,7 +32,7 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			scholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
 
 			if(scholarshipProgram != null) { 
-				notificationMessage = "Scholarship program is already exist.";
+				notificationMessage = "Scholarship program already exist.";
 			}
 			else
 			{			
@@ -40,7 +40,7 @@ public class AddScholarshipProgramAction extends AbstractAction {
 				scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
 				scholarshipProgram.setAgency(agency);
 				scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
-				notificationMessage = "Scholarship Program has been saved successfully added.";
+				notificationMessage = "Scholarship Program has been successfully added.";
 			}
 
 		} catch (BusinessException be) {

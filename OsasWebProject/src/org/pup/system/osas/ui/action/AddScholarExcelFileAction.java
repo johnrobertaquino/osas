@@ -72,7 +72,7 @@ public class AddScholarExcelFileAction extends AbstractAction {
 					ScholarManager scholarManager = new ScholarManager();
 					scholarManager.insertScholar(scholar);
 					
-					notificationMessage = "Scholar has been saved successfully added.";
+					notificationMessage = "Scholar has been successfully added.";
 				}
 
 				index++;

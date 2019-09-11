@@ -33,7 +33,7 @@ public class AddAgencyAction extends AbstractAction {
 			agency = agencyManager.validate(agencyName);
 			
 			if(agency != null) { 
-				notificationMessage = "Agency is already exist.";
+				notificationMessage = "Agency already exist.";
 			}
 			else
 			{
@@ -44,7 +44,7 @@ public class AddAgencyAction extends AbstractAction {
 				agency.setContactNumber(contactNumber);
 				agency.setSemTerm(getCurrentActiveTerm());
 				agencyManager.insertAgency(agency);
-				notificationMessage = "Agency has been saved successfully added.";
+				notificationMessage = "Agency has been successfully added.";
 			}
 
 		} catch (BusinessException be) {

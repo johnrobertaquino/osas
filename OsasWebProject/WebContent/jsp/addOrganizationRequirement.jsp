@@ -76,7 +76,7 @@
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Qualification Name</span>
+    					<span>Organization Requirement Name</span>
     					<div><input id="organizationRequirementName" name="organizationRequirementName" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

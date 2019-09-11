@@ -24,13 +24,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Scholarship Qualification Name can\'t be blank.";
 		}
-		if($('#agencyId').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency name can\'t be blank.";
-		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this scholarship qualification?", function() {
 				$("#scholarshipQualificationForm").submit();

@@ -17,7 +17,7 @@ public class DisplayEditMemberAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Member";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 

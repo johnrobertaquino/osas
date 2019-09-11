@@ -22,14 +22,7 @@ $(document).ready(function() {
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "Scholarship Program can\'t be blank.";
-		}
-		if($('#agencyId').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency name can\'t be blank.";
+			errorMessage = errorMessage + "Scholarship Program Name can\'t be blank.";
 		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this scholarship program?", function() {

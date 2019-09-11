@@ -63,7 +63,7 @@ public class AddScholarAction extends AbstractAction {
 			ScholarManager scholarManager = new ScholarManager();
 			scholarManager.insertScholar(scholar);
 			
-			notificationMessage = "Scholar has been saved successfully added.";
+			notificationMessage = "Scholar has been successfully added.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

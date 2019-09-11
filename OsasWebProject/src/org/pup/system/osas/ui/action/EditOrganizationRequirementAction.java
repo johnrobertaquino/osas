@@ -20,7 +20,7 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Organization > Requirements";
 
 		String actionResult = FORWARD_SUCCESS;
 

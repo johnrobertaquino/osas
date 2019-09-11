@@ -15,7 +15,7 @@ public class DeleteOrganizationRequirementAction extends AbstractAction{
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Requirements";
 		
 		String actionResult = FORWARD_SUCCESS;
 

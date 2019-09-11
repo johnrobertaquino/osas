@@ -20,7 +20,7 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -35,7 +35,7 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
 			scholarshipQualificationManager.insertScholarshipQualification(scholarshipQualification);
 
-			notificationMessage = "Scholarship Qualification has been saved successfully added.";
+			notificationMessage = "Scholarship Qualification has been successfully added.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

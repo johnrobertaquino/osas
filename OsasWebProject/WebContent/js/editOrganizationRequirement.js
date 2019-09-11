@@ -25,13 +25,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Organization Requirement name can\'t be blank.";
 		}
-		if($('#agencyId').val() === '')
-		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency Id can\'t be blank.";
-		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to save changes to this organization requirement?", function() {
 				$("#editOrganizationRequirementForm").submit();

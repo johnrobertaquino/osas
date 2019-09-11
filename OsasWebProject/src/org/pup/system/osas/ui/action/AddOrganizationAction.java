@@ -66,7 +66,7 @@ public class AddOrganizationAction extends AbstractAction {
 			organization = organizationManager.validate(organizationName);
 			
 			if(organization != null) { 
-				notificationMessage = "Organization is already exist.";
+				notificationMessage = "Organization already exist.";
 			}
 			else
 			{
@@ -79,7 +79,7 @@ public class AddOrganizationAction extends AbstractAction {
 				organization.setLogoFileName(logoFileName);
 				organization.setSemTerm(getCurrentActiveTerm());
 				organizationManager.insertOrganization(organization);
-				notificationMessage = "Organization has been saved successfully added.";
+				notificationMessage = "Organization has been successfully added.";
 			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();

@@ -21,7 +21,7 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 	private int scholarshipProgramId;
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 

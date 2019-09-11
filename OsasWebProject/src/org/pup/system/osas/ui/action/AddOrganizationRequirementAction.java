@@ -20,7 +20,7 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization > Requirement";
+		pageName = "Manage Organization > Requirements";
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -35,7 +35,7 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
 			organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
 
-			notificationMessage = "Scholarship Qualification has been saved successfully added.";
+			notificationMessage = "Organization Requirement has been successfully added.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

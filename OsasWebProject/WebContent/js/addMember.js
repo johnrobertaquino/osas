@@ -74,13 +74,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "First can\'t be blank.";
 		}
-		if($('#middleName').val() === '')
-		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Middle name can\'t be blank.";
-		}
 		if($('#lastName').val() === '')
 		{
 			if (errorMessage !== '') {
@@ -102,8 +95,22 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Program can\'t be blank.";
 		}
+		if($('#year').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Year can\'t be blank.";
+		}
+		if($('#section').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Section can\'t be blank.";
+		}
 		if (errorMessage == '') {
-			popUpOkCancel("Do you want to add this scholar?", function() {
+			popUpOkCancel("Do you want to add this Member?", function() {
 				$("#memberForm").submit();
 			});
 		}

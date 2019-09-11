@@ -44,7 +44,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 		
@@ -70,7 +70,7 @@ public class AddMemberAction extends AbstractAction {
 			MemberManager memberManager = new MemberManager();
 			memberManager.insertMember(member);
 			
-			notificationMessage = "Scholar has been saved successfully added.";
+			notificationMessage = "Member has been successfully added.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

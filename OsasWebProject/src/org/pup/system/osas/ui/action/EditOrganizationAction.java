@@ -44,7 +44,7 @@ public class EditOrganizationAction extends AbstractAction {
 			
 			organizationManager.saveOrganization(organization);
 			
-			notificationMessage = "Changes to organization term has been saved successfully.";
+			notificationMessage = "Changes to organization has been saved successfully.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

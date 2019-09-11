@@ -65,13 +65,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "First can\'t be blank.";
 		}
-		if($('#middleName').val() === '')
-		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Middle name can\'t be blank.";
-		}
 		if($('#lastName').val() === '')
 		{
 			if (errorMessage !== '') {
@@ -79,20 +72,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Last name can\'t be blank.";
 			}
-		if($('#position').val() === '')
-		{
-				if (errorMessage !== '') {
-					errorMessage = errorMessage + "<br/>";
-				}
-				errorMessage = errorMessage + "Position can\'t be blank.";
-		}
-		if($('#contactNumber').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Contact number can\'t be blank.";
-		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to save changes to this member?", function() {
 				$("#editMemberForm").submit();

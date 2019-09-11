@@ -23,7 +23,7 @@ public class DeleteOrganizationAction extends AbstractAction {
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organizaton = organizationManager.getOrganization(organizationId);
 			organizationManager.deleteOrganization(organizaton);
-			notificationMessage = "User has been successfully deleted.";
+			notificationMessage = "Organization has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

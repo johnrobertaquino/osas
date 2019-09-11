@@ -17,7 +17,7 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualfications";
 		
 		String actionResult = FORWARD_SUCCESS;
 

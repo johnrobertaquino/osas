@@ -37,7 +37,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 		
@@ -77,7 +77,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 					MemberManager memberManager = new MemberManager();
 					memberManager.insertMember(member);
 					
-					notificationMessage = "Member has been saved successfully added.";
+					notificationMessage = "Member has been successfully added.";
 				}
 
 				index++;
