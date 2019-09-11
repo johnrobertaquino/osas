@@ -96,16 +96,32 @@
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Position</span>
-    					<div><input id="position" name="position" type="text"></div>
-    				</div>
-    				 <div class="rightPaneElement withTitle">
-    					<span>OfficePhoto</span>
-    					<div><input id="officerPhoto" name="officerPhoto" type="file"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div><input id="program" name="program" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+						<div id="roleDiv">
+							<label for="chkOfficer">
+							    <input type="checkbox" id="chkOfficer" />
+							    Officer
+							</label>
+						</div>
+    				</div>
+    				<br><div class="rightPaneElement withTitle">
+    					<div id="divOfficer" style="display: none">
+	    					<div>
+	    						<div id="officerPhotoDisplay"><img src="" alt="photo"/></div>			 
+		    					<input id="officerInput" name="officerPhoto" type="file">
+		    				</div>
+	    					<div>
+		    					<span>Position</span>
+		    					<div><input id="position" name="position" type="text"></div>
+	    					</div>
+    					</div>
+    				</div>
+    				<br><div class="rightPaneElement withTitle">
+    					<span>Gender</span>
+    					<div><input id="gender" name="gender" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>

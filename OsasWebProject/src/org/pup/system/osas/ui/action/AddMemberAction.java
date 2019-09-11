@@ -28,7 +28,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String position;
 
-	private Boolean officer;
+	private String officer;
 	
 	private String officerPhoto;
 	
@@ -141,11 +141,11 @@ public class AddMemberAction extends AbstractAction {
 		this.position = position;
 	}
 
-	public Boolean getOfficer() {
+	public String getOfficer() {
 		return officer;
 	}
 
-	public void setOfficer(Boolean officer) {
+	public void setOfficer(String officer) {
 		this.officer = officer;
 	}
 

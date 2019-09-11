@@ -28,8 +28,14 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		case "program":
 			domain.setProgram(value);
 			break;
+		case "officer":
+			domain.setOfficer(value);
+			break;
 		case "position":
 			domain.setPosition(value);
+			break;
+		case "officerPhoto":
+			domain.setOfficerPhoto(value);
 			break;
 		case "gender":
 			domain.setGender(value);

@@ -36,7 +36,7 @@ public class OrganizationDAO extends DAO {
 			if (resultSet.next()) {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				organization.setOrganizationName(resultSet.getString("OrganizationCode"));
+				organization.setOrganizationName(resultSet.getString("OrganizationName"));
 				organization.setProgram(resultSet.getString("Program"));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));

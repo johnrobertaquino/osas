@@ -86,7 +86,6 @@
 					<th>Last Name</th>
 					<th>Program</th>
 					<th>Position </th>
-				 	<th>Officer </th>
 				 	<th>Gender </th>
 				 	<th>Year </th>
 				 	<th>Section </th>
@@ -101,7 +100,6 @@
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="program" /></td>
 						<td><s:property value="position" /></td>
-						<td><s:property value="officer" /></td>
 						<td><s:property value="gender" /></td>
 						<td><s:property value="year" /></td>
 						<td><s:property value="section" /></td>

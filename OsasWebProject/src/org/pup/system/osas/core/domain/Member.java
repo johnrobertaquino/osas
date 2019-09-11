@@ -15,7 +15,7 @@ public class Member {
 	
 	private String position;
 
-	private boolean officer;
+	private String officer;
 	
 	private String officerPhoto;
 	
@@ -85,11 +85,11 @@ public class Member {
 		this.position = position;
 	}
 
-	public boolean getOfficer() {
+	public String getOfficer() {
 		return officer;
 	}
 
-	public void setOfficer(boolean officer) {
+	public void setOfficer(String officer) {
 		this.officer = officer;
 	}
 
@@ -151,7 +151,5 @@ public class Member {
 	 */
 	public void setOfficerPhoto(String officerPhoto) {
 		this.officerPhoto = officerPhoto;
-	}
-
-	
-	}
+	}	
+}

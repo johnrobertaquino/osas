@@ -36,6 +36,16 @@ $(document).ready(function() {
         return isValid;
     });
 	
+	 $(function () {
+	        $("#chkOfficer").click(function () {
+	            if ($(this).is(":checked")) {
+	                $("#divOfficer").show();
+	            } else {
+	                $("#divOfficer").hide();
+	            }
+	        });
+	    });
+	
 	$("#section").keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
@@ -78,13 +88,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Last name can\'t be blank.";
 			}
-		if($('#position').val() === '')
-		{
-				if (errorMessage !== '') {
-					errorMessage = errorMessage + "<br/>";
-				}
-				errorMessage = errorMessage + "Position can\'t be blank.";
-		}
 		if($('#contactNumber').val() === '')
 		{
 			if (errorMessage !== '') {

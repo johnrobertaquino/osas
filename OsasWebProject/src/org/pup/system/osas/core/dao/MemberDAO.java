@@ -29,7 +29,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Position, Officer, OfficerPhoto, Gender, Year, Section, ContactNumber, OrganizationId FROM member WHERE MemberId=" + memberId);  
+			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber, OrganizationId FROM member WHERE MemberId=" + memberId);  
 			
 			if (resultSet.next()) {
 				member = new Member();
@@ -40,7 +40,7 @@ public class MemberDAO extends DAO {
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
 				member.setPosition(resultSet.getString("Position"));
-				member.setOfficer(resultSet.getBoolean("Officer"));
+				member.setOfficer(resultSet.getString("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
@@ -68,16 +68,16 @@ public class MemberDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO member(MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Position, Officer, OfficerPhoto, Gender, Year, Section, ContactNumber, OrganizationId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO member(MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber, OrganizationId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, member.getMemberId());
 			statement.setString(2, member.getStudentNumber());
 			statement.setString(3, member.getFirstName());
 			statement.setString(4, member.getMiddleName());
 			statement.setString(5, member.getLastName());
 			statement.setString(6, member.getProgram());
-			statement.setString(7, member.getPosition());
-			statement.setBoolean(8, member.getOfficer());
-			statement.setString(9, member.getOfficerPhoto());
+			statement.setString(7, member.getOfficer());
+			statement.setString(8, member.getOfficerPhoto());
+			statement.setString(9, member.getPosition());
 			statement.setString(10, member.getGender());
 			statement.setString(11, member.getYear());
 			statement.setString(12, member.getSection());
@@ -112,7 +112,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Position, member.Officer, member.OfficerPhoto, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE organization.SemTermId=" + semTermId);
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE organization.SemTermId=" + semTermId);
 			
 			while (resultSet.next()) {
 				if (memberList == null) {
@@ -127,7 +127,7 @@ public class MemberDAO extends DAO {
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
 				member.setPosition(resultSet.getString("Position"));
-				member.setOfficer(resultSet.getBoolean("Officer"));
+				member.setOfficer(resultSet.getString("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
@@ -161,7 +161,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Position, Officer, OfficerPhoto, Gender , Year, Section, ContactNumber, OrganizationId  FROM member WHERE StudentNumber LIKE '%"
+			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender , Year, Section, ContactNumber, OrganizationId  FROM member WHERE StudentNumber LIKE '%"
 					+ memberSearchText + "%' OR FirstName LIKE '%" + memberSearchText + "%' OR MiddleName LIKE '%" + memberSearchText + "%' OR LastName LIKE '%" + memberSearchText + "%' OR Program LIKE '%" + memberSearchText + "%' OR Position LIKE '%" + memberSearchText + "%'");  
 			
 			while (resultSet.next()) {
@@ -176,7 +176,7 @@ public class MemberDAO extends DAO {
 				member.setMiddleName(resultSet.getString("MiddleName"));
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
-				member.setOfficer(resultSet.getBoolean("Officer"));
+				member.setOfficer(resultSet.getString("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
@@ -205,15 +205,15 @@ public class MemberDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE member SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Program=?, Position=?, Officer=?, OfficerPhoto=?, Gender=?, Year=?, Section=?, ContactNumber=?, OrganizationId=? WHERE MemberId=?");
+			statement = connection.prepareStatement("UPDATE member SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Program=?, Officer=?, OfficerPhoto=?, Position=?, Gender=?, Year=?, Section=?, ContactNumber=?, OrganizationId=? WHERE MemberId=?");
 			statement.setString(1, member.getStudentNumber());
 			statement.setString(2, member.getFirstName());
 			statement.setString(3, member.getMiddleName());
 			statement.setString(4, member.getLastName());
 			statement.setString(5, member.getProgram());
-			statement.setString(6, member.getPosition());
-			statement.setBoolean(7, member.getOfficer());
-			statement.setString(8, member.getOfficerPhoto());
+			statement.setString(6, member.getOfficer());
+			statement.setString(7, member.getOfficerPhoto());
+			statement.setString(8, member.getPosition());
 			statement.setString(9, member.getGender());
 			statement.setString(10, member.getYear());
 			statement.setString(11, member.getSection ());
