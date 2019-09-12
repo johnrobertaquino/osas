@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		location.href = "displayOrganizationRequirementList";
+		$("#cancelOrganizationRequirementForm").submit();
 	});
 	
 	$("#contactNumber").keypress(function (e) {

@@ -21,7 +21,7 @@ public class AddOrganizationAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 8910283248066116810L;
 
-	private String organizationId;
+	private static final String FORWARD_DISPLAYADDORGANIZATION = "displayAddOrganization";
 	
 	private String organizationName;
 	
@@ -67,6 +67,7 @@ public class AddOrganizationAction extends AbstractAction {
 			
 			if(organization != null) { 
 				notificationMessage = "Organization already exist.";
+				return FORWARD_DISPLAYADDORGANIZATION;
 			}
 			else
 			{
@@ -93,21 +94,6 @@ public class AddOrganizationAction extends AbstractAction {
 		
 		return actionResult;
 	}
-
-	/**
-	 * @return the organizationId
-	 */
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param organizationId the organizationId to set
-	 */
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
 	/**
 	 * @return the organizationName
 	 */

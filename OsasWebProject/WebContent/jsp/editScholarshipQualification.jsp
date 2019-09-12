@@ -59,7 +59,7 @@
 	<div id="editScholarshipQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">EDIT SCHOLARSHIP Qualification</div>
+			<div id="title">EDIT SCHOLARSHIP QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
@@ -71,7 +71,7 @@
 					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Qualification name</span>
+    					<span>Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

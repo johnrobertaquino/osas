@@ -12,6 +12,8 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
+	
+	private static final String FORWARD_DISPLAYADDSCHOLARSHIPPROGRAM = "displayAddScholarshipProgram";
 
 	private String scholarshipProgramName;
 
@@ -33,6 +35,7 @@ public class AddScholarshipProgramAction extends AbstractAction {
 
 			if(scholarshipProgram != null) { 
 				notificationMessage = "Scholarship program already exist.";
+				return FORWARD_DISPLAYADDSCHOLARSHIPPROGRAM;
 			}
 			else
 			{			

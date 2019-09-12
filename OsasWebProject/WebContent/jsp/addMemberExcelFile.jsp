@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addMember.js"></script>
+<script type="text/javascript" src="js/addMemberExcelFile.js"></script>
 </head>
 <body>
 <div id="header">
@@ -77,7 +77,6 @@
 					</div>
 					<div><br>
 						<input type="file" name="file">
-						<input type="submit">
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

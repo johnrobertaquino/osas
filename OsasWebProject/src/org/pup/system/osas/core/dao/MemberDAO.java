@@ -219,6 +219,7 @@ public class MemberDAO extends DAO {
 			statement.setString(11, member.getSection ());
 			statement.setString(12, member.getContactNumber());
 			statement.setInt(13, member.getOrganization().getOrganizationId());
+			statement.setInt(14, member.getMemberId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

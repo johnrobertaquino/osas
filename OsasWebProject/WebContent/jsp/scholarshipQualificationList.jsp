@@ -67,13 +67,14 @@
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF SCHOLARSHIP</div>
+			<div id="title">LIST OF QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="searchScholarshipQualification">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchScholarshipQualification" method="POST" id="searchScholarshipQualificationForm">
 					<input type="text" id="scholarshipQualificationSearchText" name="scholarshipQualificationSearchText" placeholder="Search Scholarship Qualification">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
 				<div class="button" id="searchScholarshipQualificationButton">SEARCH</div>
 				<div class="button" id="addScholarshipQualificationButton">ADD SCHOLARSHIP QUALIFICATION</div>

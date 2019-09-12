@@ -64,6 +64,9 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelScholarshipQualificationForm" action="displayScholarshipQualificationList" method="POST">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+				</form>
 				<form class="addScholarhipQualificationContent" id="scholarshipQualificationForm" action="addScholarshipQualification" method="POST">
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
@@ -85,7 +88,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Scholarship Qualification</span>
+								<span>Add Qualification</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

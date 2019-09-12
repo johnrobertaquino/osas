@@ -78,7 +78,7 @@
 				<div class="button" id="addScholarButton">ADD SCHOLAR</div>
     			<div style="clear:both"></div>
 			</div>
-			<div style="overflow-x:auto">
+			<div>
 			<table>
 				<tr>
 					<th>Scholarship Program</th>

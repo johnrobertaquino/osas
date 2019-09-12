@@ -221,6 +221,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarshipProgramList</result>
 			<result name="error"  type="chain">/jsp/addScholarshipProgram.jsp</result>
+			<result name="displayAddScholarshipProgram"  type="chain">displayAddScholarshipProgram</result>
 		</action>
 
 		<action name="searchScholarshipProgram" class="org.pup.system.osas.ui.action.SearchScholarshipProgramAction">
@@ -270,7 +271,7 @@
 			<result name="error">/jsp/scholarshipQualificationList.jsp</result>
 		</action>
 		
-						<!-- MANAGE SCHOLARSHIP PROGRAM -->	
+						<!-- MANAGE SCHOLARS -->	
 						
 		 <action name="displayScholarList" class="org.pup.system.osas.ui.action.DisplayScholarListAction">
 			<interceptor-ref name="userSessionStack"/>
@@ -328,6 +329,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayOrganizationList</result>
 			<result name="error"  type="chain">/jsp/addOrganization.jsp</result>
+			<result name="displayAddOrganization"  type="chain">displayAddScholarshipProgram</result>
 		</action>
 				
 		<action name="displayEditOrganization" class="org.pup.system.osas.ui.action.DisplayEditOrganizationAction">

@@ -57,21 +57,24 @@
 <div id="contentBody">
 	<form id="deleteOrganizationRequirementForm" action="deleteOrganizationRequirement" method="POST">
   		<input type="hidden" id="organizationRequirementId" name="organizationRequirementId" />
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
 	<form id="editOrganizationRequirementForm" action="displayEditOrganizationRequirement" method="POST">
   		<input type="hidden" id="organizationRequirementId" name="organizationRequirementId" />
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
 	<div id="organizationRequirementListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF ORGANIZATION REQUIREMENT</div>
+			<div id="title">LIST OF REQUIREMENT</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="searchOrganizationRequirement">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchOrganizationRequirement" method="POST" id="searchOrganizationRequirementForm">
 					<input type="text" id="organizationRequirementSearchText" name="organizationRequirementSearchText" placeholder="Search Organization Requirement">
+					<input type="hidden" name="organizationId" value="${organizationId}" />
 				</form>
 				<div class="button" id="searchOrganizationRequirementButton">SEARCH</div>
 				<div class="button" id="addOrganizationRequirementButton">ADD SCHOLARSHIP QUALIFICATION</div>

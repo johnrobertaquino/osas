@@ -73,24 +73,26 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Name</span>
-    					<div><input id="organizationName" name="organizationName" type="text"></div>
+    					<div><input id="organizationName" name="organizationName" type="text" value="${organizationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Type</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" checked>
+		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
 		    				<span>Academic</span>
 		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
 		    				<span>Non-Academic</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
-    					<div><input id="program" name="program" type="text"></div>
+    					<div id="programDiv">
+	    					<span>Program</span>
+	    					<div><input id="program" name="program" type="text" value="${program}"></div>
+    					</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span>Adviser</span>
-    					<div><input id="adviser" name="adviser" type="text"></div>
+    					<div><input id="adviser" name="adviser" type="text"value="${adviser}"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

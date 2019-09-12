@@ -60,7 +60,7 @@
 	<div id="addOrganizationRequirementContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLARSHIP QUALIFICATION</div>
+			<div id="title">ADD ORGANIZATION REQUIREMENT</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
@@ -85,7 +85,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Organization Requirement</span>
+								<span>Add Requirement</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

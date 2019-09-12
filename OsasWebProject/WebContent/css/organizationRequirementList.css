@@ -61,6 +61,7 @@
 	}
 	#organizationRequirementListContentBody #searchOrganizationRequirement, #organizationRequirementListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
+		width: 700px;
 	}
 	#organizationRequirementListContentBody #searchOrganizationRequirement img {
 		height: 32px;
@@ -128,7 +129,7 @@
 
 @media only screen and (max-width: 1000px) {
   	#organizationRequirementListContentBody #contentBodyLeftPane	{
-		width: 160px;
+		width: 190px;
 	}
 	#organizationRequirementListContentBody #contentBodyRightPane {
 		font-size: 10px;

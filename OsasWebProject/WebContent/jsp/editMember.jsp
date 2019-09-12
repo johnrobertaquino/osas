@@ -89,9 +89,14 @@
 					<span>Position</span>
     					<div><input id="position" name="position" type="text" value="${member.position}"></div>
     				</div>
-    				<div class="rightPaneElement withTitle">
-					<span>Gender</span>
-    					<div><input id="gender" name="gender" type="text" value="${member.gender}"></div>
+   					<div class="rightPaneElement withTitle">
+    					<span>Gender</span>
+	    				<div id="roleDiv">
+		    				<input type="radio" id="gender" name="gender" value="M" checked>
+		    				<span>Male</span>
+		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<span>Female</span>
+		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Officer</span>

@@ -13,6 +13,8 @@ public class DeleteOrganizationRequirementAction extends AbstractAction{
 	
 	private int organizationRequirementId;
 	
+	private int organizationId;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship > Requirements";
@@ -49,6 +51,20 @@ public class DeleteOrganizationRequirementAction extends AbstractAction{
 	 */
 	public void setOrganizationRequirementId(int organizationRequirementId) {
 		this.organizationRequirementId = organizationRequirementId;
+	}
+
+	/**
+	 * @return the organizationId
+	 */
+	public int getOrganizationId() {
+		return organizationId;
+	}
+
+	/**
+	 * @param organizationId the organizationId to set
+	 */
+	public void setOrganizationId(int organizationId) {
+		this.organizationId = organizationId;
 	}
 	
 }

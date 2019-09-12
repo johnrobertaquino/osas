@@ -77,7 +77,7 @@
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
+    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text" value="${scholarshipProgramName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

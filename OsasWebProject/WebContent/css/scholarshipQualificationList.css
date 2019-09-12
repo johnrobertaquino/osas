@@ -112,6 +112,7 @@
 	}
 	#scholarshipQualificationListContentBody #searchScholarshipQualification, #scholarshipQualificationListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
+		width: 700px;
 	}
 	#scholarshipQualificationListContentBody #searchScholarshipQualification img {
 		height: 32px;

@@ -63,8 +63,12 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelOrganizationRequirementForm" action="displayOrganizationRequirementList" method="POST">
+					<input type="hidden" name="organizationId" value="${organizationId}" />
+				</form>
 				<form class="editOrganizationRequirementContent" id="editOrganizationRequirementForm" action="editOrganizationRequirement" method="POST">
 					<input name="organizationRequirementId" type="hidden" value="${organizationRequirement.organizationRequirementId}">
+  					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Organization Requirement Name</span>
     					<div><input id="organizationRequirementName" name="organizationRequirementName" type="text" value="${organizationRequirement.organizationRequirementName}"></div>

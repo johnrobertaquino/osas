@@ -49,7 +49,7 @@
 	}
 	#memberListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
-		width: inherit;
+		width: 750px;
 	}
 	#memberListContentBody #searchMember img {
 		height: 32px;
@@ -79,7 +79,7 @@
 	
 	#memberListContentBody #contentBodyRightPane table {
 		margin-left: 40px;
-		width: inherit;
+		width: 750px;
 	}
 	
 	#memberListContentBody #searchMember img {
@@ -101,7 +101,7 @@
 		width: 160px;
 	}
 	#memberListContentBody #contentBodyRightPane {
-		font-size: 10px;
+		font-size: 11px;
 	}
 	#memberListContentBody #searchMember {
 		margin-left: 120px;
@@ -109,7 +109,7 @@
 	}
 	#memberListContentBody #contentBodyRightPane table {
 			margin-left: 120px;
-			width: inherit;
+			width: 750px;
 	}
 	#memberListContentBody #searchMember img {
 		height: 32px;

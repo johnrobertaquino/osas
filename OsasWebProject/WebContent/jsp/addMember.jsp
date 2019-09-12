@@ -119,9 +119,14 @@
 	    					</div>
     					</div>
     				</div>
-    				<br><div class="rightPaneElement withTitle">
+   					<div class="rightPaneElement withTitle">
     					<span>Gender</span>
-    					<div><input id="gender" name="gender" type="text"></div>
+	    				<div id="roleDiv">
+		    				<input type="radio" id="gender" name="gender" value="M" checked>
+		    				<span>Male</span>
+		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<span>Female</span>
+		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
@@ -133,7 +138,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
