@@ -467,6 +467,15 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addMemberExcelFile.jsp</result>
 		</action>
+		
+				<!-- REPORT -->
+				
+
+		 <action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipReport.jsp</result> 
+		</action>	
+						
 		<action name="sampleReport" class="org.pup.system.osas.ui.action.TestPrintAction">
 		</action>
 	</package>
