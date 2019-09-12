@@ -156,6 +156,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayAgencyList</result>
 			<result name="error"  type="chain">/jsp/addAgency.jsp</result>
+			<result name="displayAddAgency"  type="chain">displayAddAgency</result>
 		</action>
 		
 		<action name="displayAddAgency" class="org.pup.system.osas.ui.action.DisplayAddAgencyAction">
@@ -467,6 +468,15 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addMemberExcelFile.jsp</result>
 		</action>
+		
+				<!-- REPORT -->
+				
+
+		 <action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarshipReport.jsp</result> 
+		</action>	
+						
 		<action name="sampleReport" class="org.pup.system.osas.ui.action.TestPrintAction">
 		</action>
 	</package>
