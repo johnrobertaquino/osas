@@ -2,28 +2,34 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
-import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.manager.ScholarManager;
+import org.pup.system.osas.core.domain.SemTerm;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
+import org.pup.system.osas.core.manager.SemTermManager;
 import org.pup.system.osas.exception.BusinessException;
 
-
-public class DisplayScholarshipReportAction extends AbstractAction
-{
+public class DisplayScholarshipReportAction extends AbstractAction {
 
 	private static final long serialVersionUID = 4251608337401003937L;
-	private List<Scholar> scholarList;
-	
+
+	private List<SemTerm> semTermList;
+
+	private List<ScholarshipProgram> scholarshipProgramList;
+
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
-		
+
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			ScholarManager scholarshipManager = new ScholarManager();
-			scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId());
+			SemTermManager semTermManager = new SemTermManager();
+			semTermList = semTermManager.getSemTermList();
+
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			scholarshipProgramList = scholarshipProgramManager
+					.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -33,23 +39,25 @@ public class DisplayScholarshipReportAction extends AbstractAction
 			actionResult = FORWARD_ERROR;
 			e.printStackTrace();
 		}
-		
+
 		return actionResult;
-		
+
 	}
 
-	/**
-	 * @return the scholarList
-	 */
-	public List<Scholar> getScholarList() {
-		return scholarList;
+	public List<SemTerm> getSemTermList() {
+		return semTermList;
 	}
 
-	/**
-	 * @param scholarList the scholarList to set
-	 */
-	public void setScholarList(List<Scholar> scholarList) {
-		this.scholarList = scholarList;
+	public void setSemTermList(List<SemTerm> semTermList) {
+		this.semTermList = semTermList;
+	}
+
+	public List<ScholarshipProgram> getScholarshipProgramList() {
+		return scholarshipProgramList;
+	}
+
+	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
+		this.scholarshipProgramList = scholarshipProgramList;
 	}
 
 }

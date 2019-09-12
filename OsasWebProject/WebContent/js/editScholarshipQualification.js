@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		location.href = "displayScholarshipQualificationList";
+		$("#cancelScholarshipQualificationForm").submit();
 	});
 	
 	$("#contactNumber").keypress(function (e) {

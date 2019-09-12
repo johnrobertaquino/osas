@@ -69,23 +69,13 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="scholarshipReportContent" id="scholarshipProgramForm" action="addScholarshipProgram" method="POST">
+				<form id="scholarshipReportForm" action="scholarsByAgencyAndProgramReport" method="GET">
     				<div class="rightPaneElement withTitle">
     				    <span>Semester</span>
 	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-					</div>
-    				<div class="rightPaneElement withTitle">
-    				    <span>Agency</span>
-	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
+		    				<select name="semTermId">
+		    					<s:iterator value="semTermList" status="rowStatus" var="semTerm">
+		    						<option value="${semTerm.semTermId}">${semTerm.semTermName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
@@ -93,25 +83,17 @@
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
 	    				<div>
-		    				<select name="agencyId">
-		    					<s:iterator value="agencyList" status="rowStatus" var="agency">
-		    						<option value="${agency.agencyId}">${agency.agencyName}</option>
+		    				<select name="scholarshipProgramId">
+		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
+		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">
-    					<div>
-	    					<span>Prepared by:</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
-	    				</div>
-	    			</div>
-	    			<div class="rightPaneElement withTitle">
-    				    <span>Position</span>
+    				    <span>Program</span>
 	    				<div>
-		    				<select name="agencyId">
-		    						<option value="Chief of Staff"></option>
-							</select>
+	    					<input type="text" name="program">
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
@@ -119,7 +101,7 @@
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id=submitButton class="button left">
+							<div id="submitButton" class="button left">
 								<span>Publish Report</span>
 							</div>
 							<div style="clear:both"></div>

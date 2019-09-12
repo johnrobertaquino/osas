@@ -10,7 +10,9 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.User;
-import org.pup.system.osas.report.AgencyReport;
+import org.pup.system.osas.core.manager.ReportManager;
+import org.pup.system.osas.report.ScholarsByAgencyAndProgramReport;
+import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
 
 public class TestPrintAction extends AbstractAction implements ServletResponseAware, ServletRequestAware {
 
@@ -28,7 +30,12 @@ public class TestPrintAction extends AbstractAction implements ServletResponseAw
 			String imagePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 					+ "/images";
 
-			AgencyReport report = new AgencyReport(imagePath, "SCHOOL YEAR 2018-2019 - 1st SEM", getAgencyList(), getUser());
+			//AgencyReport report = new AgencyReport(imagePath, "SCHOOL YEAR 2018-2019 - 1st SEM", getAgencyList(), getUser());
+			
+			ReportManager reportManager = new ReportManager();
+			List<ScholarsByAgencyAndProgramReportData> scholarsByAgencyAndProgramReportDataList = reportManager.getScholarsByAgencyAndProgramReportData(1, 1, "BSIT");
+			
+			ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath, "Tanauan City Scholarship Foundation", scholarsByAgencyAndProgramReportDataList, getUser());	
 
 			report.generateReport(response.getOutputStream());
 		} catch (Exception e) {

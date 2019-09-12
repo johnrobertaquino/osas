@@ -40,12 +40,12 @@ public class MemberDAO extends DAO {
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
 				member.setPosition(resultSet.getString("Position"));
-				member.setOfficer(resultSet.getString("Officer"));
+				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
 				member.setSection(resultSet.getString("Section"));
-				member.setContactNumber(resultSet.getInt("ContactNumber"));
+				member.setContactNumber(resultSet.getString("ContactNumber"));
 				
 				Organization organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
@@ -75,13 +75,13 @@ public class MemberDAO extends DAO {
 			statement.setString(4, member.getMiddleName());
 			statement.setString(5, member.getLastName());
 			statement.setString(6, member.getProgram());
-			statement.setString(7, member.getOfficer());
+			statement.setBoolean(7, member.isOfficer());
 			statement.setString(8, member.getOfficerPhoto());
 			statement.setString(9, member.getPosition());
 			statement.setString(10, member.getGender());
 			statement.setString(11, member.getYear());
 			statement.setString(12, member.getSection());
-			statement.setInt(13, member.getContactNumber());
+			statement.setString(13, member.getContactNumber());
 			statement.setInt(14, member.getOrganization().getOrganizationId());
 			
 			statement.executeUpdate();
@@ -127,12 +127,12 @@ public class MemberDAO extends DAO {
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
 				member.setPosition(resultSet.getString("Position"));
-				member.setOfficer(resultSet.getString("Officer"));
+				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
 				member.setSection(resultSet.getString("Section"));
-				member.setContactNumber(resultSet.getInt("ContactNumber"));
+				member.setContactNumber(resultSet.getString("ContactNumber"));
 
 				Organization organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
@@ -176,12 +176,12 @@ public class MemberDAO extends DAO {
 				member.setMiddleName(resultSet.getString("MiddleName"));
 				member.setLastName(resultSet.getString("LastName"));
 				member.setProgram(resultSet.getString("Program"));
-				member.setOfficer(resultSet.getString("Officer"));
+				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
 				member.setYear(resultSet.getString("Year"));
 				member.setSection(resultSet.getString("Section"));
-				member.setContactNumber(resultSet.getInt("ContactNumber"));
+				member.setContactNumber(resultSet.getString("ContactNumber"));
 
 				Organization organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
@@ -211,13 +211,13 @@ public class MemberDAO extends DAO {
 			statement.setString(3, member.getMiddleName());
 			statement.setString(4, member.getLastName());
 			statement.setString(5, member.getProgram());
-			statement.setString(6, member.getOfficer());
+			statement.setBoolean(6, member.isOfficer());
 			statement.setString(7, member.getOfficerPhoto());
 			statement.setString(8, member.getPosition());
 			statement.setString(9, member.getGender());
 			statement.setString(10, member.getYear());
 			statement.setString(11, member.getSection ());
-			statement.setInt(12, member.getContactNumber());
+			statement.setString(12, member.getContactNumber());
 			statement.setInt(13, member.getOrganization().getOrganizationId());
 			
 			statement.executeUpdate();

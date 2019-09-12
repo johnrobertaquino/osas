@@ -13,6 +13,8 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 	
 	private String scholarshipQualificationId;
 	
+	private int scholarshipProgramId;
+	
 	private ScholarshipQualification scholarshipQualification;
 
 	@Override
@@ -57,6 +59,20 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 	 */
 	public void setScholarshipQualification(ScholarshipQualification scholarshipQualification) {
 		this.scholarshipQualification = scholarshipQualification;
+	}
+	
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public int getScholarshipProgramId() {
+		return scholarshipProgramId;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
 	}
 	
 }

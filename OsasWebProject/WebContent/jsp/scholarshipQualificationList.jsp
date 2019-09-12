@@ -57,9 +57,11 @@
 <div id="contentBody">
 	<form id="deleteScholarshipQualificationForm" action="deleteScholarshipQualification" method="POST">
   		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
 	<form id="editScholarshipQualificationForm" action="displayEditScholarshipQualification" method="POST">
   		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
 	<div id="scholarshipQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">

@@ -29,7 +29,9 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 			domain.setProgram(value);
 			break;
 		case "officer":
-			domain.setOfficer(value);
+			if("Y".equals(value)) {
+				domain.setOfficer(true);
+			}
 			break;
 		case "position":
 			domain.setPosition(value);

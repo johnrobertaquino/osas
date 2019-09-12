@@ -67,19 +67,19 @@
 				<form class="addUserContent" id="agencyForm" action="addAgency" method="POST">
     				<div class="rightPaneElement withTitle">
     					<span>Agency Name</span>
-    					<div><input id="agencyName" name="agencyName" type="text"></div>
+    					<div><input id="agencyName" name="agencyName" type="text" value="${agencyName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Address</span>
-    					<div><input id="address" name="address" type="text"></div>
+    					<div><input id="address" name="address" type="text" value="${address}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Person</span>
-    					<div><input id="contactPerson" name="contactPerson" type="text"></div>
+    					<div><input id="contactPerson" name="contactPerson" type="text" value="${contactPerson}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

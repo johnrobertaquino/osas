@@ -143,6 +143,54 @@ public class ScholarDAO extends DAO {
 		return scholarList;
 	}
 	
+	public List<Scholar> getScholarListByProgramAndScholarshipProgramId(int semTermId, String program, int scholarProgramId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Scholar scholar = null;
+		List<Scholar> scholarList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId
+					+ " AND scholar.Program='" + program + "' AND scholar.ScholarshipProgramId=" + scholarProgramId + " order by scholar.Year");
+			
+			while (resultSet.next()) {
+				if (scholarList == null) {
+					scholarList = new ArrayList<Scholar>();
+				}
+				
+				scholar = new Scholar();
+				scholar.setScholarId(resultSet.getInt("ScholarId"));
+				scholar.setStudentNumber(resultSet.getString("StudentNumber"));
+				scholar.setFirstName(resultSet.getString("FirstName"));
+				scholar.setMiddleName(resultSet.getString("MiddleName"));
+				scholar.setLastName(resultSet.getString("LastName"));
+				scholar.setEmail(resultSet.getString("Email"));
+				scholar.setContactNumber(resultSet.getString("ContactNumber"));
+				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setYear(resultSet.getString("Year"));
+				scholar.setSection(resultSet.getString("Section"));
+				scholar.setGwa(resultSet.getString("GWA"));
+				
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholar.setScholarshipProgram(scholarshipProgram);
+				
+				scholarList.add(scholar);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return scholarList;
+	}
+	
 	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText) throws Exception {
 		Connection connection = null;
 		Statement statement = null;

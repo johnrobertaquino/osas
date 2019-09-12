@@ -10,8 +10,8 @@ public class AddAgencyAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 8910283248066116810L;
-
-	private String agencyId;
+	
+	private static final String FORWARD_DISPLAYADDAGENCY = "displayAddAgency";
 	
 	private String agencyName;
 	
@@ -34,6 +34,7 @@ public class AddAgencyAction extends AbstractAction {
 			
 			if(agency != null) { 
 				notificationMessage = "Agency already exist.";
+				actionResult = FORWARD_DISPLAYADDAGENCY;
 			}
 			else
 			{
@@ -58,14 +59,6 @@ public class AddAgencyAction extends AbstractAction {
 		}
 		
 		return actionResult;
-	}
-
-	public String getAgencyId() {
-		return agencyId;
-	}
-
-	public void setAgencyId(String agencyId) {
-		this.agencyId = agencyId;
 	}
 
 	public String getAgencyName() {

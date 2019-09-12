@@ -28,7 +28,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String position;
 
-	private String officer;
+	private boolean officer;
 	
 	private String officerPhoto;
 	
@@ -38,7 +38,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String section;
 	
-	private int contactNumber;
+	private String contactNumber;
 	
 	private String organizationId;
 	
@@ -141,11 +141,11 @@ public class AddMemberAction extends AbstractAction {
 		this.position = position;
 	}
 
-	public String getOfficer() {
+	public boolean getOfficer() {
 		return officer;
 	}
 
-	public void setOfficer(String officer) {
+	public void setOfficer(boolean officer) {
 		this.officer = officer;
 	}
 
@@ -195,11 +195,11 @@ public class AddMemberAction extends AbstractAction {
 		this.officerPhoto = officerPhoto;
 	}
 	
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 }

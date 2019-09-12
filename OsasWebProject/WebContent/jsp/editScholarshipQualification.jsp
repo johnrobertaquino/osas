@@ -63,8 +63,13 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelScholarshipQualificationForm" action="displayScholarshipQualificationList" method="POST">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+				</form>
+				
 				<form class="editScholarshipQualificationContent" id="editScholarshipQualificationForm" action="editScholarshipQualification" method="POST">
 					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Qualification name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>

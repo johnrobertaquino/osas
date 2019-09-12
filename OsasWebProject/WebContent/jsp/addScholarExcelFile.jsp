@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholar.js"></script>
+<script type="text/javascript" src="js/addScholarExcelFile.js"></script>
 </head>
 <body>
 <div id="header">
@@ -76,8 +76,7 @@
 						</div>
 					</div>
 					<div><br>
-						<input type="file" name="file">
-						<input type="submit">
+						<input type="file" name="file" id="file">
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

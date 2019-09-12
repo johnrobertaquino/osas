@@ -27,7 +27,7 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			AgencyManager agencyManager = new AgencyManager();
 			Agency agency = agencyManager.getAgency(Integer.parseInt(agencyId));
 			
-			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+			ScholarshipProgram scholarshipProgram = null;
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			scholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
 

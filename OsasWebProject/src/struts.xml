@@ -479,6 +479,10 @@
 						
 		<action name="sampleReport" class="org.pup.system.osas.ui.action.TestPrintAction">
 		</action>
+		
+		<action name="scholarsByAgencyAndProgramReport" class="org.pup.system.osas.ui.action.ScholarsByAgencyAndProgramReportAction">
+			<interceptor-ref name="userSessionStack"/>
+		</action>
 	</package>
 
 </struts>	

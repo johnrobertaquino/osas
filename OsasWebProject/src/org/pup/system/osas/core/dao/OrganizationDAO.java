@@ -238,7 +238,7 @@ public class OrganizationDAO extends DAO {
 
 			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=?, Adviser=?, LogoFileName=? WHERE OrganizationId=?");
 			statement.setString(1, organization.getOrganizationName());
-			statement.setString(2, organization.getOrganizationType().getOrganizationTypeName());
+			statement.setString(2, organization.getOrganizationType().getOrganizationTypeCode());
 			statement.setString(3, organization.getProgram());
 			statement.setString(4, organization.getAdviser());
 			statement.setString(5, organization.getLogoFileName());

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 
 public abstract class ExcelRowToDomainTransformer<T> {
@@ -13,11 +14,15 @@ public abstract class ExcelRowToDomainTransformer<T> {
 	private Map<Integer, String> indexFieldNameMapping = new HashMap<Integer, String>();
 
 	protected ExcelRowToDomainTransformer(Row row, Class<T> domainClass) {
-		int index = 0;
-
-		for (Cell cell : row) {
-			indexFieldNameMapping.put(index, cell.getRichStringCellValue().getString().trim());
-			index++;
+		DataFormatter dataFormatter = new DataFormatter();
+		
+		for (int index = 0; index < row.getLastCellNum(); index++) {
+			Cell cell = row.getCell(index);
+			if (cell == null) {
+				// ...
+			} else {
+				indexFieldNameMapping.put(index, dataFormatter.formatCellValue(cell));
+			}
 		}
 
 		this.domainClass = domainClass;
@@ -29,11 +34,15 @@ public abstract class ExcelRowToDomainTransformer<T> {
 
 	public T transform(Row row) throws InstantiationException, IllegalAccessException {
 		T domain = domainClass.newInstance();
-		int index = 0;
+		DataFormatter dataFormatter = new DataFormatter();
 
-		for (Cell cell : row) {
-			process(getFieldNameByIndex(index), cell.getRichStringCellValue().getString(), domain);
-			index++;
+		for (int index = 0; index < row.getLastCellNum(); index++) {
+			Cell cell = row.getCell(index);
+			if (cell == null) {
+				// ...
+			} else {
+				process(getFieldNameByIndex(index), dataFormatter.formatCellValue(cell), domain);
+			}
 		}
 
 		return domain;
