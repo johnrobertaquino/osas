@@ -67,10 +67,10 @@
 				<form class="addScholarContent" id="scholarExcelFileForm" action="addScholarExcelFile" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
-	    				<div>
+	    				<div><s:set var="selectedScholarshipProgramId">${scholarshipProgramId}</s:set>
 		    				<select name="scholarshipProgramId">
 		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
+		    						<option value="${scholarshipProgram.scholarshipProgramId}" <s:if test="%{#scholarshipProgram.scholarshipProgramId eq #selectedScholarshipProgramId}">selected</s:if>>${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>
 						</div>

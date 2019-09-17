@@ -1,5 +1,8 @@
 package org.pup.system.osas.core.domain.transformer;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.pup.system.osas.core.domain.Agency;
 
@@ -27,5 +30,11 @@ public class AgencyExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 			default:
 				break;
 		}
+	}
+
+	@Override
+	protected Map<String, List<Validator>> getValidatorMap() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

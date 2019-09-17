@@ -445,31 +445,24 @@
 			<result name="success">/jsp/organizationRequirementList.jsp</result>
 			<result name="error">/jsp/organizationRequirementList.jsp</result>
 		</action>
-					       <!--  Test Upload -->
 		
-		<action name="uploadTest" class="org.pup.system.osas.ui.action.UploadTestAction">
-			<result name="success">/testjsp/upload.jsp</result>
-		</action>
-		
-		<action name="displayUploadTest">
-			<result name="success">/testjsp/displayupload.jsp</result>
-		</action>
-		
+		<!--  Upload -->
 		<action name="addScholarExcelFile" class="org.pup.system.osas.ui.action.AddScholarExcelFileAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarList</result>
-			<result name="error"  type="chain">/jsp/addScholarExcelFile.jsp</result>
+			<result name="error"  type="chain">displayAddScholarExcelFile</result>
 		</action>
 		
 		<action name="displayAddScholarExcelFile" class="org.pup.system.osas.ui.action.DisplayAddScholarExcelFileAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addScholarExcelFile.jsp</result>
+			<result name="error">/jsp/addScholarExcelFile.jsp</result>
 		</action>
 				
 		<action name="addMemberExcelFile" class="org.pup.system.osas.ui.action.AddMemberExcelFileAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayMemberList</result>
-			<result name="error"  type="chain">/jsp/addMemberExcelFile.jsp</result>
+			<result name="error"  type="chain">displayMemberList</result>
 		</action>
 		
 		<action name="displayAddMemberExcelFile" class="org.pup.system.osas.ui.action.DisplayAddMemberExcelFileAction">
@@ -477,9 +470,7 @@
 			<result name="success">/jsp/addMemberExcelFile.jsp</result>
 		</action>
 		
-				<!-- REPORT -->
-				
-
+		<!-- REPORT -->
 		 <action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipReport.jsp</result> 

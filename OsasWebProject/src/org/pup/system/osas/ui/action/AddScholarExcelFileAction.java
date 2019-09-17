@@ -43,7 +43,6 @@ public class AddScholarExcelFileAction extends AbstractAction {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(Integer.parseInt(scholarshipProgramId));
 			
-
 			fis = new FileInputStream(file);
 
 			workbook = new XSSFWorkbook(fis);
@@ -61,21 +60,26 @@ public class AddScholarExcelFileAction extends AbstractAction {
 					
 					transformer = new ScholarExcelRowToDomainTransformer(row);
 				} else {
-					Scholar scholar = transformer.transform(row);
+					Scholar scholar = transformer.transform(row, index);
 
 					if (scholarList == null) {
 						scholarList = new ArrayList<Scholar>();
 
 					}
-					scholarList.add(scholar);
 					scholar.setScholarshipProgram(scholarshipProgram);
-					ScholarManager scholarManager = new ScholarManager();
-					scholarManager.insertScholar(scholar);
-					
-					notificationMessage = "Scholar has been successfully added.";
+					scholarList.add(scholar);
 				}
 
 				index++;
+			}
+			
+			if (scholarList != null) {
+				for (Scholar scholar : scholarList) {
+					ScholarManager scholarManager = new ScholarManager();
+					scholarManager.insertScholar(scholar);
+				}
+				
+				notificationMessage = "Scholar/s has been successfully added.";
 			}
 		}
 			
