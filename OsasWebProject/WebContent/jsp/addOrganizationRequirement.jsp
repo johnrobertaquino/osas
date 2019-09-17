@@ -64,6 +64,9 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelOrganizationRequirementForm" action="displayOrganizationRequirementList" method="POST">
+					<input type="hidden" name="organizationId" value="${organizationId}" />
+				</form>
 				<form class="addScholarhipQualificationContent" id="organizationRequirementForm" action="addOrganizationRequirement" method="POST">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>

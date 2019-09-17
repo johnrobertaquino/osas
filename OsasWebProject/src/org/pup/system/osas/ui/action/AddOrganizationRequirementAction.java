@@ -12,11 +12,14 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
+	
+	private static final String FORWARD_DISPLAYADDORGANIZATIONREQUIREMENT = "displayAddOrganizationRequirement";
 
+	private int organizationRequirementId;
+	
 	private String organizationRequirementName;
 
 	private String organizationId;
-
 
 	@Override
 	public String execute() throws Exception {
@@ -27,15 +30,28 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organization = organizationManager.getOrganization(Integer.parseInt(organizationId));
-			
-			OrganizationRequirement organizationRequirement = new OrganizationRequirement();
-			organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
-			organizationRequirement.setOrganization(organization);
-
+	
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-			organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
+			
+			OrganizationRequirement existingOrganizationRequirement = null;
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
+			
+			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
+			{
+				notificationMessage = "Organization Requirement already exist.";
+				return FORWARD_DISPLAYADDORGANIZATIONREQUIREMENT;
+			}
+			else {
+				OrganizationRequirement organizationRequirement = new OrganizationRequirement();
+				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				organizationRequirement.setOrganization(organization);
 
-			notificationMessage = "Organization Requirement has been successfully added.";
+				organizationRequirementManager = new OrganizationRequirementManager();
+				organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
+
+				notificationMessage = "Organization Requirement has been successfully added.";
+			}
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -75,6 +91,20 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 	 */
 	public void setOrganizationId(String organizationId) {
 		this.organizationId = organizationId;
+	}
+
+	/**
+	 * @return the organizationRequirementId
+	 */
+	public int getOrganizationRequirementId() {
+		return organizationRequirementId;
+	}
+
+	/**
+	 * @param organizationRequirementId the organizationRequirementId to set
+	 */
+	public void setOrganizationRequirementId(int organizationRequirementId) {
+		this.organizationRequirementId = organizationRequirementId;
 	}
 
 

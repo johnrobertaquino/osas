@@ -13,6 +13,29 @@ import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarshipQualificationManager {
 
+	public ScholarshipQualification validate(String scholarshipQualificationName) throws Exception {
+		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
+		ScholarshipQualification scholarshipQualification = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+
+			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
+
+			scholarshipQualification = scholarshipQualificationDAO.getScholarshipQualificationByScholarshipQualificationName(scholarshipQualificationName);
+
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return scholarshipQualification;
+	}
+	
 	public void insertScholarshipQualification(ScholarshipQualification scholarshipQualification) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		Connection connection = null;
@@ -89,7 +112,7 @@ public class ScholarshipQualificationManager {
 	}
 
 	public List<ScholarshipQualification> getScholarshipQualificationListByScholarshipQualificationSearchText(
-			String scholarshipQualificationSearchText) throws Exception {
+			String scholarshipQualificationSearchText, int scholarshipProgramId) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		List<ScholarshipQualification> scholarshipQualificationList = null;
@@ -101,7 +124,7 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
-			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationListByScholarshipQualificationSearchText(scholarshipQualificationSearchText);
+			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationListByScholarshipQualificationSearchText(scholarshipQualificationSearchText, scholarshipProgramId);
 			
 			if (scholarshipQualificationList != null) {
 				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);

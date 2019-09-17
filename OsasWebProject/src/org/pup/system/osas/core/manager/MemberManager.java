@@ -73,7 +73,7 @@ public class MemberManager
 		return memberList;
 	}
 	
-	public List<Member> getMemberListByMemberSearchText(String memberSearchText) throws Exception {
+	public List<Member> getMemberListByMemberSearchText(String memberSearchText, int semTermId) throws Exception {
 		MemberDAO memberDAO = null;
 		List<Member> memberList = null;
 		
@@ -84,7 +84,7 @@ public class MemberManager
 			
 			memberDAO = new MemberDAO(connection);
 			
-			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText);
+			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText, semTermId);
 			
 		} catch (Exception e) {
 			throw e;

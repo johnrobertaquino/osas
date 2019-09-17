@@ -11,6 +11,29 @@ import org.pup.system.osas.core.domain.OrganizationRequirement;
 
 public class OrganizationRequirementManager {
 
+	public OrganizationRequirement validate(String organizationRequirementName) throws Exception {
+		OrganizationRequirementDAO organizationRequirementDAO = null;
+		OrganizationRequirement organizationRequirement = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+
+			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
+
+			organizationRequirement = organizationRequirementDAO.getOrganizationRequirementByOrganizationRequirementName(organizationRequirementName);
+
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return organizationRequirement;
+	}
+	
 	public void insertOrganizationRequirement(OrganizationRequirement organizationRequirement) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
 		Connection connection = null;
@@ -87,7 +110,7 @@ public class OrganizationRequirementManager {
 	}
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
-			String organizationRequirementSearchText) throws Exception {
+			String organizationRequirementSearchText, int organizationId) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
 		OrganizationDAO organizationDAO = null;
 		List<OrganizationRequirement> organizationRequirementList = null;
@@ -99,7 +122,7 @@ public class OrganizationRequirementManager {
 
 			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
 
-			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText);
+			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, organizationId);
 			
 			if (organizationRequirementList != null) {
 				organizationDAO = new OrganizationDAO(connection);

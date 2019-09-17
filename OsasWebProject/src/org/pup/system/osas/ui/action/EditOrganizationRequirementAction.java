@@ -12,6 +12,8 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITORGANIZATIONREQUIREMENT = "displayEditOrganizationRequirement";
+	
 	private int organizationRequirementId;
 	
 	private String organizationRequirementName;
@@ -28,12 +30,22 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
 			OrganizationRequirement organizationRequirement = organizationRequirementManager.getOrganizationRequirement(organizationRequirementId);
 			
-			organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
-			organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+			OrganizationRequirement existingOrganizationRequirement = null;
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
 			
-			organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
-			
-			notificationMessage = "Changes to organization requirement has been saved successfully.";
+			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
+			{
+				notificationMessage = "Organization Requirement already exist.";
+				return FORWARD_DISPLAYEDITORGANIZATIONREQUIREMENT;
+			}
+			else {
+				organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
+				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				
+				organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
+				
+				notificationMessage = "Changes to organization requirement has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

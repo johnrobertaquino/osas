@@ -25,7 +25,7 @@ public class SearchScholarshipProgramAction extends AbstractAction{
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText));
+			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

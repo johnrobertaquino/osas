@@ -25,7 +25,7 @@ public class SearchScholarAction extends AbstractAction {
 
 		try {
 			ScholarManager scholarManager = new ScholarManager();
-			setScholarList(scholarManager.getScholarListByScholarSearchText(scholarSearchText));
+			setScholarList(scholarManager.getScholarListByScholarSearchText(scholarSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

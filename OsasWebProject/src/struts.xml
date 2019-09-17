@@ -84,6 +84,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayUserList</result>
 			<result name="error">/jsp/addUser.jsp</result>
+			<result name="displayAddUser"  type="chain">displayAddUser</result>
 		</action>
          	<!-- EDIT USER -->
 		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
@@ -198,13 +199,14 @@
 		<action name="displayEditScholarshipProgram" class="org.pup.system.osas.ui.action.DisplayEditScholarshipProgramAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editScholarshipProgram.jsp</result>
-			<result name="error" type="chain">home</result>
+			<result name="error" type="chain">displayEditScholarshipProgram</result>
 		</action>
 		
 		<action name="editScholarshipProgram" class="org.pup.system.osas.ui.action.EditScholarshipProgramAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayScholarshipProgramList</result>
 			<result type="chain" name="error">displayScholarshipProgramList</result>
+			<result type="chain" name="displayEditScholarshipProgram">displayEditScholarshipProgram</result>
 		</action>
 		<action name="deleteScholarshipProgram" class="org.pup.system.osas.ui.action.DeleteScholarshipProgramAction">
 			<interceptor-ref name="userSessionStack"/>
@@ -247,6 +249,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayScholarshipQualificationList</result>
 			<result type="chain" name="error">displayScholarshipQualificationList</result>
+			<result name="displayEditScholarshipQualification"  type="chain">displayEditScholarshipQualification</result>
 		</action>
 		<action name="deleteScholarshipQualification" class="org.pup.system.osas.ui.action.DeleteScholarshipQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
@@ -263,6 +266,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarshipQualificationList</result>
 			<result name="error"  type="chain">/jsp/addScholarshipQualification.jsp</result>
+			<result name="displayAddScholarshipQualification"  type="chain">displayAddScholarshipQualification</result>
 		</action>
 
 		<action name="searchScholarshipQualification" class="org.pup.system.osas.ui.action.SearchScholarshipQualificationAction">
@@ -329,7 +333,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayOrganizationList</result>
 			<result name="error"  type="chain">/jsp/addOrganization.jsp</result>
-			<result name="displayAddOrganization"  type="chain">displayAddScholarshipProgram</result>
+			<result name="displayAddOrganization"  type="chain">displayAddOrganization</result>
 		</action>
 				
 		<action name="displayEditOrganization" class="org.pup.system.osas.ui.action.DisplayEditOrganizationAction">
@@ -416,6 +420,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayOrganizationRequirementList</result>
 			<result type="chain" name="error">displayOrganizationRequirementList</result>
+			<result name="displayEditOrganizationRequirement"  type="chain">displayEditOrganizationRequirement</result>
 		</action>
 		<action name="deleteOrganizationRequirement" class="org.pup.system.osas.ui.action.DeleteOrganizationRequirementAction">
 			<interceptor-ref name="userSessionStack"/>
@@ -432,6 +437,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayOrganizationRequirementList</result>
 			<result name="error"  type="chain">/jsp/addOrganizationRequirement.jsp</result>
+			<result name="displayAddOrganizationRequirement"  type="chain">displayAddOrganizationRequirement</result>
 		</action>
 
 		<action name="searchOrganizationRequirement" class="org.pup.system.osas.ui.action.SearchOrganizationRequirementAction">

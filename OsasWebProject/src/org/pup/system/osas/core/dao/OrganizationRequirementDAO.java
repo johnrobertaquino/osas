@@ -17,6 +17,39 @@ public class OrganizationRequirementDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementName(String organizationRequirementName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		OrganizationRequirement organizationRequirement = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, OrganizationId FROM OrganizationRequirement WHERE OrganizationRequirementName='"
+							+ organizationRequirementName + "'");
+
+			if (resultSet.next()) {
+				organizationRequirement = new OrganizationRequirement();
+				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
+
+				Organization organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+				organizationRequirement.setOrganization(organization);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationByOrganizationId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return organizationRequirement;
+	}
+	
 	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementId(int organizationRequirementId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
@@ -119,7 +152,7 @@ public class OrganizationRequirementDAO extends DAO {
 	}
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
-		String organizationRequirementSearchText) throws Exception {
+		String organizationRequirementSearchText, int organizationId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -133,7 +166,7 @@ public class OrganizationRequirementDAO extends DAO {
 
 			resultSet = statement.executeQuery(
 					"SELECT OrganizationRequirementId, OrganizationRequirementName, OrganizationId FROM organizationrequirement WHERE OrganizationRequirementName LIKE '%"
-							+ organizationRequirementSearchText + "%'");
+							+ organizationRequirementSearchText + "%' AND OrganizationId="+ organizationId);
 
 			while (resultSet.next()) {
 				if (organizationRequirementList == null) {

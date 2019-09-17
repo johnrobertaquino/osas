@@ -149,7 +149,7 @@ public class MemberDAO extends DAO {
 		return memberList;
 	}
 	
-	public List<Member> getMemberListByMemberSearchText(String memberSearchText) throws Exception {
+	public List<Member> getMemberListByMemberSearchText(String memberSearchText, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -161,8 +161,8 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender , Year, Section, ContactNumber, OrganizationId  FROM member WHERE StudentNumber LIKE '%"
-					+ memberSearchText + "%' OR FirstName LIKE '%" + memberSearchText + "%' OR MiddleName LIKE '%" + memberSearchText + "%' OR LastName LIKE '%" + memberSearchText + "%' OR Program LIKE '%" + memberSearchText + "%' OR Position LIKE '%" + memberSearchText + "%'");  
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE StudentNumber LIKE '%"
+					+ memberSearchText + "%' OR member.FirstName LIKE '%" + memberSearchText + "%' OR member.MiddleName LIKE '%" + memberSearchText + "%' OR member.LastName LIKE '%" + memberSearchText + "%' OR member.Program LIKE '%" + memberSearchText + "%' OR member.Position LIKE '%" + memberSearchText + "%' AND organization.SemTermId=" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (memberList == null) {

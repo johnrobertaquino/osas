@@ -12,6 +12,8 @@ public class EditScholarshipProgramAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITSCHOLARSHIPPROGRAM = "displayEditScholarshipProgram";
+	
 	private int scholarshipProgramId;
 	
 	private String scholarshipProgramName;
@@ -32,6 +34,7 @@ public class EditScholarshipProgramAction extends AbstractAction {
 		
 			if (existingScholarshipProgram != null && scholarshipProgramId != existingScholarshipProgram.getScholarshipProgramId()) {
 				notificationMessage = "Scholarship program already exist.";
+				return FORWARD_DISPLAYEDITSCHOLARSHIPPROGRAM;
 			} else {
 				ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
 				

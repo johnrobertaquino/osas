@@ -77,7 +77,7 @@
 					<input type="hidden" name="organizationId" value="${organizationId}" />
 				</form>
 				<div class="button" id="searchOrganizationRequirementButton">SEARCH</div>
-				<div class="button" id="addOrganizationRequirementButton">ADD SCHOLARSHIP QUALIFICATION</div>
+				<div class="button" id="addOrganizationRequirementButton">ADD ORGANIZATION REQUIREMENT</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>

@@ -67,20 +67,20 @@
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday"></div>
+    					<div><input type="text" name="birthday" id="birthday" value="${birthday}"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#birthday").datepicker();
@@ -90,7 +90,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>

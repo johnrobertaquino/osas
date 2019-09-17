@@ -25,7 +25,7 @@ public class SearchMemberAction extends AbstractAction {
 
 		try {
 			MemberManager memberManager = new MemberManager();
-			setMemberList(memberManager.getMemberListByMemberSearchText(memberSearchText));
+			setMemberList(memberManager.getMemberListByMemberSearchText(memberSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

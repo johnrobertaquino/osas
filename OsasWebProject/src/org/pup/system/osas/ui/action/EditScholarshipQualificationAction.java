@@ -12,6 +12,8 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITSCHOLARSHIPQUALIFICATION = "displayEditScholarshipQualification";
+	
 	private int scholarshipQualificationId;
 	
 	private String scholarshipQualificationName;
@@ -26,15 +28,26 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 
 		try {
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			ScholarshipQualification scholarshipQualification = scholarshipQualificationManager.getScholarshipQualification(scholarshipQualificationId);
 			
-			scholarshipQualification.setScholarshipQualificationId(scholarshipQualificationId);
-			scholarshipQualification.setScholarshipQualificationName(scholarshipQualificationName);
-			//scholarshipQualification.setScholarshipProgramId(ScholarshipProgramId);
-
-			scholarshipQualificationManager.saveScholarshipQualification(scholarshipQualification);
+			ScholarshipQualification existingScholarshipQualification = null;
+			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName);
 			
-			notificationMessage = "Changes to scholarship qualification has been saved successfully.";
+			if (existingScholarshipQualification != null && scholarshipQualificationId != existingScholarshipQualification.getScholarshipQualificationId())
+			{
+				notificationMessage = "Scholarship program already exist.";
+				return FORWARD_DISPLAYEDITSCHOLARSHIPQUALIFICATION;
+			}
+			else {
+				ScholarshipQualification scholarshipQualification = scholarshipQualificationManager.getScholarshipQualification(scholarshipQualificationId);
+				
+				scholarshipQualification.setScholarshipQualificationId(scholarshipQualificationId);
+				scholarshipQualification.setScholarshipQualificationName(scholarshipQualificationName);
+				//scholarshipQualification.setScholarshipProgramId(ScholarshipProgramId);
+	
+				scholarshipQualificationManager.saveScholarshipQualification(scholarshipQualification);
+				
+				notificationMessage = "Changes to scholarship qualification has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

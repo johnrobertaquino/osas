@@ -18,6 +18,39 @@ public class ScholarshipQualificationDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public ScholarshipQualification getScholarshipQualificationByScholarshipQualificationName(String scholarshipQualificationName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ScholarshipQualification scholarshipQualification = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT ScholarshipQualificationId, ScholarshipQualificationName, ScholarshipProgramId FROM scholarshipqualification WHERE ScholarshipQualificationName='"
+							+ scholarshipQualificationName+"'");
+
+			if (resultSet.next()) {
+				scholarshipQualification = new ScholarshipQualification();
+				scholarshipQualification.setScholarshipQualificationId(resultSet.getInt("ScholarshipQualificationId"));
+				scholarshipQualification.setScholarshipQualificationName(resultSet.getString("ScholarshipQualificationName"));
+
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarshipProgramByScholarshipProgramId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return scholarshipQualification;
+	}
+	
 	public ScholarshipQualification getScholarshipQualificationByScholarshipQualificationId(int scholarshipQualificationId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
@@ -121,7 +154,7 @@ public class ScholarshipQualificationDAO extends DAO {
 	}
 
 	public List<ScholarshipQualification> getScholarshipQualificationListByScholarshipQualificationSearchText(
-		String scholarshipQualificationSearchText) throws Exception {
+		String scholarshipQualificationSearchText, int scholarshipProgramId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -135,7 +168,7 @@ public class ScholarshipQualificationDAO extends DAO {
 
 			resultSet = statement.executeQuery(
 					"SELECT ScholarshipQualificationId, ScholarshipQualificationName, ScholarshipProgramId FROM scholarshipqualification WHERE ScholarshipQualificationName LIKE '%"
-							+ scholarshipQualificationSearchText + "%'");
+							+ scholarshipQualificationSearchText + "%' AND ScholarshipProgramId= "+scholarshipProgramId);
 
 			while (resultSet.next()) {
 				if (scholarshipQualificationList == null) {

@@ -89,7 +89,7 @@ public class ScholarManager
 		return scholarList;
 	}
 	
-	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText) throws Exception {
+	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText, int semTermId) throws Exception {
 		ScholarDAO scholarDAO = null;
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		List<Scholar> scholarList = null;
@@ -101,7 +101,7 @@ public class ScholarManager
 			
 			scholarDAO = new ScholarDAO(connection);
 			
-			scholarList = scholarDAO.getScholarListByScholarSearchText(scholarSearchText);
+			scholarList = scholarDAO.getScholarListByScholarSearchText(scholarSearchText, semTermId);
 			
 			if (scholarList != null) {
 				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
