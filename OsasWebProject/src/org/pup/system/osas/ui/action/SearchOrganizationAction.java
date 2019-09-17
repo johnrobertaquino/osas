@@ -25,7 +25,7 @@ public class SearchOrganizationAction extends AbstractAction {
 
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
-			setOrganizationList(organizationManager.getOrganizationListByOrganizationSearchText(organizationSearchText));
+			setOrganizationList(organizationManager.getOrganizationListByOrganizationSearchText(organizationSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

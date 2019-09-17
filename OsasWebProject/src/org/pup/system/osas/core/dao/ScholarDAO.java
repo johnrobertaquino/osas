@@ -203,8 +203,8 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholar.StudentNumber LIKE '%"
-					+ scholarSearchText + "%' OR scholar.FirstName LIKE '%" + scholarSearchText + "%' OR scholar.MiddleName LIKE '%" + scholarSearchText + "%' OR scholar.LastName LIKE '%" + scholarSearchText + "%' OR scholar.Program LIKE '%" + scholarSearchText + "%' AND agency.SemTermId =" + semTermId);  
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE (scholar.StudentNumber LIKE '%"
+					+ scholarSearchText + "%' OR scholar.FirstName LIKE '%" + scholarSearchText + "%' OR scholar.MiddleName LIKE '%" + scholarSearchText + "%' OR scholar.LastName LIKE '%" + scholarSearchText + "%' OR scholar.Program LIKE '%" + scholarSearchText + "%') AND agency.SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (scholarList == null) {

@@ -181,7 +181,7 @@ public class OrganizationDAO extends DAO {
 		return organizationList;
 	}
 	
-	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText) throws Exception {
+	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -194,7 +194,7 @@ public class OrganizationDAO extends DAO {
 			statement = connection.createStatement(); 
 			
 			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE OrganizationName LIKE '%"
-					+ organizationSearchText + "%'");  
+					+ organizationSearchText + "%' AND SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {
