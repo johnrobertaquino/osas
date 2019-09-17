@@ -66,7 +66,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 					
 					transformer = new MemberExcelRowToDomainTransformer(row);
 				} else {
-					Member member = transformer.transform(row);
+					Member member = transformer.transform(row, index);
 
 					if (memberList == null) {
 						memberList = new ArrayList<Member>();
@@ -74,13 +74,18 @@ public class AddMemberExcelFileAction extends AbstractAction {
 					}
 					memberList.add(member);
 					member.setOrganization(organization);
-					MemberManager memberManager = new MemberManager();
-					memberManager.insertMember(member);
-					
-					notificationMessage = "Member has been successfully added.";
 				}
 
 				index++;
+			}
+			
+			if (memberList != null) {
+				for (Member member : memberList) {
+					MemberManager memberManager = new MemberManager();
+					memberManager.insertMember(member);
+				}
+				
+				notificationMessage = "Scholar/s has been successfully added.";
 			}
 		}
 			
