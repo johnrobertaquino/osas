@@ -68,19 +68,14 @@
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
 				<form class="addScholarhipQualificationContent" id="scholarshipQualificationForm" action="addScholarshipQualification" method="POST">
-    				<div class="rightPaneElement withTitle">
-    				    <span>Scholarship Program</span>
-	    				<div>
-		    				<select name="scholarshipProgramId">
-		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-					</div>
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

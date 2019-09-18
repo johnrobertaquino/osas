@@ -2,10 +2,9 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
-import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
-import org.pup.system.osas.core.domain.UserRoleReference;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -15,14 +14,15 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 3426112992716352970L;
-	
+
 	private List<ScholarshipQualification> scholarshipQualificationList;
-	
+
 	private int scholarshipProgramId;
+
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship > Qualifications";
-		
+
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
@@ -30,7 +30,14 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 			scholarshipQualification.setScholarshipProgram(new ScholarshipProgram());
 			scholarshipQualification.getScholarshipProgram().setScholarshipProgramId(scholarshipProgramId);
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			setScholarshipQualificationList(scholarshipQualificationManager.getScholarshipQualificationList(scholarshipProgramId, getCurrentActiveTerm().getSemTermId()));
+			setScholarshipQualificationList(scholarshipQualificationManager
+					.getScholarshipQualificationList(scholarshipProgramId, getCurrentActiveTerm().getSemTermId()));
+			
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
+			if (scholarshipProgram != null) {
+				pageName = "Manage Scholarship > " + scholarshipProgram.getScholarshipProgramName() + " > Qualifications";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -40,9 +47,9 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 			actionResult = FORWARD_ERROR;
 			e.printStackTrace();
 		}
-		
+
 		return actionResult;
-		
+
 	}
 
 	/**
@@ -72,5 +79,5 @@ public class DisplayScholarshipQualificationListAction extends AbstractAction {
 	public void setScholarshipProgramId(int scholarshipProgramId) {
 		this.scholarshipProgramId = scholarshipProgramId;
 	}
-	
+
 }

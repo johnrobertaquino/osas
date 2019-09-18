@@ -1,6 +1,8 @@
 package org.pup.system.osas.ui.action;
 
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -19,13 +21,21 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship > Qualfications";
+		pageName = "Manage Scholarship > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			ScholarshipQualificationManager scholarshipManager = new ScholarshipQualificationManager();
 			setScholarshipQualification(scholarshipManager.getScholarshipQualification(Integer.parseInt(scholarshipQualificationId)));
+			
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager
+					.getScholarshipProgram(scholarshipProgramId);
+			if (scholarshipProgram != null) {
+				pageName = "Manage Scholarship > " + scholarshipProgram.getScholarshipProgramName()
+						+ " > Qualifications";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

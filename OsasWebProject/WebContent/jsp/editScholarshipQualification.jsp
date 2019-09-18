@@ -75,6 +75,10 @@
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test="%{scholarshipQualification.yearlyCheck}">checked</s:if>></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>

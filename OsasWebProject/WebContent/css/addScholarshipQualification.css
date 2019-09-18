@@ -4,6 +4,11 @@
     height: 40px;
 }
 
+#addScholarshipQualificationContentBody #contentBodyRightPane .rightPaneElement.withTitle input[type=checkbox] {
+	height: 20px;
+	width: 20px;
+}
+
 @media only screen and (max-width: 1550px) {
 	#addScholarshipQualificationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

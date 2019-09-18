@@ -20,6 +20,8 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 	private String scholarshipQualificationName;
 
 	private String scholarshipProgramId;
+	
+	private String yearlyCheck;
 
 	@Override
 	public String execute() throws Exception {
@@ -44,6 +46,7 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 				ScholarshipQualification scholarshipQualification = new ScholarshipQualification();
 				scholarshipQualification.setScholarshipQualificationName(scholarshipQualificationName);
 				scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+				scholarshipQualification.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 
 				scholarshipQualificationManager.insertScholarshipQualification(scholarshipQualification);
 
@@ -104,5 +107,12 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 		this.scholarshipQualificationId = scholarshipQualificationId;
 	}
 
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
+	}
 
 }

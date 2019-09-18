@@ -63,6 +63,9 @@
   		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
   		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
+	<form id="addScholarshipQualificationForm" action="displayAddScholarshipQualification" method="POST">
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+	</form>
 	<div id="scholarshipQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -83,10 +86,12 @@
 			<table>
 				<tr>
 					<th>Qualification Name</th>
+					<th>Yearly Check</th>
 				</tr>
 				<s:iterator value="scholarshipQualificationList" status="rowStatus" var="scholarshipQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="scholarshipQualificationName" /></td>
+						<td><s:property value="yearlyCheck" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
