@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		$("#cancelScholarQualificationForm").submit();
+		$("#cancelScholarshipQualificationForm").submit();
 	});
 	
 	$('#submitButton').click(function(event) {	
@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var errorMessage = '';
 		
 		if (errorMessage == '') {
-			popUpOkCancel("Do you want to save changes to this scholarship qualification?", function() {
+			popUpOkCancel("Do you want to save changes to this scholar qualification?", function() {
 				$("#editScholarQualificationForm").submit();
 			});
 		}

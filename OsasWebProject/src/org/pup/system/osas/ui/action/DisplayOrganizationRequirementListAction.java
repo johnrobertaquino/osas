@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
+import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.core.manager.OrganizationRequirementManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -27,8 +28,17 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 			OrganizationRequirement organizationRequirement = new OrganizationRequirement();
 			organizationRequirement.setOrganization(new Organization());
 			organizationRequirement.getOrganization().setOrganizationId(organizationId);
+			
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementList(organizationId, getCurrentActiveTerm().getSemTermId()));
+
+			setOrganizationRequirementList(organizationRequirementManager
+					.getOrganizationRequirementList(organizationId, getCurrentActiveTerm().getSemTermId()));
+			
+			OrganizationManager organizationManager = new OrganizationManager();
+			Organization organization = organizationManager.getOrganization(organizationId);
+			if (organization != null) {
+				pageName = "Manage Organization > " + organization.getOrganizationName() + " > Requirements";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

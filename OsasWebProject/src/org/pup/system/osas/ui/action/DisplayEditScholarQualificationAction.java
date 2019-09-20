@@ -1,17 +1,16 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Scholar;
-import org.pup.system.osas.core.domain.ScholarQualification;
 import org.pup.system.osas.core.manager.ScholarManager;
 import org.pup.system.osas.core.manager.ScholarScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
-public class ApproveScholarQualificationAction extends AbstractAction {
+public class DisplayEditScholarQualificationAction extends AbstractAction  {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8495140342055540043L;
+	private static final long serialVersionUID = 2936689632600612372L;
 	
 	private int scholarQualificationId;
 	
@@ -19,23 +18,19 @@ public class ApproveScholarQualificationAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar > Qualifications";
+		pageName = "Manage Scholarship > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
+			ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = new ScholarScholarshipQualificationManager();
+			scholarScholarshipQualificationManager.getScholarQualification(scholarQualificationId);
+			
 			ScholarManager scholarManager = new ScholarManager();
 			Scholar scholar = scholarManager.getScholar(scholarId);
 			if (scholar != null) {
-				pageName = "Manage Scholar > " + scholar.getFirstName() + " " + scholar.getLastName() + " > Qualifications";
-			}
-			ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = new ScholarScholarshipQualificationManager();
-			ScholarQualification scholarQualification = scholarScholarshipQualificationManager.getScholarQualification(scholarQualificationId);
-			
-			scholarQualification.setQualified(true);
-			
-			scholarScholarshipQualificationManager.saveScholarQualification(scholarQualification);
-			notificationMessage = "Scholar Requirement has been approved.";
+				pageName = "Manage Scholar > " + scholar.getFirstName() + " " + scholar.getLastName() + " > " ;
+			}		
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -47,20 +42,11 @@ public class ApproveScholarQualificationAction extends AbstractAction {
 		}
 		
 		return actionResult;
-	}
-
-	public int getScholarQualificationId() {
-		return scholarQualificationId;
-	}
-
-	public void setScholarQualificationId(int scholarQualificationId) {
-		this.scholarQualificationId = scholarQualificationId;
-	}
+	}	
 	
 	public int getScholarId() {
 		return scholarId;
 	}
-
 	public void setScholarId(int scholarId) {
 		this.scholarId = scholarId;
 	}

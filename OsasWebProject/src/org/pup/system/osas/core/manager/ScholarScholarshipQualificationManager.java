@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.ScholarQualificationDAO;
+import org.pup.system.osas.core.dao.ScholarshipQualificationDAO;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarQualification;
 import org.pup.system.osas.core.domain.ScholarScholarshipQualification;
@@ -59,6 +60,27 @@ public class ScholarScholarshipQualificationManager {
 		return scholarScholarshipQualificationList;
 	}
 	
+	
+	public void insertScholarQualification(ScholarQualification scholarQualification) throws Exception {
+		ScholarQualificationDAO scholarQualificationDAO = null;
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+
+			scholarQualificationDAO = new ScholarQualificationDAO(connection);
+
+			scholarQualificationDAO.insertScholarQualification(scholarQualification);
+
+			connection.commit();
+
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+	}
 	public ScholarQualification getScholarQualification(int scholarQualificationId) throws Exception {
 		ScholarQualificationDAO scholarQualificationDAO = null;
 		ScholarQualification scholarQualification = null;

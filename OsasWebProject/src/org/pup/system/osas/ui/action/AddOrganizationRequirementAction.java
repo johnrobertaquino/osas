@@ -46,7 +46,6 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
 				organizationRequirement.setOrganization(organization);
 
-				organizationRequirementManager = new OrganizationRequirementManager();
 				organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
 
 				notificationMessage = "Organization Requirement has been successfully added.";

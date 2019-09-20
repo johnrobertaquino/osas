@@ -6,13 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/organizationRequirementList.css">
+<link rel="stylesheet" type="text/css" href="css/editScholarQualification.css">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/organizationRequirementList.js"></script>
+<script type="text/javascript" src="js/editScholarQualification.js"></script>
 </head>
 <body>
 <div id="header">
@@ -55,61 +56,46 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteOrganizationRequirementForm" action="deleteOrganizationRequirement" method="POST">
-  		<input type="hidden" id="organizationRequirementId" name="organizationRequirementId" />
-  		<input type="hidden" name="organizationId" value="${organizationId}" />
-	</form>
-	<form id="editOrganizationRequirementForm" action="displayEditOrganizationRequirement" method="POST">
-  		<input type="hidden" id="organizationRequirementId" name="organizationRequirementId" />
-  		<input type="hidden" name="organizationId" value="${organizationId}" />
-	</form>
-	<form id="addOrganizationRequirementForm" action="displayAddOrganizationRequirement" method="POST">
-  		<input type="hidden" name="organizationId" value="${organizationId}" />
-	</form>
-	<div id="organizationRequirementListContentBody" class="featureContent" >
-	<div id="contentBodyHolder">
+	<div id="editScholarQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF REQUIREMENT</div>
+			<div id="title">EDIT SCHOLAR QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchOrganizationRequirement">
-				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchOrganizationRequirement" method="POST" id="searchOrganizationRequirementForm">
-					<input type="text" id="organizationRequirementSearchText" name="organizationRequirementSearchText" placeholder="Search Organization Requirement">
-					<input type="hidden" name="organizationId" value="${organizationId}" />
+			<div id="rightPaneContentHolder">
+				<form id="cancelScholarQualificationForm" action="displayScholarQualificationList" method="POST">
+					<input type="hidden" name="scholarQualificationId" value="${scholarQualificationId}" />
 				</form>
-				<div class="button" id="searchOrganizationRequirementButton">SEARCH</div>
-				<div class="button" id="addOrganizationRequirementButton">ADD ORGANIZATION REQUIREMENT</div>
-    			<div style="clear:both"></div>
-			</div>
-			<table>
-				<tr>
-					<th>Requirement/s Name</th>
-				</tr>
-				<s:iterator value="organizationRequirementList" status="rowStatus" var="organizationRequirement">
-					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="organizationRequirementName" /></td>
-						<td>
-							<div class="w3-dropdown-click tableMenu">
-  								<div class="tableMenuButton">
-  									<img src="images/setting_game_configuration_option-512.png" />
-  									<img src="images/arrow-down-01-512.png" />
-  								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditOrganizationRequirement('<s:property value="organizationRequirementId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
-    									<a onclick="showOrganizationRequirementDeletePopup('<s:property value="organizationRequirementId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
-  								</div>
+				
+				<form class="editScholarQualificationContent" id="editScholarQualificationForm" action="editScholarQualification" method="POST">
+					<input name="scholarQualificationId" type="hidden" value="${scholarQualification.scholarQualificationId}">
+    				<div class="rightPaneElement withTitle">
+    					<span>Notes</span>
+    					<div><input id="notes" name="notes" type="text" value="${scholarQualification.notes}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>FileName</span>
+    					<div><input id="fileName" name="fileName" type="file"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+						<div id="buttonHolder">
+							<div id="cancelButton" class="button">
+								<span>Cancel</span>
 							</div>
-						</td>
-					</tr>
-				</s:iterator>
-			</table>
+							<div id="submitButton" class="button left">
+								<span>Save</span>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+    			</form>
+    		</div>
+    		<div style="clear:both"></div>
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	</div>
 </div>
+
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>
