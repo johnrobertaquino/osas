@@ -18,7 +18,7 @@ public class ScholarshipQualificationDAO extends DAO {
 	}
 
 	public ScholarshipQualification getScholarshipQualificationByScholarshipQualificationName(
-			String scholarshipQualificationName) throws Exception {
+			String scholarshipQualificationName, int scholarshipProgramId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -31,7 +31,7 @@ public class ScholarshipQualificationDAO extends DAO {
 
 			resultSet = statement.executeQuery(
 					"SELECT ScholarshipQualificationId, ScholarshipQualificationName, ScholarshipProgramId, YearlyCheck FROM scholarshipqualification WHERE ScholarshipQualificationName='"
-							+ scholarshipQualificationName + "'");
+							+ scholarshipQualificationName + "' AND ScholarshipProgramId=" + scholarshipProgramId);
 
 			if (resultSet.next()) {
 				scholarshipQualification = new ScholarshipQualification();

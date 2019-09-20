@@ -17,7 +17,7 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 
 	private String scholarshipQualificationName;
 
-	private String scholarshipProgramId;
+	private int scholarshipProgramId;
 
 	private String yearlyCheck;
 
@@ -31,7 +31,7 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
 
 			ScholarshipQualification existingScholarshipQualification = null;
-			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName);
+			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName, scholarshipProgramId);
 
 			if (existingScholarshipQualification != null
 					&& scholarshipQualificationId != existingScholarshipQualification.getScholarshipQualificationId()) {
@@ -81,17 +81,11 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 		this.scholarshipQualificationName = scholarshipQualificationName;
 	}
 
-	/**
-	 * @return the address
-	 */
-	public String getScholarshipProgramId() {
+	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
 	}
 
-	/**
-	 * @param address the address to set
-	 */
-	public void setScholarshipProgramId(String scholarshipProgramId) {
+	public void setScholarshipProgramId(int scholarshipProgramId) {
 		this.scholarshipProgramId = scholarshipProgramId;
 	}
 

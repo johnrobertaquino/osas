@@ -11,7 +11,7 @@ import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarshipQualificationManager {
 
-	public ScholarshipQualification validate(String scholarshipQualificationName) throws Exception {
+	public ScholarshipQualification validate(String scholarshipQualificationName, int scholarshipProgramId) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		ScholarshipQualification scholarshipQualification = null;
@@ -23,7 +23,7 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
-			scholarshipQualification = scholarshipQualificationDAO.getScholarshipQualificationByScholarshipQualificationName(scholarshipQualificationName);
+			scholarshipQualification = scholarshipQualificationDAO.getScholarshipQualificationByScholarshipQualificationName(scholarshipQualificationName, scholarshipProgramId);
 
 			if (scholarshipQualification != null) {
 				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);

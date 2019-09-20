@@ -19,7 +19,7 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 	
 	private String scholarshipQualificationName;
 
-	private String scholarshipProgramId;
+	private int scholarshipProgramId;
 	
 	private String yearlyCheck;
 
@@ -31,15 +31,15 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(Integer.parseInt(scholarshipProgramId));
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
 			
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
 			
 			ScholarshipQualification existingScholarshipQualification = null;
-			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName);
+			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName, scholarshipProgramId);
 			
 			if (existingScholarshipQualification != null && scholarshipQualificationId != existingScholarshipQualification.getScholarshipQualificationId()) {
-				notificationMessage = "Scholarship program already exist.";
+				notificationMessage = "Scholarship Qualification already exist.";
 				return FORWARD_DISPLAYADDSCHOLARSHIPQUALIFICATION;
 			}
 			else {
@@ -78,18 +78,12 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 	public void setScholarshipQualificationName(String scholarshipQualificationName) {
 		this.scholarshipQualificationName = scholarshipQualificationName;
 	}
-	
-	/**
-	 * @return the scholarshipProgramId
-	 */
-	public String getScholarshipProgramId() {
+
+	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
 	}
 
-	/**
-	 * @param scholarshipQualificationId the scholarshipQualificationId to set
-	 */
-	public void setScholarshipProgramId(String scholarshipProgramId) {
+	public void setScholarshipProgramId(int scholarshipProgramId) {
 		this.scholarshipProgramId = scholarshipProgramId;
 	}
 
