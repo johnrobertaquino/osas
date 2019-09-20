@@ -84,6 +84,7 @@
 				<tr>
 					<th>Agency Name</th>
 					<th>Scholarship Program Name</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -98,7 +99,7 @@
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
   									<a onclick="displayScholarshipQualificationList('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Qualifications</a>	
 	    							<a onclick="displayEditScholarshipProgram('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
-    									<a onclick="showScholarshipProgramDeletePopup('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
+    								<a onclick="showScholarshipProgramDeletePopup('<s:property value="scholarshipProgramId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

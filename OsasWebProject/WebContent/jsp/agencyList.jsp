@@ -85,6 +85,7 @@
 					<th>Address</th>
 					<th>Contact number</th>
 					<th>Contact person</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="agencyList" status="rowStatus" var="agency">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>

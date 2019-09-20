@@ -69,7 +69,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form id="scholarshipReportForm" action="scholarsByAgencyAndProgramReport" method="GET">
+				<form id="scholarshipReportForm" target="_blank" action="scholarsByAgencyAndProgramReport" method="POST">
     				<div class="rightPaneElement withTitle">
     				    <span>Semester</span>
 	    				<div>

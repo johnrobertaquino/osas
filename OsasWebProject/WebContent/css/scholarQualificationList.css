@@ -1,0 +1,156 @@
+@charset "ISO-8859-1";
+#scholarQualificationListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#scholarQualificationListContentBody #searchScholarQualificationButton {
+		float: left;
+}
+#scholarQualificationListContentBody #addScholarQualificationButton {
+		float: right;
+}
+
+#scholarQualificationListContentBody #searchScholarQualification {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#scholarQualificationListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#scholarQualificationListContentBody #searchScholarQualificationButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#scholarQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarQualificationListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+		width: 730px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarQualificationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+		height: 32px;
+		float: left;
+		width: 650px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+	height: 32px;
+	float: left;
+	}
+	#scholarQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#scholarQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#scholarQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+		width: 700px;
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+		height: 32px;
+		float: left;
+	}
+	#scholarQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#scholarQualificationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#scholarQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+
+	}
+	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 120px;
+		width: 630px;
+		
+	}
+	#scholarQualificationListContentBody #searchScholarQualification img {
+		height: 32px;
+		float: left;
+		margin-left: 20px;
+		width: 32px;
+	}
+	#scholarQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}
