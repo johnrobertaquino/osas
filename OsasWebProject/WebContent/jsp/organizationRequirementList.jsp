@@ -63,6 +63,9 @@
   		<input type="hidden" id="organizationRequirementId" name="organizationRequirementId" />
   		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
+	<form id="addOrganizationRequirementForm" action="displayAddOrganizationRequirement" method="POST">
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
+	</form>
 	<div id="organizationRequirementListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
