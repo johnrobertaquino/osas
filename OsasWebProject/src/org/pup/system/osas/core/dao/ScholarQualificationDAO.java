@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.pup.system.osas.core.domain.ScholarQualification;
+import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarQualificationDAO extends DAO {
 
@@ -81,6 +82,40 @@ public class ScholarQualificationDAO extends DAO {
 
 		return scholarQualification;
 	}
+	
+	public void insertScholarQualification(ScholarQualification scholarQualification) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.prepareStatement(
+					"INSERT INTO scholarqualification(ScholarshipQualificationId, Qualified, Notes, Filename, ScholarId) VALUES (?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, scholarQualification.getScholarshipQualificationId());
+			statement.setBoolean(2, scholarQualification.isQualified());
+			statement.setString(3, scholarQualification.getNotes());
+			statement.setString(4, scholarQualification.getFilename());
+			statement.setInt(5, scholarQualification.getScholarId());
+
+			statement.executeUpdate();
+
+			resultSet = statement.getGeneratedKeys();
+
+			if (resultSet.next()) {
+				scholarQualification.setScholarQualificationId(resultSet.getInt(1));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Error occurred while doing insertScholarshipQualification method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+	}
+
 	
 	public void saveScholarQualification(ScholarQualification scholarQualification) throws Exception {
 		Connection connection = null;

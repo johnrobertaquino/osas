@@ -277,6 +277,29 @@
 			<result name="success">/jsp/scholarQualificationList.jsp</result>
 		</action>
 		
+		<action name="displayAddScholarQualification" class="org.pup.system.osas.ui.action.DisplayAddScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addScholarQualification.jsp</result>
+		</action>
+		
+		<action name="addScholarQualification" class="org.pup.system.osas.ui.action.AddScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarQualificationList</result>
+			<result name="error"  type="chain">/jsp/addScholarQualification.jsp</result>
+		</action>
+		
+		<action name="displayEditScholarQualification" class="org.pup.system.osas.ui.action.DisplayEditScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editScholarQualification.jsp</result>
+			<result name="error" type="chain">displayScholarQualificationList</result>
+		</action>
+		
+		<action name="editScholarQualification" class="org.pup.system.osas.ui.action.EditScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayScholarQualificationList</result>
+			<result type="chain" name="error">/jsp/editScholarQualification.jsp</result>
+		</action>
+		
 		<action name="approveScholarQualification" class="org.pup.system.osas.ui.action.ApproveScholarQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarQualificationList</result>
