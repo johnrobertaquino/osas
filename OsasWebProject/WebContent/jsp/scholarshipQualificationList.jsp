@@ -87,11 +87,12 @@
 				<tr>
 					<th>Qualification Name</th>
 					<th>Yearly Check</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="scholarshipQualificationList" status="rowStatus" var="scholarshipQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="scholarshipQualificationName" /></td>
-						<td><s:property value="yearlyCheck" /></td>
+						<td><s:if test="#scholarshipQualification.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

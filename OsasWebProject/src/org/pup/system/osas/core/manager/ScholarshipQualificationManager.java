@@ -3,11 +3,9 @@ package org.pup.system.osas.core.manager;
 import java.sql.Connection;
 import java.util.List;
 
-import org.pup.system.osas.core.dao.AgencyDAO;
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.ScholarshipProgramDAO;
 import org.pup.system.osas.core.dao.ScholarshipQualificationDAO;
-import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
 
@@ -15,6 +13,7 @@ public class ScholarshipQualificationManager {
 
 	public ScholarshipQualification validate(String scholarshipQualificationName) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
+		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		ScholarshipQualification scholarshipQualification = null;
 
 		Connection connection = null;
@@ -26,6 +25,12 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualification = scholarshipQualificationDAO.getScholarshipQualificationByScholarshipQualificationName(scholarshipQualificationName);
 
+			if (scholarshipQualification != null) {
+				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
+				
+				ScholarshipProgram scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramId(scholarshipQualification.getScholarshipProgram().getScholarshipProgramId());
+				scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+			}
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
 			throw e;
@@ -58,6 +63,7 @@ public class ScholarshipQualificationManager {
 	}
 	public ScholarshipQualification getScholarshipQualification(int scholarshipQualificationId) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
+		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		ScholarshipQualification scholarshipQualification = null;
 
 		Connection connection = null;
@@ -68,7 +74,13 @@ public class ScholarshipQualificationManager {
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
 			scholarshipQualification = scholarshipQualificationDAO.getScholarshipQualificationByScholarshipQualificationId(scholarshipQualificationId);
-
+			
+			if (scholarshipQualification != null) {
+				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
+				
+				ScholarshipProgram scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramId(scholarshipQualification.getScholarshipProgram().getScholarshipProgramId());
+				scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+			}
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
 			throw e;
@@ -79,7 +91,7 @@ public class ScholarshipQualificationManager {
 		return scholarshipQualification;
 	}
 
-	public List<ScholarshipQualification> getScholarshipQualificationList(int scholasrshipProgramId, int semTermId) throws Exception {
+	public List<ScholarshipQualification> getScholarshipQualificationList(int scholarshipProgramId, int semTermId) throws Exception {
 		ScholarshipQualificationDAO scholarshipQualificationDAO = null;
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		List<ScholarshipQualification> scholarshipQualificationList = null;
@@ -91,7 +103,7 @@ public class ScholarshipQualificationManager {
 
 			scholarshipQualificationDAO = new ScholarshipQualificationDAO(connection);
 
-			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationList(scholasrshipProgramId, semTermId);
+			scholarshipQualificationList = scholarshipQualificationDAO.getScholarshipQualificationList(scholarshipProgramId, semTermId);
 
 			if (scholarshipQualificationList != null) {
 				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);

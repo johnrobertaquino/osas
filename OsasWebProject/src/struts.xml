@@ -13,10 +13,12 @@
 			<interceptor name="userSessionInterceptor" class="org.pup.system.osas.ui.interceptor.UserSessionInterceptor"></interceptor>
 			<interceptor name="termInterceptor" class="org.pup.system.osas.ui.interceptor.TermInterceptor"></interceptor>
 			<interceptor name="firstTimeLoginInterceptor" class="org.pup.system.osas.ui.interceptor.FirstTimeLoginInterceptor"></interceptor>
+			<interceptor name="cachingInterceptor" class="org.pup.system.osas.ui.interceptor.CachingInterceptor"></interceptor>
 			<interceptor-stack name="userSessionStack">
 			    <interceptor-ref name="timer" /> 
             	<interceptor-ref name="logger" /> 
-            	<interceptor-ref name="defaultStack" /> 
+            	<interceptor-ref name="defaultStack" />
+            	<interceptor-ref name="cachingInterceptor" />
 				<interceptor-ref name="userSessionInterceptor"/>
 				<interceptor-ref name="termInterceptor"/>
 				<interceptor-ref name="firstTimeLoginInterceptor"/>
@@ -33,7 +35,6 @@
   		</global-results>
 		
 		<!-- MAIN ACTIONS -->	
-			
 		<action name="hello" class="org.pup.system.osas.ui.action.HelloWorldAction">
 			<result name="success">/jsp/helloWorld.jsp</result>
 		</action>
@@ -59,8 +60,7 @@
 			<result name="success">/jsp/home.jsp</result>
 		</action>
 		
-			<!-- USER -->	
-
+		<!-- USER -->	
 		<action name="displayUserList" class="org.pup.system.osas.ui.action.DisplayUserListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/userList.jsp</result>
@@ -72,9 +72,7 @@
 			<result name="success" type="chain">displayUserList</result>	
 			<result name="error" type="chain">displayUserList</result>
 		</action>
-				
-			<!-- ADD USER -->	
-			
+
 		<action name="displayAddUser" class="org.pup.system.osas.ui.action.DisplayAddUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addUser.jsp</result>
@@ -86,7 +84,7 @@
 			<result name="error">/jsp/addUser.jsp</result>
 			<result name="displayAddUser"  type="chain">displayAddUser</result>
 		</action>
-         	<!-- EDIT USER -->
+
 		<action name="displayEditUser" class="org.pup.system.osas.ui.action.DisplayEditUserAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editUser.jsp</result>
@@ -105,8 +103,7 @@
 			<result name="error">/jsp/userList.jsp</result>
 		</action>
 		
-			<!-- PASSWORD  -->	
-		
+		<!-- PASSWORD  -->
 		<action name="resetPassword" class="org.pup.system.osas.ui.action.ResetPasswordAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayUserList</result>	
@@ -146,8 +143,7 @@
 			<result name="error" type="chain">displayPasswordReset</result>
 		</action>
 		
-			<!-- ADD AGENCY -->	
-			
+		<!-- AGENCY -->	
 		<action name="displayAgencyList" class="org.pup.system.osas.ui.action.DisplayAgencyListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/agencyList.jsp</result>
@@ -189,8 +185,7 @@
 			<result type="chain" name="error">/jsp/editAgency.jsp</result>
 		</action>
 		
-			<!-- SCHOLARSHIP PROGRAM -->	
-		
+		<!-- SCHOLARSHIP PROGRAM -->
 		<action name="displayScholarshipProgramList" class="org.pup.system.osas.ui.action.DisplayScholarshipProgramListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipProgramList.jsp</result>
@@ -208,6 +203,7 @@
 			<result type="chain" name="error">displayScholarshipProgramList</result>
 			<result type="chain" name="displayEditScholarshipProgram">displayEditScholarshipProgram</result>
 		</action>
+		
 		<action name="deleteScholarshipProgram" class="org.pup.system.osas.ui.action.DeleteScholarshipProgramAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarshipProgramList</result>	
@@ -232,8 +228,7 @@
 			<result name="error">/jsp/scholarshipProgramList.jsp</result>
 		</action>
 		
-					<!-- QUALIFICATION -->
-		
+		<!-- QUALIFICATION -->
 		<action name="displayScholarshipQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipQualificationList.jsp</result>
@@ -251,6 +246,7 @@
 			<result type="chain" name="error">displayScholarshipQualificationList</result>
 			<result name="displayEditScholarshipQualification"  type="chain">displayEditScholarshipQualification</result>
 		</action>
+		
 		<action name="deleteScholarshipQualification" class="org.pup.system.osas.ui.action.DeleteScholarshipQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarshipQualificationList</result>	
@@ -275,8 +271,19 @@
 			<result name="error">/jsp/scholarshipQualificationList.jsp</result>
 		</action>
 		
-						<!-- MANAGE SCHOLARS -->	
-						
+		<!-- SCHOLAR QUALIFICATION -->
+		<action name="displayScholarQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarQualificationListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/scholarQualificationList.jsp</result>
+		</action>
+		
+		<action name="approveScholarQualification" class="org.pup.system.osas.ui.action.ApproveScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarQualificationList</result>
+			<result name="error" type="chain">displayScholarQualificationList</result>
+		</action>
+		
+		<!-- MANAGE SCHOLARS -->					
 		 <action name="displayScholarList" class="org.pup.system.osas.ui.action.DisplayScholarListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarList.jsp</result> 
@@ -317,8 +324,7 @@
 			<result name="error" type="chain">displayScholarList</result>
 		</action>
 		
-						<!-- MANAGE ORGANIZATION -->	
-								
+		<!-- MANAGE ORGANIZATION -->							
 		<action name="displayOrganizationList" class="org.pup.system.osas.ui.action.DisplayOrganizationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/organizationList.jsp</result> 
@@ -360,8 +366,7 @@
 			<result name="error" type="chain">displayOrganizationList</result>
 		</action>
 		
-					       <!--  MEMBER -->
-		
+		<!--  MEMBER -->
 		<action name="displayMemberList" class="org.pup.system.osas.ui.action.DisplayMemberListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/memberList.jsp</result> 
@@ -403,8 +408,7 @@
 		</action>
 		
 		
-					<!-- ORGANIZATION REQUIREMENT -->
-		
+		<!-- ORGANIZATION REQUIREMENT -->
 		<action name="displayOrganizationRequirementList" class="org.pup.system.osas.ui.action.DisplayOrganizationRequirementListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/organizationRequirementList.jsp</result>
@@ -422,6 +426,7 @@
 			<result type="chain" name="error">displayOrganizationRequirementList</result>
 			<result name="displayEditOrganizationRequirement"  type="chain">displayEditOrganizationRequirement</result>
 		</action>
+		
 		<action name="deleteOrganizationRequirement" class="org.pup.system.osas.ui.action.DeleteOrganizationRequirementAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayOrganizationRequirementList</result>	

@@ -63,3 +63,8 @@ function addScholarExcelFile(scholarId) {
 		$("#addScholarExcelForm").submit();
 	});
 }
+
+function displayScholarQualification(scholarId) {
+	$("#showScholarQualificationForm #scholarId").val(scholarId);
+	$("#showScholarQualificationForm").submit();
+}
