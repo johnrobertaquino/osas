@@ -60,11 +60,12 @@
   		<input type="hidden" name="scholarId" value="${scholarId}" />
 	</form>
 	<form id="showAddScholarQualificationForm" action="displayAddScholarQualification" method="POST">
-  		<input type="hidden" id="scholarQualificationId" name="scholarQualificationId" />
-  		<input type="hidden" name="scholarshipQualificationId" value="${scholarshipQualificationId}" />
+  		<input type="hidden" name="scholarshipQualificationId" id="scholarshipQualificationId" />
+  		<input type="hidden" name="scholarId" value="${scholarId}" />
 	</form>
 	<form id="editScholarQualificationForm" action="displayEditScholarQualification" method="POST">
   		<input type="hidden" id="scholarQualificationId" name="scholarQualificationId" />
+  		<input type="hidden" name="scholarId" value="${scholarId}" />
 	</form>
 	<div id="scholarQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
@@ -106,7 +107,7 @@
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
   									<s:if test='status == "N"'>
-  										<a onclick="showAddScholarQualification('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
+  										<a onclick="showAddScholarQualification('<s:property value="scholarshipQualification.scholarshipQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
   									</s:if>
   									<s:if test='status == "A" || status == "P"'>
   										<a onclick="displayEditScholarQualification('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
@@ -115,7 +116,7 @@
   										<a onclick="showScholarQualificationApprovePopup('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
   									<s:if test='scholarQualification.filename != null && scholarQualification.filename != ""'>
-  										<a onclick="" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
   									</s:if>
   								</div>
 							</div>

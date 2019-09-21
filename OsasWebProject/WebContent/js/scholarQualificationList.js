@@ -43,7 +43,7 @@ function displayEditScholarQualification(scholarQualificationId) {
 }
 
 function showAddScholarQualification(scholarshipQualificationId) {
-		$("#showAddScholarQualificationForm #scholarQualificationId").val(scholarshipQualificationId);
+		$("#showAddScholarQualificationForm #scholarshipQualificationId").val(scholarshipQualificationId);
 		$("#showAddScholarQualificationForm").submit();
 }
 

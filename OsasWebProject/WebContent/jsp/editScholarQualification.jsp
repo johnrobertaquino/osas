@@ -64,16 +64,21 @@
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form id="cancelScholarQualificationForm" action="displayScholarQualificationList" method="POST">
-					<input type="hidden" name="scholarQualificationId" value="${scholarQualificationId}" />
+					<input type="hidden" name="scholarId" value="${scholarId}" />
 				</form>
 				
-				<form class="editScholarQualificationContent" id="editScholarQualificationForm" action="editScholarQualification" method="POST">
-					<input name="scholarQualificationId" type="hidden" value="${scholarQualification.scholarQualificationId}">
+				<form class="editScholarQualificationContent" id="editScholarQualificationForm" action="editScholarQualification" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="scholarQualificationId" value="${scholarQualificationId}" />
+					<input type="hidden" name="scholarId" value="${scholarId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Notes</span>
     					<div><input id="notes" name="notes" type="text" value="${scholarQualification.notes}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Add Attachment</span>
+    					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle" id="fileNameHolder">
     					<span>FileName</span>
     					<div><input id="fileName" name="fileName" type="file"></div>
     				</div>

@@ -1,17 +1,5 @@
 package org.pup.system.osas.ui.action;
 
-import org.pup.system.osas.core.domain.Member;
-import org.pup.system.osas.core.domain.Organization;
-import org.pup.system.osas.core.domain.Scholar;
-import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.transformer.MemberExcelRowToDomainTransformer;
-import org.pup.system.osas.core.domain.transformer.ScholarExcelRowToDomainTransformer;
-import org.pup.system.osas.core.manager.MemberManager;
-import org.pup.system.osas.core.manager.OrganizationManager;
-import org.pup.system.osas.core.manager.ScholarManager;
-import org.pup.system.osas.core.manager.ScholarshipProgramManager;
-import org.pup.system.osas.exception.BusinessException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -20,8 +8,13 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.pup.system.osas.ui.action.AbstractAction;
-
+import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.transformer.MemberExcelRowToDomainTransformer;
+import org.pup.system.osas.core.manager.MemberManager;
+import org.pup.system.osas.core.manager.OrganizationManager;
+import org.pup.system.osas.exception.BusinessException;
+	
 public class AddMemberExcelFileAction extends AbstractAction {
 
 	/**

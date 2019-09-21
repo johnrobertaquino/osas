@@ -15,4 +15,14 @@ $(document).ready(function() {
 			popUp(errorMessage);
 		}
 	});
+	
+	$('#addAttachment').click(function(event) {
+		if ($(this).prop("checked") == true) {
+			$('#fileNameHolder').show();
+		} else {
+			$('#fileNameHolder').hide();
+		}
+	});
+	
+	$('#fileNameHolder').hide();
 });

@@ -275,11 +275,13 @@
 		<action name="displayScholarQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarQualificationList.jsp</result>
+			<result name="error">/jsp/scholarQualificationList.jsp</result>
 		</action>
 		
 		<action name="displayAddScholarQualification" class="org.pup.system.osas.ui.action.DisplayAddScholarQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addScholarQualification.jsp</result>
+			<result name="error" type="chain">displayScholarQualificationList</result>
 		</action>
 		
 		<action name="addScholarQualification" class="org.pup.system.osas.ui.action.AddScholarQualificationAction">
@@ -499,7 +501,7 @@
 		</action>
 		
 		<!-- REPORT -->
-		 <action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
+		<action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipReport.jsp</result> 
 		</action>	
@@ -509,6 +511,10 @@
 		
 		<action name="scholarsByAgencyAndProgramReport" class="org.pup.system.osas.ui.action.ScholarsByAgencyAndProgramReportAction">
 			<interceptor-ref name="userSessionStack"/>
+		</action>
+		
+		<!-- DOWNLOAD -->
+		<action name="download" class="org.pup.system.osas.ui.action.DownloadFileAction">
 		</action>
 	</package>
 

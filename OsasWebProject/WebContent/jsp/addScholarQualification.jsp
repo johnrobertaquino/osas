@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarQualification.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addScholarQualification.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarQualification.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addScholarQualification.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -65,15 +65,20 @@
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form id="cancelScholarQualificationForm" action="displayScholarQualificationList" method="POST">
-					<input type="hidden" name="scholarQualificationId" value="${scholarQualificationId}" />
+					<input type="hidden" name="scholarId" value="${scholarId}" />
 				</form>
-				<form class="addScholarQualificationContent" id="addScholarQualificationForm" action="addScholarQualification" method="POST">
-					<input type="hidden" name="scholarQualificationId" value="${scholarQualificationId}" />
+				<form class="addScholarQualificationContent" id="addScholarQualificationForm" action="addScholarQualification" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="scholarshipQualificationId" value="${scholarshipQualificationId}" />
+					<input type="hidden" name="scholarId" value="${scholarId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Notes</span>
     					<div><input id="notes" name="notes" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Add Attachment</span>
+    					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle" id="fileNameHolder">
     					<span>FileName</span>
     					<div><input id="fileName" name="fileName" type="file"></div>
     				</div>

@@ -6,14 +6,13 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.ScholarQualificationDAO;
-import org.pup.system.osas.core.dao.ScholarshipQualificationDAO;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarQualification;
 import org.pup.system.osas.core.domain.ScholarScholarshipQualification;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarScholarshipQualificationManager {
-
+	
 	public List<ScholarScholarshipQualification> getScholarScholarshipQualificationList(int scholarId, int semTermId) throws Exception {
 		ScholarQualificationDAO scholarQualificationDAO = null;
 		ScholarshipQualificationManager scholarshipQualificationManager = null;

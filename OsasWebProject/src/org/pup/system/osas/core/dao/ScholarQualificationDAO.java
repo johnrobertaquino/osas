@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.pup.system.osas.core.domain.ScholarQualification;
-import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarQualificationDAO extends DAO {
 

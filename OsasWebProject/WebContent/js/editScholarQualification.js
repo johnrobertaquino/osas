@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		$("#cancelScholarshipQualificationForm").submit();
+		$("#cancelScholarQualificationForm").submit();
 	});
 	
 	$('#submitButton').click(function(event) {	
@@ -16,5 +16,15 @@ $(document).ready(function() {
 			popUp(errorMessage);
 		}
 	});
+	
+	$('#addAttachment').click(function(event) {
+		if ($(this).prop("checked") == true) {
+			$('#fileNameHolder').show();
+		} else {
+			$('#fileNameHolder').hide();
+		}
+	});
+	
+	$('#fileNameHolder').hide();
 	
 });
