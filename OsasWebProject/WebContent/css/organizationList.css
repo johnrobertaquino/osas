@@ -7,7 +7,7 @@
 }
 
 #organizationListContentBody #addOrganizationButton {
-		float: left;
+		float: right;
 		margin-left: 40px;
 }
 #organizationListContentBody #searchOrganization {
@@ -35,13 +35,9 @@
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 860px;
-	}
-	#organizationListContentBody #contentBodyRightPane table {
-		margin-left: 50px;
-		width: 750px;
+		width: 920px;
 	}
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
@@ -65,14 +61,9 @@
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
-		margin-left: 40px;
-	    width: 760px;
-	}
-	
-	#organizationListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
-		width: 700px;
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 690px;
 	}
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
@@ -96,13 +87,10 @@
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
-		margin-left: 120px;
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 670px;
 	}
-	#organizationListContentBody #contentBodyRightPane table {
-			margin-left: 120px;
-			width: 700px;
-	 }
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
 		float: left;

@@ -18,7 +18,6 @@ public class SearchOrganizationRequirementAction extends AbstractAction{
 	
 	private List<OrganizationRequirement> organizationRequirementList;
 	
-	private int organizationId;
 
 	@Override
 	public String execute() throws Exception {
@@ -27,11 +26,8 @@ public class SearchOrganizationRequirementAction extends AbstractAction{
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			OrganizationRequirement organizationRequirement = new OrganizationRequirement();
-			organizationRequirement.setOrganization(new Organization());
-			organizationRequirement.getOrganization().setOrganizationId(organizationId);
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, organizationId));
+			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -70,19 +66,5 @@ public class SearchOrganizationRequirementAction extends AbstractAction{
 	 */
 	public void setOrganizationRequirementList(List<OrganizationRequirement> organizationRequirementList) {
 		this.organizationRequirementList = organizationRequirementList;
-	}
-
-	/**
-	 * @return the organizationId
-	 */
-	public int getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param organizationId the organizationId to set
-	 */
-	public void setOrganizationId(int organizationId) {
-		this.organizationId = organizationId;
 	}
 }

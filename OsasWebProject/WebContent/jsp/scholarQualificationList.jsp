@@ -7,12 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/scholarQualificationList.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/scholarQualificationList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -67,6 +67,8 @@
   		<input type="hidden" id="scholarQualificationId" name="scholarQualificationId" />
   		<input type="hidden" name="scholarId" value="${scholarId}" />
 	</form>
+	<form id="backScholarQualificationForm" action="displayScholarList" method="POST">
+	</form>
 	<div id="scholarQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -81,6 +83,7 @@
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
 				<div class="button" id="searchScholarQualificationButton">SEARCH</div>
+				<div class="button" id="backScholarQualification">BACK</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>

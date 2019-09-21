@@ -7,12 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/scholarshipQualificationList.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/scholarshipQualificationList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -66,6 +66,9 @@
 	<form id="addScholarshipQualificationForm" action="displayAddScholarshipQualification" method="POST">
   		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
+	<form id="backScholarshipQualificationForm" action="displayScholarshipProgramList" method="POST">
+		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+	</form>
 	<div id="scholarshipQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -80,6 +83,7 @@
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
 				<div class="button" id="searchScholarshipQualificationButton">SEARCH</div>
+				<div class="button" id="backScholarshipQualification">BACK</div>
 				<div class="button" id="addScholarshipQualificationButton">ADD SCHOLARSHIP QUALIFICATION</div>
     			<div style="clear:both"></div>
 			</div>

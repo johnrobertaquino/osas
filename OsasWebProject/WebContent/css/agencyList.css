@@ -37,7 +37,7 @@
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 730px;
+		width: 920px;
 	}
 	#agencyListContentBody #searchAgency img {
 		height: 32px;
@@ -61,7 +61,8 @@
 		font-size: 14px;
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
+		margin-left: 50px;
+	    width: 690px;
 	}
 	#agencyListContentBody #searchAgency img {
 		height: 32px;
@@ -85,8 +86,8 @@
 		font-size: 14px;
 	}
 	#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
-		margin-left: 120px;
-		
+		margin-left: 50px;
+	    width: 670px;
 	}
 	#agencyListContentBody #searchAgency img {
 		height: 32px;

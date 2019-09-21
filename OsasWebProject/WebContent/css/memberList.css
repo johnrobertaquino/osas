@@ -43,14 +43,11 @@
 	#memberListContentBody #contentBodyRightPane {
 		font-size: 13px;
 	}
-	#memberListContentBody #searchMember {
+	#memberListContentBody #searchMember, #memberListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 800px;
+		width: 920px;
 	}
-	#memberListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
-		width: 750px;
-	}
+
 	#memberListContentBody #searchMember img {
 		height: 32px;
 		float: left;
@@ -72,14 +69,9 @@
 	#memberListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#memberListContentBody #searchMember {
-		margin-left: 40px;
-		width: 750px;
-	}
-	
-	#memberListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
-		width: 750px;
+	#memberListContentBody #searchMember, #memberListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 690px;
 	}
 	
 	#memberListContentBody #searchMember img {
@@ -103,13 +95,9 @@
 	#memberListContentBody #contentBodyRightPane {
 		font-size: 11px;
 	}
-	#memberListContentBody #searchMember {
-		margin-left: 120px;
-		 width: 750px;
-	}
-	#memberListContentBody #contentBodyRightPane table {
-			margin-left: 120px;
-			width: 750px;
+	#memberListContentBody #searchMember, #memberListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 670px;
 	}
 	#memberListContentBody #searchMember img {
 		height: 32px;

@@ -29,6 +29,10 @@ $(document).ready(function() {
 		$('#searchScholarshipQualificationForm').submit();
 	});
 	
+	$('#backScholarshipQualification').click(function(event) {
+		$("#backScholarshipQualificationForm").submit();
+	});
+	
 	$('#addScholarshipQualificationButton').click(displayAddScholarshipQualification);
 	
 });

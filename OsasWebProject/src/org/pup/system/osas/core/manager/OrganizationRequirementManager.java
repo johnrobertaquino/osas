@@ -77,9 +77,8 @@ public class OrganizationRequirementManager {
 		return organizationRequirement;
 	}
 
-	public List<OrganizationRequirement> getOrganizationRequirementList(int organizationId, int semTermId) throws Exception {
+	public List<OrganizationRequirement> getOrganizationRequirementList(int semTermId) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
-		OrganizationDAO organizationDAO = null;
 		List<OrganizationRequirement> organizationRequirementList = null;
 
 		Connection connection = null;
@@ -89,16 +88,7 @@ public class OrganizationRequirementManager {
 
 			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
 
-			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementList(organizationId, semTermId);
-
-			if (organizationRequirementList != null) {
-				organizationDAO = new OrganizationDAO(connection);
-
-				for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
-					Organization organization = organizationDAO.getOrganizationByOrganizationId(organizationRequirement.getOrganization().getOrganizationId());
-					organizationRequirement.setOrganization(organization);
-				}
-			}
+			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementList(semTermId);
 
 		} catch (Exception e) {
 			throw e;
@@ -110,9 +100,8 @@ public class OrganizationRequirementManager {
 	}
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
-			String organizationRequirementSearchText, int organizationId) throws Exception {
+			String organizationRequirementSearchText, int semTermId) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
-		OrganizationDAO organizationDAO = null;
 		List<OrganizationRequirement> organizationRequirementList = null;
 
 		Connection connection = null;
@@ -122,16 +111,7 @@ public class OrganizationRequirementManager {
 
 			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
 
-			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, organizationId);
-			
-			if (organizationRequirementList != null) {
-				organizationDAO = new OrganizationDAO(connection);
-
-				for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
-					Organization organization = organizationDAO.getOrganizationByOrganizationId(organizationRequirement.getOrganization().getOrganizationId());
-					organizationRequirement.setOrganization(organization);
-				}
-			}
+			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, semTermId);
 
 		} catch (Exception e) {
 			throw e;

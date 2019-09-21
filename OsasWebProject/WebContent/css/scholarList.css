@@ -46,13 +46,9 @@
 	#scholarListContentBody #contentBodyRightPane {
 		font-size: 11px;
 	}
-	#scholarListContentBody #searchScholar {
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 900px;
-	}
-	#scholarListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
-		width: 900px;
+		width: 920px;
 	}
 	#scholarListContentBody #searchScholar img {
 		height: 32px;
@@ -75,13 +71,9 @@
 	#scholarListContentBody #contentBodyRightPane {
 		font-size: 10px;
 	}
-	#scholarListContentBody #searchScholar {
-		margin-left: 40px;
-		width: 800px;
-	}
 	
-	#scholarListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
 		width: 800px;
 	}
 	
@@ -106,13 +98,9 @@
 	#scholarListContentBody #contentBodyRightPane {
 		font-size: 9px;
 	}
-	#scholarListContentBody #searchScholar {
-		margin-left: 120px;
-		 width: 700px;
-	}
-	#scholarListContentBody #contentBodyRightPane table {
-			margin-left: 120px;
-			width: 750px;
+	#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane table  {
+		margin-left: 50px;
+	    width: 670px;
 	}
 	#scholarListContentBody #searchScholar img {
 		height: 32px;

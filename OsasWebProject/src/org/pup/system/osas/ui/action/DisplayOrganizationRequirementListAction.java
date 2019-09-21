@@ -16,29 +16,17 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 	private static final long serialVersionUID = 3426112992716352970L;
 	
 	private List<OrganizationRequirement> organizationRequirementList;
-	
-	private int organizationId;
+
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization > Requirements";
+		pageName = "Manage Organization Requirement";
 		
 		String actionResult = FORWARD_SUCCESS;
 
-		try {
-			OrganizationRequirement organizationRequirement = new OrganizationRequirement();
-			organizationRequirement.setOrganization(new Organization());
-			organizationRequirement.getOrganization().setOrganizationId(organizationId);
-			
+		try {			
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-
-			setOrganizationRequirementList(organizationRequirementManager
-					.getOrganizationRequirementList(organizationId, getCurrentActiveTerm().getSemTermId()));
+			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementList(getCurrentActiveTerm().getSemTermId()));
 			
-			OrganizationManager organizationManager = new OrganizationManager();
-			Organization organization = organizationManager.getOrganization(organizationId);
-			if (organization != null) {
-				pageName = "Manage Organization > " + organization.getOrganizationName() + " > Requirements";
-			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -65,20 +53,6 @@ public class DisplayOrganizationRequirementListAction extends AbstractAction {
 	 */
 	public void setOrganizationRequirementList(List<OrganizationRequirement> organizationRequirementList) {
 		this.organizationRequirementList = organizationRequirementList;
-	}
-	
-	/**
-	 * @return the scholarshipProgram
-	 */
-	public int getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param scholarshipProgram the scholarshipProgram to set
-	 */
-	public void setOrganizationId(int organizationId) {
-		this.organizationId = organizationId;
 	}
 
 }

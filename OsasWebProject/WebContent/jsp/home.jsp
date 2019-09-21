@@ -6,11 +6,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/home.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -109,6 +109,12 @@
 				<div class ="menuLinks">
 					<div class="linkItemHolder">
 						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgTermManagementLink">Manage Organization</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+				<div class ="menuLinks">
+					<div class="linkItemHolder">
+						<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="studentOrgRequirementManagementLink">Manage Organization Requirement</div>
 						<div style="clear:both"></div>
 					</div>
 				</div>

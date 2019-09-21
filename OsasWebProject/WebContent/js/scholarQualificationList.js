@@ -22,6 +22,11 @@ $(document).ready(function() {
 		$(this).parent().find(".tableMenuDropdown").toggleClass("w3-show");
 	});
 	
+	$('#backScholarQualification').click(function(event) {
+		$("#backScholarQualificationForm").submit();
+	});
+	
+	
 	/*$('#searchScholarQualificationButton').click(function(event) {
 		if($('#scholarQualificationSearchText').val().trim() == '') {
 			$('#searchScholarQualificationForm').attr("action","displayScholarQualificationList");

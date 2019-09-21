@@ -18,8 +18,6 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 	
 	private String organizationRequirementName;
 	
-	private String organizationId;
-	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization > Requirements";
@@ -75,20 +73,6 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 
 	public void setOrganizationRequirementName(String organizationRequirementName) {
 		this.organizationRequirementName = organizationRequirementName;
-	}
-
-	/**
-	 * @return the address
-	 */
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param address the address to set
-	 */
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
 	}
 
 }

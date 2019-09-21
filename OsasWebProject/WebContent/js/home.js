@@ -34,5 +34,10 @@ $(document).ready(function() {
 		location.href = "displayScholarshipReport";
 	});
 	
+	$('#studentOrgRequirementManagementLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayOrganizationRequirementList";
+	});
+	
 });
 
