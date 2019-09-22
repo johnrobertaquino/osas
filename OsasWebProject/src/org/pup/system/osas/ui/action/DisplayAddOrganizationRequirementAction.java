@@ -13,17 +13,21 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 	 */
 	private static final long serialVersionUID = 2936689632600612372L;
 	
-	private List<Organization> organizationList;
+	private int organizationId;
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization > Requirements";
+		//pageName = "Manage Organization > Requirements";
 		
 		String actionResult = FORWARD_SUCCESS;
 		
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
-			setOrganizationList(organizationManager.getOrganizationList(getCurrentActiveTerm().getSemTermId()));	
+			Organization organization = organizationManager.getOrganization(organizationId);
+			if (organization != null) {
+				pageName = "Manage Organization > " + organization.getOrganizationName()
+						+ " > Requirements";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -37,18 +41,12 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 		return actionResult;
 	}
 
-	/**
-	 * @return the OrganizationList
-	 */
-	public List<Organization> getOrganizationList() {
-		return organizationList;
+	public int getOrganizationId() {
+		return organizationId;
 	}
 
-	/**
-	 * @param OrganizationList the OrganizationList to set
-	 */
-	public void setOrganizationList(List<Organization> organizationList) {
-		this.organizationList = organizationList;
+	public void setOrganizationId(int organizationId) {
+		this.organizationId = organizationId;
 	}
 	
 }
