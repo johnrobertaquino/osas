@@ -32,6 +32,10 @@ $(document).ready(function() {
 	$('#addUserButton').click(function() {
 		location.href = "displayAddUser";
 	});
+	
+	$('#programManagementButton').click(function() {
+		location.href = "displayProgramList";
+	});
 });
 
 function showUserDeletePopup(userId) {

@@ -54,6 +54,9 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		case "section":
 			domain.setSection(value);
 			break;
+		case "contactNumber":
+			domain.setContactNumber(value);
+			break;
 		default:
 			break;
 		}
@@ -70,6 +73,7 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		validatorMap.put("gender", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("year", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		validatorMap.put("section", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
+		validatorMap.put("contactNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		
 		return validatorMap;
 	}

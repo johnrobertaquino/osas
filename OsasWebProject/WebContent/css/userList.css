@@ -10,6 +10,10 @@
 		float: right;
 }
 
+#userListContentBody #programManagementButton {
+		float: right;
+		margin-right: 10px;
+}
 @media only screen and (max-width: 1550px) {
   	#userListContentBody #contentBodyLeftPane	{
 		width: 200px;

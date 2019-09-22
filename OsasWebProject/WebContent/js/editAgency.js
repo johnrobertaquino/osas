@@ -47,7 +47,7 @@ $(document).ready(function() {
 			errorMessage = errorMessage + "Contact Number can\'t be blank.";
 		}
 		if (errorMessage == '') {
-			popUpOkCancel("Do you want to save changes to this user?", function() {
+			popUpOkCancel("Do you want to save changes to this agency?", function() {
 				$("#editAgencyForm").submit();
 			});
 		}

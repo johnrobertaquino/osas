@@ -8,11 +8,11 @@
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/userList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/programList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/userList.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/programList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -55,66 +55,48 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="deleteUserForm" action="deleteUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
+	<form id="deleteProgramForm" action="deleteProgram" method="POST">
+  		<input type="hidden" id="programId" name="programId" />
 	</form>
-	<form id="editUserForm" action="displayEditUser" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
+	<form id="editProgramForm" action="displayEditProgram" method="POST">
+  		<input type="hidden" id="programId" name="programId" />
 	</form>
-	<form id="resetPasswordForm" action="resetPassword" method="POST">
-  		<input type="hidden" id="userId" name="userId" />
-	</form>
-	<div id="userListContentBody" class="featureContent">
+	<div id="programListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF USERS</div>
+			<div id="title">LIST OF PROGRAM</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchUser">
+			<div style="clear:both"></div>
+			<div id="searchProgram">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchUser" method="POST" id="searchUserForm">
-					<input type="text" id="userSearchText" name="userSearchText" placeholder="Search User">
+				<form action="searchProgram" method="POST" id="searchProgramForm">
+					<input type="text" id="programSearchText" name="programSearchText" placeholder="Search Program">
+					<!-- <input type="hidden" name="program.semTermId" value="${program.semTermId}"/>  -->
 				</form>
-				<div class="button" id="searchUserButton">SEARCH</div>
-				<div class="button" id="addUserButton">ADD USER</div>
-				<div class="button" id="programManagementButton">PROGRAM MANAGEMENT</div>
+				<div class="button" id="searchProgramButton">SEARCH</div>
+				<div class="button" id="addProgramButton">ADD PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
-					<th>Username</th>
-					<th>First name</th>
-					<th>Middle name</th>
-					<th>Last name</th>
-					<th>Birthday</th>
-					<th>Contact number</th>
-					<th>Position</th>
-					<th>Role</th>
-					<th>Action</th>
+					<th>Program Code</th>
+					<th>Program Name</th>
 				</tr>
-				<s:iterator value="userList" status="rowStatus" var="user">
+				<s:iterator value="programList" status="rowStatus" var="program">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="userName" /></td>
-						<td><s:property value="firstName" /></td>
-						<td><s:property value="middleName" /></td>
-						<td><s:property value="lastName" /></td>
-						<td><s:date name="#user.birthday" format="MM/dd/yyyy" /></td>
-						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="position" /></td>
-						<td class="test"><s:property value="userRoleForDisplay" /></td>
+						<td><s:property value="programCode" /></td>
+						<td><s:property value="programName" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />
   									<img src="images/arrow-down-01-512.png" />
   								</div>
-  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
-	    							<a onclick="displayEditUser('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/><span> Edit</span></a>
-	    							<s:if test="%{#session.USER.userId != #user.userId}">
-    									<a onclick="showUserDeletePopup('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/><span> Delete</span></a>
-    									<a onclick="showUserResetPasswordPopup('<s:property value="userId" />')" class="w3-bar-item w3-button"><img src="images/reset_icon.png" class="dropdownicon"/><span> Reset Password</span></a>
-    								</s:if>
+  								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
+	    							<a onclick="displayEditprogram('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showprogramDeletePopup('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

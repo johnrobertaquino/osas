@@ -143,6 +143,22 @@
 			<result name="error" type="chain">displayPasswordReset</result>
 		</action>
 		
+		<!-- PROGRAM MANAGEMENT -->	
+		<action name="displayProgramList" class="org.pup.system.osas.ui.action.DisplayProgramListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/programList.jsp</result>
+		</action>
+		
+		<action name="displayAddProgram" class="org.pup.system.osas.ui.action.DisplayAddProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addProgram.jsp</result>
+		</action>
+		
+		<action name="displayEditProgram" class="org.pup.system.osas.ui.action.DisplayEditProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editAgency.jsp</result>
+		</action>
+		
 		<!-- AGENCY -->	
 		<action name="displayAgencyList" class="org.pup.system.osas.ui.action.DisplayAgencyListAction">
 			<interceptor-ref name="userSessionStack"/>
