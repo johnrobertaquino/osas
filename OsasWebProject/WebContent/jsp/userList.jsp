@@ -67,7 +67,7 @@
 	<div id="userListContentBody" class="featureContent">
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">LIST OF USERS</div>
 		</div>
 		<div id="contentBodyRightPane">

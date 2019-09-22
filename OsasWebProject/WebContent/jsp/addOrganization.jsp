@@ -59,7 +59,7 @@
 <div id="contentBody">
 	<div id="addOrganizationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
 			<div id="title">ADD ORGANIZATION</div>
 		</div>
 		<div id="contentBodyRightPane">
