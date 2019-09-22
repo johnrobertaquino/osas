@@ -83,6 +83,7 @@
 			</div>
 			<table>
 				<tr>
+					<th>Logo</th>
 					<th>Organization name</th>
 					<th>Organization Type</th>
 					<th>Program </th>
@@ -90,6 +91,7 @@
 				</tr>
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="logoFileName" /></td>
 						<td><s:property value="organizationName" /></td>
 						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program" /></td>

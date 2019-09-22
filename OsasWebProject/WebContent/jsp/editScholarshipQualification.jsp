@@ -66,7 +66,6 @@
 				<form id="cancelScholarshipQualificationForm" action="displayScholarshipQualificationList" method="POST">
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
-				
 				<form class="editScholarshipQualificationContent" id="editScholarshipQualificationForm" action="editScholarshipQualification" method="POST">
 					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />

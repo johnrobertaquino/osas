@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		$("#cancelScholarQualificationForm").submit();
+		$("#cancelScholarshipQualificationForm").submit();
 	});
 	
 	$('#submitButton').click(function(event) {	

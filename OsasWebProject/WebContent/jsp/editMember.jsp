@@ -61,7 +61,7 @@
 	<div id="editMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">EDIT Member</div>
+			<div id="title">EDIT MEMBER</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">

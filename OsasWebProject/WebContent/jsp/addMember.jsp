@@ -60,7 +60,7 @@
 	<div id="addMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD Member</div>
+			<div id="title">ADD MEMBER</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">

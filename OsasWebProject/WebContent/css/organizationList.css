@@ -27,6 +27,9 @@
 #organizationListContentBody #searchOrganizationButton {
 	float: left;
 }
+#organizationListContentBody #logo {
+	height: 40px;
+}
 
 @media only screen and (max-width: 1550px) {
   	#organizationListContentBody #contentBodyLeftPane	{
@@ -48,7 +51,7 @@
 	#organizationListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
-		font-size: 25px;
+		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
