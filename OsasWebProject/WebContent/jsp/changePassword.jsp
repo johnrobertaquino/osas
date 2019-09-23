@@ -57,7 +57,7 @@
 <div id="contentBody">
 	<div id="changePasswordContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/changeMyPassword.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">CHANGE PASSWORD</div>
 		</div>
 		<div id="contentBodyRightPane">

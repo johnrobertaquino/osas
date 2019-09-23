@@ -9,7 +9,7 @@ public class DisplayAddProgramAction extends AbstractAction  {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Account > Program Management";
+		pageName = "Manage Accounts > Program Management";
 		
 		return FORWARD_SUCCESS;
 	}

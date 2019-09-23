@@ -56,7 +56,7 @@
 <div id="contentBody">
 	<div id="passwordResetContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">PASSWORD RESET</div>
 		</div>
 		<div id="contentBodyRightPane">
