@@ -18,7 +18,7 @@ public class Scholar {
 	
 	private String contactNumber;
 	
-	private String program;
+	private Program program;
 	
 	private String year;
 	
@@ -109,14 +109,14 @@ public class Scholar {
 	/**
 	 * @return the program
 	 */
-	public String getProgram() {
+	public Program getProgram() {
 		return program;
 	}
 
 	/**
 	 * @param program the program to set
 	 */
-	public void setProgram(String program) {
+	public void setProgram(Program program) {
 		this.program = program;
 	}
 

@@ -18,13 +18,20 @@ public class NotNumericValidator extends Validator<Cell> {
 			return true;
 		}
 		
+		if (!isNumeric(text.trim())) {
+			return true;
+		}
+		
 		return false;
 	}
 
 	@Override
 	public String getErrorMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		return "is not numeric.";
+	}
+	
+	private boolean isNumeric(String strNum) {
+	    return strNum.matches("-?\\d+(\\.\\d+)?");
 	}
 
 }

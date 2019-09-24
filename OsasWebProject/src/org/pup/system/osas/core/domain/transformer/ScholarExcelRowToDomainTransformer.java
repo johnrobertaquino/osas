@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 
 public class ScholarExcelRowToDomainTransformer extends ExcelRowToDomainTransformer<Scholar> {
@@ -38,7 +39,7 @@ public class ScholarExcelRowToDomainTransformer extends ExcelRowToDomainTransfor
 			domain.setContactNumber(value);
 			break;
 		case "program":
-			domain.setProgram(value);
+			domain.setProgram(new Program(value));
 			break;
 		case "year":
 			domain.setYear(value);
@@ -63,11 +64,16 @@ public class ScholarExcelRowToDomainTransformer extends ExcelRowToDomainTransfor
 		validatorMap.put("lastName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("email", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("contactNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
-		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotValidProgramValidator())));
 		validatorMap.put("year", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		validatorMap.put("section", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		validatorMap.put("gwa", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		
 		return validatorMap;
+	}
+
+	@Override
+	protected List<Validator> getPostValidatorList() {
+		return new ArrayList<Validator>(Arrays.asList(new NotValidProgramYearValidator()));
 	}
 }

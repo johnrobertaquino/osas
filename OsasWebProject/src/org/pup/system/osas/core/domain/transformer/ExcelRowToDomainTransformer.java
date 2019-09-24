@@ -1,5 +1,6 @@
 package org.pup.system.osas.core.domain.transformer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ public abstract class ExcelRowToDomainTransformer<T> {
 	private Map<Integer, String> indexFieldNameMapping = new HashMap<Integer, String>();
 	
 	private Map<String, List<Validator>> validatorMap = new HashMap<String, List<Validator>>();
+	
+	private List<Validator> postValidatorList = new ArrayList<Validator>();
 
 	protected ExcelRowToDomainTransformer(Row row, Class<T> domainClass) {
 		DataFormatter dataFormatter = new DataFormatter();
@@ -57,6 +60,8 @@ public abstract class ExcelRowToDomainTransformer<T> {
 				process(getFieldNameByIndex(index), dataFormatter.formatCellValue(cell), domain);
 			}
 		}
+		
+		postValidate(domain, rowNum);
 
 		return domain;
 	}
@@ -72,10 +77,24 @@ public abstract class ExcelRowToDomainTransformer<T> {
 			}
 		}
 	}
+	
+	private void postValidate(T domain, int rowNum) {
+		List<Validator> validatorList = postValidatorList;
+		
+		if (validatorList != null) {
+			for (Validator validator : validatorList) {
+				if (validator != null && validator.validate(domain)) {
+					throw new BusinessException("Row " + (rowNum + 1) + " " + validator.getErrorMessage());
+				}
+			}
+		}
+	}
 
 	protected abstract void process(String fieldName, String value, T domain);
 	
 	protected abstract Map<String, List<Validator>> getValidatorMap();
+	
+	protected abstract List<Validator> getPostValidatorList();
 	
 
 }

@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarManager;
@@ -53,7 +54,7 @@ public class EditScholarAction extends AbstractAction {
 			scholar.setLastName(lastName);
 			scholar.setEmail(email);
 			scholar.setContactNumber(contactNumber);
-			scholar.setProgram(program);
+			scholar.setProgram(new Program(program));
 			scholar.setYear(year);
 			scholar.setSection(section);
 			scholar.setGwa(gwa);

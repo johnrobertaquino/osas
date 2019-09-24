@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
-import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.SemTerm;
-import org.pup.system.osas.core.domain.User;
 
 public class AgencyDAO extends DAO {
 
 	public AgencyDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Agency getAgencyByAgencyName(String agencyName) throws Exception {

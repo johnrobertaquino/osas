@@ -69,12 +69,17 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		validatorMap.put("studentNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("firstName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("lastName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
-		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotValidProgramValidator())));
 		validatorMap.put("gender", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("year", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		validatorMap.put("section", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		validatorMap.put("contactNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
 		
 		return validatorMap;
+	}
+
+	@Override
+	protected List<Validator> getPostValidatorList() {
+		return null;
 	}
 }

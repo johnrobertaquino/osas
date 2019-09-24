@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 
@@ -39,7 +40,7 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
-				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setProgram(new Program(resultSet.getString("Program")));
 				scholar.setYear(resultSet.getString("Year"));
 				scholar.setSection(resultSet.getString("Section"));
 				scholar.setGwa(resultSet.getString("GWA"));
@@ -73,7 +74,7 @@ public class ScholarDAO extends DAO {
 			statement.setString(4, scholar.getLastName());
 			statement.setString(5, scholar.getEmail());
 			statement.setString(6, scholar.getContactNumber());
-			statement.setString(7, scholar.getProgram());
+			statement.setString(7, scholar.getProgram().getProgramCode());
 			statement.setString(8, scholar.getYear());
 			statement.setString(9, scholar.getSection());
 			statement.setString(10, scholar.getGwa());
@@ -122,7 +123,7 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
-				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setProgram(new Program(resultSet.getString("Program")));
 				scholar.setYear(resultSet.getString("Year"));
 				scholar.setSection(resultSet.getString("Section"));
 				scholar.setGwa(resultSet.getString("GWA"));
@@ -170,7 +171,7 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
-				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setProgram(new Program(resultSet.getString("Program")));
 				scholar.setYear(resultSet.getString("Year"));
 				scholar.setSection(resultSet.getString("Section"));
 				scholar.setGwa(resultSet.getString("GWA"));
@@ -218,7 +219,7 @@ public class ScholarDAO extends DAO {
 				scholar.setLastName(resultSet.getString("LastName"));
 				scholar.setEmail(resultSet.getString("Email"));
 				scholar.setContactNumber(resultSet.getString("ContactNumber"));
-				scholar.setProgram(resultSet.getString("Program"));
+				scholar.setProgram(new Program(resultSet.getString("Program")));
 				scholar.setYear(resultSet.getString("Year"));
 				scholar.setSection(resultSet.getString("Section"));
 				scholar.setGwa(resultSet.getString("GWA"));
@@ -252,7 +253,7 @@ public class ScholarDAO extends DAO {
 			statement.setString(4, scholar.getLastName());
 			statement.setString(5, scholar.getEmail());
 			statement.setString(6, scholar.getContactNumber());
-			statement.setString(7, scholar.getProgram());
+			statement.setString(7, scholar.getProgram().getProgramCode());
 			statement.setString(8, scholar.getYear());
 			statement.setString(9, scholar.getSection());
 			statement.setString(10, scholar.getGwa());
