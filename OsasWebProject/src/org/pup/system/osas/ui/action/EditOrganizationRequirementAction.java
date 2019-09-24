@@ -12,15 +12,15 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITORGANIZATIONREQUIREMENT = "displayEditOrganizationRequirement";
+	
 	private int organizationRequirementId;
 	
 	private String organizationRequirementName;
 	
-	private String organizationId;
-	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Organization > Requirements";
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -28,12 +28,22 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
 			OrganizationRequirement organizationRequirement = organizationRequirementManager.getOrganizationRequirement(organizationRequirementId);
 			
-			organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
-			organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+			OrganizationRequirement existingOrganizationRequirement = null;
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
 			
-			organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
-			
-			notificationMessage = "Changes to organization requirement has been saved successfully.";
+			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
+			{
+				notificationMessage = "Organization Requirement already exist.";
+				return FORWARD_DISPLAYEDITORGANIZATIONREQUIREMENT;
+			}
+			else {
+				organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
+				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				
+				organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
+				
+				notificationMessage = "Changes to organization requirement has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -63,20 +73,6 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 
 	public void setOrganizationRequirementName(String organizationRequirementName) {
 		this.organizationRequirementName = organizationRequirementName;
-	}
-
-	/**
-	 * @return the address
-	 */
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param address the address to set
-	 */
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
 	}
 
 }

@@ -17,7 +17,9 @@ public class AddUserAction extends AbstractAction{
 	 */
 	private static final long serialVersionUID = 2407562318288998481L;
 	
-	private String userId;
+	private static final String FORWARD_DISPLAYADDUSERACTION = "displayAddUser";
+	
+	private int userId;
 	
 	private String userName;
 	
@@ -43,17 +45,18 @@ public class AddUserAction extends AbstractAction{
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			User user = new User();
+			User existingUser = new User();
 			UserManager userManager = new UserManager();
-			user = userManager.checkFullName(firstName, lastName);
+			existingUser = userManager.checkFullName(firstName, lastName);
 			
-			if(user != null)
+			if(existingUser != null && userId != existingUser.getUserId())
 			{
-				notificationMessage = "User is already exist.";
+				notificationMessage = "User already exist.";
+				return FORWARD_DISPLAYADDUSERACTION;
 			}
 			else
 			{
-				user = new User();
+				User user = new User();
 				user.setFirstName(firstName);
 				user.setMiddleName(middleName);
 				user.setLastName(lastName);
@@ -76,7 +79,7 @@ public class AddUserAction extends AbstractAction{
 					}
 				}
 				userManager.insertUser(user);
-				notificationMessage = "User has been saved successfully registered.";
+				notificationMessage = "User has been successfully registered.";
 			}			
 
 		} catch (BusinessException be) {
@@ -92,11 +95,11 @@ public class AddUserAction extends AbstractAction{
 		return actionResult;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholar.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addScholar.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholar.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addScholarExcelFile.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,25 +59,24 @@
 <div id="contentBody">
 	<div id="addScholarContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD SCHOLAR via EXCEL FILE</div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
+			<div id="title">ADD<br> SCHOLAR<br> via EXCEL FILE</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form class="addScholarContent" id="scholarExcelFileForm" action="addScholarExcelFile" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
-	    				<div>
+	    				<div><s:set var="selectedScholarshipProgramId">${scholarshipProgramId}</s:set>
 		    				<select name="scholarshipProgramId">
 		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
+		    						<option value="${scholarshipProgram.scholarshipProgramId}" <s:if test="%{#scholarshipProgram.scholarshipProgramId eq #selectedScholarshipProgramId}">selected</s:if>>${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
 					</div>
 					<div><br>
-						<input type="file" name="file">
-						<input type="submit">
+						<input type="file" name="file" id="file">
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

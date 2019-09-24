@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/memberList.css">
-<link rel="stylesheet" type="text/css" href="css/addMember.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/memberList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addMember.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addMember.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addMemberExcelFile.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,12 +59,12 @@
 <div id="contentBody">
 	<div id="addMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
-			<div id="title">ADD MEMBER via EXCEL FILE</div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
+			<div id="title">ADD<br> MEMBER<br> via EXCEL FILE</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addMemberExcelFileContent" id="memberExcelFileForm" action="addMemberExcelFile" method="POST">
+				<form class="addMemberExcelFileContent" id="memberExcelFileForm" action="addMemberExcelFile" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
 	    				<div>
@@ -77,7 +77,6 @@
 					</div>
 					<div><br>
 						<input type="file" name="file">
-						<input type="submit">
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

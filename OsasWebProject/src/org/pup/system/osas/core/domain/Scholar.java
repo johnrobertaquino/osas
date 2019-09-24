@@ -1,5 +1,7 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.List;
+
 public class Scholar {
 	
 	private int scholarId;
@@ -16,7 +18,7 @@ public class Scholar {
 	
 	private String contactNumber;
 	
-	private String program;
+	private Program program;
 	
 	private String year;
 	
@@ -25,6 +27,8 @@ public class Scholar {
 	private String gwa;
 	
 	private ScholarshipProgram scholarshipProgram;
+	
+	private List<ScholarScholarshipQualification> scholarScholarshipQualificationList;
 
 	public int getScholarId() {
 		return scholarId;
@@ -105,14 +109,14 @@ public class Scholar {
 	/**
 	 * @return the program
 	 */
-	public String getProgram() {
+	public Program getProgram() {
 		return program;
 	}
 
 	/**
 	 * @param program the program to set
 	 */
-	public void setProgram(String program) {
+	public void setProgram(Program program) {
 		this.program = program;
 	}
 
@@ -156,5 +160,40 @@ public class Scholar {
 	 */
 	public void setGwa(String gwa) {
 		this.gwa = gwa;
+	}
+
+	public List<ScholarScholarshipQualification> getScholarScholarshipQualificationList() {
+		return scholarScholarshipQualificationList;
+	}
+
+	public void setScholarScholarshipQualificationList(
+			List<ScholarScholarshipQualification> scholarScholarshipQualificationList) {
+		this.scholarScholarshipQualificationList = scholarScholarshipQualificationList;
+	}
+	
+	public String getStatusText() {
+		String statusText = "Approved";
+		boolean hasPendingReview = false;
+		boolean hasNotSubmitted = false;
+		
+		if (scholarScholarshipQualificationList != null) {
+			for (ScholarScholarshipQualification scholarScholarshipQualification : scholarScholarshipQualificationList) {
+				if ("N".equals(scholarScholarshipQualification.getStatus())) {
+					hasNotSubmitted = true;
+				} else if ("P".equals(scholarScholarshipQualification.getStatus())) {
+					hasPendingReview = true;
+				}
+			}
+		}
+		
+		if (hasPendingReview && hasNotSubmitted) {
+			statusText = "Incomplete / Pending Approval";
+		} else if (hasPendingReview) {
+			statusText = "Pending Approval";
+		} else if (hasNotSubmitted) {
+			statusText = "Incomplete";
+		}
+		
+		return statusText;
 	}
 }

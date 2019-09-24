@@ -1,12 +1,20 @@
 package org.pup.system.osas.ui.action;
 
 import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.io.FileUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
+
+import com.itextpdf.io.codec.Base64.InputStream;
 
 public class AddOrganizationAction extends AbstractAction {
 

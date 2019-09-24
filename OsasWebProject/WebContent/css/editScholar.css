@@ -1,8 +1,14 @@
+#editScholarContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    margin: 10px 0px;
+    width: 510px;
+    height: 40px;
+}
+
 @media only screen and (max-width: 1550px) {
 	#editScholarContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
-		font-size: 25px;
+		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
-		location.href = "displayOrganizationRequirementList";
+		$("#cancelOrganizationRequirementForm").submit();
 	});
 	
 	$("#contactNumber").keypress(function (e) {
@@ -23,13 +23,6 @@ $(document).ready(function() {
 				errorMessage = errorMessage + "<br/>";
 			}
 			errorMessage = errorMessage + "Organization Requirement Name can\'t be blank.";
-		}
-		if($('#agencyId').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency name can\'t be blank.";
 		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this organization requirement?", function() {

@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarshipQualification.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addScholarshipQualification.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarshipQualification.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addScholarshipQualification.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,25 +59,23 @@
 <div id="contentBody">
 	<div id="addScholarshipQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
 			<div id="title">ADD SCHOLARSHIP QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelScholarshipQualificationForm" action="displayScholarshipQualificationList" method="POST">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+				</form>
 				<form class="addScholarhipQualificationContent" id="scholarshipQualificationForm" action="addScholarshipQualification" method="POST">
-    				<div class="rightPaneElement withTitle">
-    				    <span>Scholarship Program</span>
-	    				<div>
-		    				<select name="scholarshipProgramId">
-		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-					</div>
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
@@ -85,7 +83,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Scholarship Qualification</span>
+								<span>Add Qualification</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

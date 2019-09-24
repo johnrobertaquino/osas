@@ -1,11 +1,5 @@
 package org.pup.system.osas.ui.action;
 
-import java.util.List;
-
-import org.pup.system.osas.core.domain.Organization;
-import org.pup.system.osas.core.manager.OrganizationManager;
-import org.pup.system.osas.exception.BusinessException;
-
 public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 	
 	/**
@@ -13,42 +7,27 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 	 */
 	private static final long serialVersionUID = 2936689632600612372L;
 	
-	private List<Organization> organizationList;
+	private int organizationRequirementName;
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization > Requirement";
+		pageName = "Manage Organization Requirement";
 		
-		String actionResult = FORWARD_SUCCESS;
-		
-		try {
-			OrganizationManager organizationManager = new OrganizationManager();
-			setOrganizationList(organizationManager.getOrganizationList(getCurrentActiveTerm().getSemTermId()));	
-		} catch (BusinessException be) {
-			errorMessage = be.getMessage();
-			actionResult = FORWARD_ERROR;
-			be.printStackTrace();
-		} catch (Exception e) {
-			errorMessage = "System error occurred. Please contact administrator.";
-			actionResult = FORWARD_ERROR;
-			e.printStackTrace();
-		}
-		
-		return actionResult;
+		return FORWARD_SUCCESS;
 	}
 
 	/**
-	 * @return the OrganizationList
+	 * @return the organizationRequirementName
 	 */
-	public List<Organization> getOrganizationList() {
-		return organizationList;
+	public int getOrganizationRequirementName() {
+		return organizationRequirementName;
 	}
 
 	/**
-	 * @param OrganizationList the OrganizationList to set
+	 * @param organizationRequirementName the organizationRequirementName to set
 	 */
-	public void setOrganizationList(List<Organization> organizationList) {
-		this.organizationList = organizationList;
+	public void setOrganizationRequirementName(int organizationRequirementName) {
+		this.organizationRequirementName = organizationRequirementName;
 	}
-	
+
 }

@@ -13,9 +13,11 @@ public class DeleteScholarshipQualificationAction extends AbstractAction{
 	
 	private int scholarshipQualificationId;
 	
+	private String scholarshipProgramId;
+	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 
@@ -49,6 +51,20 @@ public class DeleteScholarshipQualificationAction extends AbstractAction{
 	 */
 	public void setScholarshipQualificationId(int scholarshipQualificationId) {
 		this.scholarshipQualificationId = scholarshipQualificationId;
+	}
+	
+	/**
+	 * @return the address
+	 */
+	public String getScholarshipProgramId() {
+		return scholarshipProgramId;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setScholarshipProgramId(String scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
 	}
 	
 }

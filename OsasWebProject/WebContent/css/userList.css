@@ -10,6 +10,10 @@
 		float: right;
 }
 
+#userListContentBody #programManagementButton {
+		float: right;
+		margin-right: 10px;
+}
 @media only screen and (max-width: 1550px) {
   	#userListContentBody #contentBodyLeftPane	{
 		width: 200px;
@@ -23,7 +27,7 @@
 	#userListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
-		font-size: 25px;
+		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}

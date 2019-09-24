@@ -108,7 +108,7 @@ public class AgencyManager {
 		return agencyList;
 	}
 	
-	public List<Agency> getAgencyListByAgencySearchText(String agencySearchText) throws Exception {
+	public List<Agency> getAgencyListByAgencySearchText(String agencySearchText, int semTermId) throws Exception {
 		AgencyDAO agencyDAO = null;
 		List<Agency> agencyList = null;
 		
@@ -119,7 +119,16 @@ public class AgencyManager {
 			
 			agencyDAO = new AgencyDAO(connection);
 			
-			agencyList = agencyDAO.getAgencyListByAgencySearchText(agencySearchText);
+			agencyList = agencyDAO.getAgencyListByAgencySearchText(agencySearchText, semTermId);
+			
+			if (agencyList != null) {
+				SemTermDAO semTermDAO = new SemTermDAO(connection);
+
+				for (Agency agency : agencyList) {
+					SemTerm semTerm = semTermDAO.getSemTermBySemTermId(agency.getSemTerm().getSemTermId());
+					agency.setSemTerm(semTerm);
+				}
+			}
 			
 		} catch (Exception e) {
 			throw e;

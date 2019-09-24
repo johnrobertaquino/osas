@@ -3,17 +3,6 @@ $(document).ready(function() {
 		location.href = "displayMemberList";
 	});
 	
-	$("#studentNumber").keypress(function (e) {
-        var keyCode = e.keyCode || e.which;
-
-        //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[0-9]*\-?[0-9]*$/;
-
-        //Validate TextBox value against the Regex.
-        var isValid = regex.test(String.fromCharCode(keyCode));
-        return isValid;
-    });
-	
 	$("#contactNumber").keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 
@@ -35,6 +24,16 @@ $(document).ready(function() {
         var isValid = regex.test(String.fromCharCode(keyCode));
         return isValid;
     });
+	
+	 $(function () {
+	        $("#chkOfficer").click(function () {
+	            if ($(this).is(":checked")) {
+	                $("#divOfficer").show();
+	            } else {
+	                $("#divOfficer").hide();
+	            }
+	        });
+	    });
 	
 	$("#section").keypress(function (e) {
         var keyCode = e.keyCode || e.which;
@@ -64,13 +63,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "First can\'t be blank.";
 		}
-		if($('#middleName').val() === '')
-		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Middle name can\'t be blank.";
-		}
 		if($('#lastName').val() === '')
 		{
 			if (errorMessage !== '') {
@@ -78,13 +70,6 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Last name can\'t be blank.";
 			}
-		if($('#position').val() === '')
-		{
-				if (errorMessage !== '') {
-					errorMessage = errorMessage + "<br/>";
-				}
-				errorMessage = errorMessage + "Position can\'t be blank.";
-		}
 		if($('#contactNumber').val() === '')
 		{
 			if (errorMessage !== '') {
@@ -99,8 +84,22 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Program can\'t be blank.";
 		}
+		if($('#year').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Year can\'t be blank.";
+		}
+		if($('#section').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Section can\'t be blank.";
+		}
 		if (errorMessage == '') {
-			popUpOkCancel("Do you want to add this scholar?", function() {
+			popUpOkCancel("Do you want to add this Member?", function() {
 				$("#memberForm").submit();
 			});
 		}

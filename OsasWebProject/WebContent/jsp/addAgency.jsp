@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/agencyList.css">
-<link rel="stylesheet" type="text/css" href="css/addAgency.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/agencyList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addAgency.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addAgency.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addAgency.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,7 +59,7 @@
 <div id="contentBody">
 	<div id="addAgencyContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
 			<div id="title">ADD AGENCY</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -67,19 +67,19 @@
 				<form class="addUserContent" id="agencyForm" action="addAgency" method="POST">
     				<div class="rightPaneElement withTitle">
     					<span>Agency Name</span>
-    					<div><input id="agencyName" name="agencyName" type="text"></div>
+    					<div><input id="agencyName" name="agencyName" type="text" value="${agencyName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Address</span>
-    					<div><input id="address" name="address" type="text"></div>
+    					<div><input id="address" name="address" type="text" value="${address}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Person</span>
-    					<div><input id="contactPerson" name="contactPerson" type="text"></div>
+    					<div><input id="contactPerson" name="contactPerson" type="text" value="${contactPerson}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

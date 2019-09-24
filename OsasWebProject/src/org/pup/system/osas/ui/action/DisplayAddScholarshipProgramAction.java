@@ -15,6 +15,8 @@ public class DisplayAddScholarshipProgramAction extends AbstractAction  {
 	
 	private List<Agency> agencyList;
 
+	private String scholarshipProgramName;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship";
@@ -43,6 +45,14 @@ public class DisplayAddScholarshipProgramAction extends AbstractAction  {
 
 	public void setAgencyList(List<Agency> agencyList) {
 		this.agencyList = agencyList;
+	}
+	
+	public String getScholarshipProgramName() {
+		return scholarshipProgramName;
+	}
+
+	public void setScholarshipProgramName(String scholarshipProgramName) {
+		this.scholarshipProgramName = scholarshipProgramName;
 	}
 	
 	

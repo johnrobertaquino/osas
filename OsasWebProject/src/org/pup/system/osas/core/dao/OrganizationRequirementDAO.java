@@ -7,14 +7,47 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class OrganizationRequirementDAO extends DAO {
 
 	public OrganizationRequirementDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementName(String organizationRequirementName) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		OrganizationRequirement organizationRequirement = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementName='"
+							+ organizationRequirementName + "'");
+
+			if (resultSet.next()) {
+				organizationRequirement = new OrganizationRequirement();
+				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
+
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organizationRequirement.setSemTerm(semTerm);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationByOrganizationId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return organizationRequirement;
 	}
 	
 	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementId(int organizationRequirementId) throws Exception {
@@ -29,7 +62,7 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, OrganizationId FROM OrganizationRequirement WHERE OrganizationRequirementId="
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementId="
 							+ organizationRequirementId);
 
 			if (resultSet.next()) {
@@ -37,9 +70,9 @@ public class OrganizationRequirementDAO extends DAO {
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
 
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				organizationRequirement.setOrganization(organization);
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organizationRequirement.setSemTerm(semTerm);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getOrganizationByOrganizationId method", e);
@@ -59,11 +92,10 @@ public class OrganizationRequirementDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO OrganizationRequirement(OrganizationRequirementName, OrganizationId) VALUES (?, ?)",
+					"INSERT INTO OrganizationRequirement(OrganizationRequirementName, SemTermId) VALUES (?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, organizationRequirement.getOrganizationRequirementName());
-			statement.setInt(2, organizationRequirement.getOrganization().getOrganizationId());
-
+			statement.setInt(2, organizationRequirement.getSemTerm().getSemTermId());
 			statement.executeUpdate();
 
 			resultSet = statement.getGeneratedKeys();
@@ -80,7 +112,7 @@ public class OrganizationRequirementDAO extends DAO {
 		}
 	}
 
-	public List<OrganizationRequirement> getOrganizationRequirementList(int organizationId, int semTermId) throws Exception {
+	public List<OrganizationRequirement> getOrganizationRequirementList(int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -93,7 +125,7 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT organizationrequirement.OrganizationRequirementId, organizationrequirement.OrganizationRequirementName, organizationrequirement.OrganizationId FROM organizationrequirement JOIN organization on organizationrequirement.OrganizationId = organization.OrganizationId WHERE organization.OrganizationId =" + organizationId + " AND organization.SemTermId =" + semTermId);
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM organizationrequirement WHERE SemTermId =" + semTermId);
 
 			while (resultSet.next()) {
 				if (organizationRequirementList == null) {
@@ -102,10 +134,10 @@ public class OrganizationRequirementDAO extends DAO {
 				organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
-
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("organizationId"));
-				organizationRequirement.setOrganization(organization);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organizationRequirement.setSemTerm(semTerm);
 
 				organizationRequirementList.add(organizationRequirement);
 			}
@@ -119,7 +151,7 @@ public class OrganizationRequirementDAO extends DAO {
 	}
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
-		String organizationRequirementSearchText) throws Exception {
+		String organizationRequirementSearchText, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -132,8 +164,8 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, OrganizationId FROM organizationrequirement WHERE OrganizationRequirementName LIKE '%"
-							+ organizationRequirementSearchText + "%'");
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM organizationrequirement WHERE OrganizationRequirementName LIKE '%"
+							+ organizationRequirementSearchText + "%' AND SemTermId="+ semTermId);
 
 			while (resultSet.next()) {
 				if (organizationRequirementList == null) {
@@ -144,9 +176,9 @@ public class OrganizationRequirementDAO extends DAO {
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
 
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("organizationId"));
-				organizationRequirement.setOrganization(organization);
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organizationRequirement.setSemTerm(semTerm);
 
 				organizationRequirementList.add(organizationRequirement);
 			}

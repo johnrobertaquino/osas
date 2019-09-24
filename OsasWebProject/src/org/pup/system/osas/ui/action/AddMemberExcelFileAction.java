@@ -1,17 +1,5 @@
 package org.pup.system.osas.ui.action;
 
-import org.pup.system.osas.core.domain.Member;
-import org.pup.system.osas.core.domain.Organization;
-import org.pup.system.osas.core.domain.Scholar;
-import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.transformer.MemberExcelRowToDomainTransformer;
-import org.pup.system.osas.core.domain.transformer.ScholarExcelRowToDomainTransformer;
-import org.pup.system.osas.core.manager.MemberManager;
-import org.pup.system.osas.core.manager.OrganizationManager;
-import org.pup.system.osas.core.manager.ScholarManager;
-import org.pup.system.osas.core.manager.ScholarshipProgramManager;
-import org.pup.system.osas.exception.BusinessException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -20,8 +8,13 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.pup.system.osas.ui.action.AbstractAction;
-
+import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.transformer.MemberExcelRowToDomainTransformer;
+import org.pup.system.osas.core.manager.MemberManager;
+import org.pup.system.osas.core.manager.OrganizationManager;
+import org.pup.system.osas.exception.BusinessException;
+	
 public class AddMemberExcelFileAction extends AbstractAction {
 
 	/**
@@ -37,7 +30,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 		
@@ -66,7 +59,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 					
 					transformer = new MemberExcelRowToDomainTransformer(row);
 				} else {
-					Member member = transformer.transform(row);
+					Member member = transformer.transform(row, index);
 
 					if (memberList == null) {
 						memberList = new ArrayList<Member>();
@@ -74,13 +67,18 @@ public class AddMemberExcelFileAction extends AbstractAction {
 					}
 					memberList.add(member);
 					member.setOrganization(organization);
-					MemberManager memberManager = new MemberManager();
-					memberManager.insertMember(member);
-					
-					notificationMessage = "Member has been saved successfully added.";
 				}
 
 				index++;
+			}
+			
+			if (memberList != null) {
+				for (Member member : memberList) {
+					MemberManager memberManager = new MemberManager();
+					memberManager.insertMember(member);
+				}
+				
+				notificationMessage = "Scholar/s has been successfully added.";
 			}
 		}
 			

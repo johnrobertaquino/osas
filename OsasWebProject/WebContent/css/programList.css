@@ -1,0 +1,116 @@
+@charset "ISO-8859-1";
+#programListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#programListContentBody #searchProgramButton {
+		float: left;
+}
+#programListContentBody #addProgramButton {
+		float: right;
+}
+
+#programListContentBody #searchProgram {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#programListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#programListContentBody #searchProgramButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#programListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#programListContentBody #contentBodyRightPane {
+		font-size: 14px;
+	}
+	#programListContentBody #searchProgram, #programListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+		width: 920px;
+	}
+	#programListContentBody #searchProgram img {
+		height: 32px;
+		float: left;
+    	width: 32px;
+	}
+	#programListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#programListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#programListContentBody #contentBodyRightPane {
+		font-size: 14px;
+	}
+	#programListContentBody #searchProgram, #programListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 690px;
+	}
+	#programListContentBody #searchProgram img {
+		height: 32px;
+		float: left;
+	    width: 32px;
+	}
+	#programListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#programListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#programListContentBody #contentBodyRightPane {
+		font-size: 14px;
+	}
+	#programListContentBody #searchProgram, #programListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 670px;
+	}
+	#programListContentBody #searchProgram img {
+		height: 32px;
+		float: left;
+		width: 32px;
+	}
+	#programListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+	#programListContentBody #searchProgram img {
+		height: 32px;
+		float: left;
+		margin-left: 20px;
+	}
+	#programListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}

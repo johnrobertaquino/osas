@@ -2,6 +2,26 @@ $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
 		location.href = "displayOrganizationList";
 	});
+    $("#programDiv").hide();
+    
+	 $(function () {
+	        $("#acadCheck").click(function () {
+	            if ($(this).is(":checked")) {
+	                $("#programDiv").show();
+	            } else {
+	                $("#programDiv").hide();
+	            }
+	        });
+	    });
+	 
+	 $(function () {
+	        $("#nonAcadCheck").click(function () {
+	            if ($(this).is(":checked")) {
+	                $("#programDiv").hide();
+	            } else {
+	            }
+	        });
+	    });
 	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';

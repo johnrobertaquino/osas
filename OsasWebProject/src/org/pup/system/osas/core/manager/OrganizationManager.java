@@ -120,7 +120,7 @@ public class OrganizationManager {
 		return organizationList;
 	}
 	
-	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText) throws Exception {
+	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText, int semTermId) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		List<Organization> organizationList = null;
 		OrganizationType organizationType = null;
@@ -131,7 +131,7 @@ public class OrganizationManager {
 			
 			organizationDAO = new OrganizationDAO(connection);
 			
-			organizationList = organizationDAO.getOrganizationListByOrganizationSearchText(organizationSearchText);
+			organizationList = organizationDAO.getOrganizationListByOrganizationSearchText(organizationSearchText, semTermId);
 			
 			if (organizationList != null) {
 				for(Organization organization : organizationList) {

@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
+import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
 import org.pup.system.osas.core.manager.OrganizationRequirementManager;
 import org.pup.system.osas.exception.BusinessException;
@@ -16,16 +17,17 @@ public class SearchOrganizationRequirementAction extends AbstractAction{
 	private String organizationRequirementSearchText;
 	
 	private List<OrganizationRequirement> organizationRequirementList;
+	
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship Agency";
+		pageName = "Manage Organization > Requirements";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
-			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText));
+			setOrganizationRequirementList(organizationRequirementManager.getOrganizationRequirementListByOrganizationRequirementSearchText(organizationRequirementSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

@@ -2,8 +2,9 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.manager.AgencyManager;
+import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -16,6 +17,8 @@ public class DisplayAddScholarAction extends AbstractAction  {
 
 	private List<ScholarshipProgram> scholarshipProgramList;
 	
+	private List<Program> programList;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -24,7 +27,10 @@ public class DisplayAddScholarAction extends AbstractAction  {
 		
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());	
+			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());
+			
+			ProgramManager programManager = new ProgramManager();
+			programList = programManager.getProgramList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -51,4 +57,13 @@ public class DisplayAddScholarAction extends AbstractAction  {
 	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
 		this.scholarshipProgramList = scholarshipProgramList;
 	}
+
+	public List<Program> getProgramList() {
+		return programList;
+	}
+
+	public void setProgramList(List<Program> programList) {
+		this.programList = programList;
+	}
+	
 }

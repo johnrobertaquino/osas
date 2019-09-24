@@ -12,6 +12,10 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
+	
+	private static final String FORWARD_DISPLAYADDSCHOLARSHIPPROGRAM = "displayAddScholarshipProgram";
+
+	private int scholarshipProgramId;
 
 	private String scholarshipProgramName;
 
@@ -27,20 +31,22 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			AgencyManager agencyManager = new AgencyManager();
 			Agency agency = agencyManager.getAgency(Integer.parseInt(agencyId));
 			
-			ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			scholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
 
-			if(scholarshipProgram != null) { 
-				notificationMessage = "Scholarship program is already exist.";
+			ScholarshipProgram existingScholarshipProgram = null;
+			existingScholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
+
+			if (existingScholarshipProgram != null && scholarshipProgramId != existingScholarshipProgram.getScholarshipProgramId()) {
+				notificationMessage = "Scholarship program already exist.";
+				return FORWARD_DISPLAYADDSCHOLARSHIPPROGRAM;
 			}
 			else
 			{			
-				scholarshipProgram = new ScholarshipProgram();
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
 				scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
 				scholarshipProgram.setAgency(agency);
 				scholarshipProgramManager.insertScholarshipProgram(scholarshipProgram);
-				notificationMessage = "Scholarship Program has been saved successfully added.";
+				notificationMessage = "Scholarship Program has been successfully added.";
 			}
 
 		} catch (BusinessException be) {
@@ -71,5 +77,15 @@ public class AddScholarshipProgramAction extends AbstractAction {
 	public void setAgencyId(String agencyId) {
 		this.agencyId = agencyId;
 	}
+	
+	
+	public int getScholarshipProgramId() {
+		return scholarshipProgramId;
+	}
+
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
+	}
+
 
 }

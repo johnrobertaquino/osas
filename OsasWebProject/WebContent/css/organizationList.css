@@ -7,7 +7,7 @@
 }
 
 #organizationListContentBody #addOrganizationButton {
-		float: left;
+		float: right;
 		margin-left: 40px;
 }
 #organizationListContentBody #searchOrganization {
@@ -27,6 +27,9 @@
 #organizationListContentBody #searchOrganizationButton {
 	float: left;
 }
+#organizationListContentBody #logo {
+	height: 40px;
+}
 
 @media only screen and (max-width: 1550px) {
   	#organizationListContentBody #contentBodyLeftPane	{
@@ -35,13 +38,9 @@
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
 		margin-left: 50px;
-		width: 860px;
-	}
-	#organizationListContentBody #contentBodyRightPane table {
-		margin-left: 50px;
-		width: inherit;
+		width: 920px;
 	}
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
@@ -52,7 +51,7 @@
 	#organizationListContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
-		font-size: 25px;
+		font-size: 22px;
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
@@ -65,14 +64,9 @@
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
-		margin-left: 40px;
-	    width: 760px;
-	}
-	
-	#organizationListContentBody #contentBodyRightPane table {
-		margin-left: 40px;
-		width: inherit;
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 690px;
 	}
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
@@ -91,18 +85,15 @@
 
 @media only screen and (max-width: 1000px) {
   	#organizationListContentBody #contentBodyLeftPane	{
-		width: 160px;
+		width: 184px;
 	}
 	#organizationListContentBody #contentBodyRightPane {
 		font-size: 14px;
 	}
-	#organizationListContentBody #searchOrganization {
-		margin-left: 120px;
+	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 670px;
 	}
-	#organizationListContentBody #contentBodyRightPane table {
-			margin-left: 120px;
-			width: inherit;
-	 }
 	#organizationListContentBody #searchOrganization img {
 		height: 32px;
 		float: left;
