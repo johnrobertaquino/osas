@@ -33,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -67,7 +67,7 @@
 	<div id="scholarListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
 			<div id="title">LIST OF SCHOLARS</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -90,25 +90,21 @@
 					<th>Middle Name </th>
 					<th>Last Name</th>
 					<th>Contact Number</th>
-					<th>Program </th>
-					<th>Year</th>
-					<th>Section</th>
+					<th>Program</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
 				<s:iterator value="scholarList" status="rowStatus" var="scholar">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="scholarshipProgram.scholarshipProgramName" /></td>
-						<td><s:property value="studentNumber" /></td>
+						<td class="tdStudentNumber"><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="contactNumber" /></td>
-						<td><s:property value="program" /></td>
-						<td><s:property value="year" /></td>
-						<td><s:property value="section" /></td>
+						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
 						<td><s:property value="statusText" /></td>
-						<td>
+						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />

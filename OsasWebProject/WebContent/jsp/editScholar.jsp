@@ -12,7 +12,7 @@
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/common.j?${dateTimeStamp}s"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/editScholar.js?${dateTimeStamp}"></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -60,7 +60,7 @@
 <div id="contentBody">
 	<div id="editScholarContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
 			<div id="title">EDIT SCHOLAR</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -97,7 +97,13 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
-    					<div><input id="program" name="program" type="text" value="${scholar.program}"></div>
+    					<div>
+    						<select name="program">
+		    					<s:iterator value="programList" status="rowStatus" var="program">
+		    						<option value="${program.programCode}" <s:if test="#program.programCode == scholar.program.programCode">selected</s:if>>${program.programName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>

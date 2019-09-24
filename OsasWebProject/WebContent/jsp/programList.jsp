@@ -33,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -64,7 +64,7 @@
 	<div id="programListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">LIST OF PROGRAM</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -83,11 +83,13 @@
 				<tr>
 					<th>Program Code</th>
 					<th>Program Name</th>
+					<th>Highest Year Level</th>
 				</tr>
 				<s:iterator value="programList" status="rowStatus" var="program">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="programCode" /></td>
 						<td><s:property value="programName" /></td>
+						<td><s:property value="highestYearLevel" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

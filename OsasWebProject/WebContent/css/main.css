@@ -475,6 +475,10 @@ img {
     height: 100%;
 }
 
+.featureContent .tdAction {
+	width: 44px;
+}
+
 .featureContent #contentBodyHolder {
     height: 100%;
 }
