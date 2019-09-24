@@ -16,7 +16,7 @@ public class DisplayAddMemberAction extends AbstractAction  {
 	private List<Organization> organizationList;
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization Member";
+		pageName = "Manage Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 		

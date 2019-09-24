@@ -156,7 +156,7 @@
 		
 		<action name="displayEditProgram" class="org.pup.system.osas.ui.action.DisplayEditProgramAction">
 			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/editAgency.jsp</result>
+			<result name="success">/jsp/editProgram.jsp</result>
 		</action>
 		
 		<!-- AGENCY -->	
