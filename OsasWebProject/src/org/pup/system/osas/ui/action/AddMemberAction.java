@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
@@ -57,7 +58,7 @@ public class AddMemberAction extends AbstractAction {
 			member.setFirstName(firstName);
 			member.setMiddleName(middleName);
 			member.setLastName(lastName);
-			member.setProgram(program);
+			member.setProgram(new Program(program));
 			member.setPosition(position);
 			member.setOfficer(officer);
 			member.setOfficerPhoto(officerPhoto);

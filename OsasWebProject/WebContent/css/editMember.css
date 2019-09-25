@@ -1,3 +1,11 @@
+#editMemberContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    margin: 10px 0px;
+    width: 500px;
+    height: 40px;
+    border: 1px solid #420001;
+    padding-right: 10px;
+}
+
 @media only screen and (max-width: 1550px) {
 	#editMemberContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

@@ -1,7 +1,12 @@
 package org.pup.system.osas.ui.action;
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -22,11 +27,17 @@ public class EditOrganizationAction extends AbstractAction {
 	
 	private String adviser;
 	
-	private String logoFileName;
+	private File logoFileName;
+	
+	private String logoFileNameContentType;
+
+	private String logoFileNameFileName;
 	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization";
+		
+		File fileToCreate = null;
 
 		String actionResult = FORWARD_SUCCESS;
 
@@ -38,9 +49,17 @@ public class EditOrganizationAction extends AbstractAction {
 			organization.setOrganizationName(organizationName);
 			organization.setOrganizationType(new OrganizationType());
 			organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
-			organization.setLogoFileName(logoFileName);
-			organization.setProgram(program);
+			organization.setProgram(new Program(program));
 			organization.setAdviser(adviser);
+			
+			if(!StringUtils.isEmpty(logoFileNameFileName)) {
+				organization.setLogoFileName(logoFileNameFileName);
+				
+				String filePath = "C:/OSAS/Organization/Logo";
+				fileToCreate = new File(filePath, logoFileNameFileName);
+				
+				FileUtils.copyFile(logoFileName, fileToCreate);
+			}
 			
 			organizationManager.saveOrganization(organization);
 			
@@ -127,21 +146,29 @@ public class EditOrganizationAction extends AbstractAction {
 	public void setOrganizationTypeCode(String organizationTypeCode) {
 		this.organizationTypeCode = organizationTypeCode;
 	}
-	
-	/**
-	 * @return the adviser
-	 */
-	public String getLogoFileName() {
+
+	public File getLogoFileName() {
 		return logoFileName;
 	}
 
-	/**
-	 * @param adviser the adviser to set
-	 */
-	public void setLogoFileName(String logoFileName) {
+	public void setLogoFileName(File logoFileName) {
 		this.logoFileName = logoFileName;
 	}
 
-	
+	public String getLogoFileNameContentType() {
+		return logoFileNameContentType;
+	}
+
+	public void setLogoFileNameContentType(String logoFileNameContentType) {
+		this.logoFileNameContentType = logoFileNameContentType;
+	}
+
+	public String getLogoFileNameFileName() {
+		return logoFileNameFileName;
+	}
+
+	public void setLogoFileNameFileName(String logoFileNameFileName) {
+		this.logoFileNameFileName = logoFileNameFileName;
+	}	
 
 }

@@ -87,10 +87,8 @@
 					<th>Program</th>
 					<th>Position </th>
 				 	<th>Gender </th>
-				 	<th>Year </th>
-				 	<th>Section </th>
 				 	<th>Contact Number</th>
-					
+					<th>Action</th>
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -98,11 +96,9 @@
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
-						<td><s:property value="program" /></td>
+						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
 						<td><s:property value="position" /></td>
 						<td><s:property value="gender" /></td>
-						<td><s:property value="year" /></td>
-						<td><s:property value="section" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
