@@ -11,7 +11,7 @@ public class Member {
 	
 	private String lastName;
 	
-	private String program;
+	private Program program;
 	
 	private String position;
 
@@ -69,11 +69,11 @@ public class Member {
 		this.lastName = lastName;
 	}
 
-	public String getProgram() {
+	public Program getProgram() {
 		return program;
 	}
 
-	public void setProgram(String program) {
+	public void setProgram(Program program) {
 		this.program = program;
 	}
 

@@ -88,13 +88,18 @@
 					<th>Organization Type</th>
 					<th>Program </th>
 					<th>Adviser</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="logoFileName" /></td>
+						<td>
+							<s:if test='#organization.logoFileName != null && #organization.logoFileName != ""'>
+								<a href="javascript:void(0);" class="showPicture"><s:property value="logoFileName" /></a>
+							</s:if>
+						</td>
 						<td><s:property value="organizationName" /></td>
 						<td><s:property value="organizationType.organizationTypeName" /></td>
-						<td><s:property value="program" /></td>
+						<td><s:property value="program.programCode" /></td>
  						<td><s:property value="adviser" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">

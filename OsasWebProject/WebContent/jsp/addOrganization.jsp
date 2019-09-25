@@ -67,8 +67,7 @@
 				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     					<div>
-    						<div id="orglogo"><img src="" alt="logo"/></div>
-    						<div id="orglogoInput"><input id="organizationLogo" name="logoFileName" type="file"></div>
+    						<div id="orglogoInput"><span>Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
@@ -85,10 +84,14 @@
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<div id="programDiv">
-	    					<span>Program</span>
-	    					<div><input id="program" name="program" type="text" value="${program}"></div>
-    					</div>
+    					<span>Program</span>
+    					<div>
+    						<select name="program">
+		    					<s:iterator value="programList" status="rowStatus" var="program">
+		    						<option value="${program.programCode}">${program.programName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span>Adviser</span>

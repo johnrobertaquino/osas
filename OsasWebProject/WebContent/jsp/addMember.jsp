@@ -97,7 +97,13 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
-    					<div><input id="program" name="program" type="text"></div>
+    					<div>
+    						<select name="program">
+		    					<s:iterator value="programList" status="rowStatus" var="program">
+		    						<option value="${program.programCode}">${program.programName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">

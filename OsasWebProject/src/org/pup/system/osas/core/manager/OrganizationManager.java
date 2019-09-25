@@ -5,15 +5,11 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.OrganizationDAO;
-import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
-import org.pup.system.osas.core.domain.User;
-import org.pup.system.osas.core.domain.UserRole;
-import org.pup.system.osas.core.domain.UserRoleReference;
 
 public class OrganizationManager {
-
+	
 	public Organization validate(String organizationName) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		Organization organization = null;
@@ -77,7 +73,7 @@ public class OrganizationManager {
 			organization = organizationDAO.getOrganizationByOrganizationId(organizationId);
 			
 			if (organization != null) {
-				organizationTypeCode = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeName());
+				organizationTypeCode = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
 				organization.setOrganizationType(organizationTypeCode);
 			}	
 			

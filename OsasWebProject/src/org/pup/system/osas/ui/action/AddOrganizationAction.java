@@ -1,23 +1,17 @@
 package org.pup.system.osas.ui.action;
 
 import java.io.File;
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
-import com.itextpdf.io.codec.Base64.InputStream;
-
 public class AddOrganizationAction extends AbstractAction {
-
+	
 	/**
 	 * 
 	 */
@@ -29,7 +23,7 @@ public class AddOrganizationAction extends AbstractAction {
 	
 	private String organizationTypeCode;
 	
-	private String fileNameContentType;
+	private String logoFileNameContentType;
 
 	private String logoFileNameFileName;
 	
@@ -46,26 +40,6 @@ public class AddOrganizationAction extends AbstractAction {
 		pageName = "Manage Organization";
 		
 		String actionResult = FORWARD_SUCCESS;
-		
-	    /*protected void doPost(HttpServletRequest request,
-	            HttpServletResponse response) throws ServletException, IOException {
-	        // gets values of text fields
-	        String firstName = request.getParameter("firstName");
-	        String lastName = request.getParameter("lastName");
-	         
-	        InputStream inputStream = null; // input stream of the upload file
-	         
-	        // obtains the upload file part in this multipart request
-	        Part filePart = request.getPart("photo");
-	        if (filePart != null) {
-	            // prints out some information for debugging
-	            System.out.println(filePart.getName());
-	            System.out.println(filePart.getSize());
-	            System.out.println(filePart.getContentType());
-	             
-	            // obtains input stream of the upload file
-	            inputStream = (InputStream) filePart.getInputStream();
-	        }*/
 		File fileToCreate = null;
 		
 		try {
@@ -84,15 +58,17 @@ public class AddOrganizationAction extends AbstractAction {
 				organization.setOrganizationName(organizationName);
 				organization.setOrganizationType(new OrganizationType());
 				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
-				organization.setProgram(program);
+				organization.setProgram(new Program(program));
 				organization.setAdviser(adviser);
 				
-				organization.setLogoFileName(logoFileNameFileName);
-				
-				String filePath = "C:/OSAS/Organization/Logo";
-				fileToCreate = new File(filePath, logoFileNameFileName);
-				
-				FileUtils.copyFile(logoFileName, fileToCreate);
+				if(!StringUtils.isEmpty(logoFileNameFileName)) {
+					organization.setLogoFileName(logoFileNameFileName);
+					
+					String filePath = "C:/OSAS/Organization/Logo";
+					fileToCreate = new File(filePath, logoFileNameFileName);
+					
+					FileUtils.copyFile(logoFileName, fileToCreate);
+				}
 				
 				organization.setSemTerm(getCurrentActiveTerm());
 				organizationManager.insertOrganization(organization);
@@ -181,12 +157,15 @@ public class AddOrganizationAction extends AbstractAction {
 		this.logoFileName = logoFileName;
 	}
 	
-	public String getFileNameContentType() {
-		return fileNameContentType;
+
+	public String getLogoFileNameContentType() {
+		return logoFileNameContentType;
 	}
-	public void setFileNameContentType(String fileNameContentType) {
-		this.fileNameContentType = fileNameContentType;
+	
+	public void setLogoFileNameContentType(String logoFileNameContentType) {
+		this.logoFileNameContentType = logoFileNameContentType;
 	}
+	
 	/**
 	 * @return the addAttachment
 	 */

@@ -34,8 +34,14 @@ public abstract class ExcelRowToDomainTransformer<T> {
 		
 		Map<String, List<Validator>> validatorMap = getValidatorMap();
 		
+		List<Validator> postValidatorList = getPostValidatorList();
+		
 		if (validatorMap != null) {
 			this.validatorMap = validatorMap;
+		}
+		
+		if (postValidatorList != null) {
+			this.postValidatorList = postValidatorList;
 		}
 
 		this.domainClass = domainClass;
