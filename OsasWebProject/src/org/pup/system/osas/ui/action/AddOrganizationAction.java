@@ -1,5 +1,6 @@
 package org.pup.system.osas.ui.action;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.commons.io.FileUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.manager.OrganizationManager;
@@ -21,17 +23,23 @@ public class AddOrganizationAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 8910283248066116810L;
 
-	private String organizationId;
+	private static final String FORWARD_DISPLAYADDORGANIZATION = "displayAddOrganization";
 	
 	private String organizationName;
 	
 	private String organizationTypeCode;
 	
+	private String fileNameContentType;
+
+	private String logoFileNameFileName;
+	
 	private String program;
 	
 	private String adviser;
 	 
-	private String logoFileName;
+	private File logoFileName;
+	
+	private String addAttachment;
 	
 	@Override
 	public String execute() throws Exception {
@@ -58,7 +66,8 @@ public class AddOrganizationAction extends AbstractAction {
 	            // obtains input stream of the upload file
 	            inputStream = (InputStream) filePart.getInputStream();
 	        }*/
-	         
+		File fileToCreate = null;
+		
 		try {
 			
 			Organization organization = new Organization();
@@ -66,7 +75,8 @@ public class AddOrganizationAction extends AbstractAction {
 			organization = organizationManager.validate(organizationName);
 			
 			if(organization != null) { 
-				notificationMessage = "Organization is already exist.";
+				notificationMessage = "Organization already exist.";
+				return FORWARD_DISPLAYADDORGANIZATION;
 			}
 			else
 			{
@@ -76,10 +86,17 @@ public class AddOrganizationAction extends AbstractAction {
 				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
 				organization.setProgram(program);
 				organization.setAdviser(adviser);
-				organization.setLogoFileName(logoFileName);
+				
+				organization.setLogoFileName(logoFileNameFileName);
+				
+				String filePath = "C:/OSAS/Organization/Logo";
+				fileToCreate = new File(filePath, logoFileNameFileName);
+				
+				FileUtils.copyFile(logoFileName, fileToCreate);
+				
 				organization.setSemTerm(getCurrentActiveTerm());
 				organizationManager.insertOrganization(organization);
-				notificationMessage = "Organization has been saved successfully added.";
+				notificationMessage = "Organization has been successfully added.";
 			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
@@ -93,21 +110,6 @@ public class AddOrganizationAction extends AbstractAction {
 		
 		return actionResult;
 	}
-
-	/**
-	 * @return the organizationId
-	 */
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param organizationId the organizationId to set
-	 */
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
 	/**
 	 * @return the organizationName
 	 */
@@ -168,15 +170,46 @@ public class AddOrganizationAction extends AbstractAction {
 	/**
 	 * @return the adviser
 	 */
-	public String getLogoFileName() {
+	public File getLogoFileName() {
 		return logoFileName;
 	}
 
 	/**
 	 * @param adviser the adviser to set
 	 */
-	public void setLogoFileName(String logoFileName) {
+	public void setLogoFileName(File logoFileName) {
 		this.logoFileName = logoFileName;
+	}
+	
+	public String getFileNameContentType() {
+		return fileNameContentType;
+	}
+	public void setFileNameContentType(String fileNameContentType) {
+		this.fileNameContentType = fileNameContentType;
+	}
+	/**
+	 * @return the addAttachment
+	 */
+	public String getAddAttachment() {
+		return addAttachment;
+	}
+	/**
+	 * @param addAttachment the addAttachment to set
+	 */
+	public void setAddAttachment(String addAttachment) {
+		this.addAttachment = addAttachment;
+	}
+	/**
+	 * @return the logoFileNameFileName
+	 */
+	public String getLogoFileNameFileName() {
+		return logoFileNameFileName;
+	}
+	/**
+	 * @param logoFileNameFileName the logoFileNameFileName to set
+	 */
+	public void setLogoFileNameFileName(String logoFileNameFileName) {
+		this.logoFileNameFileName = logoFileNameFileName;
 	}
 
 }
