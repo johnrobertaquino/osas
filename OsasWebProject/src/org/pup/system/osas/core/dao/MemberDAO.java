@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.Program;
 
 
 public class MemberDAO extends DAO {
@@ -38,7 +39,7 @@ public class MemberDAO extends DAO {
 				member.setFirstName(resultSet.getString("FirstName"));
 				member.setMiddleName(resultSet.getString("MiddleName"));
 				member.setLastName(resultSet.getString("LastName"));
-				member.setProgram(resultSet.getString("Program"));
+				member.setProgram(new Program(resultSet.getString("Program")));
 				member.setPosition(resultSet.getString("Position"));
 				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
@@ -74,7 +75,7 @@ public class MemberDAO extends DAO {
 			statement.setString(3, member.getFirstName());
 			statement.setString(4, member.getMiddleName());
 			statement.setString(5, member.getLastName());
-			statement.setString(6, member.getProgram());
+			statement.setString(6, member.getProgram().getProgramCode());
 			statement.setBoolean(7, member.isOfficer());
 			statement.setString(8, member.getOfficerPhoto());
 			statement.setString(9, member.getPosition());
@@ -125,7 +126,7 @@ public class MemberDAO extends DAO {
 				member.setFirstName(resultSet.getString("FirstName"));
 				member.setMiddleName(resultSet.getString("MiddleName"));
 				member.setLastName(resultSet.getString("LastName"));
-				member.setProgram(resultSet.getString("Program"));
+				member.setProgram(new Program(resultSet.getString("Program")));
 				member.setPosition(resultSet.getString("Position"));
 				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
@@ -175,7 +176,7 @@ public class MemberDAO extends DAO {
 				member.setFirstName(resultSet.getString("FirstName"));
 				member.setMiddleName(resultSet.getString("MiddleName"));
 				member.setLastName(resultSet.getString("LastName"));
-				member.setProgram(resultSet.getString("Program"));
+				member.setProgram(new Program(resultSet.getString("Program")));
 				member.setOfficer(resultSet.getBoolean("Officer"));
 				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
 				member.setGender(resultSet.getString("Gender"));
@@ -210,7 +211,7 @@ public class MemberDAO extends DAO {
 			statement.setString(2, member.getFirstName());
 			statement.setString(3, member.getMiddleName());
 			statement.setString(4, member.getLastName());
-			statement.setString(5, member.getProgram());
+			statement.setString(5, member.getProgram().getProgramCode());
 			statement.setBoolean(6, member.isOfficer());
 			statement.setString(7, member.getOfficerPhoto());
 			statement.setString(8, member.getPosition());

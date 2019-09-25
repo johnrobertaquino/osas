@@ -63,12 +63,14 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="editOrganizationContent" id="editOrganizationForm" action="editOrganization" method="POST">
+				<form class="editOrganizationContent" id="editOrganizationForm" action="editOrganization" method="POST" enctype="multipart/form-data">
 					<input name="organizationId" type="hidden" value="${organization.organizationId}">
     				 <div class="rightPaneElement withTitle">
     					<div>
-    						<div id="orglogo"><img src="" alt="logo"/></div>
-    						<div id="orglogoInput"><input id="organizationLogo" name="logoFileName" type="file"></div>
+    						<s:if test='organization.logoFileName != null && organization.logoFileName != ""'>
+    							<div id="orglogo"><img src="download?type=OL&fileName=${organization.logoFileName}" alt="logo"/></div>
+    						</s:if>    						
+    						<div id="orglogoInput"><span>Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
@@ -78,15 +80,21 @@
     				<div class="rightPaneElement withTitle">
     					<span>Organization Type</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" checked>
+		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" <s:if test='organization.organizationType.organizationTypeCode == "A"'>checked</s:if>>
 		    				<span>Academic</span>
-		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N">
+		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organization.organizationType.organizationTypeCode == "N"'>checked</s:if>>
 		    				<span>Non-Academic</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
-    					<div><input id="program" name="program" type="text" value="${organization.program}"></div>
+    					<div>
+    						<select name="program">
+		    					<s:iterator value="programList" status="rowStatus" var="program">
+		    						<option value="${program.programCode}" <s:if test="#program.programCode == organization.program.programCode">selected</s:if>>${program.programName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Adviser</span>

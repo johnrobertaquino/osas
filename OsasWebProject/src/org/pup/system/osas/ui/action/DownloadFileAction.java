@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 public class DownloadFileAction extends AbstractAction implements ServletResponseAware{
@@ -23,16 +24,30 @@ public class DownloadFileAction extends AbstractAction implements ServletRespons
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship > Qualifications";
+		pageName = "Download";
 
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			httpServletResponse.setContentType("application/octet-stream");
-			httpServletResponse.setHeader("Content-Disposition","attachment;filename=" + fileName);
-			
 			if ("SQ".equalsIgnoreCase(type)) {
+				httpServletResponse.setContentType("application/octet-stream");
+				httpServletResponse.setHeader("Content-Disposition","attachment;filename=" + fileName);
 				FileInputStream in = new FileInputStream(new File("C:/OSAS/scholarAttachment/" + fileName));
+				
+				ServletOutputStream out = httpServletResponse.getOutputStream();
+	        	 
+		        byte[] outputByte = new byte[4096];
+		        //copy binary content to output stream
+		        while(in.read(outputByte, 0, 4096) != -1){
+		        	out.write(outputByte, 0, 4096);
+		        }
+		        in.close();
+		        out.flush();
+		        out.close();
+			}
+			else if("OL".equalsIgnoreCase(type)) {
+				httpServletResponse.setContentType("image/" + FilenameUtils.getExtension(fileName));
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Organization/Logo/" + fileName));
 				
 				ServletOutputStream out = httpServletResponse.getOutputStream();
 	        	 

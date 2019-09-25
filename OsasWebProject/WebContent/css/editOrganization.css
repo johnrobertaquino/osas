@@ -4,10 +4,22 @@
 	width: 100px;
 	margin: 0px auto 0px auto;
 }
+#editOrganizationContentBody #contentBodyRightPane #orglogo img  {
+	height: 100px;
+	width: 100px;
+}
 #editOrganizationContentBody #contentBodyRightPane #orglogoInput input {
     border: none;
     margin-left: 151px;
     width: 180px;
+}
+
+#editOrganizationContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    margin: 10px 0px;
+    width: 500px;
+    height: 40px;
+    border: 1px solid #420001;
+    padding-right: 10px;
 }
 
 @media only screen and (max-width: 1550px) {

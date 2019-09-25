@@ -7,11 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
+import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.SemTerm;
-import org.pup.system.osas.core.domain.UserRole;
 
 public class OrganizationDAO extends DAO {
 
@@ -19,7 +18,7 @@ public class OrganizationDAO extends DAO {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Organization getOrganizationByOrganizationName(String organizationName) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
@@ -37,7 +36,7 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setProgram(resultSet.getString("Program"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
@@ -77,7 +76,7 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setProgram(resultSet.getString("Program"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
@@ -111,7 +110,7 @@ public class OrganizationDAO extends DAO {
 			statement = connection.prepareStatement("INSERT INTO organization(OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, organization.getOrganizationName());
 			statement.setString(2, organization.getOrganizationType().getOrganizationTypeCode());
-			statement.setString(3, organization.getProgram());
+			statement.setString(3, organization.getProgram().getProgramCode());
 			statement.setInt(4, organization.getOrganizationTermId());
 			statement.setInt(5, organization.getOrganizationRequirementId());
 			statement.setString(6, organization.getAdviser());
@@ -156,7 +155,7 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setProgram(resultSet.getString("Program"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
@@ -204,7 +203,7 @@ public class OrganizationDAO extends DAO {
 				organization = new Organization();
 				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
 				organization.setOrganizationName(resultSet.getString("OrganizationName"));
-				organization.setProgram(resultSet.getString("Program"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
 				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
 				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organization.setAdviser(resultSet.getString("Adviser"));
@@ -239,7 +238,7 @@ public class OrganizationDAO extends DAO {
 			statement = connection.prepareStatement("UPDATE organization SET OrganizationName=?, OrganizationTypeCode=?, Program=?, Adviser=?, LogoFileName=? WHERE OrganizationId=?");
 			statement.setString(1, organization.getOrganizationName());
 			statement.setString(2, organization.getOrganizationType().getOrganizationTypeCode());
-			statement.setString(3, organization.getProgram());
+			statement.setString(3, organization.getProgram().getProgramCode());
 			statement.setString(4, organization.getAdviser());
 			statement.setString(5, organization.getLogoFileName());
 			statement.setInt(6, organization.getOrganizationId());

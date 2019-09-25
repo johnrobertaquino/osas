@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Program;
 
 public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransformer<Member> {
 
@@ -32,7 +33,7 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 			domain.setLastName(value);
 			break;
 		case "program":
-			domain.setProgram(value);
+			domain.setProgram(new Program(value));
 			break;
 		case "officer":
 			if ("Y".equals(value)) {

@@ -8,7 +8,7 @@ public class Organization {
 	
 	private OrganizationType organizationType;
 	
-	private String program;
+	private Program program;
 	
 	private int organizationTermId;
 	
@@ -62,17 +62,11 @@ public class Organization {
 		this.organizationType = organizationTypeCode;
 	}
 
-	/**
-	 * @return the program
-	 */
-	public String getProgram() {
+	public Program getProgram() {
 		return program;
 	}
 
-	/**
-	 * @param program the program to set
-	 */
-	public void setProgram(String program) {
+	public void setProgram(Program program) {
 		this.program = program;
 	}
 

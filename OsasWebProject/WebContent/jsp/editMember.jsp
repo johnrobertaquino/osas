@@ -108,7 +108,13 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
-    					<div><input id="program" name="program" type="text" value="${member.program}"></div>
+    					<div>
+    						<select name="program">
+		    					<s:iterator value="programList" status="rowStatus" var="program">
+		    						<option value="${program.programCode}" <s:if test="#program.programCode == member.program.programCode">selected</s:if>>${program.programName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
