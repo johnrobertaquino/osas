@@ -12,30 +12,46 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 89102832466116810L;
+	
+	private static final String FORWARD_DISPLAYADDSCHOLARSHIPQUALIFICATION = "displayAddScholarshipQualification";
 
+	private int scholarshipQualificationId; 
+	
 	private String scholarshipQualificationName;
 
-	private String scholarshipProgramId;
-
+	private int scholarshipProgramId;
+	
+	private String yearlyCheck;
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(Integer.parseInt(scholarshipProgramId));
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
 			
-			ScholarshipQualification scholarshipQualification = new ScholarshipQualification();
-			scholarshipQualification.setScholarshipQualificationName(scholarshipQualificationName);
-			scholarshipQualification.setScholarshipProgram(scholarshipProgram);
-
 			ScholarshipQualificationManager scholarshipQualificationManager = new ScholarshipQualificationManager();
-			scholarshipQualificationManager.insertScholarshipQualification(scholarshipQualification);
+			
+			ScholarshipQualification existingScholarshipQualification = null;
+			existingScholarshipQualification = scholarshipQualificationManager.validate(scholarshipQualificationName, scholarshipProgramId);
+			
+			if (existingScholarshipQualification != null && scholarshipQualificationId != existingScholarshipQualification.getScholarshipQualificationId()) {
+				notificationMessage = "Scholarship Qualification already exist.";
+				return FORWARD_DISPLAYADDSCHOLARSHIPQUALIFICATION;
+			}
+			else {
+				ScholarshipQualification scholarshipQualification = new ScholarshipQualification();
+				scholarshipQualification.setScholarshipQualificationName(scholarshipQualificationName);
+				scholarshipQualification.setScholarshipProgram(scholarshipProgram);
+				scholarshipQualification.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 
-			notificationMessage = "Scholarship Qualification has been saved successfully added.";
+				scholarshipQualificationManager.insertScholarshipQualification(scholarshipQualification);
+
+				notificationMessage = "Scholarship Qualification has been successfully added.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -62,20 +78,35 @@ public class AddScholarshipQualificationAction extends AbstractAction {
 	public void setScholarshipQualificationName(String scholarshipQualificationName) {
 		this.scholarshipQualificationName = scholarshipQualificationName;
 	}
-	
-	/**
-	 * @return the scholarshipProgramId
-	 */
-	public String getScholarshipProgramId() {
+
+	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
+	}
+
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
+	}
+
+	/**
+	 * @return the scholarshipQualificationId
+	 */
+	public int getScholarshipQualificationId() {
+		return scholarshipQualificationId;
 	}
 
 	/**
 	 * @param scholarshipQualificationId the scholarshipQualificationId to set
 	 */
-	public void setScholarshipProgramId(String scholarshipProgramId) {
-		this.scholarshipProgramId = scholarshipProgramId;
+	public void setScholarshipQualificationId(int scholarshipQualificationId) {
+		this.scholarshipQualificationId = scholarshipQualificationId;
 	}
 
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
+	}
 
 }

@@ -21,7 +21,7 @@ public class DisplayMemberListAction extends AbstractAction
 
 		try {
 			MemberManager memberManager = new MemberManager();
-			memberList = memberManager.getMemberList(1);
+			memberList = memberManager.getMemberList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

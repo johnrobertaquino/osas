@@ -109,7 +109,7 @@ public class ScholarshipProgramManager {
 	}
 
 	public List<ScholarshipProgram> getScholarshipProgramListByScholarshipProgramSearchText(
-			String scholarshipProgramSearchText) throws Exception {
+			String scholarshipProgramSearchText, int semTermId) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		AgencyDAO agencyDAO = null;
 		List<ScholarshipProgram> scholarshipProgramList = null;
@@ -121,7 +121,7 @@ public class ScholarshipProgramManager {
 
 			scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
 
-			scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText);
+			scholarshipProgramList = scholarshipProgramDAO.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText, semTermId);
 			
 			if (scholarshipProgramList != null) {
 				agencyDAO = new AgencyDAO(connection);

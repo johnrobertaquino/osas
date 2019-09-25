@@ -19,13 +19,13 @@ public class SearchMemberAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Member";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			MemberManager memberManager = new MemberManager();
-			setMemberList(memberManager.getMemberListByMemberSearchText(memberSearchText));
+			setMemberList(memberManager.getMemberListByMemberSearchText(memberSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

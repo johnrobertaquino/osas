@@ -8,6 +8,8 @@ public class ScholarshipQualification {
 	private String scholarshipQualificationName;
 	
 	private ScholarshipProgram scholarshipProgram;
+	
+	private boolean yearlyCheck;
 
 	/**
 	 * @return the scholarshipQualificationId
@@ -50,4 +52,13 @@ public class ScholarshipQualification {
 	public void setScholarshipProgram(ScholarshipProgram scholarshipProgram) {
 		this.scholarshipProgram = scholarshipProgram;
 	}
+
+	public boolean isYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	public void setYearlyCheck(boolean yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
+	}
+
 }

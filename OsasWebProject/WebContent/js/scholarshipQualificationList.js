@@ -29,9 +29,11 @@ $(document).ready(function() {
 		$('#searchScholarshipQualificationForm').submit();
 	});
 	
-	$('#addScholarshipQualificationButton').click(function() {
-		location.href = "displayAddScholarshipQualification";
+	$('#backScholarshipQualification').click(function(event) {
+		$("#backScholarshipQualificationForm").submit();
 	});
+	
+	$('#addScholarshipQualificationButton').click(displayAddScholarshipQualification);
 	
 });
 
@@ -42,6 +44,10 @@ function showScholarshipQualificationDeletePopup(scholarshipQualificationId) {
 	});
 }
 
+
+function displayAddScholarshipQualification() {
+	$("#addScholarshipQualificationForm").submit();
+}
 
 function displayEditScholarshipQualification(scholarshipQualificationId) {
 	$("#editScholarshipQualificationForm #scholarshipQualificationId").val(scholarshipQualificationId);

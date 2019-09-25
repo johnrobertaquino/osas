@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/organizationList.css">
-<link rel="stylesheet" type="text/css" href="css/addOrganization.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/organizationList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addOrganization.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addOrganization.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addOrganization.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,12 +59,12 @@
 <div id="contentBody">
 	<div id="addOrganizationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
 			<div id="title">ADD ORGANIZATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST" enotype="multipart/form-data">
+				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     					<div>
     						<div id="orglogo"><img src="" alt="logo"/></div>
@@ -73,24 +73,26 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Name</span>
-    					<div><input id="organizationName" name="organizationName" type="text"></div>
+    					<div><input id="organizationName" name="organizationName" type="text" value="${organizationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Type</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" checked>
+		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
 		    				<span>Academic</span>
 		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
 		    				<span>Non-Academic</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
-    					<div><input id="program" name="program" type="text"></div>
+    					<div id="programDiv">
+	    					<span>Program</span>
+	    					<div><input id="program" name="program" type="text" value="${program}"></div>
+    					</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span>Adviser</span>
-    					<div><input id="adviser" name="adviser" type="text"></div>
+    					<div><input id="adviser" name="adviser" type="text"value="${adviser}"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

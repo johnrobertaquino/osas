@@ -6,14 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/editUser.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/editUser.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/editUser.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/editUser.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -34,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -58,7 +58,7 @@
 <div id="contentBody">
 	<div id="editUserContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">EDIT USER</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -66,15 +66,16 @@
 				<form class="editUserContent" id="editUserForm" action="editUser" method="POST">
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div class="rightPaneElement withTitle">
-    					<div id="fullName">
-	    					<span>Last Name</span>
-	    					<span>First Name</span>
-	    					<span>Middle Name</span>
-	    				</div>
-    					<div id="fullNameInput"><input id="lastName" name="lastName" type="text"value="${user.lastName}">
-    						<input id="firstName" name="firstName" type="text" value="${user.firstName}">
-    						<input id="middleName" name="middleName" type="text" value="${user.middleName}">
-    					</div>
+	    				<span>Last Name</span>
+    					<div><input id="lastName" name="lastName" type="text"value="${user.lastName}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+	    				<span>First Name</span>
+    					<div><input id="firstName" name="firstName" type="text" value="${user.firstName}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Middle Name</span>
+    					<div><input id="middleName" name="middleName" type="text" value="${user.middleName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>

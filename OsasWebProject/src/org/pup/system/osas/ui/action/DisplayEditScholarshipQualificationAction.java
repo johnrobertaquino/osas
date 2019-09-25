@@ -1,6 +1,8 @@
 package org.pup.system.osas.ui.action;
 
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.ScholarshipQualification;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -13,17 +15,27 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 	
 	private String scholarshipQualificationId;
 	
+	private int scholarshipProgramId;
+	
 	private ScholarshipQualification scholarshipQualification;
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship";
+		pageName = "Manage Scholarship > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			ScholarshipQualificationManager scholarshipManager = new ScholarshipQualificationManager();
 			setScholarshipQualification(scholarshipManager.getScholarshipQualification(Integer.parseInt(scholarshipQualificationId)));
+			
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager
+					.getScholarshipProgram(scholarshipProgramId);
+			if (scholarshipProgram != null) {
+				pageName = "Manage Scholarship > " + scholarshipProgram.getScholarshipProgramName()
+						+ " > Qualifications";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -57,6 +69,20 @@ public class DisplayEditScholarshipQualificationAction extends AbstractAction  {
 	 */
 	public void setScholarshipQualification(ScholarshipQualification scholarshipQualification) {
 		this.scholarshipQualification = scholarshipQualification;
+	}
+	
+	/**
+	 * @return the scholarshipProgram
+	 */
+	public int getScholarshipProgramId() {
+		return scholarshipProgramId;
+	}
+
+	/**
+	 * @param scholarshipProgram the scholarshipProgram to set
+	 */
+	public void setScholarshipProgramId(int scholarshipProgramId) {
+		this.scholarshipProgramId = scholarshipProgramId;
 	}
 	
 }

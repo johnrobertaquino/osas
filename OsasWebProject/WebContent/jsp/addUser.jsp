@@ -6,14 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/addUser.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addUser.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addUser.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addUser.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -34,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -58,7 +58,7 @@
 <div id="contentBody">
 	<div id="addUserContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/addUserIcon.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">ADD USER</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -67,20 +67,20 @@
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday"></div>
+    					<div><input type="text" name="birthday" id="birthday" value="${birthday}"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#birthday").datepicker();
@@ -90,7 +90,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" placeholder="+63"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>

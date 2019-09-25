@@ -17,7 +17,7 @@ public class DisplayScholarListAction extends AbstractAction
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholars";
+		pageName = "Manage Scholar";
 		
 		String actionResult = FORWARD_SUCCESS;
 

@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css">
-<link rel="stylesheet" type="text/css" href="css/addScholarshipProgram.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarshipProgramList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/addScholarshipProgram.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/addScholarshipProgram.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/addScholarshipProgram.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -59,7 +59,7 @@
 <div id="contentBody">
 	<div id="addScholarshipProgramContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/list.png"/></div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
 			<div id="title">ADD SCHOLARSHIP PROGRAM</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -77,7 +77,7 @@
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text"></div>
+    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text" value="${scholarshipProgramName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

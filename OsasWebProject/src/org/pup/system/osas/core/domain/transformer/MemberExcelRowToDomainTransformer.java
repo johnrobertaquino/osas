@@ -1,5 +1,11 @@
 package org.pup.system.osas.core.domain.transformer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.pup.system.osas.core.domain.Member;
 
@@ -28,8 +34,16 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		case "program":
 			domain.setProgram(value);
 			break;
+		case "officer":
+			if ("Y".equals(value)) {
+				domain.setOfficer(true);
+			}
+			break;
 		case "position":
 			domain.setPosition(value);
+			break;
+		case "officerPhoto":
+			domain.setOfficerPhoto(value);
 			break;
 		case "gender":
 			domain.setGender(value);
@@ -40,8 +54,32 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 		case "section":
 			domain.setSection(value);
 			break;
+		case "contactNumber":
+			domain.setContactNumber(value);
+			break;
 		default:
 			break;
+		}
 	}
+
+	@Override
+	protected Map<String, List<Validator>> getValidatorMap() {
+		Map<String, List<Validator>> validatorMap = new HashMap<String, List<Validator>>();
+		
+		validatorMap.put("studentNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("firstName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("lastName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotValidProgramValidator())));
+		validatorMap.put("gender", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("year", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
+		validatorMap.put("section", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
+		validatorMap.put("contactNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotNumericValidator())));
+		
+		return validatorMap;
+	}
+
+	@Override
+	protected List<Validator> getPostValidatorList() {
+		return null;
 	}
 }

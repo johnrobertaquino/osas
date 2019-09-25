@@ -23,7 +23,7 @@ public class DeleteScholarshipProgramAction extends AbstractAction{
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
 			scholarshipProgramManager.deleteScholarshipProgram(scholarshipProgram);
-			notificationMessage = "User has been successfully deleted.";
+			notificationMessage = "Scholarship Program has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

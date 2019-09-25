@@ -12,6 +12,8 @@ public class EditScholarshipProgramAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITSCHOLARSHIPPROGRAM = "displayEditScholarshipProgram";
+	
 	private int scholarshipProgramId;
 	
 	private String scholarshipProgramName;
@@ -26,16 +28,22 @@ public class EditScholarshipProgramAction extends AbstractAction {
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
-			
-			scholarshipProgram.setScholarshipProgramId(scholarshipProgramId);
-			scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
-			//scholarshipProgram.setAgencyId(agencyId);
 
-			scholarshipProgramManager.saveScholarshipProgram(scholarshipProgram);
-			
-			notificationMessage = "Changes to scholarship program has been saved successfully.";
-			
+			ScholarshipProgram existingScholarshipProgram = null;
+			existingScholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
+		
+			if (existingScholarshipProgram != null && scholarshipProgramId != existingScholarshipProgram.getScholarshipProgramId()) {
+				notificationMessage = "Scholarship program already exist.";
+				return FORWARD_DISPLAYEDITSCHOLARSHIPPROGRAM;
+			} else {
+				ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
+				
+				scholarshipProgram.setScholarshipProgramName(scholarshipProgramName);
+				scholarshipProgramManager.saveScholarshipProgram(scholarshipProgram);
+				
+				notificationMessage = "Changes to scholarship program has been saved successfully.";
+			}
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

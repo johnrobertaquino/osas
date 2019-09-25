@@ -7,9 +7,9 @@ public class OrganizationRequirement {
 	
 	private String organizationRequirementName;
 
-	private int organizationId;
-
 	private Organization organization;
+	
+	private SemTerm semTerm;
 	/**
 	 * @return the organizationRequirementId
 	 */
@@ -39,20 +39,6 @@ public class OrganizationRequirement {
 	}
 
 	/**
-	 * @return the organizationId
-	 */
-	public int getOrganizationId() {
-		return organizationId;
-	}
-
-	/**
-	 * @param organizationId the organizationId to set
-	 */
-	public void setOrganizationId(int organizationId) {
-		this.organizationId = organizationId;
-	}
-
-	/**
 	 * @return the organization
 	 */
 	public Organization getOrganization() {
@@ -64,6 +50,20 @@ public class OrganizationRequirement {
 	 */
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
+	}
+
+	/**
+	 * @return the semTermId
+	 */
+	public SemTerm getSemTerm() {
+		return semTerm;
+	}
+
+	/**
+	 * @param semTermId the semTermId to set
+	 */
+	public void setSemTerm(SemTerm semTerm) {
+		this.semTerm = semTerm;
 	}
 	
 }

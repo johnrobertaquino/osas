@@ -19,13 +19,13 @@ public class SearchScholarshipProgramAction extends AbstractAction{
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholarship Agency";
+		pageName = "Manage Scholarship Program";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText));
+			setScholarshipProgramList(scholarshipProgramManager.getScholarshipProgramListByScholarshipProgramSearchText(scholarshipProgramSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

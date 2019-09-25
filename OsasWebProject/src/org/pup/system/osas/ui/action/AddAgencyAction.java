@@ -10,8 +10,8 @@ public class AddAgencyAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 8910283248066116810L;
-
-	private String agencyId;
+	
+	private static final String FORWARD_DISPLAYADDAGENCY = "displayAddAgency";
 	
 	private String agencyName;
 	
@@ -33,7 +33,8 @@ public class AddAgencyAction extends AbstractAction {
 			agency = agencyManager.validate(agencyName);
 			
 			if(agency != null) { 
-				notificationMessage = "Agency is already exist.";
+				notificationMessage = "Agency already exist.";
+				actionResult = FORWARD_DISPLAYADDAGENCY;
 			}
 			else
 			{
@@ -44,7 +45,7 @@ public class AddAgencyAction extends AbstractAction {
 				agency.setContactNumber(contactNumber);
 				agency.setSemTerm(getCurrentActiveTerm());
 				agencyManager.insertAgency(agency);
-				notificationMessage = "Agency has been saved successfully added.";
+				notificationMessage = "Agency has been successfully added.";
 			}
 
 		} catch (BusinessException be) {
@@ -58,14 +59,6 @@ public class AddAgencyAction extends AbstractAction {
 		}
 		
 		return actionResult;
-	}
-
-	public String getAgencyId() {
-		return agencyId;
-	}
-
-	public void setAgencyId(String agencyId) {
-		this.agencyId = agencyId;
 	}
 
 	public String getAgencyName() {

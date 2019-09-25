@@ -7,12 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/userList.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/userList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/userList.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/userList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -33,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -67,7 +67,7 @@
 	<div id="userListContentBody" class="featureContent">
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
+			<div id="icon"><img src="images/userIcon.png"/></div>
 			<div id="title">LIST OF USERS</div>
 		</div>
 		<div id="contentBodyRightPane">
@@ -78,6 +78,7 @@
 				</form>
 				<div class="button" id="searchUserButton">SEARCH</div>
 				<div class="button" id="addUserButton">ADD USER</div>
+				<div class="button" id="programManagementButton">PROGRAM MANAGEMENT</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>

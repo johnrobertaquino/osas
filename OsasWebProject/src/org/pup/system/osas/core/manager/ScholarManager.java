@@ -3,12 +3,10 @@ package org.pup.system.osas.core.manager;
 import java.sql.Connection;
 import java.util.List;
 
-import org.pup.system.osas.core.dao.AgencyDAO;
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.ScholarDAO;
-import org.pup.system.osas.core.dao.ScholarshipProgramDAO;
-import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarScholarshipQualification;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 
 public class ScholarManager 
@@ -36,6 +34,7 @@ public class ScholarManager
 	
 	public Scholar getScholar(int scholarId) throws Exception {
 		ScholarDAO scholarDAO = null;
+		ScholarshipProgramManager scholarshipProgramManager = null;
 		Scholar scholar = null;
 		
 		Connection connection = null;
@@ -46,6 +45,13 @@ public class ScholarManager
 			scholarDAO = new ScholarDAO(connection);
 			
 			scholar = scholarDAO.getScholarByScholarId(scholarId);
+			
+			if (scholar != null) {
+				scholarshipProgramManager = new ScholarshipProgramManager();
+				
+				ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholar.getScholarshipProgram().getScholarshipProgramId());
+				scholar.setScholarshipProgram(scholarshipProgram);
+			}
 			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
@@ -59,7 +65,8 @@ public class ScholarManager
 	
 	public List<Scholar> getScholarList(int semTermId) throws Exception {
 		ScholarDAO scholarDAO = null;
-		ScholarshipProgramDAO scholarshipProgramDAO = null;
+		ScholarshipProgramManager scholarshipProgramManager = null;
+		ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = null;
 		List<Scholar> scholarList = null;
 		
 		Connection connection = null;
@@ -72,11 +79,18 @@ public class ScholarManager
 			scholarList = scholarDAO.getScholarList(semTermId);
 			
 			if (scholarList != null) {
-				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
-
+				scholarshipProgramManager = new ScholarshipProgramManager();
+				scholarScholarshipQualificationManager = new ScholarScholarshipQualificationManager();
+				
 				for (Scholar scholar : scholarList) {
-					ScholarshipProgram scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramId(scholar.getScholarshipProgram().getScholarshipProgramId());
+					ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholar.getScholarshipProgram().getScholarshipProgramId());
 					scholar.setScholarshipProgram(scholarshipProgram);
+					
+					List<ScholarScholarshipQualification> scholarScholarshipQualificationList = scholarScholarshipQualificationManager.getScholarScholarshipQualificationList(scholar.getScholarId(), semTermId);
+					
+					if (scholarScholarshipQualificationList != null) {
+						scholar.setScholarScholarshipQualificationList(scholarScholarshipQualificationList);
+					}
 				}
 			}
 			
@@ -89,9 +103,10 @@ public class ScholarManager
 		return scholarList;
 	}
 	
-	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText) throws Exception {
+	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText, int semTermId) throws Exception {
 		ScholarDAO scholarDAO = null;
-		ScholarshipProgramDAO scholarshipProgramDAO = null;
+		ScholarshipProgramManager scholarshipProgramManager = null;
+		ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = null;
 		List<Scholar> scholarList = null;
 		
 		Connection connection = null;
@@ -101,14 +116,21 @@ public class ScholarManager
 			
 			scholarDAO = new ScholarDAO(connection);
 			
-			scholarList = scholarDAO.getScholarListByScholarSearchText(scholarSearchText);
+			scholarList = scholarDAO.getScholarListByScholarSearchText(scholarSearchText, semTermId);
 			
 			if (scholarList != null) {
-				scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
-
+				scholarshipProgramManager = new ScholarshipProgramManager();
+				scholarScholarshipQualificationManager = new ScholarScholarshipQualificationManager();
+				
 				for (Scholar scholar : scholarList) {
-					ScholarshipProgram scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramId(scholar.getScholarshipProgram().getScholarshipProgramId());
+					ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholar.getScholarshipProgram().getScholarshipProgramId());
 					scholar.setScholarshipProgram(scholarshipProgram);
+					
+					List<ScholarScholarshipQualification> scholarScholarshipQualificationList = scholarScholarshipQualificationManager.getScholarScholarshipQualificationList(scholar.getScholarId(), semTermId);
+					
+					if (scholarScholarshipQualificationList != null) {
+						scholar.setScholarScholarshipQualificationList(scholarScholarshipQualificationList);
+					}
 				}
 			}
 			

@@ -25,7 +25,7 @@ public class Member {
 	
 	private String section;
 	
-	private int contactNumber;
+	private String contactNumber;
 	
 	private Organization organization;
 
@@ -85,7 +85,7 @@ public class Member {
 		this.position = position;
 	}
 
-	public boolean getOfficer() {
+	public boolean isOfficer() {
 		return officer;
 	}
 
@@ -117,11 +117,11 @@ public class Member {
 		this.section = section;
 	}
 
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
@@ -151,7 +151,5 @@ public class Member {
 	 */
 	public void setOfficerPhoto(String officerPhoto) {
 		this.officerPhoto = officerPhoto;
-	}
-
-	
-	}
+	}	
+}

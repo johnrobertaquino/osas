@@ -6,14 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/editScholarshipQualification.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/editScholarshipQualification.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/editScholarshipQualification.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/editScholarshipQualification.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -34,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -58,16 +58,24 @@
 <div id="contentBody">
 	<div id="editScholarshipQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">EDIT SCHOLARSHIP Qualification</div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
+			<div id="title">EDIT SCHOLARSHIP QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
+				<form id="cancelScholarshipQualificationForm" action="displayScholarshipQualificationList" method="POST">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+				</form>
 				<form class="editScholarshipQualificationContent" id="editScholarshipQualificationForm" action="editScholarshipQualification" method="POST">
 					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Qualification name</span>
+    					<span>Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test="%{scholarshipQualification.yearlyCheck}">checked</s:if>></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

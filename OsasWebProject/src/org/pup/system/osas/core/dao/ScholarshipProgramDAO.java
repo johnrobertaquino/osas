@@ -153,7 +153,7 @@ public class ScholarshipProgramDAO extends DAO {
 	}
 
 	public List<ScholarshipProgram> getScholarshipProgramListByScholarshipProgramSearchText(
-			String scholarshipProgramSearchText) throws Exception {
+			String scholarshipProgramSearchText, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -166,8 +166,8 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshipprogram WHERE ScholarshipProgramName LIKE '%"
-							+ scholarshipProgramSearchText + "%'");
+					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholarshipprogram.ScholarshipProgramName LIKE '%"  
+					+ scholarshipProgramSearchText + "%' AND agency.SemTermId=" + semTermId);
 
 			while (resultSet.next()) {
 				if (scholarshipProgramList == null) {

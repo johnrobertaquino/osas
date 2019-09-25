@@ -26,7 +26,7 @@ public class EditMemberAction extends AbstractAction {
 	
 	private String position;
 
-	private Boolean officer;
+	private boolean officer;
 	
 	private String officerPhoto;
 	
@@ -36,11 +36,11 @@ public class EditMemberAction extends AbstractAction {
 	
 	private String section;
 	
-	private int contactNumber;
+	private String contactNumber;
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar";
+		pageName = "Manage Organization Member";
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
@@ -202,14 +202,14 @@ public class EditMemberAction extends AbstractAction {
 	/**
 	 * @return the officer
 	 */
-	public Boolean getOfficer() {
+	public boolean getOfficer() {
 		return officer;
 	}
 
 	/**
 	 * @param officer the officer to set
 	 */
-	public void setOfficer(Boolean officer) {
+	public void setOfficer(boolean officer) {
 		this.officer = officer;
 	}
 
@@ -241,11 +241,11 @@ public class EditMemberAction extends AbstractAction {
 		this.gender = gender;
 	}
 	
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 

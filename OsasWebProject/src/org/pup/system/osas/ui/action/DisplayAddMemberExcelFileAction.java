@@ -17,7 +17,7 @@ public class DisplayAddMemberExcelFileAction extends AbstractAction  {
 	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Organization";
+		pageName = "Manage Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 		

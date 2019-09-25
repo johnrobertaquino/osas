@@ -7,12 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/scholarshipQualificationList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/scholarshipQualificationList.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/scholarshipQualificationList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -33,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/manageAccount_white.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -57,33 +57,46 @@
 <div id="contentBody">
 	<form id="deleteScholarshipQualificationForm" action="deleteScholarshipQualification" method="POST">
   		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
 	<form id="editScholarshipQualificationForm" action="displayEditScholarshipQualification" method="POST">
   		<input type="hidden" id="scholarshipQualificationId" name="scholarshipQualificationId" />
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+	</form>
+	<form id="addScholarshipQualificationForm" action="displayAddScholarshipQualification" method="POST">
+  		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+	</form>
+	<form id="backScholarshipQualificationForm" action="displayScholarshipProgramList" method="POST">
+		<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 	</form>
 	<div id="scholarshipQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/editAccount.png"/></div>
-			<div id="title">LIST OF SCHOLARSHIP</div>
+			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
+			<div id="title">LIST OF QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="searchScholarshipQualification">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchScholarshipQualification" method="POST" id="searchScholarshipQualificationForm">
 					<input type="text" id="scholarshipQualificationSearchText" name="scholarshipQualificationSearchText" placeholder="Search Scholarship Qualification">
+					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
 				</form>
 				<div class="button" id="searchScholarshipQualificationButton">SEARCH</div>
+				<div class="button" id="backScholarshipQualification">BACK</div>
 				<div class="button" id="addScholarshipQualificationButton">ADD SCHOLARSHIP QUALIFICATION</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
 					<th>Qualification Name</th>
+					<th>Yearly Check</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="scholarshipQualificationList" status="rowStatus" var="scholarshipQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="scholarshipQualificationName" /></td>
+						<td><s:if test="#scholarshipQualification.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

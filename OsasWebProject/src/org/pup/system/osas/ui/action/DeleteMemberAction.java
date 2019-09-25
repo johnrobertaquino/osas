@@ -15,7 +15,7 @@ public class DeleteMemberAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Member";
+		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
 
@@ -23,7 +23,7 @@ public class DeleteMemberAction extends AbstractAction {
 			MemberManager memberManager = new MemberManager();
 			Member member = memberManager.getMember(memberId);
 			memberManager.deleteMember(member);
-			notificationMessage = "Scholar has been successfully deleted.";
+			notificationMessage = "Member has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

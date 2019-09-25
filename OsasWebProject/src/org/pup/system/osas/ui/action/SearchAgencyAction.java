@@ -16,7 +16,6 @@ public class SearchAgencyAction extends AbstractAction {
 	private String agencySearchText;
 	
 	private List<Agency> agencyList;
-
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship Agency";
@@ -25,7 +24,7 @@ public class SearchAgencyAction extends AbstractAction {
 
 		try {
 			AgencyManager agencyManager = new AgencyManager();
-			setAgencyList(agencyManager.getAgencyListByAgencySearchText(agencySearchText));
+			setAgencyList(agencyManager.getAgencyListByAgencySearchText(agencySearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -66,4 +65,5 @@ public class SearchAgencyAction extends AbstractAction {
 	public void setAgencyList(List<Agency> agencyList) {
 		this.agencyList = agencyList;
 	}
+
 }

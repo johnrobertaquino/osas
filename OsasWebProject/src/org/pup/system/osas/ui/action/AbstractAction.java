@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -41,6 +42,10 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 		LocalDateTime now = LocalDateTime.now(); 
 		currentDate = dtf.format(now);
 		return currentDate;
+	}
+	
+	public String getDateTimeStamp() {
+		return Calendar.getInstance().getTimeInMillis() + "";
 	}
 	
 	@Override

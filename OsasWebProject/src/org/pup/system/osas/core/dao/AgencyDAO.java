@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
-import org.pup.system.osas.core.domain.FirstTimeLoginReference;
 import org.pup.system.osas.core.domain.SemTerm;
-import org.pup.system.osas.core.domain.User;
 
 public class AgencyDAO extends DAO {
 
 	public AgencyDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Agency getAgencyByAgencyName(String agencyName) throws Exception {
@@ -159,7 +156,7 @@ public class AgencyDAO extends DAO {
 		return agencyList;
 	}
 	
-	public List<Agency> getAgencyListByAgencySearchText(String agencySearchText) throws Exception {
+	public List<Agency> getAgencyListByAgencySearchText(String agencySearchText, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -171,8 +168,8 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber FROM agency WHERE AgencyName LIKE '%"
-					+ agencySearchText + "%' OR Address LIKE '%" + agencySearchText + "%'");  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE (AgencyName LIKE '%"
+					+ agencySearchText + "%' OR Address LIKE '%" + agencySearchText + "%') AND SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (agencyList == null) {
@@ -185,6 +182,10 @@ public class AgencyDAO extends DAO {
 				agency.setAddress(resultSet.getString("Address"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
+
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				agency.setSemTerm(semTerm);
 	
 				agencyList.add(agency);
 			}

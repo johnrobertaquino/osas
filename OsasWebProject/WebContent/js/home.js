@@ -28,5 +28,16 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayMemberList";
 	});
+	
+	$('#studentScholarShipReportsLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayScholarshipReport";
+	});
+	
+	$('#studentOrgRequirementManagementLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayOrganizationRequirementList";
+	});
+	
 });
 
