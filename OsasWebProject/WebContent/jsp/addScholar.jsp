@@ -116,8 +116,8 @@
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}">${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}">${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
