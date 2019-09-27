@@ -24,6 +24,8 @@ public class EditScholarAction extends AbstractAction {
 	
 	private String lastName;
 	
+	private String gender;
+	
 	private String email;
 	
 	private String contactNumber;
@@ -52,6 +54,7 @@ public class EditScholarAction extends AbstractAction {
 			scholar.setFirstName(firstName);
 			scholar.setMiddleName(middleName);
 			scholar.setLastName(lastName);
+			scholar.setGender(gender);
 			scholar.setEmail(email);
 			scholar.setContactNumber(contactNumber);
 			scholar.setProgram(new Program(program));
@@ -251,6 +254,24 @@ public class EditScholarAction extends AbstractAction {
 	 */
 	public void setGwa(String gwa) {
 		this.gwa = gwa;
+	}
+
+
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }

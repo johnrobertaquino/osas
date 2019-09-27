@@ -8,24 +8,25 @@ import org.pup.system.osas.core.manager.AgencyManager;
 import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
-public class DisplayProgramListAction extends AbstractAction {
+public class SearchProgramAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5840469153780205538L;
+	private static final long serialVersionUID = 5777267392504750903L;
+
+	private String programSearchText;
 	
 	private List<Program> programList;
-	
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Accounts > Program Management";
+		pageName = "Manage Scholarship Agency";
 		
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
 			ProgramManager programManager = new ProgramManager();
-			programList = programManager.getProgramList(getCurrentActiveTerm().getSemTermId());
+			setProgramList(programManager.getProgramListByProgramSearchText(programSearchText, getCurrentActiveTerm().getSemTermId()));
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -37,21 +38,20 @@ public class DisplayProgramListAction extends AbstractAction {
 		}
 		
 		return actionResult;
-		
-		
 	}
-
-	/**
-	 * @return the programList
-	 */
+	
+	public String getProgramSearchText() {
+		return programSearchText;
+	}
+	public void setProgramSearchText(String programSearchText) {
+		this.programSearchText = programSearchText;
+	}
 	public List<Program> getProgramList() {
 		return programList;
 	}
-
-	/**
-	 * @param programList the programList to set
-	 */
 	public void setProgramList(List<Program> programList) {
 		this.programList = programList;
 	}
+
+
 }

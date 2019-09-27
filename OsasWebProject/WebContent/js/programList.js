@@ -23,7 +23,7 @@ $(document).ready(function() {
 	});
 	
 	$('#searchProgramButton').click(function(event) {
-		if($('#ProgramSearchText').val().trim() == '') {
+		if($('#programSearchText').val().trim() == '') {
 			$('#searchProgramForm').attr("action","displayProgramList");
 		}
 		$('#searchProgramForm').submit();
@@ -35,21 +35,21 @@ $(document).ready(function() {
 
 });
 
-function showProgramDeletePopup(programId) {
+function showProgramDeletePopup(programCode) {
 	popUpOkCancel("Do you want to delete this Program?", function() {
-		$("#deleteProgramForm #programId").val(programId);
+		$("#deleteProgramForm #programCode").val(programCode);
 		$("#deleteProgramForm").submit();
 	});
 }
-
-function displayEditProgram(programId) {
-	$("#editProgramForm #programId").val(programId);
+c
+function displayEditProgram(programCode) {
+	$("#editProgramForm #programCode").val(programCode);
 	$("#editProgramForm").submit();
 }
 
-function addProgram(programId) {
+function addProgram(programCode) {
 	$('#addProgramSaveButton').click(function() {
-		$("#addProgramForm #programId").val(programId);
+		$("#addProgramForm #programCode").val(programCode);
 		$("#addProgramForm").submit();
 	});
 }

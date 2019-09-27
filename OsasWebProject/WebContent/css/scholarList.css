@@ -1,3 +1,21 @@
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
+   float: left;
+   margin-left: 10px;
+}
+
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    width: 100px;
+    height: 20px;
+    border: 1px solid #420001;
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
+#scholarListContentBody #searchScholar, #scholarListContentBody #contentBodyRightPane #tableHolder {
+    padding-bottom: 50px;
+    margin-top: -50px;
+}
+
 @charset "ISO-8859-1";
 #scholarListContentBody #contentBodyRightPane {
 	width: inherit;

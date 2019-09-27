@@ -75,6 +75,16 @@
     					<div><input id="notes" name="notes" type="text" value="${scholarQualification.notes}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Date Submitted</span>
+    					<div><input id="dateSubmitted" name="dateSubmitted" type="text" value="${organizationQualification.dateSubmitted}"></div>
+    					<script type="text/javascript">
+    						$(document).ready(function() {
+    							$("#dateSubmitted").datepicker();
+    							
+    						});
+    					</script>
+    				</div>
+    				<div class="rightPaneElement withTitle">
     					<span>Add Attachment</span>
     					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
     				</div>

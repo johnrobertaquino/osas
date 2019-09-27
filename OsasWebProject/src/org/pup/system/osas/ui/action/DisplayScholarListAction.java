@@ -10,6 +10,7 @@ public class DisplayScholarListAction extends AbstractAction
 {
 
 	private static final long serialVersionUID = 4251608337401003937L;
+	
 	private List<Scholar> scholarList;
 	
 	@Override

@@ -154,9 +154,34 @@
 			<result name="success">/jsp/addProgram.jsp</result>
 		</action>
 		
+		<action name="addProgram" class="org.pup.system.osas.ui.action.AddProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayProgramList</result>
+			<result name="error"  type="chain">/jsp/addProgram.jsp</result>
+			<result name="displayAddProgram"  type="chain">displayAddProgram</result>
+		</action>
+		
 		<action name="displayEditProgram" class="org.pup.system.osas.ui.action.DisplayEditProgramAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editProgram.jsp</result>
+		</action>
+		
+		<action name="editProgram" class="org.pup.system.osas.ui.action.EditProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayProgramList</result>
+			<result name="error"  type="chain">/jsp/editProgram.jsp</result>
+		</action>
+		
+		<action name="searchProgram" class="org.pup.system.osas.ui.action.SearchProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/programList.jsp</result>
+			<result name="error">/jsp/programList.jsp</result>
+		</action>
+		
+		<action name="deleteProgram" class="org.pup.system.osas.ui.action.DeleteProgramAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayProgramList</result>	
+			<result name="error" type="chain">displayProgramList</result>
 		</action>
 		
 		<!-- AGENCY -->	
@@ -339,6 +364,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayScholarList</result>
 			<result name="error"  type="chain">/jsp/addScholar.jsp</result>
+			<result name="displayAddScholar"  type="chain">displayAddScholar</result>
 		</action>
 				
 		<action name="displayEditScholar" class="org.pup.system.osas.ui.action.DisplayEditScholarAction">
@@ -492,6 +518,42 @@
 			<result name="success">/jsp/organizationRequirementList.jsp</result>
 			<result name="error">/jsp/organizationRequirementList.jsp</result>
 		</action>
+		
+		<!-- ORGANIZATION QUALIFICATION -->
+		<action name="displayOrganizationQualificationList" class="org.pup.system.osas.ui.action.DisplayOrganizationQualificationListAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/organizationQualificationList.jsp</result>
+		</action>
+		
+		<action name="displayAddOrganizationQualification" class="org.pup.system.osas.ui.action.DisplayAddOrganizationQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/addOrganizationQualification.jsp</result>
+		</action>
+		
+		<action name="displayEditOrganizationQualification" class="org.pup.system.osas.ui.action.DisplayEditOrganizationQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/editOrganizationQualification.jsp</result>
+			<result name="error" type="chain">displayOrganizationQualificationList</result>
+		</action>
+		
+			<action name="addScholarQualification" class="org.pup.system.osas.ui.action.AddScholarQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayScholarQualificationList</result>
+			<result name="error"  type="chain">/jsp/addScholarQualification.jsp</result>
+		</action>
+		
+		<action name="editOrganizationQualification" class="org.pup.system.osas.ui.action.EditOrganizationQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result type="chain" name="success">displayOrganizationQualificationList</result>
+			<result type="chain" name="error">/jsp/editOrganizationQualification.jsp</result>
+		</action>
+		
+		<action name="approveOrganizationQualification" class="org.pup.system.osas.ui.action.ApproveOrganizationQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayOrganizationQualificationList</result>
+			<result name="error" type="chain">displayOrganizationQualificationList</result>
+		</action>
+		
 		
 		<!--  Upload -->
 		<action name="addScholarExcelFile" class="org.pup.system.osas.ui.action.AddScholarExcelFileAction">

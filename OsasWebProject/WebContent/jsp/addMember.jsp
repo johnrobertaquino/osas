@@ -117,7 +117,7 @@
     					<div id="divOfficer" style="display: none">
 	    					<div>
 	    						<div id="officerPhotoDisplay"><img src="" alt="photo"/></div>			 
-		    					<input id="officerInput" name="officerPhoto" type="file">
+		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
 		    				</div>
 	    					<div>
 		    					<span>Position</span>

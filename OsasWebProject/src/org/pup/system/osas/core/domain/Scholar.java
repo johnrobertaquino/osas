@@ -14,6 +14,8 @@ public class Scholar {
 	
 	private String lastName;
 	
+	private String gender;
+	
 	private String email;
 	
 	private String contactNumber;
@@ -195,5 +197,19 @@ public class Scholar {
 		}
 		
 		return statusText;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

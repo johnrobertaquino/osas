@@ -64,11 +64,7 @@
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form class="editProgramContent" id="editProgramForm" action="editProgram" method="POST">
-					<input name="programId" type="hidden" value="${program.programId}">
-    				<div class="rightPaneElement withTitle">
-    					<span>Program Code</span>
-    					<div><input id="programCode" name="programCode" type="text" value="${program.programCode}"></div>
-    				</div>
+					<input name="programCode" type="hidden" value="${program.programCode}">
     				<div class="rightPaneElement withTitle">
     					<span>Program Name</span>
     					<div><input id="programName" name="programName" type="text" value="${program.programName}"></div>

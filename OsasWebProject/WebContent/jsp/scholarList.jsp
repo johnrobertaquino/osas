@@ -79,9 +79,21 @@
 				<div class="button" id="searchScholarButton">SEARCH</div>
 				<div class="button" id="addScholarExcelFileButton">ADD SCHOLAR via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addScholarButton">ADD SCHOLAR</div>
-    			<div style="clear:both"></div>
+    			<div style="clear:both"></div><br><br>
+    			   
+    			<div class="rightPaneElement withTitle">
+    				    <span>Filter Status:</span>
+	    				<div>
+		    				<select>
+		    						<option value="all">All</option>
+		    						<option value="pending">Pending</option>
+		    						<option value="approved">Approved</option>
+		    						<option value="incomplete">Incomplete</option>
+							</select>
+						</div>
+				</div>
 			</div>
-			<div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Scholarship Program</th>
@@ -89,6 +101,7 @@
 					<th>First Name</th>
 					<th>Middle Name </th>
 					<th>Last Name</th>
+					<th>Gender</th>
 					<th>Contact Number</th>
 					<th>Program</th>
 					<th>Status</th>
@@ -101,6 +114,7 @@
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
+						<td><s:property value="gender" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
 						<td><s:property value="statusText" /></td>

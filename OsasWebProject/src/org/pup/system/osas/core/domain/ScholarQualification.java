@@ -1,5 +1,7 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.Date;
+
 public class ScholarQualification {
 	
 	private int scholarQualificationId;
@@ -9,6 +11,8 @@ public class ScholarQualification {
 	private boolean qualified;
 	
 	private String notes;
+	
+	private Date dateSubmitted;
 	
 	private String filename;
 	
@@ -60,6 +64,20 @@ public class ScholarQualification {
 
 	public void setScholarId(int scholarId) {
 		this.scholarId = scholarId;
+	}
+
+	/**
+	 * @return the dateSubmitted
+	 */
+	public Date getDateSubmitted() {
+		return dateSubmitted;
+	}
+
+	/**
+	 * @param dateSubmitted the dateSubmitted to set
+	 */
+	public void setDateSubmitted(Date dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
 	}
 	
 }

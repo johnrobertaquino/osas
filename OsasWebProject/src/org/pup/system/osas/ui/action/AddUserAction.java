@@ -63,7 +63,7 @@ public class AddUserAction extends AbstractAction{
 				user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
 				password = (new SimpleDateFormat("MMddyyyy")).format(user.getBirthday());
 				user.setPassword(password);
-				userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3) + (new SimpleDateFormat("MM")).format(user.getBirthday()) + (new SimpleDateFormat("yy")).format(user.getBirthday());
+				userName = lastName.substring(0, 2).toUpperCase() + firstName.substring(0, 3).toLowerCase() + (new SimpleDateFormat("MM")).format(user.getBirthday()) + (new SimpleDateFormat("yy")).format(user.getBirthday());
 				user.setUserName(userName);
 				user.setContactNumber(contactNumber);
 				user.setPosition(position);

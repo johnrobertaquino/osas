@@ -11,6 +11,37 @@ import org.pup.system.osas.core.domain.ScholarshipProgram;
 
 public class ScholarManager 
 {
+	public Scholar getValidateScholar(String studentNumber, String firstName, String lastName, int scholarshipProgramId) throws Exception {
+		ScholarDAO scholarDAO = null;
+		ScholarshipProgramManager scholarshipProgramManager = null;
+		Scholar scholar = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			scholarDAO = new ScholarDAO(connection);
+			
+			scholar = scholarDAO.getScholarByScholarFullNameAndStudentNumber(studentNumber, firstName, lastName, scholarshipProgramId);
+			
+			if (scholar != null) {
+				scholarshipProgramManager = new ScholarshipProgramManager();
+				
+				ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholar.getScholarshipProgram().getScholarshipProgramId());
+				scholar.setScholarshipProgram(scholarshipProgram);
+			}
+			
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return scholar;
+	}
+	
 	public void insertScholar(Scholar scholar) throws Exception {
 		ScholarDAO scholarDAO = null;
 		Connection connection = null;

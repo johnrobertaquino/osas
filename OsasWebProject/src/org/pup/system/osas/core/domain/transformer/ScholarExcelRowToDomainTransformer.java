@@ -32,6 +32,9 @@ public class ScholarExcelRowToDomainTransformer extends ExcelRowToDomainTransfor
 		case "lastName":
 			domain.setLastName(value);
 			break;
+		case "gender":
+			domain.setGender(value);
+			break;
 		case "email":
 			domain.setEmail(value);
 			break;
@@ -62,6 +65,7 @@ public class ScholarExcelRowToDomainTransformer extends ExcelRowToDomainTransfor
 		validatorMap.put("studentNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("firstName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("lastName", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
+		validatorMap.put("gender", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("email", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("contactNumber", new ArrayList<Validator>(Arrays.asList(new EmptyValidator())));
 		validatorMap.put("program", new ArrayList<Validator>(Arrays.asList(new EmptyValidator(), new NotValidProgramValidator())));

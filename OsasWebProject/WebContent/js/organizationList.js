@@ -69,3 +69,8 @@ function addOrganization(organizationId) {
 	});
 }
 
+function displayOrganizationQualification(organizationId) {
+	$("#showOrganizationQualificationForm #organizationId").val(organizationId);
+	$("#showOrganizationQualificationForm").submit();
+}
+

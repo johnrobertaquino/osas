@@ -60,6 +60,21 @@ public class DownloadFileAction extends AbstractAction implements ServletRespons
 		        out.flush();
 		        out.close();
 			}
+			else if("OF".equalsIgnoreCase(type)) {
+				httpServletResponse.setContentType("image/" + FilenameUtils.getExtension(fileName));
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Organization/Member/" + fileName));
+				
+				ServletOutputStream out = httpServletResponse.getOutputStream();
+	        	 
+		        byte[] outputByte = new byte[4096];
+		        //copy binary content to output stream
+		        while(in.read(outputByte, 0, 4096) != -1){
+		        	out.write(outputByte, 0, 4096);
+		        }
+		        in.close();
+		        out.flush();
+		        out.close();
+			}
 		     
 		}catch (Exception e) {
 			errorMessage = "System error occurred. Please contact administrator.";

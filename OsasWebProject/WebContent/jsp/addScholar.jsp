@@ -96,6 +96,15 @@
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Gender</span>
+	    				<div id="roleDiv">
+		    				<input type="radio" id="gender" name="gender" value="M" checked>
+		    				<span>Male</span>
+		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<span>Female</span>
+		    			</div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
     					<span>Email</span>
     					<div><input id="email" name="email" type="text"></div>
     				</div>

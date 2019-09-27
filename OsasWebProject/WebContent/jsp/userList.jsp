@@ -78,7 +78,6 @@
 				</form>
 				<div class="button" id="searchUserButton">SEARCH</div>
 				<div class="button" id="addUserButton">ADD USER</div>
-				<div class="button" id="programManagementButton">PROGRAM MANAGEMENT</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>

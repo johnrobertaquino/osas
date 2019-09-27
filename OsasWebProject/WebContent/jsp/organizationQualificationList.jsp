@@ -8,11 +8,11 @@
 <title>SASS</title>
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/organizationQualificationList.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/scholarQualificationList.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/organizationQualificationList.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -33,7 +33,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -55,35 +55,34 @@
 	</div>
 </div>
 <div id="contentBody">
-	<form id="approveScholarQualificationForm" action="approveScholarQualification" method="POST">
-  		<input type="hidden" id="scholarQualificationId" name="scholarQualificationId" />
-  		<input type="hidden" name="scholarId" value="${scholarId}" />
+	<form id="approveOrganizationQualificationForm" action="approveOrganizationQualification" method="POST">
+  		<input type="hidden" id="organizationQualificationId" name="organizationQualificationId" />
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
-	<form id="showAddScholarQualificationForm" action="displayAddScholarQualification" method="POST">
-  		<input type="hidden" name="scholarshipQualificationId" id="scholarshipQualificationId" />
-  		<input type="hidden" name="scholarId" value="${scholarId}" />
+	<form id="showAddOrganizationQualificationForm" action="displayAddOrganizationQualification" method="POST">
+  		<input type="hidden" name="organizationshipQualificationId" id="organizationshipQualificationId" />
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
-	<form id="editScholarQualificationForm" action="displayEditScholarQualification" method="POST">
-  		<input type="hidden" id="scholarQualificationId" name="scholarQualificationId" />
-  		<input type="hidden" name="scholarId" value="${scholarId}" />
+	<form id="editOrganizationQualificationForm" action="displayEditOrganizationQualification" method="POST">
+  		<input type="hidden" id="organizationQualificationId" name="organizationQualificationId" />
+  		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
-	<form id="backScholarQualificationForm" action="displayScholarList" method="POST">
+	<form id="backOrganizationQualificationForm" action="displayOrganizationList" method="POST">
 	</form>
-	<div id="scholarQualificationListContentBody" class="featureContent" >
+	<div id="organizationQualificationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
-			<div id="title">LIST OF QUALIFICATION</div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
+			<div id="title">LIST OF REQUIREMENTS</div>
 		</div>
 		<div id="contentBodyRightPane">
-			<div id="searchScholarQualification">
+			<div id="searchOrganizationQualification">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchScholarQualification" method="POST" id="searchScholarQualificationForm">
-					<input type="text" id="scholarQualificationSearchText" name="scholarQualificationSearchText" placeholder="Search Scholar Qualification">
-					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+				<form action="searchOrganizationQualification" method="POST" id="searchOrganizationQualificationForm">
+					<input type="text" id="organizationQualificationSearchText" name="organizationQualificationSearchText" placeholder="Search Organization Requirement">
 				</form>
-				<div class="button" id="searchScholarQualificationButton">SEARCH</div>
-				<div class="button" id="backScholarQualification">BACK</div>
+				<div class="button" id="searchOrganizationQualificationButton">SEARCH</div>
+				<div class="button" id="backOrganizationQualification">BACK</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
@@ -94,15 +93,15 @@
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
-				<s:iterator value="scholarScholarshipQualificationList" status="rowStatus" var="scholarScholarshipQualification">
+				<s:iterator value="organizationQualificationList" status="rowStatus" var="organizationQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="scholarshipQualification.scholarshipQualificationName" /></td>
+						<td><s:property value="organizationQualification.organizationQualificationName" /></td>
 						<td>
-							<s:if test='scholarQualification.notes != null && scholarQualification.notes != ""'>
-								<s:property value="scholarQualification.notes" />
+							<s:if test='organizationQualification.notes != null && organizationQualification.notes != ""'>
+								<s:property value="organizationQualification.notes" />
 							</s:if>
 						</td>
-						<td><s:property value="scholarshipQualification.dateSubmitted" /></td>
+						<td><s:property value="organizationQualification.dateSubmitted" /></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
@@ -112,16 +111,16 @@
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
   									<s:if test='status == "N"'>
-  										<a onclick="showAddScholarQualification('<s:property value="scholarshipQualification.scholarshipQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
+  										<a onclick="showAddOrganizationQualification('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
   									</s:if>
   									<s:if test='status == "A" || status == "P"'>
-  										<a onclick="displayEditScholarQualification('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+  										<a onclick="displayEditOrganizationQualification('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
   									</s:if>
   									<s:if test='status == "P" && #session.USER.approver'>
-  										<a onclick="showScholarQualificationApprovePopup('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
+  										<a onclick="showOrganizationQualificationApprovePopup('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
-  									<s:if test='scholarQualification.filename != null && scholarQualification.filename != ""'>
-  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  									<s:if test='organizationQualification.filename != null && organizationQualification.filename != ""'>
+  										<a href="download?type=SQ&fileName=<s:property value="organizationQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
   									</s:if>
   								</div>
 							</div>

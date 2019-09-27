@@ -64,6 +64,9 @@
 	<form id="editOrganizationForm" action="displayEditOrganization" method="POST">
   		<input type="hidden" id="organizationId" name="organizationId" />
 	</form>
+	<form id="showOrganizationQualificationForm" action="displayOrganizationQualificationList" method="POST">
+  		<input type="hidden" id="organizationId" name="organizationId" />
+	</form>
 	<div id="organizationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -75,7 +78,7 @@
 			<div id="searchOrganization">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchOrganization" method="POST" id="searchOrganizationForm">
-					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization">
+					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization Name">
 				</form>
 				<div class="button" id="searchOrganizationButton">SEARCH</div>
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
@@ -108,7 +111,7 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-  									<a onclick="displayOrganizationQualificationList('<s:property value="" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Requirements</a>	
+  									<a onclick="displayOrganizationQualification('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Requirements</a>	
 	    							<a onclick="displayEditOrganization('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
     									<a onclick="showOrganizationDeletePopup('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>

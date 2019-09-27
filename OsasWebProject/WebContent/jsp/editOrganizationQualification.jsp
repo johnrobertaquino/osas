@@ -8,13 +8,12 @@
 <title>SASS</title>
 <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
 <link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/addScholarQualification.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/editOrganizationQualification.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/addScholarQualification.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/editOrganizationQualification.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,7 +34,7 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
 			<span class="clickable">Alumni Site</span><span>|</span>
@@ -57,27 +56,28 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addScholarQualificationContentBody" class="featureContent">
+	<div id="editOrganizationQualificationContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
-			<div id="title">ADD SCHOLAR QUALIFICATION</div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
+			<div id="title">EDIT ORGANIZATION QUALIFICATION</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form id="cancelScholarQualificationForm" action="displayScholarQualificationList" method="POST">
-					<input type="hidden" name="scholarId" value="${scholarId}" />
+				<form id="cancelOrganizationQualificationForm" action="displayOrganizationQualificationList" method="POST">
+					<input type="hidden" name="organizationId" value="${organizationId}" />
 				</form>
-				<form class="addScholarQualificationContent" id="addScholarQualificationForm" action="addScholarQualification" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="scholarshipQualificationId" value="${scholarshipQualificationId}" />
-					<input type="hidden" name="scholarId" value="${scholarId}" />
+				
+				<form class="editOrganizationQualificationContent" id="editOrganizationQualificationForm" action="editOrganizationQualification" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="organizationQualificationId" value="${organizationQualificationId}" />
+					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Notes</span>
-    					<div><input id="notes" name="notes" type="text"></div>
+    					<div><input id="notes" name="notes" type="text" value="${organizationQualification.notes}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Date Submitted</span>
-    					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
-    					 <script type="text/javascript">
+    					<div><input id="dateSubmitted" name="dateSubmitted" type="text" value="${organizationQualification.dateSubmitted}"></div>
+    					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#dateSubmitted").datepicker();
     							
@@ -97,7 +97,7 @@
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>
 							</div>
-							<div id=submitButton class="button left">
+							<div id="submitButton" class="button left">
 								<span>Save</span>
 							</div>
 							<div style="clear:both"></div>
@@ -107,6 +107,7 @@
     		</div>
     		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 

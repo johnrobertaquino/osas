@@ -3,8 +3,10 @@ package org.pup.system.osas.ui.action;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.ScholarshipQualification;
 import org.pup.system.osas.core.manager.ScholarManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
+import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddScholarAction extends AbstractAction {
@@ -14,7 +16,9 @@ public class AddScholarAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 8910283248066116810L;
 
-	private String scholarId;
+	private static final String FORWARD_DISPLAYADDSCHOLAR = "displayAddScholar";
+	
+	private int scholarId;
 	
 	private String studentNumber;
 	
@@ -23,6 +27,8 @@ public class AddScholarAction extends AbstractAction {
 	private String middleName;
 	
 	private String lastName;
+	
+	private String gender;
 	
 	private String email;
 	
@@ -36,7 +42,7 @@ public class AddScholarAction extends AbstractAction {
 	
 	private String gwa;
 	
-	private String scholarshipProgramId;
+	private int scholarshipProgramId;
 	
 	@Override
 	public String execute() throws Exception {
@@ -46,25 +52,39 @@ public class AddScholarAction extends AbstractAction {
 		
 		try {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
-			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(Integer.parseInt(scholarshipProgramId));
+			ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholarshipProgramId);
 			
-			Scholar scholar = new Scholar();
-			scholar.setStudentNumber(studentNumber);
-			scholar.setFirstName(firstName);
-			scholar.setMiddleName(middleName);
-			scholar.setLastName(lastName);
-			scholar.setEmail(email);
-			scholar.setContactNumber(contactNumber);
-			scholar.setProgram(new Program(program));
-			scholar.setYear(year);
-			scholar.setSection(section);
-			scholar.setGwa(gwa);
-			scholar.setScholarshipProgram(scholarshipProgram);
 			
 			ScholarManager scholarManager = new ScholarManager();
-			scholarManager.insertScholar(scholar);
 			
-			notificationMessage = "Scholar has been successfully added.";
+			Scholar existingScholar = null;
+			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId);
+			
+			
+			if (existingScholar != null && scholarId != existingScholar.getScholarId()) {
+				notificationMessage = "Scholar already exist.";
+				return FORWARD_DISPLAYADDSCHOLAR;
+			}
+			else
+			{
+				Scholar scholar = new Scholar();
+				scholar.setStudentNumber(studentNumber);
+				scholar.setFirstName(firstName);
+				scholar.setMiddleName(middleName);
+				scholar.setLastName(lastName);
+				scholar.setGender(gender);
+				scholar.setEmail(email);
+				scholar.setContactNumber(contactNumber);
+				scholar.setProgram(new Program(program));
+				scholar.setYear(year);
+				scholar.setSection(section);
+				scholar.setGwa(gwa);
+				scholar.setScholarshipProgram(scholarshipProgram);
+				
+				scholarManager.insertScholar(scholar);
+				
+				notificationMessage = "Scholar has been successfully added.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -78,11 +98,11 @@ public class AddScholarAction extends AbstractAction {
 		return actionResult;
 	}
 
-	public String getScholarId() {
+	public int getScholarId() {
 		return scholarId;
 	}
 
-	public void setScholarId(String scholarId) 
+	public void setScholarId(int scholarId) 
 	{
 		this.scholarId = scholarId;
 	}
@@ -135,11 +155,11 @@ public class AddScholarAction extends AbstractAction {
 		this.contactNumber = contactNumber;
 	}
 	
-	public String getScholarshipProgramId() {
+	public int getScholarshipProgramId() {
 		return scholarshipProgramId;
 	}
 
-	public void setScholarshipProgramId(String scholarshipProgramId) 
+	public void setScholarshipProgramId(int scholarshipProgramId) 
 	{
 		this.scholarshipProgramId = scholarshipProgramId;
 	}
@@ -198,5 +218,19 @@ public class AddScholarAction extends AbstractAction {
 	 */
 	public void setGwa(String gwa) {
 		this.gwa = gwa;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

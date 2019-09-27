@@ -85,27 +85,39 @@
 					<span>Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${member.lastName}"></div>
     				</div>
-    				<div class="rightPaneElement withTitle">
-					<span>Position</span>
-    					<div><input id="position" name="position" type="text" value="${member.position}"></div>
-    				</div>
    					<div class="rightPaneElement withTitle">
     					<span>Gender</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="gender" name="gender" value="M" checked>
+		    				<input type="radio" id="gender" name="gender" value="M"  <s:if test='member.gender == "M"'>checked</s:if>>
 		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<input type="radio" id="gender" name="gender" value="F"  <s:if test='member.gender == "F"'>checked</s:if>>
 		    				<span>Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Officer</span>
-    					<div><input id="officer" name="officer" type="text" value="${member.officer}"></div>
+						<div id="roleDiv">
+							<label for="chkOfficer">
+							    <input type="checkbox" id="chkOfficer" name="officer" value="${member.officer}" <s:if test='member.officer == "1"'>checked</s:if>/>
+							    Officer
+							</label>
+						</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
-    					<span>OfficerPhoto</span>
-    					<div><input id="officerPhoto" name="officerPhoto" type="text" value="${member.officerPhoto}"></div>
-    				</div>
+	    			    <br><div id="divOfficer" style="display: none">
+				    		<div class="rightPaneElement withTitle">
+		    					<div>
+		    						<s:if test='member.officerPhoto != null && member.officerPhoto != ""'>
+		    							<div id="officerPhotoDisplay"><img src="download?type=OF&fileName=${member.officerPhoto}" alt="logo"/></div>
+		    						</s:if>    						
+		    						<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
+		    					</div>
+		    				</div>
+			    			<div>
+								<span>Position</span>
+			    					<div><input id="position" name="position" type="text" value="${member.position}"></div>
+			    				</div>
+		    				</div>
+	    			</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>

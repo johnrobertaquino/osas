@@ -56,10 +56,10 @@
 </div>
 <div id="contentBody">
 	<form id="deleteProgramForm" action="deleteProgram" method="POST">
-  		<input type="hidden" id="programId" name="programId" />
+  		<input type="hidden" id="programCode" name="programCode" />
 	</form>
 	<form id="editProgramForm" action="displayEditProgram" method="POST">
-  		<input type="hidden" id="programId" name="programId" />
+  		<input type="hidden" id="programCode" name="programCode" />
 	</form>
 	<div id="programListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
@@ -97,8 +97,8 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-	    							<a onclick="displayEditprogram('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
-    									<a onclick="showprogramDeletePopup('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
+	    							<a onclick="displayEditProgram('<s:property value="programCode" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showProgramDeletePopup('<s:property value="programCode" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>

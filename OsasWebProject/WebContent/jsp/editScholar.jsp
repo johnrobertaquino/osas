@@ -85,7 +85,15 @@
 					<span>Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${scholar.lastName}"></div>
     				</div>
-    				
+    				<div class="rightPaneElement withTitle">
+    					<span>Gender</span>
+	    				<div id="roleDiv">
+		    				<input type="radio" id="gender" name="gender" value="M" <s:if test='scholar.gender == "M"'>checked</s:if>>
+		    				<span>Male</span>
+		    				<input type="radio" id="gender" name="gender" value="F" <s:if test='scholar.gender == "F"'>checked</s:if>>
+		    				<span>Female</span>
+		    			</div>
+    				</div>
     				<div class="rightPaneElement withTitle">
 					<span>Email</span>
     					<div><input id="email" name="email" type="text" value="${scholar.email}"></div>

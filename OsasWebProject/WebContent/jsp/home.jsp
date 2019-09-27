@@ -96,6 +96,12 @@
 							<div style="clear:both"></div>
 						</div>
 					</div>
+					<div class ="menuLinks">
+						<div class="linkItemHolder">
+							<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="adminFunctionsManageProgram">Manage Program</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
 				</s:if>
 			</div>
 			<div style="clear:both"></div>

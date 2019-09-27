@@ -80,6 +80,7 @@
 			</div>
 			<table>
 				<tr>
+					<th>Organization Name</th>
 				 	<th>Student Number</th>
 					<th>First Name</th>
 					<th>Middle Name </th>
@@ -92,6 +93,7 @@
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td><s:property value="organization.organizationName" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>

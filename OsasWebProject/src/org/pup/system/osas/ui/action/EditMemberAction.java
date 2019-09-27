@@ -1,6 +1,10 @@
 package org.pup.system.osas.ui.action;
 
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
@@ -29,7 +33,11 @@ public class EditMemberAction extends AbstractAction {
 
 	private boolean officer;
 	
-	private String officerPhoto;
+	private String officerPhotoContentType;
+
+	private String officerPhotoFileName;
+	
+	private File officerPhoto;
 	
 	private String gender;
 	
@@ -43,7 +51,9 @@ public class EditMemberAction extends AbstractAction {
 	public String execute() throws Exception {
 		pageName = "Manage Organization Member";
 		String actionResult = FORWARD_SUCCESS;
-
+		
+		File fileToCreate = null;
+		
 		try {
 			MemberManager memberManager = new MemberManager();
 			Member member = memberManager.getMember(memberId);
@@ -55,7 +65,16 @@ public class EditMemberAction extends AbstractAction {
 			member.setLastName(lastName);
 			member.setPosition(position);
 			member.setOfficer(officer);
-			member.setOfficerPhoto(officerPhoto);
+			
+			if(!StringUtils.isEmpty(officerPhotoFileName)) {
+				member.setOfficerPhoto(officerPhotoFileName);
+				
+				String filePath = "C:/OSAS/Organization/Member";
+				fileToCreate = new File(filePath, officerPhotoFileName);
+				
+				FileUtils.copyFile(officerPhoto, fileToCreate);
+			}
+			
 			member.setGender(gender);
 			member.setProgram(new Program(program));
 			member.setYear(year);
@@ -215,20 +234,6 @@ public class EditMemberAction extends AbstractAction {
 	}
 
 	/**
-	 * @return the officerPhoto
-	 */
-	public String getOfficerPhoto() {
-		return officerPhoto;
-	}
-
-	/**
-	 * @param officerPhoto the officerPhoto to set
-	 */
-	public void setOfficerPhoto(String officerPhoto) {
-		this.officerPhoto = officerPhoto;
-	}
-
-	/**
 	 * @return the gender
 	 */
 	public String getGender() {
@@ -242,12 +247,48 @@ public class EditMemberAction extends AbstractAction {
 		this.gender = gender;
 	}
 	
+	public String getOfficerPhotoFileName() {
+		return officerPhotoFileName;
+	}
+
+
+	public void setOfficerPhotoFileName(String officerPhotoFileName) {
+		this.officerPhotoFileName = officerPhotoFileName;
+	}
+
+
+	public File getOfficerPhoto() {
+		return officerPhoto;
+	}
+
+
+	public void setOfficerPhoto(File officerPhoto) {
+		this.officerPhoto = officerPhoto;
+	}
+
+
 	public String getContactNumber() {
 		return contactNumber;
 	}
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+
+	/**
+	 * @return the officerPhotoContentType
+	 */
+	public String getOfficerPhotoContentType() {
+		return officerPhotoContentType;
+	}
+
+
+	/**
+	 * @param officerPhotoContentType the officerPhotoContentType to set
+	 */
+	public void setOfficerPhotoContentType(String officerPhotoContentType) {
+		this.officerPhotoContentType = officerPhotoContentType;
 	}
 
 }

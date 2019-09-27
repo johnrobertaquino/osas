@@ -1,20 +1,17 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Program;
-import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
-public class DisplayEditProgramAction extends AbstractAction  {
-	
+public class DeleteProgramAction extends AbstractAction {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2936689632600612372L;
+	private static final long serialVersionUID = 2914771763486431991L;
 
 	private String programCode;
-	
-	private Program program;
 
 	@Override
 	public String execute() throws Exception {
@@ -24,7 +21,9 @@ public class DisplayEditProgramAction extends AbstractAction  {
 
 		try {
 			ProgramManager programManager = new ProgramManager();
-			setProgram(programManager.getProgramCode(programCode));
+			Program program = programManager.getProgramCode(programCode);
+			programManager.deleteProgram(program);
+			notificationMessage = "Program has been successfully deleted.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -44,14 +43,6 @@ public class DisplayEditProgramAction extends AbstractAction  {
 
 	public void setProgramCode(String programCode) {
 		this.programCode = programCode;
-	}
-
-	public Program getProgram() {
-		return program;
-	}
-
-	public void setProgram(Program program) {
-		this.program = program;
 	}
 
 	
