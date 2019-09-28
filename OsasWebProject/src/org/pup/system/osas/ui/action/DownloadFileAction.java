@@ -32,7 +32,7 @@ public class DownloadFileAction extends AbstractAction implements ServletRespons
 			if ("SQ".equalsIgnoreCase(type)) {
 				httpServletResponse.setContentType("application/octet-stream");
 				httpServletResponse.setHeader("Content-Disposition","attachment;filename=" + fileName);
-				FileInputStream in = new FileInputStream(new File("C:/OSAS/scholarAttachment/" + fileName));
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Scholar/ScholarAttachment/" + fileName));
 				
 				ServletOutputStream out = httpServletResponse.getOutputStream();
 	        	 

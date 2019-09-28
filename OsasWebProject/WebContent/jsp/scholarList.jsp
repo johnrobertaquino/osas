@@ -64,6 +64,9 @@
 	<form id="showScholarQualificationForm" action="displayScholarQualificationList" method="POST">
   		<input type="hidden" id="scholarId" name="scholarId" />
 	</form>
+	<form id="filterScholarForm" action="displayScholarList" method="POST">
+  		<input type="hidden" id="filter" name="filter" />
+	</form>
 	<div id="scholarListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -84,11 +87,11 @@
     			<div class="rightPaneElement withTitle">
     				    <span>Filter Status:</span>
 	    				<div>
-		    				<select>
-		    						<option value="all">All</option>
-		    						<option value="pending">Pending</option>
-		    						<option value="approved">Approved</option>
-		    						<option value="incomplete">Incomplete</option>
+		    				<select id="filterSelect">
+		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+		    						<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
+		    						<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
+		    						<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
 							</select>
 						</div>
 				</div>

@@ -1,20 +1,16 @@
 package org.pup.system.osas.ui.action;
 
 
-import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.Program;
-import org.pup.system.osas.core.manager.AgencyManager;
 import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.exception.BusinessException;
-
+	
 public class EditProgramAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
-	
-	private static final String FORWARD_DISPLAYEDITPROGRAM = "displayEditProgram";
 	
 	private String programCode;
 	

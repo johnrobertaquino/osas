@@ -7,15 +7,9 @@ import org.apache.commons.io.FileUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationQualification;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
-import org.pup.system.osas.core.domain.Scholar;
-import org.pup.system.osas.core.domain.ScholarQualification;
-import org.pup.system.osas.core.domain.ScholarshipQualification;
 import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.core.manager.OrganizationRequirementManager;
 import org.pup.system.osas.core.manager.OrganizationRequirementQualificationManager;
-import org.pup.system.osas.core.manager.ScholarManager;
-import org.pup.system.osas.core.manager.ScholarScholarshipQualificationManager;
-import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class EditOrganizationQualificationAction extends AbstractAction {

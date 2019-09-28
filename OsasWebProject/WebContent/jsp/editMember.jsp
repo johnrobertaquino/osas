@@ -65,7 +65,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST">
+				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST" enctype="multipart/form-data">
 					<input name="MemberId" type="hidden" value="${member.memberId}">
     				<div class="rightPaneElement withTitle">
     					<span>Student Number</span>
@@ -97,13 +97,13 @@
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
-							    <input type="checkbox" id="chkOfficer" name="officer" value="${member.officer}" <s:if test='member.officer == "1"'>checked</s:if>/>
+							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test="member.officer">checked</s:if>/>
 							    Officer
 							</label>
 						</div>
     				</div>
-    			    <div class="rightPaneElement withTitle">
-	    			    <br><div id="divOfficer" style="display: none">
+    			    <div class="rightPaneElement withTitle" <s:if test="!member.officer">style="display: none"</s:if>  id="divOfficer">
+	    			    <br><div>
 				    		<div class="rightPaneElement withTitle">
 		    					<div>
 		    						<s:if test='member.officerPhoto != null && member.officerPhoto != ""'>
@@ -118,6 +118,15 @@
 			    				</div>
 		    				</div>
 	    			</div>
+	    			<div class="rightPaneElement withTitle">
+    					<span>Gender</span>
+	    				<div id="roleDiv">
+		    				<input type="radio" id="gender" name="gender" value="M" <s:if test='member.gender == "M"'>checked</s:if>>
+		    				<span>Male</span>
+		    				<input type="radio" id="gender" name="gender" value="F" <s:if test='member.gender == "F"'>checked</s:if>>
+		    				<span>Female</span>
+		    			</div>
+    				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>

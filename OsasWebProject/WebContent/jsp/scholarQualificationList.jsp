@@ -102,7 +102,7 @@
 								<s:property value="scholarQualification.notes" />
 							</s:if>
 						</td>
-						<td><s:property value="scholarshipQualification.dateSubmitted" /></td>
+						<td><s:date name="scholarQualification.dateSubmitted" format="MM/dd/yyyy" /></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">

@@ -60,7 +60,7 @@ public class AddScholarQualificationAction extends AbstractAction {
 			if("on".equalsIgnoreCase(addAttachment)) {
 				scholarQualification.setFilename(fileNameFileName);
 			
-				String filePath = "C:/OSAS/scholarAttachment";
+				String filePath = "C:/OSAS/Scholar/ScholarAttachment";
 				fileToCreate = new File(filePath, fileNameFileName);
 			
 				FileUtils.copyFile(fileName, fileToCreate);

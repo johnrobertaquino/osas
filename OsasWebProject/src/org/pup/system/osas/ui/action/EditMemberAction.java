@@ -31,7 +31,7 @@ public class EditMemberAction extends AbstractAction {
 	
 	private String position;
 
-	private boolean officer;
+	private String officer;
 	
 	private String officerPhotoContentType;
 
@@ -64,9 +64,9 @@ public class EditMemberAction extends AbstractAction {
 			member.setMiddleName(middleName);
 			member.setLastName(lastName);
 			member.setPosition(position);
-			member.setOfficer(officer);
+			member.setOfficer("on".equalsIgnoreCase(officer));
 			
-			if(!StringUtils.isEmpty(officerPhotoFileName)) {
+			if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
 				member.setOfficerPhoto(officerPhotoFileName);
 				
 				String filePath = "C:/OSAS/Organization/Member";
@@ -222,14 +222,14 @@ public class EditMemberAction extends AbstractAction {
 	/**
 	 * @return the officer
 	 */
-	public boolean getOfficer() {
+	public String getOfficer() {
 		return officer;
 	}
 
 	/**
 	 * @param officer the officer to set
 	 */
-	public void setOfficer(boolean officer) {
+	public void setOfficer(String officer) {
 		this.officer = officer;
 	}
 

@@ -36,6 +36,17 @@ $(document).ready(function() {
 	$('#addMemberExcelFileButton').click(function() {
 		location.href = "displayAddMemberExcelFile";
 	});
+	
+	$('.showPicture').click(function(event) {
+		event.stopPropagation();
+		var imageUrl = "download?type=OF&fileName=" + $(this).text();
+		
+		var center_left = (screen.width / 2) - (100 / 2);
+		var center_top = (screen.height / 2) - (100 / 2);
+
+		my_window = window.open(imageUrl, $(this).text(), "scrollbars=1, width=100, height=100, left="+center_left+", top="+center_top);
+		my_window.focus();
+	});
 });
 
 function showMemberDeletePopup(memberId) {

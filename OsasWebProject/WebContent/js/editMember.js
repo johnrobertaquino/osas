@@ -3,15 +3,13 @@ $(document).ready(function() {
 		location.href = "displayMemberList";
 	});
 	
-	 $(function () {
-	        $("#chkOfficer").click(function () {
-	            if ($(this).is(":checked")) {
-	                $("#divOfficer").show();
-	            } else {
-	                $("#divOfficer").hide();
-	            }
-	        });
-	    });
+	$("#chkOfficer").click(function () {
+		if ($(this).is(":checked")) {
+			$("#divOfficer").show();
+		} else {
+			$("#divOfficer").hide();
+		}
+	});
 	
 	$("#contactNumber").keypress(function (e) {
         var keyCode = e.keyCode || e.which;

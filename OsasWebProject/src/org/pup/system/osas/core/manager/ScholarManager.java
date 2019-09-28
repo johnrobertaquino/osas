@@ -1,6 +1,7 @@
 package org.pup.system.osas.core.manager;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
@@ -132,6 +133,77 @@ public class ScholarManager
 		}
 		
 		return scholarList;
+	}
+	
+	public List<Scholar> getScholarList(int semTermId, String filter) throws Exception {
+		ScholarDAO scholarDAO = null;
+		ScholarshipProgramManager scholarshipProgramManager = null;
+		ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = null;
+		List<Scholar> scholarList = null;
+		List<Scholar> filteredScholarList = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			scholarDAO = new ScholarDAO(connection);
+			
+			scholarList = scholarDAO.getScholarList(semTermId);
+			
+			if (scholarList != null) {
+				scholarshipProgramManager = new ScholarshipProgramManager();
+				scholarScholarshipQualificationManager = new ScholarScholarshipQualificationManager();
+				
+				for (Scholar scholar : scholarList) {
+					ScholarshipProgram scholarshipProgram = scholarshipProgramManager.getScholarshipProgram(scholar.getScholarshipProgram().getScholarshipProgramId());
+					scholar.setScholarshipProgram(scholarshipProgram);
+					
+					List<ScholarScholarshipQualification> scholarScholarshipQualificationList = scholarScholarshipQualificationManager.getScholarScholarshipQualificationList(scholar.getScholarId(), semTermId);
+					
+					if (scholarScholarshipQualificationList != null) {
+						scholar.setScholarScholarshipQualificationList(scholarScholarshipQualificationList);
+					}
+					
+					String statusText = scholar.getStatusText();
+					
+					
+					if("pending".equalsIgnoreCase(filter) && ("Pending Approval".equalsIgnoreCase(statusText) || "Incomplete / Pending Approval".equalsIgnoreCase(statusText))) {
+						if(filteredScholarList == null) {
+							filteredScholarList = new ArrayList<Scholar>();
+						}
+						
+						filteredScholarList.add(scholar);
+					} else if("incomplete".equalsIgnoreCase(filter) && ("Incomplete".equalsIgnoreCase(statusText) || "Incomplete / Pending Approval".equalsIgnoreCase(statusText))) {
+						if(filteredScholarList == null) {
+							filteredScholarList = new ArrayList<Scholar>();
+						}
+						
+						filteredScholarList.add(scholar);
+					} else if("approved".equalsIgnoreCase(filter) && "Approved".equalsIgnoreCase(statusText)) {
+						if(filteredScholarList == null) {
+							filteredScholarList = new ArrayList<Scholar>();
+						}
+						
+						filteredScholarList.add(scholar);
+					} else if("all".equalsIgnoreCase(filter)) {
+						if(filteredScholarList == null) {
+							filteredScholarList = new ArrayList<Scholar>();
+						}
+						
+						
+						filteredScholarList.add(scholar);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return filteredScholarList;
 	}
 	
 	public List<Scholar> getScholarListByScholarSearchText(String scholarSearchText, int semTermId) throws Exception {

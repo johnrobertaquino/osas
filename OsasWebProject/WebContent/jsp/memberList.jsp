@@ -80,6 +80,7 @@
 			</div>
 			<table>
 				<tr>
+					<th>Officer Photo</th>
 					<th>Organization Name</th>
 				 	<th>Student Number</th>
 					<th>First Name</th>
@@ -93,6 +94,11 @@
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
+						<td>
+							<s:if test='#member.officerPhoto != null && #member.officerPhoto != "" && #member.officer'>
+								<a href="javascript:void(0);" class="showPicture"><s:property value="officerPhoto" /></a>
+							</s:if>
+						</td>
 						<td><s:property value="organization.organizationName" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
