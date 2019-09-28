@@ -74,13 +74,14 @@
 					<input type="text" id="memberSearchText" name="memberSearchText" placeholder="Search member">
 				</form>
 				<div class="button" id="searchMemberButton">SEARCH</div>
-				<div class="button" id="addMemberExcelFileButton">ADD MEMBER via EXCEL FILE</div>
+				<div class="button" id="addMemberExcelFileButton">ADD MEMBER via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addMemberButton">ADD MEMBER</div>
     			<div style="clear:both"></div>
 			</div>
 			<table>
 				<tr>
-					<th>Organization Id</th>
+					<th>Officer Photo</th>
+					<th>Organization Name</th>
 				 	<th>Student Number</th>
 					<th>First Name</th>
 					<th>Middle Name </th>
@@ -93,13 +94,26 @@
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="organization.organizationId"/></td>
+						<td>
+							<s:if test='#member.officerPhoto != null && #member.officerPhoto != "" && #member.officer'>
+								<a href="javascript:void(0);" class="showPicture"><s:property value="officerPhoto" /></a>
+							</s:if>
+						</td>
+						<td><s:property value="organization.organizationName" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
-						<td><s:property value="position" /></td>
+						<td>
+							<s:if test='#member.officer'>
+								<s:property value="position" />
+							</s:if>
+							<s:else>
+								Member
+							</s:else>
+							
+						</td>
 						<td><s:property value="gender" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td>
