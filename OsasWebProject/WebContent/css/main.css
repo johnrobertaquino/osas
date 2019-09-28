@@ -368,7 +368,7 @@ img {
 	margin-top: 40px;
 }
 #contentBody {
-	height: 100vh;
+	height: 100%;
 }
 
 #contentBodyLeftPane {
@@ -481,11 +481,13 @@ img {
 
 .featureContent #contentBodyHolder {
     height: 100%;
+    display: table;
 }
 
 .featureContent #contentBodyLeftPane, .featureContent #contentBodyRightPane {
 	float: left;
 	height: 100%;
+	display: table-row;
 }
 
 .featureContent #contentBodyLeftPane {
