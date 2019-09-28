@@ -238,4 +238,14 @@ public class AddMemberAction extends AbstractAction {
 	public void setOfficerPhotoContentType(String officerPhotoContentType) {
 		this.officerPhotoContentType = officerPhotoContentType;
 	}
+
+	public String getOfficerPhotoFileName() {
+		return officerPhotoFileName;
+	}
+
+	public void setOfficerPhotoFileName(String officerPhotoFileName) {
+		this.officerPhotoFileName = officerPhotoFileName;
+	}
+	
+	
 }
