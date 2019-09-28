@@ -121,7 +121,7 @@
   										<a onclick="showScholarQualificationApprovePopup('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
   									<s:if test='scholarQualification.filename != null && scholarQualification.filename != ""'>
-  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> Download Attachment</a>
   									</s:if>
   								</div>
 							</div>

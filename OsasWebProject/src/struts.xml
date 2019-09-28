@@ -588,7 +588,8 @@
 		<!-- REPORT -->
 		<action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
 			<interceptor-ref name="userSessionStack"/>
-			<result name="success">/jsp/scholarshipReport.jsp</result> 
+			<result name="success">/jsp/scholarshipReport.jsp</result>
+			<result name="error" type="chain">home</result>  
 		</action>	
 						
 		<action name="sampleReport" class="org.pup.system.osas.ui.action.TestPrintAction">
@@ -596,6 +597,7 @@
 		
 		<action name="scholarsByAgencyAndProgramReport" class="org.pup.system.osas.ui.action.ScholarsByAgencyAndProgramReportAction">
 			<interceptor-ref name="userSessionStack"/>
+			<result name="error" type="chain">displayScholarshipReport</result>   
 		</action>
 		
 		<!-- DOWNLOAD -->
@@ -604,6 +606,9 @@
 		
 		<!-- REST WS -->
 		<action name="getScholarshipProgramListRestWS" class="org.pup.system.osas.ui.action.restws.GetScholarshipProgramListRestWS">
+		</action>
+		
+		<action name="getProgramListRestWS" class="org.pup.system.osas.ui.action.restws.GetProgramListRestWS">
 		</action>
 	</package>
 

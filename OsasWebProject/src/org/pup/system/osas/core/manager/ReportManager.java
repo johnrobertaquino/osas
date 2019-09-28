@@ -20,6 +20,8 @@ public class ReportManager {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		List<Scholar> scholarList = null;
 		
+		List<ScholarsByAgencyAndProgramReportData> scholarsByAgencyAndProgramReportDataList = null;
+		
 		Connection connection = null;
 		
 		try {
@@ -44,7 +46,11 @@ public class ReportManager {
 			ConnectionUtil.closeDbConnection(connection);
 		}
 		
-		return generateScholarsByAgencyAndProgramReportData(scholarList);
+		if (scholarList != null && !scholarList.isEmpty()) {
+			scholarsByAgencyAndProgramReportDataList = generateScholarsByAgencyAndProgramReportData(scholarList);
+		}
+		
+		return scholarsByAgencyAndProgramReportDataList;
 	}
 	
 	private List<ScholarsByAgencyAndProgramReportData> generateScholarsByAgencyAndProgramReportData(List<Scholar> scholarList) {

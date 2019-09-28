@@ -69,7 +69,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form id="scholarshipReportForm" target="_blank" action="scholarsByAgencyAndProgramReport" method="POST">
+				<form id="scholarshipReportForm" action="scholarsByAgencyAndProgramReport" method="POST">
     				<div class="rightPaneElement withTitle">
     				    <span>Semester</span>
 	    				<div>
@@ -84,16 +84,14 @@
     				    <span>Scholarship Program</span>
 	    				<div>
 		    				<select name="scholarshipProgramId" id="scholarshipProgramId">
-		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
-		    					</s:iterator>
 							</select>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">
-    				    <span>Program</span>
+						<span>Program</span>
 	    				<div>
-	    					<input type="text" name="program">
+		    				<select name="program" id="program">
+							</select>
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
@@ -102,7 +100,7 @@
 								<span>Cancel</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Publish Report</span>
+								<span>Download Report</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
