@@ -108,7 +108,7 @@
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
-							    <input type="checkbox" id="chkOfficer" />
+							    <input type="checkbox" id="chkOfficer" name="officer" />
 							    Officer
 							</label>
 						</div>
