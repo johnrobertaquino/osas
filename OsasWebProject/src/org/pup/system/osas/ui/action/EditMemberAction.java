@@ -63,7 +63,11 @@ public class EditMemberAction extends AbstractAction {
 			member.setFirstName(firstName);
 			member.setMiddleName(middleName);
 			member.setLastName(lastName);
-			member.setPosition(position);
+			if ("on".equalsIgnoreCase(officer)) {
+				member.setPosition(position);
+			} else {
+				member.setPosition(null);
+			}
 			member.setOfficer("on".equalsIgnoreCase(officer));
 			
 			if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {

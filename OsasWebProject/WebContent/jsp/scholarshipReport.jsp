@@ -73,7 +73,7 @@
     				<div class="rightPaneElement withTitle">
     				    <span>Semester</span>
 	    				<div>
-		    				<select name="semTermId">
+		    				<select name="semTermId" id="semTermId">
 		    					<s:iterator value="semTermList" status="rowStatus" var="semTerm">
 		    						<option value="${semTerm.semTermId}">${semTerm.semTermName}</option>
 		    					</s:iterator>
@@ -83,7 +83,7 @@
     				<div class="rightPaneElement withTitle">
     				    <span>Scholarship Program</span>
 	    				<div>
-		    				<select name="scholarshipProgramId">
+		    				<select name="scholarshipProgramId" id="scholarshipProgramId">
 		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 		    						<option value="${scholarshipProgram.scholarshipProgramId}">${scholarshipProgram.scholarshipProgramName}</option>
 		    					</s:iterator>

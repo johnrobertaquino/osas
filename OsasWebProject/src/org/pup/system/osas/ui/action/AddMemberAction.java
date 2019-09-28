@@ -68,7 +68,9 @@ public class AddMemberAction extends AbstractAction {
 			member.setMiddleName(middleName);
 			member.setLastName(lastName);
 			member.setProgram(new Program(program));
-			member.setPosition(position);
+			if ("on".equalsIgnoreCase(officer)) {
+				member.setPosition(position);
+			}
 			member.setOfficer("on".equalsIgnoreCase(officer));
 			
 			if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {

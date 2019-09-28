@@ -601,6 +601,10 @@
 		<!-- DOWNLOAD -->
 		<action name="download" class="org.pup.system.osas.ui.action.DownloadFileAction">
 		</action>
+		
+		<!-- REST WS -->
+		<action name="getScholarshipProgramListRestWS" class="org.pup.system.osas.ui.action.restws.GetScholarshipProgramListRestWS">
+		</action>
 	</package>
 
 </struts>	

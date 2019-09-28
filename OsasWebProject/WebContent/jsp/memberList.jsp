@@ -105,7 +105,15 @@
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
-						<td><s:property value="position" /></td>
+						<td>
+							<s:if test='#member.officer'>
+								<s:property value="position" />
+							</s:if>
+							<s:else>
+								Member
+							</s:else>
+							
+						</td>
 						<td><s:property value="gender" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td>
