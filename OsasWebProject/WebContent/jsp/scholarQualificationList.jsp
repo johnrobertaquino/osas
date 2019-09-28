@@ -102,7 +102,7 @@
 								<s:property value="scholarQualification.notes" />
 							</s:if>
 						</td>
-						<td><s:property value="scholarshipQualification.dateSubmitted" /></td>
+						<td><s:date name="scholarQualification.dateSubmitted" format="MM/dd/yyyy" /></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
@@ -121,7 +121,7 @@
   										<a onclick="showScholarQualificationApprovePopup('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
   									<s:if test='scholarQualification.filename != null && scholarQualification.filename != ""'>
-  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> Download Attachment</a>
   									</s:if>
   								</div>
 							</div>

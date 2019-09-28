@@ -76,10 +76,11 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Date Submitted</span>
-    					<div><input id="dateSubmitted" name="dateSubmitted" type="text" value="${organizationQualification.dateSubmitted}"></div>
+    					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
-    							$("#dateSubmitted").datepicker();
+    							$("#dateSubmitted").datepicker({maxDate: 0});
+    							$("#dateSubmitted").datepicker("setDate","<s:date name="scholarQualification.dateSubmitted" format="MM/dd/yyyy" />");
     							
     						});
     					</script>

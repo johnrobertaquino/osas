@@ -3,10 +3,8 @@ package org.pup.system.osas.ui.action;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.ScholarshipQualification;
 import org.pup.system.osas.core.manager.ScholarManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
-import org.pup.system.osas.core.manager.ScholarshipQualificationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddScholarAction extends AbstractAction {

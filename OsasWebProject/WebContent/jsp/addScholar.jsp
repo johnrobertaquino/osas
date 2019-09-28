@@ -100,7 +100,7 @@
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
 		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<input type="radio" id="gender" name="gender" value="F">
 		    				<span>Female</span>
 		    			</div>
     				</div>

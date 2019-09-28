@@ -2,7 +2,6 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
-import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
 import org.pup.system.osas.core.manager.OrganizationRequirementManager;
 import org.pup.system.osas.exception.BusinessException;

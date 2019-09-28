@@ -25,15 +25,14 @@ $(document).ready(function() {
         return isValid;
     });
 	
-	 $(function () {
-	        $("#chkOfficer").click(function () {
-	            if ($(this).is(":checked")) {
-	                $("#divOfficer").show();
-	            } else {
-	                $("#divOfficer").hide();
-	            }
-	        });
-	    });
+	 
+	$("#chkOfficer").click(function () {
+		if ($(this).is(":checked")) {
+			$("#divOfficer").show();
+		} else {
+			$("#divOfficer").hide();
+		}
+	});
 	
 	$("#section").keypress(function (e) {
         var keyCode = e.keyCode || e.which;

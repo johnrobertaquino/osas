@@ -64,7 +64,7 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addMemberContent" id="memberForm" action="addMember" method="POST">
+				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
 	    				<div>
@@ -113,10 +113,9 @@
 							</label>
 						</div>
     				</div>
-    				<br><div class="rightPaneElement withTitle">
-    					<div id="divOfficer" style="display: none">
-	    					<div>
-	    						<div id="officerPhotoDisplay"><img src="" alt="photo"/></div>			 
+    				<br><div class="rightPaneElement withTitle" id="divOfficer" style="display: none">
+    					<div>
+	    					<div>		 
 		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
 		    				</div>
 	    					<div>
@@ -130,7 +129,7 @@
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
 		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<input type="radio" id="gender" name="gender" value="F">
 		    				<span>Female</span>
 		    			</div>
     				</div>

@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
-import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.dao.OrganizationRequirementDAO;
-import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
 
 public class OrganizationRequirementManager {

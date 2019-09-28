@@ -4,6 +4,7 @@ import java.util.List;
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.MemberDAO;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
 
 public class MemberManager 
 {
@@ -41,6 +42,13 @@ public class MemberManager
 			
 			member = memberDAO.getMemberByMemberId(memberId);
 			
+			if (member != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+			
+				Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
+				member.setOrganization(organization);
+			}
+			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
 			throw e;
@@ -64,6 +72,15 @@ public class MemberManager
 			
 			memberList = memberDAO.getMemberList(semTermId);
 			
+			if (memberList != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				
+				for (Member member : memberList) {
+					Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
+					member.setOrganization(organization);
+				}
+			}
+			
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -85,6 +102,15 @@ public class MemberManager
 			memberDAO = new MemberDAO(connection);
 			
 			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText, semTermId);
+			
+			if (memberList != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				
+				for (Member member : memberList) {
+					Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
+					member.setOrganization(organization);
+				}
+			}
 			
 		} catch (Exception e) {
 			throw e;

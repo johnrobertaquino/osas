@@ -1,7 +1,6 @@
 package org.pup.system.osas.ui.action;
 
 import org.pup.system.osas.core.domain.Program;
-import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
