@@ -68,7 +68,7 @@
 					<input type="hidden" name="organizationId" value="${organizationId}" />
 				</form>
 				<form class="addOrganizationQualificationContent" id="addOrganizationQualificationForm" action="addOrganizationQualification" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="organizationshipQualificationId" value="${organizationshipQualificationId}" />
+					<input type="hidden" name="organizationRequirementId" value="${organizationRequirementId}" />
 					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Notes</span>

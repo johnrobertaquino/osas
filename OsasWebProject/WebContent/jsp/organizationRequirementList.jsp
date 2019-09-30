@@ -83,6 +83,7 @@
 				<div class="button" id="addOrganizationRequirementButton">ADD ORGANIZATION REQUIREMENT</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Requirement/s Name</th>
@@ -105,6 +106,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

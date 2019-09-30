@@ -16,7 +16,7 @@ public class AgencyDAO extends DAO {
 		super(connection);
 	}
 	
-	public Agency getAgencyByAgencyName(String agencyName) throws Exception {
+	public Agency getAgencyByAgencyName(String agencyName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -27,7 +27,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName='" + agencyName + "'");  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName='" + agencyName + "' AND SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				agency = new Agency();

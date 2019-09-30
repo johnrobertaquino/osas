@@ -8,6 +8,37 @@ import org.pup.system.osas.core.domain.Organization;
 
 public class MemberManager 
 {
+	
+	public Member validate(String studentNumber, String firstName, String middleName, String lastName, int organizationId, int semTermId) throws Exception {
+		MemberDAO memberDAO = null;
+		Member member = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			memberDAO = new MemberDAO(connection);
+			
+			member = memberDAO.getMemberByMemberNameAndStudentNumber(studentNumber, firstName, middleName, lastName, organizationId, semTermId);
+			
+			if (member != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+			
+				Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
+				member.setOrganization(organization);
+			}
+			
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return member;
+	}
+	
 	public void insertMember(Member member) throws Exception {
 		MemberDAO memberDAO = null;
 		Connection connection = null;

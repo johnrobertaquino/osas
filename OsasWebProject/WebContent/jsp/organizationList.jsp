@@ -84,6 +84,7 @@
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Logo</th>
@@ -120,6 +121,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

@@ -78,6 +78,7 @@
 				<div class="button" id="addMemberButton">ADD MEMBER</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Officer Photo</th>
@@ -131,6 +132,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

@@ -9,7 +9,7 @@ import org.pup.system.osas.core.domain.OrganizationRequirement;
 
 public class OrganizationRequirementManager {
 
-	public OrganizationRequirement validate(String organizationRequirementName) throws Exception {
+	public OrganizationRequirement validate(String organizationRequirementName, int semTermId) throws Exception {
 		OrganizationRequirementDAO organizationRequirementDAO = null;
 		OrganizationRequirement organizationRequirement = null;
 
@@ -20,7 +20,7 @@ public class OrganizationRequirementManager {
 
 			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
 
-			organizationRequirement = organizationRequirementDAO.getOrganizationRequirementByOrganizationRequirementName(organizationRequirementName);
+			organizationRequirement = organizationRequirementDAO.getOrganizationRequirementByOrganizationRequirementName(organizationRequirementName, semTermId);
 
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);

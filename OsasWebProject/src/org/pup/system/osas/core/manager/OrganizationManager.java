@@ -10,7 +10,7 @@ import org.pup.system.osas.core.domain.OrganizationType;
 
 public class OrganizationManager {
 	
-	public Organization validate(String organizationName) throws Exception {
+	public Organization validate(String organizationName, int semTermId) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		Organization organization = null;
 		OrganizationType organizationTypeCode = null;
@@ -22,7 +22,7 @@ public class OrganizationManager {
 			
 			organizationDAO = new OrganizationDAO(connection);
 			
-			organization = organizationDAO.getOrganizationByOrganizationName(organizationName);
+			organization = organizationDAO.getOrganizationByOrganizationName(organizationName, semTermId);
 			
 			if (organization != null) {
 				organizationTypeCode = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeName());

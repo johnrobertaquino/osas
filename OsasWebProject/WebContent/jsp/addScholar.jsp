@@ -78,21 +78,21 @@
 					<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>Student Number</span>
-	    					<div><input id="studentNumber" name="studentNumber" type="text"></div>
+	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
@@ -106,11 +106,11 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Email</span>
-    					<div><input id="email" name="email" type="text"></div>
+    					<div><input id="email" name="email" type="text" value="${email}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
@@ -124,15 +124,15 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
-    					<div><input id="year" name="year" type="text"></div>
+    					<div><input id="year" name="year" type="text" value="${year}"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
     					<span>Section</span>
-    					<div><input id="section" name="section" type="text"></div>
+    					<div><input id="section" name="section" type="text" value="${section}"></div>
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span>GWA</span>
-    					<div><input id="gwa" name="gwa" type="text"></div>
+    					<div><input id="gwa" name="gwa" type="text" value="${gwa}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

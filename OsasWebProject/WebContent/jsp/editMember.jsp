@@ -118,15 +118,6 @@
 			    				</div>
 		    				</div>
 	    			</div>
-	    			<div class="rightPaneElement withTitle">
-    					<span>Gender</span>
-	    				<div id="roleDiv">
-		    				<input type="radio" id="gender" name="gender" value="M" <s:if test='member.gender == "M"'>checked</s:if>>
-		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" <s:if test='member.gender == "F"'>checked</s:if>>
-		    				<span>Female</span>
-		    			</div>
-    				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>

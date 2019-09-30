@@ -80,6 +80,7 @@
 				<div class="button" id="addScholarshipProgramButton">ADD SCHOLARSHIP PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Agency Name</th>
@@ -106,6 +107,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

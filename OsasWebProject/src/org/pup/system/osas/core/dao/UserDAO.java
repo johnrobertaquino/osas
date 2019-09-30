@@ -19,7 +19,7 @@ public class UserDAO extends DAO {
 		super(connection);
 	}
 
-	public User getUserByFullName(String firstName, String lastName) throws Exception {
+	public User getUserByFullName(String firstName, String middleName, String lastName) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class UserDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND LastName='" + lastName + "'");  
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND MiddleName='"+ middleName +"' AND LastName='" + lastName + "'");  
 			
 			if (resultSet.next()) {
 				user = new User();

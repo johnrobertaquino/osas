@@ -11,7 +11,7 @@ import org.pup.system.osas.core.domain.SemTerm;
 
 public class AgencyManager {
 	
-	public Agency validate(String agencyName) throws Exception {
+	public Agency validate(String agencyName, int semTermId) throws Exception {
 		AgencyDAO agencyDAO = null;
 		Agency agency;
 		Connection connection = null;
@@ -21,7 +21,7 @@ public class AgencyManager {
 			
 			agencyDAO = new AgencyDAO(connection);
 			
-			agency = agencyDAO.getAgencyByAgencyName(agencyName);
+			agency = agencyDAO.getAgencyByAgencyName(agencyName, semTermId);
 			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);

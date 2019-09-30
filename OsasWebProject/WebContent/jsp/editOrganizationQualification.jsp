@@ -79,8 +79,8 @@
     					<div><input id="dateSubmitted" name="dateSubmitted" type="text" value="${organizationQualification.dateSubmitted}"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
-    							$("#dateSubmitted").datepicker();
-    							
+    							$("#dateSubmitted").datepicker({maxDate: 0});
+    							$("#dateSubmitted").datepicker("setDate","<s:date name="organizationQualification.dateSubmitted" format="MM/dd/yyyy" />");
     						});
     					</script>
     				</div>

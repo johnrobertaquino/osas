@@ -80,6 +80,7 @@
 				<div class="button" id="addUserButton">ADD USER</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Username</th>
@@ -120,6 +121,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

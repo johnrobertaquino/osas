@@ -79,6 +79,7 @@
 				<div class="button" id="addAgencyButton">ADD AGENCY</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Agency name</th>
@@ -108,6 +109,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

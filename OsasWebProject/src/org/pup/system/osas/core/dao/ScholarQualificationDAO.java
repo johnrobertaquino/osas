@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Date;
 import org.pup.system.osas.core.domain.ScholarQualification;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarQualificationDAO extends DAO {
 
@@ -13,7 +17,7 @@ public class ScholarQualificationDAO extends DAO {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	
+		
 	public ScholarQualification getScholarQualificationByScholarshipQualificationIdAndScholarId(
 			int scholarshipQualificationId, int scholarId) throws Exception {
 		Connection connection = null;

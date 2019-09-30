@@ -131,4 +131,6 @@ public class OrganizationQualification {
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
+	
+	
 }

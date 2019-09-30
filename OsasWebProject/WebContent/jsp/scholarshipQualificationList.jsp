@@ -87,6 +87,7 @@
 				<div class="button" id="addScholarshipQualificationButton">ADD SCHOLARSHIP QUALIFICATION</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Qualification Name</th>
@@ -112,6 +113,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

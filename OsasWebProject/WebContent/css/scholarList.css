@@ -16,6 +16,10 @@
     margin-top: -50px;
 }
 
+#scholarListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
 @charset "ISO-8859-1";
 #scholarListContentBody #contentBodyRightPane {
 	width: inherit;

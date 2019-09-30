@@ -79,6 +79,7 @@
 				<div class="button" id="addProgramButton">ADD PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Program Code</th>
@@ -105,6 +106,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

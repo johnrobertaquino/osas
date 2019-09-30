@@ -6,8 +6,6 @@ public class OrganizationRequirementQualification {
 	
 	private OrganizationQualification organizationQualification;
 
-	
-	
 	public String getStatusText() {
 		String status = "NOT SUBMITTED";
 		String statusCode = getStatus();

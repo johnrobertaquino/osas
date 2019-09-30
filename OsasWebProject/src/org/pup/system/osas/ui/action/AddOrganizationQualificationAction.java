@@ -60,7 +60,7 @@ public class AddOrganizationQualificationAction extends AbstractAction {
 			if("on".equalsIgnoreCase(addAttachment)) {
 				organizationQualification.setFileName(fileNameFileName);
 			
-				String filePath = "C:/OSAS/organizationAttachment";
+				String filePath = "C:/OSAS/Organization/OrganizationAttachment";
 				fileToCreate = new File(filePath, fileNameFileName);
 			
 				FileUtils.copyFile(fileName, fileToCreate);
@@ -68,7 +68,7 @@ public class AddOrganizationQualificationAction extends AbstractAction {
 			
 			organizationRequirementQualificationManager.insertOrganizationQualification(organizationQualification);
 			
-			notificationMessage = "Scholar Requirement has been submitted.";
+			notificationMessage = "Organization Requirement has been submitted.";
 		} catch (BusinessException be) {
 			if("on".equalsIgnoreCase(addAttachment)) {
 				if (fileToCreate != null) {
@@ -114,34 +114,12 @@ public class AddOrganizationQualificationAction extends AbstractAction {
 		return actionResult;
 	}
 
-	/**
-	 * @return the scholarshipQualificationId
-	 */
-	public int getOrganizationRequirementId() {
-		return organizationRequirementId;
-	}
-
-	/**
-	 * @param scholarshipQualificationId the scholarshipQualificationId to set
-	 */
-	public void setOrganizationRequirementId(int organizationRequirementId) {
-		this.organizationRequirementId = organizationRequirementId;
-	}
-
 	public String getNotes() {
 		return notes;
 	}
 
 	public void setNotes(String notes) {
 		this.notes = notes;
-	}
-
-	public int getOrganizationId() {
-		return organizationId;
-	}
-
-	public void setorganizationIdId(int organizationId) {
-		this.organizationId = organizationId;
 	}
 
 	public File getFileName() {
@@ -168,6 +146,30 @@ public class AddOrganizationQualificationAction extends AbstractAction {
 		this.fileNameFileName = fileNameFileName;
 	}
 
+	public String getDateSubmitted() {
+		return dateSubmitted;
+	}
+
+	public void setDateSubmitted(String dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
+	}
+
+	public int getOrganizationRequirementId() {
+		return organizationRequirementId;
+	}
+
+	public void setOrganizationRequirementId(int organizationRequirementId) {
+		this.organizationRequirementId = organizationRequirementId;
+	}
+
+	public int getOrganizationId() {
+		return organizationId;
+	}
+
+	public void setOrganizationId(int organizationId) {
+		this.organizationId = organizationId;
+	}
+
 	public String getAddAttachment() {
 		return addAttachment;
 	}
@@ -175,19 +177,5 @@ public class AddOrganizationQualificationAction extends AbstractAction {
 	public void setAddAttachment(String addAttachment) {
 		this.addAttachment = addAttachment;
 	}
-
-	/**
-	 * @return the dateSubmitted
-	 */
-	public String getDateSubmitted() {
-		return dateSubmitted;
-	}
-
-	/**
-	 * @param dateSubmitted the dateSubmitted to set
-	 */
-	public void setDateSubmitted(String dateSubmitted) {
-		this.dateSubmitted = dateSubmitted;
-	}
-
+	
 }

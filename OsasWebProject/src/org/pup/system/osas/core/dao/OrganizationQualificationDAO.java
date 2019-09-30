@@ -15,7 +15,7 @@ public class OrganizationQualificationDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public OrganizationQualification getOrganizationQualificationByOrganizationshipRequirementIdAndOrganizationId(
+	public OrganizationQualification getOrganizationQualificationByOrganizationRequirementIdAndOrganizationId(
 			int organizationRequirementId, int organizationId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
@@ -28,7 +28,7 @@ public class OrganizationQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM Organizationqualification WHERE OrganizationRequirementId="
+					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM organizationqualification WHERE OrganizationRequirementId="
 							+ organizationRequirementId + " AND OrganizationId=" + organizationId);
 
 			if (resultSet.next()) {
@@ -63,7 +63,7 @@ public class OrganizationQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM Organizationqualification WHERE OrganizationQualificationId="
+					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM organizationqualification WHERE OrganizationQualificationId="
 							+ organizationQualificationId);
 
 			if (resultSet.next()) {
@@ -94,7 +94,7 @@ public class OrganizationQualificationDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO Organizationqualification(OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId) VALUES (?, ?, ?, ?, ?)",
+					"INSERT INTO organizationqualification(OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId) VALUES (?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, organizationQualification.getOrganizationRequirementId());
 			statement.setBoolean(2, organizationQualification.isQualified());
@@ -127,7 +127,7 @@ public class OrganizationQualificationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE Organizationqualification SET OrganizationRequirementId=?, Qualified=?, Notes=?, DateSubmitted=?, Filename=?, OrganizationId=? WHERE OrganizationQualificationId=?");
+			statement = connection.prepareStatement("UPDATE organizationqualification SET OrganizationRequirementId=?, Qualified=?, Notes=?, DateSubmitted=?, Filename=?, OrganizationId=? WHERE OrganizationQualificationId=?");
 			statement.setInt(1, organizationQualification.getOrganizationRequirementId());
 			statement.setBoolean(2, organizationQualification.isQualified());
 			statement.setString(3, organizationQualification.getNotes());

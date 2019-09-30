@@ -28,6 +28,11 @@
 	float: left;
 }
 
+#scholarshipProgramListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
+
 @media only screen and (max-width: 1550px) {
   	#scholarshipProgramListContentBody #contentBodyLeftPane	{
 		width: 200px;

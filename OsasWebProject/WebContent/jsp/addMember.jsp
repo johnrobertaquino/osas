@@ -78,29 +78,29 @@
 					<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>Student Number</span>
-	    					<div><input id="studentNumber" name="studentNumber" type="text"></div>
+	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}">${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}">${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
@@ -108,7 +108,7 @@
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
-							    <input type="checkbox" id="chkOfficer" name="officer" />
+							    <input type="checkbox" id="chkOfficer" name="officer"/>
 							    Officer
 							</label>
 						</div>
@@ -120,7 +120,7 @@
 		    				</div>
 	    					<div>
 		    					<span>Position</span>
-		    					<div><input id="position" name="position" type="text"></div>
+		    					<div><input id="position" name="position" type="text" value="${position}"></div>
 	    					</div>
     					</div>
     				</div>
@@ -135,15 +135,15 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
-    					<div><input id="year" name="year" type="text"></div>
+    					<div><input id="year" name="year" type="text" value="${year}"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
     					<span>Section</span>
-    					<div><input id="section" name="section" type="text"></div>
+    					<div><input id="section" name="section" type="text" value="${section}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

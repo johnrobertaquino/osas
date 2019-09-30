@@ -18,7 +18,7 @@ public class ScholarDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Scholar getScholarByScholarFullNameAndStudentNumber(String studentNumber, String firstName, String lastName, int scholarshipProgramId) throws Exception {
+	public Scholar getScholarByScholarFullNameAndStudentNumber(String studentNumber, String firstName, String lastName, int scholarshipProgramId, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -29,7 +29,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT ScholarId, StudentNumber, FirstName, MiddleName, LastName, Gender, Email, ContactNumber, Program, Year, Section, GWA, ScholarshipProgramId FROM scholar WHERE StudentNumber='" + studentNumber+ "' AND FirstName='" +firstName+ "' AND LastName='"+lastName+"' AND ScholarshipProgramId="+scholarshipProgramId);  
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholar.StudentNumber='" + studentNumber+ "' AND scholar.FirstName='" +firstName+ "' AND scholar.LastName='"+lastName+"' AND scholar.ScholarshipProgramId="+scholarshipProgramId+" AND agency.SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				scholar = new Scholar();

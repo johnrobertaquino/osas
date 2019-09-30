@@ -7,8 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.core.manager.OrganizationManager;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddMemberAction extends AbstractAction {
@@ -19,6 +21,8 @@ public class AddMemberAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -4484162865895061330L;
 
+	private static final String FORWARD_DISPLAYADDMEMBER = "displayAddMember";
+	
 	private int memberId;
 	
 	private String studentNumber;
@@ -49,7 +53,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String contactNumber;
 	
-	private String organizationId;
+	private int organizationId;
 	
 	@Override
 	public String execute() throws Exception {
@@ -60,37 +64,48 @@ public class AddMemberAction extends AbstractAction {
 		
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
-			Organization organization = organizationManager.getOrganization(Integer.parseInt(organizationId));
+			Organization organization = organizationManager.getOrganization(organizationId);
 			
-			Member member = new Member();
-			member.setStudentNumber(studentNumber);
-			member.setFirstName(firstName);
-			member.setMiddleName(middleName);
-			member.setLastName(lastName);
-			member.setProgram(new Program(program));
-			if ("on".equalsIgnoreCase(officer)) {
-				member.setPosition(position);
-			}
-			member.setOfficer("on".equalsIgnoreCase(officer));
-			
-			if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
-				member.setOfficerPhoto(officerPhotoFileName);
-				
-				String filePath = "C:/OSAS/Organization/Member";
-				fileToCreate = new File(filePath, officerPhotoFileName);
-				
-				FileUtils.copyFile(officerPhoto, fileToCreate);
-			}
-			member.setGender(gender);
-			member.setYear(year);
-			member.setSection(section);
-			member.setContactNumber(contactNumber);
-			member.setOrganization(organization);
-		
 			MemberManager memberManager = new MemberManager();
-			memberManager.insertMember(member);
+
+			Member existingMember = null;
+			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
+			if (existingMember != null && memberId != existingMember.getMemberId() && organizationId == existingMember.getOrganization().getOrganizationId()) {
+				notificationMessage = "Member already exist.";
+				return FORWARD_DISPLAYADDMEMBER;
+			}
+			else
+			{
+				Member member = new Member();
+				member.setStudentNumber(studentNumber);
+				member.setFirstName(firstName);
+				member.setMiddleName(middleName);
+				member.setLastName(lastName);
+				member.setProgram(new Program(program));
+				if ("on".equalsIgnoreCase(officer)) {
+					member.setPosition(position);
+				}
+				member.setOfficer("on".equalsIgnoreCase(officer));
+				
+				if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
+					member.setOfficerPhoto(officerPhotoFileName);
+					
+					String filePath = "C:/OSAS/Organization/Member";
+					fileToCreate = new File(filePath, officerPhotoFileName);
+					
+					FileUtils.copyFile(officerPhoto, fileToCreate);
+				}
+				member.setGender(gender);
+				member.setYear(year);
+				member.setSection(section);
+				member.setContactNumber(contactNumber);
+				member.setOrganization(organization);
 			
-			notificationMessage = "Member has been successfully added.";
+				memberManager.insertMember(member);
+				
+				notificationMessage = "Member has been successfully added.";
+			}
+		
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -193,11 +208,11 @@ public class AddMemberAction extends AbstractAction {
 		this.section = section;
 	}
 
-	public String getOrganizationId() {
+	public int getOrganizationId() {
 		return organizationId;
 	}
 
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
 

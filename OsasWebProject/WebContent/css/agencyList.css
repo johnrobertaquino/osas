@@ -28,6 +28,10 @@
 	float: left;
 }
 
+#agencyListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
 @media only screen and (max-width: 1550px) {
   	#agencyListContentBody #contentBodyLeftPane	{
 		width: 200px;
