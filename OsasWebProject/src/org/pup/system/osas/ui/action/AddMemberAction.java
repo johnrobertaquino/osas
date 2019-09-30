@@ -69,6 +69,8 @@ public class AddMemberAction extends AbstractAction {
 			Member existingMember = null;
 			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
 			if (existingMember != null) {
+				System.out.println("CURRENT : " + studentNumber + "|" + firstName + "|" + middleName + "|" + lastName + "|" + organizationId);
+				System.out.println("EXISTING: " + existingMember.getStudentNumber() + "|" + existingMember.getFirstName() + "|" + existingMember.getMiddleName() + "|" + existingMember.getLastName() + "|" + existingMember.getOrganization().getOrganizationId());
 				notificationMessage = "Member already exist.";
 				return FORWARD_DISPLAYADDMEMBER;
 			}
