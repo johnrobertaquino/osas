@@ -223,6 +223,4 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 		this.yearlyCheck = yearlyCheck;
 	}
 	
-	
-
 }

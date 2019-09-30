@@ -135,10 +135,10 @@ public class OrganizationQualificationDAO extends DAO {
 			statement.setBoolean(2, organizationQualification.isQualified());
 			statement.setString(3, organizationQualification.getNotes());
 			statement.setDate(4, new Date(organizationQualification.getDateSubmitted().getTime()));
-			statement.setBoolean(6, organizationQualification.isYearlyCheck());
-			statement.setString(7, organizationQualification.getFileName());
-			statement.setInt(8, organizationQualification.getOrganizationId());
-			statement.setInt(9, organizationQualification.getOrganizationQualificationId());
+			statement.setBoolean(5, organizationQualification.isYearlyCheck());
+			statement.setString(6, organizationQualification.getFileName());
+			statement.setInt(7, organizationQualification.getOrganizationId());
+			statement.setInt(8, organizationQualification.getOrganizationQualificationId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

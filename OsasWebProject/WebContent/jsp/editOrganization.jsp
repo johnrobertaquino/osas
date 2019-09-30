@@ -87,6 +87,7 @@
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    				<div id="programDiv">
     					<span>Program</span>
     					<div>
     						<select name="program">
@@ -95,6 +96,7 @@
 		    					</s:iterator>
 							</select>
 						</div>
+    				</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Adviser</span>
