@@ -79,7 +79,8 @@ public class MemberManager
 				} 
 				else {
 					memberDAO.insertMember(member);
-				}
+				} 
+
 			}
 			
 			connection.commit();
