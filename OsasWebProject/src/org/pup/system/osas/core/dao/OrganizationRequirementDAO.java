@@ -17,7 +17,7 @@ public class OrganizationRequirementDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementName(String organizationRequirementName) throws Exception {
+	public OrganizationRequirement getOrganizationRequirementByOrganizationRequirementName(String organizationRequirementName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class OrganizationRequirementDAO extends DAO {
 
 			resultSet = statement.executeQuery(
 					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementName='"
-							+ organizationRequirementName + "'");
+							+ organizationRequirementName + "' AND SemTermId="+semTermId);
 
 			if (resultSet.next()) {
 				organizationRequirement = new OrganizationRequirement();
