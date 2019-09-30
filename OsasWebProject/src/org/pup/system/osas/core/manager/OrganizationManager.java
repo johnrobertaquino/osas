@@ -101,9 +101,13 @@ public class OrganizationManager {
 		organizationList = organizationDAO.getOrganizationList(semTermId);
 		
 		if (organizationList != null) {
+			OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
+			
 			for(Organization organization : organizationList) {
 				organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
 				organization.setOrganizationType(organizationType);
+				
+				organization.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTermId));
 			}
 		}	
 			

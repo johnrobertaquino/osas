@@ -92,6 +92,7 @@
 					<th>Organization Type</th>
 					<th>Program </th>
 					<th>Adviser</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
@@ -105,6 +106,7 @@
 						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program.programCode" /></td>
  						<td><s:property value="adviser" /></td>
+ 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
