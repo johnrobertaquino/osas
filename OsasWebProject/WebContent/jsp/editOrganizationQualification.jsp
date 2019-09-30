@@ -85,6 +85,10 @@
     					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test="%{organizationQualification.yearlyCheck}">checked</s:if>></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
     					<span>Add Attachment</span>
     					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
     				</div>

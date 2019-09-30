@@ -91,6 +91,7 @@
 					<th>Qualification Name</th>
 					<th>Notes</th>
 					<th>Date Submitted</th>
+					<th>Yearly Check</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
@@ -103,6 +104,7 @@
 							</s:if>
 						</td>
 						<td><s:property value="organizationQualification.dateSubmitted" /></td>
+						<td><s:if test="#organizationQualification.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">

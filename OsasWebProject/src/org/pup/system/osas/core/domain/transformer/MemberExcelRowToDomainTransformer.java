@@ -79,6 +79,6 @@ public class MemberExcelRowToDomainTransformer extends ExcelRowToDomainTransform
 
 	@Override
 	protected List<Validator> getPostValidatorList() {
-		return new ArrayList<Validator>(Arrays.asList(new NotValidProgramYearValidator()));
+		return new ArrayList<Validator>(Arrays.asList(new MemberNotValidProgramYearValidator()));
 	}
 }
