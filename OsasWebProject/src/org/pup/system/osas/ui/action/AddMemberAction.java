@@ -7,14 +7,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
-import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.core.manager.OrganizationManager;
-import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddMemberAction extends AbstractAction {
-
+	
 
 	/**
 	 * 
@@ -70,7 +68,7 @@ public class AddMemberAction extends AbstractAction {
 
 			Member existingMember = null;
 			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
-			if (existingMember != null && memberId != existingMember.getMemberId() && organizationId == existingMember.getOrganization().getOrganizationId()) {
+			if (existingMember != null) {
 				notificationMessage = "Member already exist.";
 				return FORWARD_DISPLAYADDMEMBER;
 			}
