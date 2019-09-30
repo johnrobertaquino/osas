@@ -5,6 +5,7 @@ import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.MemberDAO;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.exception.BusinessException;
 
 public class MemberManager 
 {
@@ -49,6 +50,37 @@ public class MemberManager
 			memberDAO = new MemberDAO(connection);
 			
 			memberDAO.insertMember(member);
+			
+			connection.commit();
+			
+		} catch (Exception e) {
+			ConnectionUtil.rollbackConnection(connection);
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+	}
+	
+	public void insertMemberList(List<Member> memberList, int semTermId) throws Exception {
+		MemberDAO memberDAO = null;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			memberDAO = new MemberDAO(connection);
+			
+			for (Member member : memberList) {
+				Member existingMember = null;
+				existingMember = validate(member.getStudentNumber(), member.getFirstName(), member.getMiddleName(), member.getLastName(), member.getOrganization().getOrganizationId(), semTermId);
+				
+				if (existingMember != null) {
+					throw new BusinessException("Member with student number " + member.getStudentNumber() + " matches one of our record.");
+				} 
+				else {
+					memberDAO.insertMember(member);
+				}
+			}
 			
 			connection.commit();
 			
