@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Member;
-import org.pup.system.osas.core.domain.Organization;
-import org.pup.system.osas.core.domain.Program;
 
 
 public class MemberDAO extends DAO {
@@ -19,7 +17,7 @@ public class MemberDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member getMemberByMemberNameAndStudentNumber(String studentNumber, String firstName, String middleName, String lastName, int organizationId, int semTermId) throws Exception {
+	public Member getMemberByMemberNameAndStudentNumber(String studentNumber, String firstName, String middleName, String lastName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +28,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.OrganizationId="+organizationId+" AND organization.SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				member = new Member();
@@ -48,9 +46,6 @@ public class MemberDAO extends DAO {
 				member.setSection(resultSet.getString("Section"));
 				member.setContactNumber(resultSet.getString("ContactNumber"));
 				
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				member.setOrganization(organization);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getMemberByMemberId method", e);
@@ -72,7 +67,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber, OrganizationId FROM member WHERE MemberId=" + memberId);  
+			resultSet = statement.executeQuery("SELECT MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber FROM member WHERE MemberId=" + memberId);  
 			
 			if (resultSet.next()) {
 				member = new Member();
@@ -90,9 +85,6 @@ public class MemberDAO extends DAO {
 				member.setSection(resultSet.getString("Section"));
 				member.setContactNumber(resultSet.getString("ContactNumber"));
 				
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				member.setOrganization(organization);
 			}
 		} catch (Exception e) {
 			throw new Exception("Error occurred while doing getMemberByMemberId method", e);
@@ -111,7 +103,7 @@ public class MemberDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO member(MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber, OrganizationId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO member(MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, member.getMemberId());
 			statement.setString(2, member.getStudentNumber());
 			statement.setString(3, member.getFirstName());
@@ -125,7 +117,6 @@ public class MemberDAO extends DAO {
 			statement.setString(11, member.getYear());
 			statement.setString(12, member.getSection());
 			statement.setString(13, member.getContactNumber());
-			statement.setInt(14, member.getOrganization().getOrganizationId());
 			
 			statement.executeUpdate();
 			
@@ -155,7 +146,12 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE organization.SemTermId=" + semTermId);
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
+					"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " + 
+					"member.Section, member.ContactNumber FROM member " + 
+					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.OrganizationId " + 
+					"WHERE memberorganizationreference.OrganizationId in " + 
+					"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ")");
 			
 			while (resultSet.next()) {
 				if (memberList == null) {
@@ -176,10 +172,6 @@ public class MemberDAO extends DAO {
 				member.setYear(resultSet.getString("Year"));
 				member.setSection(resultSet.getString("Section"));
 				member.setContactNumber(resultSet.getString("ContactNumber"));
-
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				member.setOrganization(organization);
 				
 				memberList.add(member);
 			}
@@ -204,7 +196,7 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE (StudentNumber LIKE '%"
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE (StudentNumber LIKE '%"
 					+ memberSearchText + "%' OR member.FirstName LIKE '%" + memberSearchText + "%' OR member.MiddleName LIKE '%" + memberSearchText + "%' OR member.LastName LIKE '%" + memberSearchText + "%' OR member.Program LIKE '%" + memberSearchText + "%' OR member.Position LIKE '%" + memberSearchText + "%') AND organization.SemTermId=" + semTermId);  
 			
 			while (resultSet.next()) {
@@ -226,10 +218,6 @@ public class MemberDAO extends DAO {
 				member.setSection(resultSet.getString("Section"));
 				member.setContactNumber(resultSet.getString("ContactNumber"));
 
-				Organization organization = new Organization();
-				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
-				member.setOrganization(organization);
-				
 				memberList.add(member);
 			}
 		} catch (Exception e) {
@@ -248,7 +236,7 @@ public class MemberDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE member SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Program=?, Officer=?, OfficerPhoto=?, Position=?, Gender=?, Year=?, Section=?, ContactNumber=?, OrganizationId=? WHERE MemberId=?");
+			statement = connection.prepareStatement("UPDATE member SET StudentNumber=?, FirstName=?, MiddleName=?, LastName=?, Program=?, Officer=?, OfficerPhoto=?, Position=?, Gender=?, Year=?, Section=?, ContactNumber=? WHERE MemberId=?");
 			statement.setString(1, member.getStudentNumber());
 			statement.setString(2, member.getFirstName());
 			statement.setString(3, member.getMiddleName());
@@ -261,8 +249,7 @@ public class MemberDAO extends DAO {
 			statement.setString(10, member.getYear());
 			statement.setString(11, member.getSection ());
 			statement.setString(12, member.getContactNumber());
-			statement.setInt(13, member.getOrganization().getOrganizationId());
-			statement.setInt(14, member.getMemberId());
+			statement.setInt(13, member.getMemberId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {
