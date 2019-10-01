@@ -17,13 +17,18 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1719224812724606894L;
+	private static final long serialVersionUID = 1745279384247781166L;
 
+	/**
+	 * 
+	 */
 	private int organizationQualificationId;
 
 	private String notes;
 	
 	private String dateSubmitted;
+	
+	private String yearlyCheck;
 
 	private File fileName;
 	
@@ -37,7 +42,7 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar > Qualifications";
+		pageName = "Manage Organization > Qualifications";
 
 		String actionResult = FORWARD_SUCCESS;
 		
@@ -47,25 +52,28 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organization = organizationManager.getOrganization(organizationId);
 			if (organization != null) {
-				pageName = "Manage Scholar > " + organization.getOrganizationName() + " > Qualifications";
+				pageName = "Manage Organization > " + organization.getOrganizationName() + " > Qualifications";
 			}
 			OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
-			OrganizationQualification organizationQualification = new OrganizationQualification();
+			OrganizationQualification organizationQualification = organizationRequirementQualificationManager.getOrganizationQualification(organizationQualificationId);
 			
 			organizationQualification.setNotes(notes);
 			organizationQualification.setDateSubmitted(new SimpleDateFormat("MM/dd/yyyy").parse(dateSubmitted));
+			organizationQualification.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 			organizationQualification.setQualified(false);
+			
 			if("on".equalsIgnoreCase(addAttachment)) {
 				organizationQualification.setFileName(fileNameFileName);
 			
-				String filePath = "C:/OSAS/scholarAttachment";
+				String filePath = "C:/OSAS/Organization/OrganizationAttachment";
 				fileToCreate = new File(filePath, fileNameFileName);
 			
 				FileUtils.copyFile(fileName, fileToCreate);
 			}
+			
 			organizationRequirementQualificationManager.saveOrganizationQualification(organizationQualification);
-
-			notificationMessage = "Scholar Requirement has been saved.";
+			
+			notificationMessage = "Organization Requirement has been saved.";
 		} catch (BusinessException be) {
 			if("on".equalsIgnoreCase(addAttachment)) {
 				if (fileToCreate != null) {
@@ -170,6 +178,8 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 	public void setDateSubmitted(String dateSubmitted) {
 		this.dateSubmitted = dateSubmitted;
 	}
+	
+	
 
 	/**
 	 * @return the organizationQualificationId
@@ -198,7 +208,19 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
-	
-	
 
+	/**
+	 * @return the yearlyCheck
+	 */
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	/**
+	 * @param yearlyCheck the yearlyCheck to set
+	 */
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
+	}
+	
 }

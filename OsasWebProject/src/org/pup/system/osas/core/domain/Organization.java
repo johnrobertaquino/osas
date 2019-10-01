@@ -1,5 +1,7 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.List;
+
 public class Organization {
 	
 	private int organizationId;
@@ -19,6 +21,8 @@ public class Organization {
 	private SemTerm semTerm;
 	
 	private String logoFileName;
+	
+	private List<OrganizationRequirementQualification> organizationRequirementQualificationList;
 
 	/**
 	 * @return the organizationId
@@ -140,4 +144,41 @@ public class Organization {
 	public void setSemTerm(SemTerm semTerm) {
 		this.semTerm = semTerm;
 	}
+
+	public List<OrganizationRequirementQualification> getOrganizationRequirementQualificationList() {
+		return organizationRequirementQualificationList;
+	}
+
+	public void setOrganizationRequirementQualificationList(
+			List<OrganizationRequirementQualification> organizationRequirementQualificationList) {
+		this.organizationRequirementQualificationList = organizationRequirementQualificationList;
+	}
+	
+	public String getStatusText() {
+		String statusText = "Approved";
+		boolean hasPendingReview = false;
+		boolean hasNotSubmitted = false;
+		
+		if (organizationRequirementQualificationList != null) {
+			for (OrganizationRequirementQualification organizationRequirementQualification : organizationRequirementQualificationList) {
+				if ("N".equals(organizationRequirementQualification.getStatus())) {
+					hasNotSubmitted = true;
+				} else if ("P".equals(organizationRequirementQualification.getStatus())) {
+					hasPendingReview = true;
+				}
+			}
+		}
+		
+		if (hasPendingReview && hasNotSubmitted) {
+			statusText = "Incomplete / Pending Approval";
+		} else if (hasPendingReview) {
+			statusText = "Pending Approval";
+		} else if (hasNotSubmitted) {
+			statusText = "Incomplete";
+		}
+		
+		return statusText;
+	}
+	
+	
 }

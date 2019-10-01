@@ -28,14 +28,15 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
 			
 			OrganizationRequirement existingOrganizationRequirement = null;
-			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName, getCurrentActiveTerm().getSemTermId());
 			
-			if(existingOrganizationRequirement != null)
+			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
 			{
 				notificationMessage = "Organization Requirement already exist.";
 				return FORWARD_DISPLAYADDORGANIZATIONREQUIREMENT;
 			}
 			else {
+				
 				OrganizationRequirement organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
 				organizationRequirement.setSemTerm(getCurrentActiveTerm());
@@ -58,26 +59,20 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 		return actionResult;
 	}
 
-	/**
-	 * @return the OrganizationRequirementId
-	 */
-	public String getOrganizationRequirementName() {
-		return organizationRequirementName;
-	}
-
-	/**
-	 * @param OrganizationRequirementId the OrganizationRequirementId to set
-	 */
-	public void setOrganizationRequirementName(String organizationRequirementName) {
-		this.organizationRequirementName = organizationRequirementName;
-	}
-	
 	public int getOrganizationRequirementId() {
 		return organizationRequirementId;
 	}
 
 	public void setOrganizationRequirementId(int organizationRequirementId) {
 		this.organizationRequirementId = organizationRequirementId;
+	}
+
+	public String getOrganizationRequirementName() {
+		return organizationRequirementName;
+	}
+
+	public void setOrganizationRequirementName(String organizationRequirementName) {
+		this.organizationRequirementName = organizationRequirementName;
 	}
 
 }

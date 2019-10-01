@@ -11,7 +11,7 @@ import org.pup.system.osas.core.domain.ScholarshipProgram;
 
 public class ScholarshipProgramManager {
 
-	public ScholarshipProgram validate(String scholarshipProgramName) throws Exception {
+	public ScholarshipProgram validate(String scholarshipProgramName, int semTermId) throws Exception {
 		ScholarshipProgramDAO scholarshipProgramDAO = null;
 		ScholarshipProgram scholarshipProgram;
 		Connection connection = null;
@@ -21,7 +21,7 @@ public class ScholarshipProgramManager {
 			
 			scholarshipProgramDAO = new ScholarshipProgramDAO(connection);
 			
-			scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramName(scholarshipProgramName);
+			scholarshipProgram = scholarshipProgramDAO.getScholarshipProgramByScholarshipProgramName(scholarshipProgramName, semTermId);
 			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);

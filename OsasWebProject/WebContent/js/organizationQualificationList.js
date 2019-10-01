@@ -30,13 +30,13 @@ $(document).ready(function() {
 
 function showOrganizationQualificationApprovePopup(organizationQualificationId) {
 	popUpOkCancel("Do you want to approve this organization requirement?", function() {
-		$("#approveOrganizationQualificationForm #organizationQualificationId").val(organizationRequirementId);
+		$("#approveOrganizationQualificationForm #organizationQualificationId").val(organizationQualificationId);
 		$("#approveOrganizationQualificationForm").submit();
 	});
 }
 
 function displayEditOrganizationQualification(organizationQualificationId) {
-	$("#editOrganizationQualificationForm #organizationQualificationId").val(organizationRequirementId);
+	$("#editOrganizationQualificationForm #organizationQualificationId").val(organizationQualificationId);
 	$("#editOrganizationQualificationForm").submit();
 }
 
@@ -45,7 +45,7 @@ function showAddOrganizationQualification(organizationRequirementId) {
 		$("#showAddOrganizationQualificationForm").submit();
 }
 
-function addOrganizationQualification(OrganizationQualificationId) {
+function addOrganizationQualification(organizationQualificationId) {
 	$('#addOrganizationQualificationSaveButton').click(function() {
 		$("#addOrganizationQualificationForm #organizationQualificationId").val(organizationQualificationId);
 		$("#addOrganizationQualificationForm").submit();

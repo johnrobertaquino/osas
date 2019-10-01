@@ -44,5 +44,11 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayOrganizationRequirementList";
 	});
+	
+	
+	$('#studentOrgReportsLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayOrganizationReport";
+	});
 });
 

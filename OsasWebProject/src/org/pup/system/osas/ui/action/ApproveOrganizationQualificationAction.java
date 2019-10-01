@@ -19,7 +19,7 @@ public class ApproveOrganizationQualificationAction extends AbstractAction {
 
 	@Override
 	public String execute() throws Exception {
-		pageName = "Manage Scholar > Qualifications";
+		pageName = "Manage Organization > Qualifications";
 		
 		String actionResult = FORWARD_SUCCESS;
 
@@ -35,7 +35,7 @@ public class ApproveOrganizationQualificationAction extends AbstractAction {
 			organizationQualification.setQualified(true);
 			
 			organizationRequirementQualificationManager.saveOrganizationQualification(organizationQualification);
-			notificationMessage = "Scholar Requirement has been approved.";
+			notificationMessage = "Organization Requirement has been approved.";
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

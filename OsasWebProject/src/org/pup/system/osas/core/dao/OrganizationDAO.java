@@ -19,7 +19,7 @@ public class OrganizationDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Organization getOrganizationByOrganizationName(String organizationName) throws Exception {
+	public Organization getOrganizationByOrganizationName(String organizationName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationName='" + organizationName +"'");  
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationName='" + organizationName +"' AND SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				organization = new Organization();

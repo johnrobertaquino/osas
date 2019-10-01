@@ -29,9 +29,12 @@
 		margin-left: 10px;
 }
 
-
 #scholarshipQualificationListContentBody #searchScholarshipQualificationButton {
 	float: left;
+}
+
+#scholarshipQualificationListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
 }
 
 @media only screen and (max-width: 1550px) {

@@ -18,7 +18,7 @@ public class ScholarshipProgramDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScholarshipProgram getScholarshipProgramByScholarshipProgramName(String scholarshipProgramName) throws Exception {
+	public ScholarshipProgram getScholarshipProgramByScholarshipProgramName(String scholarshipProgramName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,8 +30,7 @@ public class ScholarshipProgramDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT ScholarshipProgramId, ScholarshipProgramName, AgencyId FROM scholarshipprogram WHERE ScholarshipProgramName='"
-							+ scholarshipProgramName +"'");
+					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholarshipprogram.ScholarshipProgramName='"+scholarshipProgramName+"' AND agency.SemTermId="+ semTermId);
 
 			if (resultSet.next()) {
 				scholarshipProgram = new ScholarshipProgram();

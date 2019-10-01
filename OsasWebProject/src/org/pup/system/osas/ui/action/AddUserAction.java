@@ -47,7 +47,7 @@ public class AddUserAction extends AbstractAction{
 		try {
 			User existingUser = new User();
 			UserManager userManager = new UserManager();
-			existingUser = userManager.checkFullName(firstName, lastName);
+			existingUser = userManager.checkFullName(firstName, middleName, lastName);
 			
 			if(existingUser != null && userId != existingUser.getUserId())
 			{

@@ -56,7 +56,7 @@ public class AddScholarAction extends AbstractAction {
 			ScholarManager scholarManager = new ScholarManager();
 			
 			Scholar existingScholar = null;
-			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId);
+			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId, getCurrentActiveTerm().getSemTermId());
 			
 			
 			if (existingScholar != null && scholarId != existingScholar.getScholarId()) {

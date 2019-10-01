@@ -35,7 +35,7 @@ public class EditScholarshipQualificationAction extends AbstractAction {
 
 			if (existingScholarshipQualification != null
 					&& scholarshipQualificationId != existingScholarshipQualification.getScholarshipQualificationId()) {
-				notificationMessage = "Scholarship program already exist.";
+				notificationMessage = "Scholarship qualification already exist.";
 				return FORWARD_DISPLAYEDITSCHOLARSHIPQUALIFICATION;
 			} else {
 				ScholarshipQualification scholarshipQualification = scholarshipQualificationManager

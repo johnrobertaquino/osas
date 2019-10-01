@@ -36,6 +36,11 @@
 	float: left;
 }
 
+#memberListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
+
 @media only screen and (max-width: 1550px) {
   	#memberListContentBody #contentBodyLeftPane	{
 		width: 200px;

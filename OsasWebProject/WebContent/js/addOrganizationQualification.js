@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this organization qualification?", function() {
-				$("#addScholarQualificationForm").submit();
+				$("#addOrganizationQualificationForm").submit();
 			});
 		}
 		else {

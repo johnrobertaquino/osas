@@ -12,7 +12,7 @@ import org.pup.system.osas.core.domain.ScholarshipProgram;
 
 public class ScholarManager 
 {
-	public Scholar getValidateScholar(String studentNumber, String firstName, String lastName, int scholarshipProgramId) throws Exception {
+	public Scholar getValidateScholar(String studentNumber, String firstName, String lastName, int scholarshipProgramId, int semTermId) throws Exception {
 		ScholarDAO scholarDAO = null;
 		ScholarshipProgramManager scholarshipProgramManager = null;
 		Scholar scholar = null;
@@ -24,7 +24,7 @@ public class ScholarManager
 			
 			scholarDAO = new ScholarDAO(connection);
 			
-			scholar = scholarDAO.getScholarByScholarFullNameAndStudentNumber(studentNumber, firstName, lastName, scholarshipProgramId);
+			scholar = scholarDAO.getScholarByScholarFullNameAndStudentNumber(studentNumber, firstName, lastName, scholarshipProgramId, semTermId);
 			
 			if (scholar != null) {
 				scholarshipProgramManager = new ScholarshipProgramManager();
