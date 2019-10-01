@@ -14,6 +14,14 @@ public class DisplayEditAgencyAction extends AbstractAction  {
 	private String agencyId;
 	
 	private Agency agency;
+	
+	private String agencyName;
+	
+	private String address;
+	
+	private String contactPerson;
+	
+	private String contactNumber;
 
 	@Override
 	public String execute() throws Exception {
@@ -58,5 +66,28 @@ public class DisplayEditAgencyAction extends AbstractAction  {
 	public void setAgency(Agency agency) {
 		this.agency = agency;
 	}
-	
+	public String getAgencyName() {
+		return agencyName;
+	}
+	public void setAgencyName(String agencyName) {
+		this.agencyName = agencyName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getContactPerson() {
+		return contactPerson;
+	}
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
 }

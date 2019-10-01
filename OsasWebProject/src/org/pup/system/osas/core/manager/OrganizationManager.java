@@ -1,11 +1,13 @@
 package org.pup.system.osas.core.manager;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationRequirementQualification;
 import org.pup.system.osas.core.domain.OrganizationType;
 
 public class OrganizationManager {
@@ -120,6 +122,72 @@ public class OrganizationManager {
 		return organizationList;
 	}
 	
+	public List<Organization> getOrganizationList(int semTermId, String filter) throws Exception {
+		OrganizationDAO organizationDAO = null;
+		OrganizationRequirementQualificationManager organizationRequirementQualificationManager = null;
+		List<Organization> organizationList = null;
+		List<Organization> filteredOrganizationList = null;
+		
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			organizationDAO = new OrganizationDAO(connection);
+			
+			organizationList = organizationDAO.getOrganizationList(semTermId);
+			
+			if (organizationList != null) {
+				organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
+				
+				for (Organization organization : organizationList) {
+					
+					List<OrganizationRequirementQualification> organizationRequirementQualificationList = organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTermId);
+					
+					if (organizationRequirementQualificationList != null) {
+						organization.setOrganizationRequirementQualificationList(organizationRequirementQualificationList);
+					}
+					
+					String statusText = organization.getStatusText();
+					
+					
+					if("pending".equalsIgnoreCase(filter) && ("Pending Approval".equalsIgnoreCase(statusText) || "Incomplete / Pending Approval".equalsIgnoreCase(statusText))) {
+						if(filteredOrganizationList == null) {
+							filteredOrganizationList = new ArrayList<Organization>();
+						}
+						
+						filteredOrganizationList.add(organization);
+					} else if("incomplete".equalsIgnoreCase(filter) && ("Incomplete".equalsIgnoreCase(statusText) || "Incomplete / Pending Approval".equalsIgnoreCase(statusText))) {
+						if(filteredOrganizationList == null) {
+							filteredOrganizationList = new ArrayList<Organization>();
+						}
+						
+						filteredOrganizationList.add(organization);
+					} else if("approved".equalsIgnoreCase(filter) && "Approved".equalsIgnoreCase(statusText)) {
+						if(filteredOrganizationList == null) {
+							filteredOrganizationList = new ArrayList<Organization>();
+						}
+						
+						filteredOrganizationList.add(organization);
+					} else if("all".equalsIgnoreCase(filter)) {
+						if(filteredOrganizationList == null) {
+							filteredOrganizationList = new ArrayList<Organization>();
+						}
+						
+						
+						filteredOrganizationList.add(organization);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return filteredOrganizationList	;
+	}
+	
 	public List<Organization> getOrganizationListByOrganizationSearchText(String organizationSearchText, int semTermId) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		List<Organization> organizationList = null;
@@ -187,5 +255,26 @@ public class OrganizationManager {
 		} finally {
 			ConnectionUtil.closeDbConnection(connection);
 		}
+	}
+	
+	public List<Organization> getOrganizationListByMemberId(int memberId) throws Exception {
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+		organizationDAO = new OrganizationDAO(connection);
+			
+		organizationList = organizationDAO.getOrganizationListByMemberId(memberId);	
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return organizationList;
 	}
 }

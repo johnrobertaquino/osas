@@ -96,6 +96,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayUserList</result>
 			<result type="chain" name="error">displayUserList</result>
+			<result type="chain" name="displayEditUser">displayEditUser</result>
 		</action>
 				
 		<action name="searchUser" class="org.pup.system.osas.ui.action.SearchUserAction">
@@ -177,6 +178,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayProgramList</result>
 			<result name="error"  type="chain">/jsp/editProgram.jsp</result>
+			<result name="displayEditProgram" type="chain">displayEditProgram</result>
 		</action>
 		
 		<action name="searchProgram" class="org.pup.system.osas.ui.action.SearchProgramAction">
@@ -233,6 +235,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayAgencyList</result>
 			<result type="chain" name="error">/jsp/editAgency.jsp</result>
+			<result name="displayEditAgency"  type="chain">displayEditAgency</result>
 		</action>
 		
 		<!-- SCHOLARSHIP PROGRAM -->
@@ -433,6 +436,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayOrganizationList</result>
 			<result type="chain" name="error">/jsp/editOrganization.jsp</result>
+			<result name="displayEditOrganization"  type="chain">displayEditOrganization</result>
 		</action>
 		
 		<action name="searchOrganization" class="org.pup.system.osas.ui.action.SearchOrganizationAction">
@@ -475,6 +479,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayMemberList</result>
 			<result type="chain" name="error">displayMemberList</result>
+			<result name="displayEditMember"  type="chain">displayEditMember</result>
 		</action>
 		
 		<action name="searchMember" class="org.pup.system.osas.ui.action.SearchMemberAction">

@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
@@ -51,19 +52,18 @@ public class EditScholarAction extends AbstractAction {
 
 		try {
 			ScholarManager scholarManager = new ScholarManager();
+			Scholar scholar = scholarManager.getScholar(scholarId);
 			
-			Scholar existingScholar = null;
+			Scholar existingScholar = new Scholar();
 			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId, getCurrentActiveTerm().getSemTermId());
 			
-			
-			if (existingScholar != null && scholarId != existingScholar.getScholarId()) {
-				notificationMessage = "Scholar already exist.";
-				return FORWARD_DISPLAYEDITSCHOLAR;
+			if(existingScholar != null && scholarId != existingScholar.getScholarId()) { 
+				notificationMessage = "Failed to update! Scholar already exist.";
+				actionResult = FORWARD_DISPLAYEDITSCHOLAR;
 			}
 			else
-			{
-				Scholar scholar = scholarManager.getScholar(scholarId);
-				
+			{		
+				scholar.setScholarId(scholarId);
 				scholar.setStudentNumber(studentNumber);
 				scholar.setFirstName(firstName);
 				scholar.setMiddleName(middleName);

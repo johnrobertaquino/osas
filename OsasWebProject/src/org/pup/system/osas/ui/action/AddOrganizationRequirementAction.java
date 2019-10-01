@@ -30,7 +30,7 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirement existingOrganizationRequirement = null;
 			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName, getCurrentActiveTerm().getSemTermId());
 			
-			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
+			if(existingOrganizationRequirement != null)
 			{
 				notificationMessage = "Organization Requirement already exist.";
 				return FORWARD_DISPLAYADDORGANIZATIONREQUIREMENT;

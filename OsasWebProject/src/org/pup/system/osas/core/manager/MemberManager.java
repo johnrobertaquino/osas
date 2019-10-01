@@ -10,7 +10,7 @@ import org.pup.system.osas.exception.BusinessException;
 public class MemberManager 
 {
 	
-	public Member validate(String studentNumber, String firstName, String middleName, String lastName, int organizationId, int semTermId) throws Exception {
+	public Member validate(String studentNumber, String firstName, String middleName, String lastName, int semTermId) throws Exception {
 		MemberDAO memberDAO = null;
 		Member member = null;
 		
@@ -21,14 +21,7 @@ public class MemberManager
 			
 			memberDAO = new MemberDAO(connection);
 			
-			member = memberDAO.getMemberByMemberNameAndStudentNumber(studentNumber, firstName, middleName, lastName, organizationId, semTermId);
-			
-			if (member != null) {
-				OrganizationManager organizationManager = new OrganizationManager();
-			
-				Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
-				member.setOrganization(organization);
-			}
+			member = memberDAO.getMemberByMemberNameAndStudentNumber(studentNumber, firstName, middleName, lastName, semTermId);
 			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
@@ -72,7 +65,7 @@ public class MemberManager
 			
 			for (Member member : memberList) {
 				Member existingMember = null;
-				existingMember = validate(member.getStudentNumber(), member.getFirstName(), member.getMiddleName(), member.getLastName(), member.getOrganization().getOrganizationId(), semTermId);
+				existingMember = validate(member.getStudentNumber(), member.getFirstName(), member.getMiddleName(), member.getLastName(), semTermId);
 				
 				if (existingMember != null) {
 					throw new BusinessException("Member with student number " + member.getStudentNumber() + " matches one of our record.");
@@ -106,13 +99,6 @@ public class MemberManager
 			
 			member = memberDAO.getMemberByMemberId(memberId);
 			
-			if (member != null) {
-				OrganizationManager organizationManager = new OrganizationManager();
-			
-				Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
-				member.setOrganization(organization);
-			}
-			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
 			throw e;
@@ -136,15 +122,6 @@ public class MemberManager
 			
 			memberList = memberDAO.getMemberList(semTermId);
 			
-			if (memberList != null) {
-				OrganizationManager organizationManager = new OrganizationManager();
-				
-				for (Member member : memberList) {
-					Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
-					member.setOrganization(organization);
-				}
-			}
-			
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -166,15 +143,6 @@ public class MemberManager
 			memberDAO = new MemberDAO(connection);
 			
 			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText, semTermId);
-			
-			if (memberList != null) {
-				OrganizationManager organizationManager = new OrganizationManager();
-				
-				for (Member member : memberList) {
-					Organization organization =  organizationManager.getOrganization(member.getOrganization().getOrganizationId());
-					member.setOrganization(organization);
-				}
-			}
 			
 		} catch (Exception e) {
 			throw e;

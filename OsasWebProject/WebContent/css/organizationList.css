@@ -1,4 +1,21 @@
 @charset "ISO-8859-1";
+#organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle {
+   margin-top: 20px;
+}
+
+#organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
+   float: left;
+   margin-left: 10px;
+}
+
+#organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    width: 100px;
+    height: 20px;
+    border: 1px solid #420001;
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
 #organizationListContentBody #contentBodyRightPane {
 	width: inherit;
 }

@@ -295,5 +295,36 @@ public class OrganizationDAO extends DAO {
 		
 		return organizationType;
 	}
+	
+	public List<Organization> getOrganizationListByMemberId(int memberId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<Organization> organizationList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT MemberId, OrganizationId FROM memberorganizationreference WHERE memberId=" + memberId);  
+			
+			while (resultSet.next()) {
+				if (organizationList == null) {
+					organizationList = new ArrayList<Organization>();
+				}
+				Organization organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+
+				organizationList.add(organization);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationListByMemberId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return organizationList;
+	}
 
 }

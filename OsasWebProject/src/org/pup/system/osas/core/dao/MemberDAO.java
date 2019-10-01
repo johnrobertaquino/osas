@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.jni.User;
 import org.pup.system.osas.core.domain.Member;
-
 
 public class MemberDAO extends DAO {
 
@@ -145,13 +145,14 @@ public class MemberDAO extends DAO {
 			connection = getConnection();
 			
 			statement = connection.createStatement(); 
-			
+
 			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
 					"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " + 
 					"member.Section, member.ContactNumber FROM member " + 
 					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.OrganizationId " + 
 					"WHERE memberorganizationreference.OrganizationId in " + 
 					"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ")");
+
 			
 			while (resultSet.next()) {
 				if (memberList == null) {
