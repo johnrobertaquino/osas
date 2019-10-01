@@ -94,7 +94,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Position</span>
-    					<div><input id="position" name="position" type="text"></div>
+    					<div><input id="position" name="position" type="text" value="${position}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Role</span>

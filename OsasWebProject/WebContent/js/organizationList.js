@@ -33,6 +33,11 @@ $(document).ready(function() {
 		location.href = "displayAddOrganization";
 	});
 	
+	 $("#filterSelect").change(function () {
+		$("#filterOrganizationForm #filter").val($('#filterSelect option:selected').val());
+		$("#filterOrganizationForm").submit();
+    });
+	
 	$('.showPicture').click(function(event) {
 		event.stopPropagation();
 		var imageUrl = "download?type=OL&fileName=" + $(this).text();

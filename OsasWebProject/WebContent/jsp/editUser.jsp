@@ -67,7 +67,7 @@
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div class="rightPaneElement withTitle">
 	    				<span>Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text"value="${user.lastName}"></div>
+    					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 	    				<span>First Name</span>

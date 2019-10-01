@@ -17,7 +17,9 @@ public class EditUserAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
-	private String userId;
+	private static final String FORWARD_DISPLAYEDITUSERACTION = "displayEditUser";
+	
+	private int userId;
 	
 	private String firstName;
 	
@@ -41,30 +43,41 @@ public class EditUserAction extends AbstractAction {
 
 		try {
 			UserManager userManager = new UserManager();
-			User user = userManager.getUser(Integer.parseInt(userId));
+			User user = userManager.getUser(userId);
 			
-			user.setFirstName(firstName);
-			user.setMiddleName(middleName);
-			user.setLastName(lastName);
-			user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
-			user.setContactNumber(contactNumber);
-			user.setPosition(position);
+			User existingUser = new User();
+			existingUser = userManager.checkFullName(firstName, middleName, lastName);
 			
-			user.setUserRoleList(new ArrayList<UserRole>());
-			if(roleReferenceCodeList != null) {
-				for (String roleReferenceCode : roleReferenceCodeList) {
-					UserRole userRole = new UserRole();
-					userRole.setUserId(user.getUserId());
-					userRole.setUserRoleReference(new UserRoleReference());
-					userRole.getUserRoleReference().setUserRoleReferenceCode(roleReferenceCode);
-					
-					user.getUserRoleList().add(userRole);
-				}
+			if(existingUser != null && userId != existingUser.getUserId())
+			{
+				notificationMessage = "User already exist.";
+				return FORWARD_DISPLAYEDITUSERACTION;
 			}
-
-			userManager.saveUser(user);
-			
-			notificationMessage = "Changes to user has been saved successfully.";
+			else
+			{
+				user.setFirstName(firstName);
+				user.setMiddleName(middleName);
+				user.setLastName(lastName);
+				user.setBirthday(new SimpleDateFormat("MM/dd/yyyy").parse(birthday));
+				user.setContactNumber(contactNumber);
+				user.setPosition(position);
+				
+				user.setUserRoleList(new ArrayList<UserRole>());
+				if(roleReferenceCodeList != null) {
+					for (String roleReferenceCode : roleReferenceCodeList) {
+						UserRole userRole = new UserRole();
+						userRole.setUserId(user.getUserId());
+						userRole.setUserRoleReference(new UserRoleReference());
+						userRole.getUserRoleReference().setUserRoleReferenceCode(roleReferenceCode);
+						
+						user.getUserRoleList().add(userRole);
+					}
+				}
+	
+				userManager.saveUser(user);
+				
+				notificationMessage = "Changes to user has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -78,11 +91,11 @@ public class EditUserAction extends AbstractAction {
 		return actionResult;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

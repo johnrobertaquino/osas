@@ -59,7 +59,7 @@ public class AddScholarAction extends AbstractAction {
 			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId, getCurrentActiveTerm().getSemTermId());
 			
 			
-			if (existingScholar != null && scholarId != existingScholar.getScholarId()) {
+			if (existingScholar != null) {
 				notificationMessage = "Scholar already exist.";
 				return FORWARD_DISPLAYADDSCHOLAR;
 			}

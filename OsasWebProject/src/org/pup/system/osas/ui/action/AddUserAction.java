@@ -49,7 +49,7 @@ public class AddUserAction extends AbstractAction{
 			UserManager userManager = new UserManager();
 			existingUser = userManager.checkFullName(firstName, middleName, lastName);
 			
-			if(existingUser != null && userId != existingUser.getUserId())
+			if(existingUser != null)
 			{
 				notificationMessage = "User already exist.";
 				return FORWARD_DISPLAYADDUSERACTION;

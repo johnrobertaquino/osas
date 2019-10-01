@@ -36,7 +36,7 @@ public class AddScholarshipProgramAction extends AbstractAction {
 			ScholarshipProgram existingScholarshipProgram = null;
 			existingScholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName, getCurrentActiveTerm().getSemTermId());
 
-			if (existingScholarshipProgram != null && scholarshipProgramId != existingScholarshipProgram.getScholarshipProgramId()) {
+			if (existingScholarshipProgram != null) {
 				notificationMessage = "Scholarship program already exist.";
 				return FORWARD_DISPLAYADDSCHOLARSHIPPROGRAM;
 			}

@@ -71,6 +71,20 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Last name can\'t be blank.";
 		}
+		if($('#year').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Year can\'t be blank.";
+		}
+		if($('#section').val() === '')
+		{
+			if (errorMessage !== '') {
+				errorMessage = errorMessage + "<br/>";
+			}
+			errorMessage = errorMessage + "Section can\'t be blank.";
+		}
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to add this scholar?", function() {
 				$("#scholarForm").submit();

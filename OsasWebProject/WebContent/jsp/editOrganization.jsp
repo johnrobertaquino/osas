@@ -91,8 +91,8 @@
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}" <s:if test="#program.programCode == organization.program.programCode">selected</s:if>>${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}" <s:if test="#program.programCode == organization.program.programCode">selected</s:if>>${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>

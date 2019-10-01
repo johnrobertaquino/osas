@@ -17,6 +17,8 @@ public class EditMemberAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITMEMBER = "displayEditMember";
+	
 	private int memberId;
 	
 	private String studentNumber;
@@ -47,6 +49,8 @@ public class EditMemberAction extends AbstractAction {
 	
 	private String contactNumber;
 	
+	private int organizationId;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization Member";
@@ -58,36 +62,46 @@ public class EditMemberAction extends AbstractAction {
 			MemberManager memberManager = new MemberManager();
 			Member member = memberManager.getMember(memberId);
 			
-			member.setMemberId(memberId);
-			member.setStudentNumber(studentNumber);
-			member.setFirstName(firstName);
-			member.setMiddleName(middleName);
-			member.setLastName(lastName);
-			if ("on".equalsIgnoreCase(officer)) {
-				member.setPosition(position);
-			} else {
-				member.setPosition(null);
-			}
-			member.setOfficer("on".equalsIgnoreCase(officer));
-			
-			if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
-				member.setOfficerPhoto(officerPhotoFileName);
-				
-				String filePath = "C:/OSAS/Organization/Member";
-				fileToCreate = new File(filePath, officerPhotoFileName);
-				
-				FileUtils.copyFile(officerPhoto, fileToCreate);
+			Member existingMember = null;
+			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
+			if (existingMember != null) {
+				notificationMessage = "Member already exist.";
+				return FORWARD_DISPLAYEDITMEMBER;
 			}
 			
-			member.setGender(gender);
-			member.setProgram(new Program(program));
-			member.setYear(year);
-			member.setSection(section);
-			member.setContactNumber(contactNumber);
-			
-			memberManager.saveMember(member);
-			
-			notificationMessage = "Changes to member has been saved successfully.";
+			else
+			{
+				member.setMemberId(memberId);
+				member.setStudentNumber(studentNumber);
+				member.setFirstName(firstName);
+				member.setMiddleName(middleName);
+				member.setLastName(lastName);
+				if ("on".equalsIgnoreCase(officer)) {
+					member.setPosition(position);
+				} else {
+					member.setPosition(null);
+				}
+				member.setOfficer("on".equalsIgnoreCase(officer));
+				
+				if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
+					member.setOfficerPhoto(officerPhotoFileName);
+					
+					String filePath = "C:/OSAS/Organization/Member";
+					fileToCreate = new File(filePath, officerPhotoFileName);
+					
+					FileUtils.copyFile(officerPhoto, fileToCreate);
+				}
+				
+				member.setGender(gender);
+				member.setProgram(new Program(program));
+				member.setYear(year);
+				member.setSection(section);
+				member.setContactNumber(contactNumber);
+				
+				memberManager.saveMember(member);
+				
+				notificationMessage = "Changes to member has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

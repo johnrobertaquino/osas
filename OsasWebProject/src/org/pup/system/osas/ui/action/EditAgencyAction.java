@@ -12,6 +12,8 @@ public class EditAgencyAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITAGENCY = "displayEditAgency";
+	
 	private int agencyId;
 	
 	private String agencyName;
@@ -32,15 +34,25 @@ public class EditAgencyAction extends AbstractAction {
 			AgencyManager agencyManager = new AgencyManager();
 			Agency agency = agencyManager.getAgency(agencyId);
 			
-			agency.setAgencyId(agencyId);
-			agency.setAgencyName(agencyName);
-			agency.setAddress(address);
-			agency.setContactPerson(contactPerson);
-			agency.setContactNumber(contactNumber);
+			Agency existingAgency = new Agency();
+			existingAgency = agencyManager.validate(agencyName, getCurrentActiveTerm().getSemTermId());
 			
-			agencyManager.saveAgency(agency);
-			
-			notificationMessage = "Changes to agency has been saved successfully.";
+			if(existingAgency != null && agencyId != existingAgency.getAgencyId()) { 
+				notificationMessage = "Failed to update! Agency already exist.";
+				actionResult = FORWARD_DISPLAYEDITAGENCY;
+			}
+			else
+			{			
+				agency.setAgencyId(agencyId);
+				agency.setAgencyName(agencyName);
+				agency.setAddress(address);
+				agency.setContactPerson(contactPerson);
+				agency.setContactNumber(contactNumber);
+				
+				agencyManager.saveAgency(agency);
+				
+				notificationMessage = "Changes to agency has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

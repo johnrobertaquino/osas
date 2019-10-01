@@ -67,6 +67,9 @@
 	<form id="showOrganizationQualificationForm" action="displayOrganizationQualificationList" method="POST">
   		<input type="hidden" id="organizationId" name="organizationId" />
 	</form>
+	<form id="filterOrganizationForm" action="displayOrganizationList" method="POST">
+  		<input type="hidden" id="filter" name="filter" />
+	</form>
 	<div id="organizationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -83,6 +86,17 @@
 				<div class="button" id="searchOrganizationButton">SEARCH</div>
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
     			<div style="clear:both"></div>
+			<div class="rightPaneElement withTitle">
+    				    <span>Filter Status:</span>
+	    				<div>
+		    				<select id="filterSelect">
+		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+		    						<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
+		    						<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
+		    						<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
+							</select>
+						</div>
+			</div>
 			</div>
 			<div id="tableHolder">
 			<table>
