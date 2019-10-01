@@ -66,7 +66,7 @@ public class AddMemberExcelFileAction extends AbstractAction {
 
 					}
 					memberList.add(member);
-					member.setOrganization(organization);
+					//member.setOrganization(organization);
 				}
 
 				index++;

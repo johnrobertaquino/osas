@@ -265,9 +265,9 @@ public class OrganizationManager {
 		try {
 			connection = ConnectionUtil.createConnection();
 			
-		organizationDAO = new OrganizationDAO(connection);
+			organizationDAO = new OrganizationDAO(connection);
 			
-		organizationList = organizationDAO.getOrganizationListByMemberId(memberId);	
+			organizationList = organizationDAO.getOrganizationListByMemberId(memberId);
 			
 		} catch (Exception e) {
 			throw e;

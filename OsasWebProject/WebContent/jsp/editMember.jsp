@@ -66,6 +66,26 @@
 			<div id="rightPaneContentHolder">
 				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST" enctype="multipart/form-data">
 					<input name="MemberId" type="hidden" value="${member.memberId}">
+					<div class="rightPaneElement withTitle">
+    				    <span>Organization</span>
+    				    
+	    				<div style="height: 200px; overflow-y: scroll;">
+	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+			    				<div id="roleDiv">
+									<label for="chkOfficer">
+										<s:set var="checked"></s:set>
+										<s:iterator value="member.organizationList" status="rowStatus" var="memberOrganization">
+											<s:if test="#memberOrganization.organizationId == #organization.organizationId">
+												<s:set var="checked">checked</s:set>
+											</s:if>
+										</s:iterator>
+								    	<input type="checkbox" id="chkOfficer" name="organizationIdList" value="${organization.organizationId}" ${checked}/>
+								    	${organization.organizationName}
+									</label>
+								</div>
+							</s:iterator>
+						</div>
+					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Student Number</span>
     					<div><input id="studentNumber" name="studentNumber" type="text" value="${member.studentNumber}"></div>
@@ -121,8 +141,8 @@
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}" <s:if test="#program.programCode == member.program.programCode">selected</s:if>>${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}" <s:if test="#programItem.programCode == member.program.programCode">selected</s:if>>${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>

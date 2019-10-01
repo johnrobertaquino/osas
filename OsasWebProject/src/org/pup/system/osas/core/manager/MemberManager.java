@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.util.List;
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.MemberDAO;
+import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.exception.BusinessException;
@@ -36,13 +37,24 @@ public class MemberManager
 	public void insertMember(Member member) throws Exception {
 		MemberDAO memberDAO = null;
 		Connection connection = null;
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
 		
 		try {
 			connection = ConnectionUtil.createConnection();
 			
 			memberDAO = new MemberDAO(connection);
+			organizationDAO = new OrganizationDAO(connection);
 			
 			memberDAO.insertMember(member);
+			
+			organizationList = member.getOrganizationList();
+			
+			if (member!= null) {
+				for (Organization organization : organizationList) {
+					organizationDAO.insertOrganizationByMemberId(member.getMemberId(), organization);
+				}
+			}
 			
 			connection.commit();
 			
@@ -98,6 +110,12 @@ public class MemberManager
 			memberDAO = new MemberDAO(connection);
 			
 			member = memberDAO.getMemberByMemberId(memberId);
+		
+			if(member != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
+				member.setOrganizationList(organizationList);
+			}
 			
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
@@ -122,6 +140,14 @@ public class MemberManager
 			
 			memberList = memberDAO.getMemberList(semTermId);
 			
+			if(memberList != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				for (Member member : memberList) {
+					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
+					member.setOrganizationList(organizationList);
+				}
+			}
+			
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -144,6 +170,14 @@ public class MemberManager
 			
 			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText, semTermId);
 			
+			if(memberList != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				for (Member member : memberList) {
+					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
+					member.setOrganizationList(organizationList);
+				}
+			}
+			
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -155,14 +189,26 @@ public class MemberManager
 
 	public void saveMember(Member member) throws Exception {
 		MemberDAO memberDAO = null;
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
 		Connection connection = null;
 		
 		try {
 			connection = ConnectionUtil.createConnection();
 			
 			memberDAO = new MemberDAO(connection);
+			organizationDAO = new OrganizationDAO(connection);
 			
 			memberDAO.saveMember(member);
+			
+			organizationDAO.deleteOrganizationByMemberId(member.getMemberId());
+			organizationList = member.getOrganizationList();
+			
+			if (member!= null) {
+				for (Organization organization : organizationList) {
+					organizationDAO.insertOrganizationByMemberId(member.getMemberId(), organization);
+				}
+			}
 			
 			connection.commit();
 		} catch (Exception e) {

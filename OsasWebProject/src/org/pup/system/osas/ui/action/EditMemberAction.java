@@ -2,10 +2,13 @@ package org.pup.system.osas.ui.action;
 
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.exception.BusinessException;
@@ -49,7 +52,7 @@ public class EditMemberAction extends AbstractAction {
 	
 	private String contactNumber;
 	
-	private int organizationId;
+	private List<Integer> organizationIdList;
 	
 	@Override
 	public String execute() throws Exception {
@@ -63,7 +66,7 @@ public class EditMemberAction extends AbstractAction {
 			Member member = memberManager.getMember(memberId);
 			
 			Member existingMember = null;
-			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
+			//existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, getCurrentActiveTerm().getSemTermId());			
 			if (existingMember != null) {
 				notificationMessage = "Member already exist.";
 				return FORWARD_DISPLAYEDITMEMBER;
@@ -97,6 +100,14 @@ public class EditMemberAction extends AbstractAction {
 				member.setYear(year);
 				member.setSection(section);
 				member.setContactNumber(contactNumber);
+				
+				if(organizationIdList != null) {
+					member.setOrganizationList(new ArrayList<Organization>());
+					for (Integer organizationId : organizationIdList) {
+						Organization organization = new Organization(organizationId);
+						member.getOrganizationList().add(organization);
+					}
+				}
 				
 				memberManager.saveMember(member);
 				
@@ -308,5 +319,22 @@ public class EditMemberAction extends AbstractAction {
 	public void setOfficerPhotoContentType(String officerPhotoContentType) {
 		this.officerPhotoContentType = officerPhotoContentType;
 	}
+
+
+	public List<Integer> getOrganizationIdList() {
+		return organizationIdList;
+	}
+
+
+	public void setOrganizationIdList(List<Integer> organizationIdList) {
+		this.organizationIdList = organizationIdList;
+	}
+
+
+	public String getMiddleName() {
+		return middleName;
+	}
+	
+	
 
 }

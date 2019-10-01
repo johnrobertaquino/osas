@@ -66,12 +66,15 @@
 				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
-	    				<div>
-		    				<select name="organizationId">
-		    					<s:iterator value="organizationList" status="rowStatus" var="organization">
-		    						<option value="${organization.organizationId}">${organization.organizationName}</option>
-		    					</s:iterator>
-							</select>
+	    				<div style="height: 200px; overflow-y: scroll;">
+	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+			    				<div id="roleDiv">
+									<label for="chkOfficer">
+								    	<input type="checkbox" id="chkOfficer" name="organizationIdList" value="${organization.organizationId}"/>
+								    	${organization.organizationName}
+									</label>
+								</div>
+							</s:iterator>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">

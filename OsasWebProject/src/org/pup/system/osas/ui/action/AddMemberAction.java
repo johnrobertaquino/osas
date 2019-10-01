@@ -1,6 +1,8 @@
 package org.pup.system.osas.ui.action;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -51,7 +53,7 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String contactNumber;
 	
-	private int organizationId;
+	private List<Integer> organizationIdList;
 	
 	@Override
 	public String execute() throws Exception {
@@ -62,12 +64,11 @@ public class AddMemberAction extends AbstractAction {
 		
 		try {
 			OrganizationManager organizationManager = new OrganizationManager();
-			Organization organization = organizationManager.getOrganization(organizationId);
 			
 			MemberManager memberManager = new MemberManager();
 
 			Member existingMember = null;
-			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
+			//existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, getCurrentActiveTerm().getSemTermId());			
 			if (existingMember != null) {
 				notificationMessage = "Member already exist.";
 				return FORWARD_DISPLAYADDMEMBER;
@@ -97,7 +98,14 @@ public class AddMemberAction extends AbstractAction {
 				member.setYear(year);
 				member.setSection(section);
 				member.setContactNumber(contactNumber);
-				member.setOrganization(organization);
+				//member.setOrganization(organization);
+				if(organizationIdList != null) {
+					member.setOrganizationList(new ArrayList<Organization>());
+					for (Integer organizationId : organizationIdList) {
+						Organization organization = new Organization(organizationId);
+						member.getOrganizationList().add(organization);
+					}
+				}
 			
 				memberManager.insertMember(member);
 				
@@ -206,12 +214,12 @@ public class AddMemberAction extends AbstractAction {
 		this.section = section;
 	}
 
-	public int getOrganizationId() {
-		return organizationId;
+	public List<Integer> getOrganizationIdList() {
+		return organizationIdList;
 	}
 
-	public void setOrganizationId(int organizationId) {
-		this.organizationId = organizationId;
+	public void setOrganizationIdList(List<Integer> organizationIdList) {
+		this.organizationIdList = organizationIdList;
 	}
 
 	/**

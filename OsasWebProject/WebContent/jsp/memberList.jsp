@@ -99,7 +99,7 @@
 								<a href="javascript:void(0);" class="showPicture"><s:property value="officerPhoto" /></a>
 							</s:if>
 						</td>
-						<td><s:property value="organization.organizationName" /></td>
+						<td><s:property value="organizationListDisplay" /></td>
 						<td><s:property value="studentNumber" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>

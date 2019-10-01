@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.tomcat.jni.User;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Program;
 
 public class MemberDAO extends DAO {
 
@@ -28,7 +29,8 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.SemTermId="+semTermId);  
+			//resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"'");
 			
 			if (resultSet.next()) {
 				member = new Member();
@@ -146,10 +148,10 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
+			resultSet = statement.executeQuery("SELECT distinct member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
 					"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " + 
 					"member.Section, member.ContactNumber FROM member " + 
-					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.OrganizationId " + 
+					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.memberId " + 
 					"WHERE memberorganizationreference.OrganizationId in " + 
 					"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ")");
 

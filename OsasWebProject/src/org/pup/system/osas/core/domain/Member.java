@@ -154,4 +154,19 @@ public class Member {
 	public void setOrganizationList(List<Organization> organizationList) {
 		this.organizationList = organizationList;
 	}	
+	
+	public String getOrganizationListDisplay() {
+		String organizationListForDisplay = "";
+		
+		if (this.organizationList != null) {
+			for (Organization organization : this.organizationList) {
+				if(!organizationListForDisplay.isEmpty()) {
+					organizationListForDisplay = organizationListForDisplay + ", ";
+				}
+				organizationListForDisplay = organizationListForDisplay + organization.getOrganizationName();
+			}
+		}
+		
+		return organizationListForDisplay;
+	}
 }
