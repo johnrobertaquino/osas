@@ -1,11 +1,13 @@
 package org.pup.system.osas.ui.action;
 
-
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
 import org.pup.system.osas.exception.BusinessException;
@@ -16,92 +18,89 @@ public class EditMemberAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
-	
-	private static final String FORWARD_DISPLAYEDITMEMBER = "displayEditMember";
-	
+
 	private int memberId;
-	
+
 	private String studentNumber;
-	
+
 	private String firstName;
-	
+
 	private String middleName;
-	
+
 	private String lastName;
-	
+
 	private String program;
-	
+
 	private String position;
 
 	private String officer;
-	
+
 	private String officerPhotoContentType;
 
 	private String officerPhotoFileName;
-	
+
 	private File officerPhoto;
-	
+
 	private String gender;
-	
+
 	private String year;
-	
+
 	private String section;
-	
+
 	private String contactNumber;
-	
-	private int organizationId;
-	
+
+	private List<Integer> organizationIdList;
+
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization Member";
 		String actionResult = FORWARD_SUCCESS;
-		
+
 		File fileToCreate = null;
-		
+
 		try {
 			MemberManager memberManager = new MemberManager();
 			Member member = memberManager.getMember(memberId);
-			
-			Member existingMember = null;
-			existingMember = memberManager.validate(studentNumber, firstName, middleName, lastName, organizationId, getCurrentActiveTerm().getSemTermId());			
-			if (existingMember != null) {
-				notificationMessage = "Member already exist.";
-				return FORWARD_DISPLAYEDITMEMBER;
+
+			member.setMemberId(memberId);
+			member.setStudentNumber(studentNumber);
+			member.setFirstName(firstName);
+			member.setMiddleName(middleName);
+			member.setLastName(lastName);
+			if ("on".equalsIgnoreCase(officer)) {
+				member.setPosition(position);
+			} else {
+				member.setPosition(null);
 			}
-			
-			else
-			{
-				member.setMemberId(memberId);
-				member.setStudentNumber(studentNumber);
-				member.setFirstName(firstName);
-				member.setMiddleName(middleName);
-				member.setLastName(lastName);
-				if ("on".equalsIgnoreCase(officer)) {
-					member.setPosition(position);
-				} else {
-					member.setPosition(null);
-				}
-				member.setOfficer("on".equalsIgnoreCase(officer));
-				
-				if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
-					member.setOfficerPhoto(officerPhotoFileName);
-					
-					String filePath = "C:/OSAS/Organization/Member";
-					fileToCreate = new File(filePath, officerPhotoFileName);
-					
-					FileUtils.copyFile(officerPhoto, fileToCreate);
-				}
-				
-				member.setGender(gender);
-				member.setProgram(new Program(program));
-				member.setYear(year);
-				member.setSection(section);
-				member.setContactNumber(contactNumber);
-				
-				memberManager.saveMember(member);
-				
-				notificationMessage = "Changes to member has been saved successfully.";
+			member.setOfficer("on".equalsIgnoreCase(officer));
+
+			if (!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
+				member.setOfficerPhoto(officerPhotoFileName);
+
+				String filePath = "C:/OSAS/Organization/Member";
+				fileToCreate = new File(filePath, officerPhotoFileName);
+
+				FileUtils.copyFile(officerPhoto, fileToCreate);
 			}
+
+			member.setGender(gender);
+			member.setProgram(new Program(program));
+			member.setYear(year);
+			member.setSection(section);
+			member.setContactNumber(contactNumber);
+
+			if (organizationIdList != null) {
+				member.setOrganizationList(new ArrayList<Organization>());
+				for (Integer organizationId : organizationIdList) {
+					Organization organization = new Organization(organizationId);
+					member.getOrganizationList().add(organization);
+				}
+			}
+
+			memberManager.saveMember(member);
+
+			notificationMessage = "Changes to member has been saved successfully.";
+
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -111,16 +110,13 @@ public class EditMemberAction extends AbstractAction {
 			actionResult = FORWARD_ERROR;
 			e.printStackTrace();
 		}
-		
+
 		return actionResult;
 	}
 
-	
 	public String getStudentNumber() {
 		return studentNumber;
 	}
-	
-	
 
 	public void setStudentNumber(String studentNumber) {
 		this.studentNumber = studentNumber;
@@ -139,6 +135,7 @@ public class EditMemberAction extends AbstractAction {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	/**
 	 * @return the address
 	 */
@@ -152,7 +149,6 @@ public class EditMemberAction extends AbstractAction {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	
 
 	/**
 	 * @param firstName the firstName to set
@@ -160,13 +156,14 @@ public class EditMemberAction extends AbstractAction {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	/**
 	 * @return the address
 	 */
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	/**
 	 * @return the program
 	 */
@@ -264,26 +261,22 @@ public class EditMemberAction extends AbstractAction {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
+
 	public String getOfficerPhotoFileName() {
 		return officerPhotoFileName;
 	}
-
 
 	public void setOfficerPhotoFileName(String officerPhotoFileName) {
 		this.officerPhotoFileName = officerPhotoFileName;
 	}
 
-
 	public File getOfficerPhoto() {
 		return officerPhoto;
 	}
 
-
 	public void setOfficerPhoto(File officerPhoto) {
 		this.officerPhoto = officerPhoto;
 	}
-
 
 	public String getContactNumber() {
 		return contactNumber;
@@ -293,7 +286,6 @@ public class EditMemberAction extends AbstractAction {
 		this.contactNumber = contactNumber;
 	}
 
-
 	/**
 	 * @return the officerPhotoContentType
 	 */
@@ -301,12 +293,23 @@ public class EditMemberAction extends AbstractAction {
 		return officerPhotoContentType;
 	}
 
-
 	/**
 	 * @param officerPhotoContentType the officerPhotoContentType to set
 	 */
 	public void setOfficerPhotoContentType(String officerPhotoContentType) {
 		this.officerPhotoContentType = officerPhotoContentType;
+	}
+
+	public List<Integer> getOrganizationIdList() {
+		return organizationIdList;
+	}
+
+	public void setOrganizationIdList(List<Integer> organizationIdList) {
+		this.organizationIdList = organizationIdList;
+	}
+
+	public String getMiddleName() {
+		return middleName;
 	}
 
 }

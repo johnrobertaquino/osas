@@ -23,6 +23,14 @@ public class Organization {
 	private String logoFileName;
 	
 	private List<OrganizationRequirementQualification> organizationRequirementQualificationList;
+	
+	public Organization() {
+		
+	}
+	
+	public Organization(int organizationId) {
+		this.organizationId = organizationId;
+	}
 
 	/**
 	 * @return the organizationId

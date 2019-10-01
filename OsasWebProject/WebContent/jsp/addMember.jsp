@@ -66,12 +66,21 @@
 				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
-	    				<div>
-		    				<select name="organizationId">
-		    					<s:iterator value="organizationList" status="rowStatus" var="organization">
-		    						<option value="${organization.organizationId}">${organization.organizationName}</option>
-		    					</s:iterator>
-							</select>
+	    				<div style="height: 200px; overflow-y: scroll;">
+	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+			    				<div id="roleDiv">
+									<label for="organizationIdList">
+										<s:set var="checked"></s:set>
+										<s:iterator value="organizationIdList" status="rowStatus" var="organizationId">
+											<s:if test="#organizationId == #organization.organizationId">
+												<s:set var="checked">checked</s:set>
+											</s:if>
+										</s:iterator>
+								    	<input type="checkbox" id="organizationIdList" name="organizationIdList" value="${organization.organizationId}" ${checked}/>
+								    	${organization.organizationName}
+									</label>
+								</div>
+							</s:iterator>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">
@@ -107,19 +116,24 @@
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
-							    <input type="checkbox" id="chkOfficer" name="officer"/>
+							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test='officer == "on"'>checked</s:if>/>
 							    Officer
 							</label>
 						</div>
     				</div>
-    				<br><div class="rightPaneElement withTitle" id="divOfficer" style="display: none">
+    				<br><div class="rightPaneElement withTitle" id="divOfficer" <s:if test='!(officer == "on")'>style="display: none"</s:if>>
     					<div>
 	    					<div>		 
 		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
 		    				</div>
 	    					<div>
 		    					<span>Position</span>
-		    					<div><input id="position" name="position" type="text" value="${position}"></div>
+		    					<s:if test='officer == "on"'>
+		    						<div><input id="position" name="position" type="text" value="${position}"></div>
+		    					</s:if>
+		    					<s:else>
+		    						<div><input id="position" name="position" type="text"></div>
+		    					</s:else>
 	    					</div>
     					</div>
     				</div>

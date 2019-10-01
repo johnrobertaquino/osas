@@ -479,7 +479,6 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayMemberList</result>
 			<result type="chain" name="error">displayMemberList</result>
-			<result name="displayEditMember"  type="chain">displayEditMember</result>
 		</action>
 		
 		<action name="searchMember" class="org.pup.system.osas.ui.action.SearchMemberAction">

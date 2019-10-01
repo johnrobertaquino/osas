@@ -79,11 +79,7 @@
     			<div style="clear:both"></div>
 			</div>
 			<div id="tableHolder">
-<<<<<<< HEAD
 			<table class="contentTable">
-=======
-			<table>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 				<tr>
 					<th>Agency name</th>
 					<th>Address</th>

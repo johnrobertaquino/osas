@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tomcat.jni.User;
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Program;
 
 public class MemberDAO extends DAO {
 
@@ -28,7 +28,8 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.SemTermId="+semTermId);  
+			//resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"'");
 			
 			if (resultSet.next()) {
 				member = new Member();
@@ -146,10 +147,10 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
+			resultSet = statement.executeQuery("SELECT distinct member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
 					"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " + 
 					"member.Section, member.ContactNumber FROM member " + 
-					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.OrganizationId " + 
+					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.memberId " + 
 					"WHERE memberorganizationreference.OrganizationId in " + 
 					"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ")");
 
@@ -183,6 +184,51 @@ public class MemberDAO extends DAO {
 		}
 		
 		return memberList;
+	}
+	
+	public Member getMemberByStudentNumber(String studentNumber, int semTermId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Member member = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+
+			resultSet = statement.executeQuery("SELECT distinct member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " + 
+					"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " + 
+					"member.Section, member.ContactNumber FROM member " + 
+					"JOIN memberorganizationreference on member.memberId = memberorganizationreference.memberId " + 
+					"WHERE memberorganizationreference.OrganizationId in " + 
+					"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ") " +
+					"AND member.StudentNumber = '" + studentNumber + "'");
+
+			
+			if (resultSet.next()) {
+				member = new Member();
+				member.setMemberId(resultSet.getInt("MemberId"));
+				member.setStudentNumber(resultSet.getString("StudentNumber"));
+				member.setFirstName(resultSet.getString("FirstName"));
+				member.setMiddleName(resultSet.getString("MiddleName"));
+				member.setLastName(resultSet.getString("LastName"));
+				member.setProgram(new Program(resultSet.getString("Program")));
+				member.setPosition(resultSet.getString("Position"));
+				member.setOfficer(resultSet.getBoolean("Officer"));
+				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
+				member.setGender(resultSet.getString("Gender"));
+				member.setYear(resultSet.getString("Year"));
+				member.setSection(resultSet.getString("Section"));
+				member.setContactNumber(resultSet.getString("ContactNumber"));
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getMemberByStudentNumber method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return member;
 	}
 	
 	public List<Member> getMemberListByMemberSearchText(String memberSearchText, int semTermId) throws Exception {
