@@ -268,8 +268,8 @@ img {
 }
 
 .button:hover {
-	background-color: #800;
-	cursor: pointer;
+	background-color: #800 !important;
+	cursor: pointer !important;
 }
 
 #footer {
@@ -496,6 +496,10 @@ img {
 	min-height: 600px;
 }
 
+.featureContent #contentBodyRightPane .contentTable {
+	text-align: left;
+}
+
 .featureContent #contentBodyLeftPane #icon {
 	width: 150px; 
 	margin: 150px auto 0px auto;
@@ -511,7 +515,7 @@ img {
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
-	font-size: 16px;
+	font-size: 12px;
 	width: 500px;
 }
 
@@ -520,9 +524,23 @@ img {
     padding: 10px 0px 10px 10px;
 }
 
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement select  {
+	border: 1px solid #420001;
+}
+
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle input {
     margin: 10px 0px;
     width: 500px;
+    font-size: 12px;
+    color: #444444;
+}
+
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle {
+	color: #444444;
+}
+
+.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle .title {
+	font-weight: bold;
 }
 
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder {
@@ -535,6 +553,7 @@ img {
 	float: right;
 	margin: 0px;
 }
+
 .featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement #buttonHolder .button.left {
 	margin-right: 23px;
 }
@@ -557,9 +576,9 @@ img {
     position: relative;
 }
 
-@media only screen and (max-width: 1550px) {
+/*@media only screen and (max-width: 1550px) {*/
 	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
-		font-size: 16px;
+		font-size: 12px;
 	}
   	.featureContent #contentBodyRightPane #rightPaneContentHolder {
   		width: inherit;
@@ -630,7 +649,8 @@ img {
 	.featureContent .tableMenuDropdown {
 		top: 25px;
 	}
-}
+/*}*/
+/*
 @media only screen and (max-width: 1100px) {
 	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 		font-size: 12px;
@@ -701,6 +721,7 @@ img {
 		top: 25px;
 	}
 }
+
 @media only screen and (max-width: 1000px) {
 	.featureContent #contentBodyRightPane #rightPaneContentHolder .rightPaneElement {
 		font-size: 12px;
@@ -778,3 +799,4 @@ img {
 		top: 25px;
 	}
 }
+*/

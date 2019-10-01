@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -66,16 +65,16 @@
 				<form class="editScholarshipProgramContent" id="editScholarshipProgramForm" action="editScholarshipProgram" method="POST">
 					<input name="scholarshipProgramId" type="hidden" value="${scholarshipProgram.scholarshipProgramId}">
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Program name</span>
+    					<span class="title">Scholarship Program Name</span>
     					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgram.scholarshipProgramName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Save</span>
+								<span>SAVE</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

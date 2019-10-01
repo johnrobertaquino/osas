@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -72,7 +71,7 @@
 			<div id="searchAgency">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchAgency" method="POST" id="searchAgencyForm">
-					<input type="text" id="agencySearchText" name="agencySearchText" placeholder="Search agency">
+					<input type="text" id="agencySearchText" name="agencySearchText" placeholder="Search Agency">
 					<!-- <input type="hidden" name="agency.semTermId" value="${agency.semTermId}"/>  -->
 				</form>
 				<div class="button" id="searchAgencyButton">SEARCH</div>
@@ -80,13 +79,17 @@
     			<div style="clear:both"></div>
 			</div>
 			<div id="tableHolder">
+<<<<<<< HEAD
+			<table class="contentTable">
+=======
 			<table>
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 				<tr>
 					<th>Agency name</th>
 					<th>Address</th>
 					<th>Contact number</th>
 					<th>Contact person</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="agencyList" status="rowStatus" var="agency">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -94,7 +97,7 @@
 						<td><s:property value="address" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td><s:property value="contactPerson" /></td>
-						<td>
+						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />

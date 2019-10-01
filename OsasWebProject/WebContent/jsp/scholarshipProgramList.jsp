@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -81,17 +80,21 @@
     			<div style="clear:both"></div>
 			</div>
 			<div id="tableHolder">
+<<<<<<< HEAD
+			<table class="contentTable">
+=======
 			<table>
+>>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
 				<tr>
 					<th>Agency Name</th>
 					<th>Scholarship Program Name</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="agency.agencyName" /></td>
 						<td><s:property value="scholarshipProgramName" /></td>
-						<td>
+						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />
