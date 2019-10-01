@@ -30,7 +30,7 @@ public class EditScholarshipProgramAction extends AbstractAction {
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 
 			ScholarshipProgram existingScholarshipProgram = null;
-			existingScholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName);
+			existingScholarshipProgram = scholarshipProgramManager.validate(scholarshipProgramName, getCurrentActiveTerm().getSemTermId());
 		
 			if (existingScholarshipProgram != null && scholarshipProgramId != existingScholarshipProgram.getScholarshipProgramId()) {
 				notificationMessage = "Scholarship program already exist.";

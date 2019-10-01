@@ -9,7 +9,7 @@ $(document).ready(function() {
 		
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to save changes to this organization qualification?", function() {
-				$("#editOrganzationQualificationForm").submit();
+				$("#editOrganizationQualificationForm").submit();
 			});
 		}
 		else {

@@ -17,6 +17,8 @@ public class DisplayAddScholarshipProgramAction extends AbstractAction  {
 
 	private String scholarshipProgramName;
 	
+	private String scholarshipQualificationName;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholarship";
@@ -53,6 +55,20 @@ public class DisplayAddScholarshipProgramAction extends AbstractAction  {
 
 	public void setScholarshipProgramName(String scholarshipProgramName) {
 		this.scholarshipProgramName = scholarshipProgramName;
+	}
+
+	/**
+	 * @return the scholarshipQualificationName
+	 */
+	public String getScholarshipQualificationName() {
+		return scholarshipQualificationName;
+	}
+
+	/**
+	 * @param scholarshipQualificationName the scholarshipQualificationName to set
+	 */
+	public void setScholarshipQualificationName(String scholarshipQualificationName) {
+		this.scholarshipQualificationName = scholarshipQualificationName;
 	}
 	
 	

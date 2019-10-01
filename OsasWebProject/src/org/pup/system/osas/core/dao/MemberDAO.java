@@ -19,6 +19,48 @@ public class MemberDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Member getMemberByMemberNameAndStudentNumber(String studentNumber, String firstName, String middleName, String lastName, int organizationId, int semTermId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Member member = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber, member.OrganizationId FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE member.StudentNumber='" + studentNumber+"' AND member.FirstName='"+ firstName +"' AND member.MiddleName='"+middleName+"' AND member.LastName='"+lastName+"' AND organization.OrganizationId="+organizationId+" AND organization.SemTermId="+semTermId);  
+			
+			if (resultSet.next()) {
+				member = new Member();
+				member.setMemberId(resultSet.getInt("MemberId"));
+				member.setStudentNumber(resultSet.getString("StudentNumber"));
+				member.setFirstName(resultSet.getString("FirstName"));
+				member.setMiddleName(resultSet.getString("MiddleName"));
+				member.setLastName(resultSet.getString("LastName"));
+				member.setProgram(new Program(resultSet.getString("Program")));
+				member.setPosition(resultSet.getString("Position"));
+				member.setOfficer(resultSet.getBoolean("Officer"));
+				member.setOfficerPhoto(resultSet.getString("OfficerPhoto"));
+				member.setGender(resultSet.getString("Gender"));
+				member.setYear(resultSet.getString("Year"));
+				member.setSection(resultSet.getString("Section"));
+				member.setContactNumber(resultSet.getString("ContactNumber"));
+				
+				Organization organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+				member.setOrganization(organization);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getMemberByMemberId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return member;
+	}
+	
 	public Member getMemberByMemberId(int memberId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;

@@ -14,6 +14,8 @@ public class EditScholarAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITSCHOLAR = "displayEditScholar";
+	
 	private int scholarId;
 	
 	private String studentNumber;
@@ -40,6 +42,8 @@ public class EditScholarAction extends AbstractAction {
 	
 	private String gwa;
 	
+	private int scholarshipProgramId;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -47,24 +51,35 @@ public class EditScholarAction extends AbstractAction {
 
 		try {
 			ScholarManager scholarManager = new ScholarManager();
-			Scholar scholar = scholarManager.getScholar(scholarId);
 			
-			scholar.setScholarId(scholarId);
-			scholar.setStudentNumber(studentNumber);
-			scholar.setFirstName(firstName);
-			scholar.setMiddleName(middleName);
-			scholar.setLastName(lastName);
-			scholar.setGender(gender);
-			scholar.setEmail(email);
-			scholar.setContactNumber(contactNumber);
-			scholar.setProgram(new Program(program));
-			scholar.setYear(year);
-			scholar.setSection(section);
-			scholar.setGwa(gwa);
+			Scholar existingScholar = null;
+			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId, getCurrentActiveTerm().getSemTermId());
 			
-			scholarManager.saveScholar(scholar);
 			
-			notificationMessage = "Changes to scholar has been saved successfully.";
+			if (existingScholar != null && scholarId != existingScholar.getScholarId()) {
+				notificationMessage = "Scholar already exist.";
+				return FORWARD_DISPLAYEDITSCHOLAR;
+			}
+			else
+			{
+				Scholar scholar = scholarManager.getScholar(scholarId);
+				
+				scholar.setStudentNumber(studentNumber);
+				scholar.setFirstName(firstName);
+				scholar.setMiddleName(middleName);
+				scholar.setLastName(lastName);
+				scholar.setGender(gender);
+				scholar.setEmail(email);
+				scholar.setContactNumber(contactNumber);
+				scholar.setProgram(new Program(program));
+				scholar.setYear(year);
+				scholar.setSection(section);
+				scholar.setGwa(gwa);
+				
+				scholarManager.saveScholar(scholar);
+				
+				notificationMessage = "Changes to scholar has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

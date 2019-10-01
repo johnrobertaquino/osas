@@ -16,7 +16,6 @@ public class OrganizationRequirementQualificationManager {
 	public List<OrganizationRequirementQualification> getOrganizationRequirementQualificationList(int organizationId, int semTermId) throws Exception {
 		OrganizationQualificationDAO organizationQualificationDAO = null;
 		OrganizationRequirementManager organizationRequirementManager = null;
-		OrganizationManager organizationManager = null;
 		List<OrganizationRequirement> organizationRequirementList = null;
 		List<OrganizationRequirementQualification> organizationRequirementQualificationList = null;
 
@@ -25,8 +24,6 @@ public class OrganizationRequirementQualificationManager {
 		try {
 			connection = ConnectionUtil.createConnection();
 			
-			organizationManager = new OrganizationManager();
-			Organization organization = organizationManager.getOrganization(organizationId);
 			organizationRequirementManager = new OrganizationRequirementManager();
 			organizationRequirementList = organizationRequirementManager.getOrganizationRequirementList(semTermId);
 
@@ -41,7 +38,7 @@ public class OrganizationRequirementQualificationManager {
 					OrganizationRequirementQualification organizationRequirementQualification = new OrganizationRequirementQualification();
 					organizationRequirementQualification.setOrganizationRequirement(organizationRequirement);
 					
-					OrganizationQualification organizationQualification = organizationQualificationDAO.getOrganizationQualificationByOrganizationshipRequirementIdAndOrganizationId(organizationRequirement.getOrganizationRequirementId(), organizationId);
+					OrganizationQualification organizationQualification = organizationQualificationDAO.getOrganizationQualificationByOrganizationRequirementIdAndOrganizationId(organizationRequirement.getOrganizationRequirementId(), organizationId);
 					if	(organizationQualification != null) {
 						organizationRequirementQualification.setOrganizationQualification(organizationQualification);
 					}

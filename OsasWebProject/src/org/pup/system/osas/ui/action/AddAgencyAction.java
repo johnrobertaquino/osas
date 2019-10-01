@@ -30,7 +30,7 @@ public class AddAgencyAction extends AbstractAction {
 		try {
 			Agency agency = new Agency();
 			AgencyManager agencyManager = new AgencyManager();
-			agency = agencyManager.validate(agencyName);
+			agency = agencyManager.validate(agencyName, getCurrentActiveTerm().getSemTermId());
 			
 			if(agency != null) { 
 				notificationMessage = "Agency already exist.";

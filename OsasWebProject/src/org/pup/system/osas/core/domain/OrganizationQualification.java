@@ -18,7 +18,7 @@ public class OrganizationQualification {
 
 	private int organizationId;
 
-	private YearlyTerm yearlyTerm;
+	private boolean yearlyCheck;
 
 	/**
 	 * @return the organizationQualificationId
@@ -61,33 +61,21 @@ public class OrganizationQualification {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
-	/**
-	 * @return the fileName
-	 */
+	
 	public String getFileName() {
 		return fileName;
 	}
 
-	/**
-	 * @param fileName the fileName to set
-	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 
-	/**
-	 * @return the yearlyTerm
-	 */
-	public YearlyTerm getYearlyTerm() {
-		return yearlyTerm;
+	public boolean isYearlyCheck() {
+		return yearlyCheck;
 	}
 
-	/**
-	 * @param yearlyTerm the yearlyTerm to set
-	 */
-	public void setYearlyTerm(YearlyTerm yearlyTerm) {
-		this.yearlyTerm = yearlyTerm;
+	public void setYearlyCheck(boolean yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
 	}
 
 	/**
@@ -131,4 +119,6 @@ public class OrganizationQualification {
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
+	
+	
 }

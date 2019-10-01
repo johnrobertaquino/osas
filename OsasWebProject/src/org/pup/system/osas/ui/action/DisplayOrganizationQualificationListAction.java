@@ -33,7 +33,7 @@ public class DisplayOrganizationQualificationListAction extends AbstractAction {
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organization = organizationManager.getOrganization(organizationId);
 			if (organization != null) {
-				pageName = "Manage Scholar > " + organization.getOrganizationName() + " > Qualifications";
+				pageName = "Manage Organization > " + organization.getOrganizationName() + " > Qualifications";
 			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();

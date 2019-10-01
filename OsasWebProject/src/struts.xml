@@ -364,7 +364,7 @@
 		 <action name="displayScholarList" class="org.pup.system.osas.ui.action.DisplayScholarListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarList.jsp</result>
-			<result name="error" type="chain">displayScholarQualificationList</result> 
+			<result name="error" type="chain">home</result> 
 		</action>		
 		
 		<action name="displayAddScholar" class="org.pup.system.osas.ui.action.DisplayAddScholarAction">
@@ -389,6 +389,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayScholarList</result>
 			<result type="chain" name="error">displayScholarList</result>
+			<result name="displayEditScholar"  type="chain">displayEditScholar</result>
 		</action>
 		
 		<action name="searchScholar" class="org.pup.system.osas.ui.action.SearchScholarAction">
@@ -461,6 +462,7 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayMemberList</result>
 			<result name="error"  type="chain">/jsp/addMember.jsp</result>
+			<result name="displayAddMember"  type="chain">displayAddMember</result>
 		</action>
 		
 		<action name="displayEditMember" class="org.pup.system.osas.ui.action.DisplayEditMemberAction">
@@ -559,7 +561,12 @@
 			<result name="success" type="chain">displayOrganizationQualificationList</result>
 			<result name="error" type="chain">displayOrganizationQualificationList</result>
 		</action>
-		
+				
+		<action name="addOrganizationQualification" class="org.pup.system.osas.ui.action.AddOrganizationQualificationAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">displayOrganizationQualificationList</result>
+			<result name="error"  type="chain">/jsp/addOrganizationQualification.jsp</result>
+		</action>
 		
 		<!--  Upload -->
 		<action name="addScholarExcelFile" class="org.pup.system.osas.ui.action.AddScholarExcelFileAction">
@@ -585,7 +592,7 @@
 			<result name="success">/jsp/addMemberExcelFile.jsp</result>
 		</action>
 		
-		<!-- REPORT -->
+		<!-- SCHOLARSHIP REPORT -->
 		<action name="displayScholarshipReport" class="org.pup.system.osas.ui.action.DisplayScholarshipReportAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipReport.jsp</result>
@@ -599,6 +606,13 @@
 			<interceptor-ref name="userSessionStack"/>
 			<result name="error" type="chain">displayScholarshipReport</result>   
 		</action>
+		
+		<!-- ORGANIZATION REPORT -->
+		<action name="displayOrganizationReport" class="org.pup.system.osas.ui.action.DisplayOrganizationReportAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/organizationReport.jsp</result>
+			<result name="error" type="chain">home</result>  
+		</action>	
 		
 		<!-- DOWNLOAD -->
 		<action name="download" class="org.pup.system.osas.ui.action.DownloadFileAction">

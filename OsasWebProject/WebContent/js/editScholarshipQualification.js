@@ -9,7 +9,7 @@ $(document).ready(function() {
 		
 		if (errorMessage == '') {
 			popUpOkCancel("Do you want to save changes to this scholarship qualification?", function() {
-				$("#editScholarQualificationForm").submit();
+				$("#editScholarshipQualificationForm").submit();
 			});
 		}
 		else {

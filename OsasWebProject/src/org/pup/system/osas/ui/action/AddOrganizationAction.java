@@ -46,7 +46,7 @@ public class AddOrganizationAction extends AbstractAction {
 			
 			Organization organization = new Organization();
 			OrganizationManager organizationManager = new OrganizationManager();
-			organization = organizationManager.validate(organizationName);
+			organization = organizationManager.validate(organizationName, getCurrentActiveTerm().getSemTermId());
 			
 			if(organization != null) { 
 				notificationMessage = "Organization already exist.";

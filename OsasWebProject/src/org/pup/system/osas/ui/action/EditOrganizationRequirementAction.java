@@ -29,7 +29,7 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirement organizationRequirement = organizationRequirementManager.getOrganizationRequirement(organizationRequirementId);
 			
 			OrganizationRequirement existingOrganizationRequirement = null;
-			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName, getCurrentActiveTerm().getSemTermId());
 			
 			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
 			{
