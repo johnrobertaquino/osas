@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -84,6 +83,7 @@
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Logo</th>
@@ -91,6 +91,7 @@
 					<th>Organization Type</th>
 					<th>Program </th>
 					<th>Adviser</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
@@ -104,6 +105,7 @@
 						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program.programCode" /></td>
  						<td><s:property value="adviser" /></td>
+ 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
@@ -120,6 +122,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

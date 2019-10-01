@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -79,6 +78,7 @@
 				<div class="button" id="addProgramButton">ADD PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Program Code</th>
@@ -105,6 +105,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -60,7 +59,7 @@
   		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
 	<form id="showAddOrganizationQualificationForm" action="displayAddOrganizationQualification" method="POST">
-  		<input type="hidden" name="organizationshipQualificationId" id="organizationshipQualificationId" />
+  		<input type="hidden" name="organizationRequirementId" id="organizationRequirementId" />
   		<input type="hidden" name="organizationId" value="${organizationId}" />
 	</form>
 	<form id="editOrganizationQualificationForm" action="displayEditOrganizationQualification" method="POST">
@@ -85,23 +84,26 @@
 				<div class="button" id="backOrganizationQualification">BACK</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Qualification Name</th>
 					<th>Notes</th>
 					<th>Date Submitted</th>
+					<th>Yearly Check</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
-				<s:iterator value="organizationQualificationList" status="rowStatus" var="organizationQualification">
+				<s:iterator value="organizationRequirementQualificationList" status="rowStatus" var="organizationRequirementQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
-						<td><s:property value="organizationQualification.organizationQualificationName" /></td>
+						<td><s:property value="organizationRequirement.organizationRequirementName" /></td>
 						<td>
 							<s:if test='organizationQualification.notes != null && organizationQualification.notes != ""'>
 								<s:property value="organizationQualification.notes" />
 							</s:if>
 						</td>
 						<td><s:property value="organizationQualification.dateSubmitted" /></td>
+						<td><s:if test="#organizationQualification.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
@@ -111,7 +113,7 @@
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">
   									<s:if test='status == "N"'>
-  										<a onclick="showAddOrganizationQualification('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
+  										<a onclick="showAddOrganizationQualification('<s:property value="organizationRequirement.organizationRequirementId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Submit</a>
   									</s:if>
   									<s:if test='status == "A" || status == "P"'>
   										<a onclick="displayEditOrganizationQualification('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
@@ -120,7 +122,7 @@
   										<a onclick="showOrganizationQualificationApprovePopup('<s:property value="organizationQualification.organizationQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
   									<s:if test='organizationQualification.filename != null && organizationQualification.filename != ""'>
-  										<a href="download?type=SQ&fileName=<s:property value="organizationQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  										<a href="download?type=OQ&fileName=<s:property value="organizationQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
   									</s:if>
   								</div>
 							</div>
@@ -128,6 +130,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

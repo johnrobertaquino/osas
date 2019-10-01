@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -118,15 +117,6 @@
 			    				</div>
 		    				</div>
 	    			</div>
-	    			<div class="rightPaneElement withTitle">
-    					<span>Gender</span>
-	    				<div id="roleDiv">
-		    				<input type="radio" id="gender" name="gender" value="M" <s:if test='member.gender == "M"'>checked</s:if>>
-		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" <s:if test='member.gender == "F"'>checked</s:if>>
-		    				<span>Female</span>
-		    			</div>
-    				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>

@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -83,9 +82,11 @@
 				<div class="button" id="addOrganizationRequirementButton">ADD ORGANIZATION REQUIREMENT</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Requirement/s Name</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationRequirementList" status="rowStatus" var="organizationRequirement">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -105,6 +106,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

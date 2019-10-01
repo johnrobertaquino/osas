@@ -38,7 +38,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -71,7 +70,7 @@
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Scholarship Qualification Name</span>
-    					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text"></div>
+    					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Requires Yearly Check</span>

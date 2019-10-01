@@ -38,7 +38,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -68,7 +67,7 @@
 					<input type="hidden" name="organizationId" value="${organizationId}" />
 				</form>
 				<form class="addOrganizationQualificationContent" id="addOrganizationQualificationForm" action="addOrganizationQualification" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="organizationshipQualificationId" value="${organizationshipQualificationId}" />
+					<input type="hidden" name="organizationRequirementId" value="${organizationRequirementId}" />
 					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
     					<span>Notes</span>
@@ -83,6 +82,10 @@
     							
     						});
     					</script>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Add Attachment</span>

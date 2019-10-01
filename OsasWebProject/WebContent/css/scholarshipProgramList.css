@@ -20,24 +20,30 @@
 	width: 300px;
 	padding-left: 10px;
 	float: left;
-	height: 32px;
+	height: 28px;
 	margin-right: 20px;
+	color: #444444;
 }
 
 #scholarshipProgramListContentBody #searchScholarshipProgramButton {
 	float: left;
 }
 
-@media only screen and (max-width: 1550px) {
+#scholarshipProgramListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
+
+/*@media only screen and (max-width: 1550px) {*/
   	#scholarshipProgramListContentBody #contentBodyLeftPane	{
 		width: 200px;
 	}
 	#scholarshipProgramListContentBody #contentBodyRightPane {
-		font-size: 13px;
+		font-size: 12px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram, #scholarshipProgramListContentBody #contentBodyRightPane table {
-		margin-left: 50px;
-		width: 920px;
+		margin-left: 10px;
+		width: 940px;
 	}
 	#scholarshipProgramListContentBody #searchScholarshipProgram img {
 		height: 32px;
@@ -50,8 +56,9 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
-}
+/*}*/
 
+/*
 @media only screen and (max-width: 1100px) {
   	#scholarshipProgramListContentBody #contentBodyLeftPane	{
 		width: 200px;
@@ -155,3 +162,5 @@
 		TEXT-ALIGN: center
 	}
 }
+
+*/

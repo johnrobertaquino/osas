@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -79,10 +78,14 @@
     					<div><input id="dateSubmitted" name="dateSubmitted" type="text" value="${organizationQualification.dateSubmitted}"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
-    							$("#dateSubmitted").datepicker();
-    							
+    							$("#dateSubmitted").datepicker({maxDate: 0});
+    							$("#dateSubmitted").datepicker("setDate","<s:date name="organizationQualification.dateSubmitted" format="MM/dd/yyyy" />");
     						});
     					</script>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test="%{organizationQualification.yearlyCheck}">checked</s:if>></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Add Attachment</span>

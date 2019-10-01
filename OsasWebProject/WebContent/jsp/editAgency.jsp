@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -66,29 +65,29 @@
 				<form class="editAgencyContent" id="editAgencyForm" action="editAgency" method="POST">
 					<input name="agencyId" type="hidden" value="${agency.agencyId}">
     				<div class="rightPaneElement withTitle">
-    					<span>Agency name</span>
+    					<span class="title">Agency Name</span>
     					<div><input id="agencyName" name="agencyName" type="text" value="${agency.agencyName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Address</span>
+    					<span class="title">Address</span>
     					<div><input id="address" name="address" type="text" value="${agency.address}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Person</span>
+    					<span class="title">Contact Person</span>
     					<div><input id="contactPerson" name="contactPerson" type="text" value="${agency.contactPerson}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}" placeholder="+63"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Save</span>
+								<span>SAVE</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
