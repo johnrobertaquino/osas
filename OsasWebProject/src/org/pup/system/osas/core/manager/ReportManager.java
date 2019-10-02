@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
+import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.dao.ScholarDAO;
 import org.pup.system.osas.core.dao.ScholarshipProgramDAO;
+import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.report.data.OrganizationByOrganizationRequirementReportData;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
 
 public class ReportManager {
