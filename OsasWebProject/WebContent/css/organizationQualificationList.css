@@ -1,0 +1,117 @@
+@charset "ISO-8859-1";
+#organizationQualificationListContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#organizationQualificationListContentBody #searchOrganizationQualificationButton {
+		float: left;
+}
+#organizationQualificationListContentBody #addOrganizationQualificationButton {
+		float: right;
+}
+
+#organizationQualificationListContentBody #searchOrganizationQualification {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+
+#organizationQualificationListContentBody #backOrganizationQualification {
+		float: right;
+}
+
+#organizationQualificationListContentBody input {
+	border: 1px solid #420001;
+	border-radius: 20px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	height: 32px;
+	margin-right: 20px;
+}
+
+#organizationQualificationListContentBody #searchOrganizationQualificationButton {
+	float: left;
+}
+
+#organizationQualificationListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
+
+@media only screen and (max-width: 1550px) {
+  	#organizationQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#organizationQualificationListContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification, #organizationQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+		width: 920px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification img {
+		height: 32px;
+		float: left;
+	}
+	#organizationQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#organizationQualificationListContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#organizationQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification, #organizationQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 690px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification img {
+		height: 32px;
+		float: left;
+	}
+	#organizationQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#organizationQualificationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#organizationQualificationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification, #organizationQualificationListContentBody #contentBodyRightPane table {
+		margin-left: 50px;
+	    width: 670px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification img {
+		height: 32px;
+		float: left;
+		width: 650px;
+	}
+	#organizationQualificationListContentBody #searchOrganizationQualification img {
+	height: 32px;
+	float: left;
+	}
+	#organizationQualificationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 25px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+}

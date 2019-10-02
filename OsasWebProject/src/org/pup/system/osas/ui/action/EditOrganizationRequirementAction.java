@@ -18,6 +18,8 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 	
 	private String organizationRequirementName;
 	
+	private String yearlyCheck;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization > Requirements";
@@ -29,7 +31,7 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirement organizationRequirement = organizationRequirementManager.getOrganizationRequirement(organizationRequirementId);
 			
 			OrganizationRequirement existingOrganizationRequirement = null;
-			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName, getCurrentActiveTerm().getSemTermId());
 			
 			if(existingOrganizationRequirement != null && organizationRequirementId != existingOrganizationRequirement.getOrganizationRequirementId())
 			{
@@ -39,6 +41,7 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 			else {
 				organizationRequirement.setOrganizationRequirementId(organizationRequirementId);
 				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				organizationRequirement.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 				
 				organizationRequirementManager.saveOrganizationRequirement(organizationRequirement);
 				
@@ -73,6 +76,20 @@ public class EditOrganizationRequirementAction extends AbstractAction {
 
 	public void setOrganizationRequirementName(String organizationRequirementName) {
 		this.organizationRequirementName = organizationRequirementName;
+	}
+
+	/**
+	 * @return the yearlyCheck
+	 */
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	/**
+	 * @param yearlyCheck the yearlyCheck to set
+	 */
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
 	}
 
 }

@@ -19,7 +19,7 @@ public class OrganizationDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Organization getOrganizationByOrganizationName(String organizationName) throws Exception {
+	public Organization getOrganizationByOrganizationName(String organizationName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationName='" + organizationName +"'");  
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName  FROM organization WHERE OrganizationName='" + organizationName +"' AND SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				organization = new Organization();
@@ -294,6 +294,89 @@ public class OrganizationDAO extends DAO {
 		}
 		
 		return organizationType;
+	}
+	
+	public List<Organization> getOrganizationListByMemberId(int memberId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<Organization> organizationList = null;
+		Organization organization = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT organization.OrganizationId,  OrganizationName, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName " + 
+					"from organization join memberorganizationreference on organization.OrganizationId = memberorganizationreference.OrganizationId " + 
+					"where memberorganizationreference.MemberId=" + memberId);
+			while (resultSet.next()) {
+				if (organizationList == null) {
+					organizationList = new ArrayList<Organization>();
+				}
+				
+				organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+				organization.setOrganizationName(resultSet.getString("OrganizationName"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
+				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
+				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organization.setAdviser(resultSet.getString("Adviser"));
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
+				
+				OrganizationType organizationType = new OrganizationType();
+				organizationType.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
+				organization.setOrganizationType(organizationType);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
+				
+				organizationList.add(organization);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationListByMemberId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return organizationList;
+	}
+	
+	public void deleteOrganizationByMemberId(int memberId) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("DELETE FROM memberorganizationreference WHERE MemberId=?");
+			statement.setInt(1,memberId);
+			
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing deleteOrganizationByMemberId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
+	
+	public void insertOrganizationByMemberId(int memberId, Organization organization) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("INSERT INTO memberorganizationreference (MemberId, OrganizationId) VALUES (?,?)");
+			statement.setInt(1,memberId);
+			statement.setInt(2,organization.getOrganizationId());
+			
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing addOrganizationByMemberId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
 	}
 
 }

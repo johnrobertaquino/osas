@@ -3,8 +3,10 @@ package org.pup.system.osas.ui.action;
 import java.util.List;
 
 import org.pup.system.osas.core.domain.Member;
+import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
+import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
@@ -20,6 +22,8 @@ public class DisplayEditMemberAction extends AbstractAction  {
 	private Member member;
 	
 	private List<Program> programList;
+	
+	private List<Organization> organizationList;
 
 	@Override
 	public String execute() throws Exception {
@@ -33,6 +37,9 @@ public class DisplayEditMemberAction extends AbstractAction  {
 			
 			ProgramManager programManager = new ProgramManager();
 			programList = programManager.getProgramList(getCurrentActiveTerm().getSemTermId());
+			
+			OrganizationManager organizationManager = new OrganizationManager();
+			organizationList = organizationManager.getOrganizationList(getCurrentActiveTerm().getSemTermId());
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -77,5 +84,17 @@ public class DisplayEditMemberAction extends AbstractAction  {
 	public void setProgramList(List<Program> programList) {
 		this.programList = programList;
 	}
+
+
+	public List<Organization> getOrganizationList() {
+		return organizationList;
+	}
+
+
+	public void setOrganizationList(List<Organization> organizationList) {
+		this.organizationList = organizationList;
+	}
+	
+	
 
 }

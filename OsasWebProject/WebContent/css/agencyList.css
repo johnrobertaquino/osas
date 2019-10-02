@@ -1,12 +1,19 @@
 @charset "ISO-8859-1";
 #agencyListContentBody #contentBodyRightPane {
 	width: inherit;
+	font-size: 12px;
 }
+
+#agencyListContentBody #contentBodyLeftPane	{
+	width: 200px;
+}
+	
 #agencyListContentBody #searchAgencyButton {
-		float: left;
+	float: left;
 }
+
 #agencyListContentBody #addAgencyButton {
-		float: right;
+	float: right;
 }
 
 #agencyListContentBody #searchAgency {
@@ -14,20 +21,46 @@
 	margin-bottom: 35px;
 	margin-top: 50px;
 }
+
 #agencyListContentBody input {
 	border: 1px solid #420001;
 	border-radius: 20px;
 	width: 300px;
 	padding-left: 10px;
 	float: left;
-	height: 32px;
+	height: 28px;
 	margin-right: 20px;
+	color: #444444;
 }
 
 #agencyListContentBody #searchAgencyButton {
 	float: left;
 }
 
+#agencyListContentBody #contentBodyRightPane #tableHolder {
+	padding-bottom: 50px;
+}
+
+#agencyListContentBody #searchAgency, #agencyListContentBody #contentBodyRightPane table {
+	margin-left: 10px;
+	width: 940px;
+}
+
+#agencyListContentBody #searchAgency img {
+	height: 32px;
+	float: left;
+   	width: 32px;
+}
+
+#agencyListContentBody #contentBodyLeftPane #title {
+	margin: 25px auto 0px auto;
+	font-weight: bold;
+	font-size: 25px;
+	color: #4d4d4d;
+	text-align: center;
+}
+
+/*
 @media only screen and (max-width: 1550px) {
   	#agencyListContentBody #contentBodyLeftPane	{
 		width: 200px;
@@ -114,3 +147,5 @@
 		TEXT-ALIGN: center
 	}
 }
+
+*/

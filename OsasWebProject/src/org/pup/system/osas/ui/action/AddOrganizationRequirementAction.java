@@ -16,6 +16,8 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 	private int organizationRequirementId;
 
 	private String organizationRequirementName;
+	
+	private String yearlyCheck;
 
 	@Override
 	public String execute() throws Exception {
@@ -28,7 +30,7 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 			OrganizationRequirementManager organizationRequirementManager = new OrganizationRequirementManager();
 			
 			OrganizationRequirement existingOrganizationRequirement = null;
-			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName);
+			existingOrganizationRequirement = organizationRequirementManager.validate(organizationRequirementName, getCurrentActiveTerm().getSemTermId());
 			
 			if(existingOrganizationRequirement != null)
 			{
@@ -36,8 +38,10 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 				return FORWARD_DISPLAYADDORGANIZATIONREQUIREMENT;
 			}
 			else {
+				
 				OrganizationRequirement organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				organizationRequirement.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 				organizationRequirement.setSemTerm(getCurrentActiveTerm());
 
 				organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
@@ -58,26 +62,34 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 		return actionResult;
 	}
 
-	/**
-	 * @return the OrganizationRequirementId
-	 */
-	public String getOrganizationRequirementName() {
-		return organizationRequirementName;
-	}
-
-	/**
-	 * @param OrganizationRequirementId the OrganizationRequirementId to set
-	 */
-	public void setOrganizationRequirementName(String organizationRequirementName) {
-		this.organizationRequirementName = organizationRequirementName;
-	}
-	
 	public int getOrganizationRequirementId() {
 		return organizationRequirementId;
 	}
 
 	public void setOrganizationRequirementId(int organizationRequirementId) {
 		this.organizationRequirementId = organizationRequirementId;
+	}
+
+	public String getOrganizationRequirementName() {
+		return organizationRequirementName;
+	}
+
+	public void setOrganizationRequirementName(String organizationRequirementName) {
+		this.organizationRequirementName = organizationRequirementName;
+	}
+
+	/**
+	 * @return the yearlyCheck
+	 */
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	/**
+	 * @param yearlyCheck the yearlyCheck to set
+	 */
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
 	}
 
 }

@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -64,6 +63,12 @@
 	<form id="editOrganizationForm" action="displayEditOrganization" method="POST">
   		<input type="hidden" id="organizationId" name="organizationId" />
 	</form>
+	<form id="showOrganizationQualificationForm" action="displayOrganizationQualificationList" method="POST">
+  		<input type="hidden" id="organizationId" name="organizationId" />
+	</form>
+	<form id="filterOrganizationForm" action="displayOrganizationList" method="POST">
+  		<input type="hidden" id="filter" name="filter" />
+	</form>
 	<div id="organizationListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -75,12 +80,24 @@
 			<div id="searchOrganization">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchOrganization" method="POST" id="searchOrganizationForm">
-					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization">
+					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization Name">
 				</form>
 				<div class="button" id="searchOrganizationButton">SEARCH</div>
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>
     			<div style="clear:both"></div>
+			<div class="rightPaneElement withTitle">
+    				    <span>Filter Status:</span>
+	    				<div>
+		    				<select id="filterSelect">
+		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+		    						<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
+		    						<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
+		    						<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
+							</select>
+						</div>
 			</div>
+			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Logo</th>
@@ -88,6 +105,7 @@
 					<th>Organization Type</th>
 					<th>Program </th>
 					<th>Adviser</th>
+					<th>Status</th>
 					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationList" status="rowStatus" var="organization">
@@ -101,6 +119,7 @@
 						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program.programCode" /></td>
  						<td><s:property value="adviser" /></td>
+ 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
@@ -108,7 +127,7 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-  									<a onclick="displayOrganizationQualificationList('<s:property value="" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Requirements</a>	
+  									<a onclick="displayOrganizationQualification('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Requirements</a>	
 	    							<a onclick="displayEditOrganization('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
     									<a onclick="showOrganizationDeletePopup('<s:property value="organizationId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
@@ -117,6 +136,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

@@ -1,5 +1,7 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.List;
+
 public class Member {
 	private int memberId;
 	
@@ -27,7 +29,7 @@ public class Member {
 	
 	private String contactNumber;
 	
-	private Organization organization;
+	private List<Organization> organizationList;
 
 	public int getMemberId() {
 		return memberId;
@@ -126,20 +128,6 @@ public class Member {
 	}
 
 	/**
-	 * @return the organization
-	 */
-	public Organization getOrganization() {
-		return organization;
-	}
-
-	/**
-	 * @param organization the organization to set
-	 */
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
-	}
-
-	/**
 	 * @return the officerPhoto
 	 */
 	public String getOfficerPhoto() {
@@ -151,5 +139,34 @@ public class Member {
 	 */
 	public void setOfficerPhoto(String officerPhoto) {
 		this.officerPhoto = officerPhoto;
+	}
+
+	/**
+	 * @return the organizationList
+	 */
+	public List<Organization> getOrganizationList() {
+		return organizationList;
+	}
+
+	/**
+	 * @param organizationList the organizationList to set
+	 */
+	public void setOrganizationList(List<Organization> organizationList) {
+		this.organizationList = organizationList;
 	}	
+	
+	public String getOrganizationListDisplay() {
+		String organizationListForDisplay = "";
+		
+		if (this.organizationList != null) {
+			for (Organization organization : this.organizationList) {
+				if(!organizationListForDisplay.isEmpty()) {
+					organizationListForDisplay = organizationListForDisplay + ", ";
+				}
+				organizationListForDisplay = organizationListForDisplay + organization.getOrganizationName();
+			}
+		}
+		
+		return organizationListForDisplay;
+	}
 }

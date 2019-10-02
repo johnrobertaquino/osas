@@ -3,6 +3,46 @@ $(document).ready(function() {
 		location.href = "displayOrganizationList";
 	});
 	
+	$(function () {
+        $("#acadCheck").click(function () {
+            if ($(this).is(":checked")) {
+                $("#programDiv").show();
+            } else {
+                $("#programDiv").hide();
+            }
+        });
+    });
+ 
+ $(function () {
+        $("#nonAcadCheck").click(function () {
+            if ($(this).is(":checked")) {
+                $("#programDiv").hide();
+            } else {
+            }
+        });
+    });
+ 
+	$("#organizationName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+	$("#adviser").keypress(function (e) {
+     var keyCode = e.keyCode || e.which;
+
+     //Regex for Valid Characters i.e. Numbers.
+     var regex = /^[A-Za-z]+$/;
+
+     //Validate TextBox value against the Regex.
+     var isValid = regex.test(String.fromCharCode(keyCode));
+     return isValid;
+ });
+	
 	$('#submitButton').click(function(event) {	
 		
 		var errorMessage = '';

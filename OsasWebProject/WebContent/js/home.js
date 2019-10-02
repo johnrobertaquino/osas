@@ -6,6 +6,12 @@ $(document).ready(function() {
 		event.stopPropagation();
 		location.href = "displayUserList";
 	});
+	
+	$('#adminFunctionsManageProgram').click(function() {
+		event.stopPropagation();
+		location.href = "displayProgramList";
+	});
+	
 	$('#scholarshipManagementAgencyLink').click(function() {
 		event.stopPropagation();
 		location.href = "displayAgencyList";
@@ -39,5 +45,10 @@ $(document).ready(function() {
 		location.href = "displayOrganizationRequirementList";
 	});
 	
+	
+	$('#studentOrgReportsLink').click(function() {
+		event.stopPropagation();
+		location.href = "displayOrganizationReport";
+	});
 });
 

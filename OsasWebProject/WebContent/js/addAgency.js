@@ -14,6 +14,18 @@ $(document).ready(function() {
         return isValid;
     });
 	
+	$("#contactPerson").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+
+	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
 		

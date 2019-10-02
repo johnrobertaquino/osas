@@ -12,7 +12,7 @@ import org.pup.system.osas.core.domain.UserRoleReference;
 
 public class UserManager {
 
-	public User checkFullName(String firstName, String lastName) throws Exception {
+	public User checkFullName(String firstName, String middleName, String lastName) throws Exception {
 		UserDAO userDAO = null;
 		User user = null;
 		Connection connection = null;
@@ -22,7 +22,7 @@ public class UserManager {
 			
 			userDAO = new UserDAO(connection);
 			
-			user = userDAO.getUserByFullName(firstName, lastName);
+			user = userDAO.getUserByFullName(firstName, middleName, lastName);
 		
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);

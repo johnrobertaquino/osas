@@ -97,8 +97,8 @@ public class YearlyTermDAO extends DAO {
 				}
 				
 				yearlyTerm = new YearlyTerm();
-				yearlyTerm.setYearlyTermId(resultSet.getInt("SemTermId"));
-				yearlyTerm.setYearlyTermName(resultSet.getString("SemTermName"));
+				yearlyTerm.setYearlyTermId(resultSet.getInt("YearlyTermId"));
+				yearlyTerm.setYearlyTermName(resultSet.getString("YearlyTermName"));
 				yearlyTerm.setDeadline(resultSet.getString("Deadline"));
 				yearlyTerm.setEndDate(resultSet.getString("EndDate"));
 				

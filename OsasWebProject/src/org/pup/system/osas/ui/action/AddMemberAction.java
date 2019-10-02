@@ -1,20 +1,27 @@
 package org.pup.system.osas.ui.action;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
-import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddMemberAction extends AbstractAction {
-
+	
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4484162865895061330L;
 
+	private static final String FORWARD_DISPLAYADDMEMBER = "displayAddMember";
+	
 	private int memberId;
 	
 	private String studentNumber;
@@ -29,9 +36,13 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String position;
 
-	private boolean officer;
+	private String officer;
 	
-	private String officerPhoto;
+	private String officerPhotoContentType;
+
+	private String officerPhotoFileName;
+	
+	private File officerPhoto;
 	
 	private String gender;
 	
@@ -41,37 +52,67 @@ public class AddMemberAction extends AbstractAction {
 	
 	private String contactNumber;
 	
-	private String organizationId;
+	private List<Integer> organizationIdList;
 	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Organization Member";
 		
 		String actionResult = FORWARD_SUCCESS;
+		File fileToCreate = null;
 		
 		try {
-			OrganizationManager organizationManager = new OrganizationManager();
-			Organization organization = organizationManager.getOrganization(Integer.parseInt(organizationId));
+
 			
-			Member member = new Member();
-			member.setStudentNumber(studentNumber);
-			member.setFirstName(firstName);
-			member.setMiddleName(middleName);
-			member.setLastName(lastName);
-			member.setProgram(new Program(program));
-			member.setPosition(position);
-			member.setOfficer(officer);
-			member.setOfficerPhoto(officerPhoto);
-			member.setGender(gender);
-			member.setYear(year);
-			member.setSection(section);
-			member.setContactNumber(contactNumber);
-			member.setOrganization(organization);
-		
 			MemberManager memberManager = new MemberManager();
-			memberManager.insertMember(member);
+
+			Member existingMember = null;
+
+			existingMember = memberManager.getMemberByStudentNumber(studentNumber, getCurrentActiveTerm().getSemTermId());			
+
+			if (existingMember != null) {
+				notificationMessage = "Member already exist.";
+				return FORWARD_DISPLAYADDMEMBER;
+			}
+			else
+			{
+				Member member = new Member();
+				member.setStudentNumber(studentNumber);
+				member.setFirstName(firstName);
+				member.setMiddleName(middleName);
+				member.setLastName(lastName);
+				member.setProgram(new Program(program));
+				if ("on".equalsIgnoreCase(officer)) {
+					member.setPosition(position);
+				}
+				member.setOfficer("on".equalsIgnoreCase(officer));
+				
+				if(!StringUtils.isEmpty(officerPhotoFileName) && "on".equalsIgnoreCase(officer)) {
+					member.setOfficerPhoto(officerPhotoFileName);
+					
+					String filePath = "C:/OSAS/Organization/Member";
+					fileToCreate = new File(filePath, officerPhotoFileName);
+					
+					FileUtils.copyFile(officerPhoto, fileToCreate);
+				}
+				member.setGender(gender);
+				member.setYear(year);
+				member.setSection(section);
+				member.setContactNumber(contactNumber);
+
+				if(organizationIdList != null) {
+					member.setOrganizationList(new ArrayList<Organization>());
+					for (Integer organizationId : organizationIdList) {
+						Organization organization = new Organization(organizationId);
+						member.getOrganizationList().add(organization);
+					}
+				}
 			
-			notificationMessage = "Member has been successfully added.";
+				memberManager.insertMember(member);
+				
+				notificationMessage = "Member has been successfully added.";
+			}
+		
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -142,11 +183,11 @@ public class AddMemberAction extends AbstractAction {
 		this.position = position;
 	}
 
-	public boolean getOfficer() {
+	public String getOfficer() {
 		return officer;
 	}
 
-	public void setOfficer(boolean officer) {
+	public void setOfficer(String officer) {
 		this.officer = officer;
 	}
 
@@ -174,27 +215,29 @@ public class AddMemberAction extends AbstractAction {
 		this.section = section;
 	}
 
-	public String getOrganizationId() {
-		return organizationId;
+	public List<Integer> getOrganizationIdList() {
+		return organizationIdList;
 	}
 
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
+	public void setOrganizationIdList(List<Integer> organizationIdList) {
+		this.organizationIdList = organizationIdList;
 	}
 
 	/**
 	 * @return the officerPhoto
 	 */
-	public String getOfficerPhoto() {
+	public File getOfficerPhoto() {
 		return officerPhoto;
 	}
 
 	/**
 	 * @param officerPhoto the officerPhoto to set
 	 */
-	public void setOfficerPhoto(String officerPhoto) {
+	public void setOfficerPhoto(File officerPhoto) {
 		this.officerPhoto = officerPhoto;
 	}
+	
+	
 	
 	public String getContactNumber() {
 		return contactNumber;
@@ -203,4 +246,28 @@ public class AddMemberAction extends AbstractAction {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+
+	/**
+	 * @return the officerPhotoContentType
+	 */
+	public String getOfficerPhotoContentType() {
+		return officerPhotoContentType;
+	}
+
+	/**
+	 * @param officerPhotoContentType the officerPhotoContentType to set
+	 */
+	public void setOfficerPhotoContentType(String officerPhotoContentType) {
+		this.officerPhotoContentType = officerPhotoContentType;
+	}
+
+	public String getOfficerPhotoFileName() {
+		return officerPhotoFileName;
+	}
+
+	public void setOfficerPhotoFileName(String officerPhotoFileName) {
+		this.officerPhotoFileName = officerPhotoFileName;
+	}
+	
+	
 }

@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.Date;
 import org.pup.system.osas.core.domain.ScholarQualification;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarQualificationDAO extends DAO {
 
@@ -13,7 +17,7 @@ public class ScholarQualificationDAO extends DAO {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
-	
+		
 	public ScholarQualification getScholarQualificationByScholarshipQualificationIdAndScholarId(
 			int scholarshipQualificationId, int scholarId) throws Exception {
 		Connection connection = null;
@@ -27,7 +31,7 @@ public class ScholarQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, Filename, ScholarId FROM scholarqualification WHERE ScholarshipQualificationId="
+					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, DateSubmitted, Filename, ScholarId FROM scholarqualification WHERE ScholarshipQualificationId="
 							+ scholarshipQualificationId + " AND ScholarId=" + scholarId);
 
 			if (resultSet.next()) {
@@ -36,6 +40,7 @@ public class ScholarQualificationDAO extends DAO {
 				scholarQualification.setScholarshipQualificationId(resultSet.getInt("ScholarshipQualificationId"));
 				scholarQualification.setQualified(resultSet.getBoolean("Qualified"));
 				scholarQualification.setNotes(resultSet.getString("Notes"));
+				scholarQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
 				scholarQualification.setFilename(resultSet.getString("Filename"));
 				scholarQualification.setScholarId(resultSet.getInt("ScholarId"));
 			}
@@ -61,7 +66,7 @@ public class ScholarQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, Filename, ScholarId FROM scholarqualification WHERE ScholarQualificationId="
+					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, DateSubmitted, Filename, ScholarId FROM scholarqualification WHERE ScholarQualificationId="
 							+ scholarQualificationId);
 
 			if (resultSet.next()) {
@@ -70,6 +75,7 @@ public class ScholarQualificationDAO extends DAO {
 				scholarQualification.setScholarshipQualificationId(resultSet.getInt("ScholarshipQualificationId"));
 				scholarQualification.setQualified(resultSet.getBoolean("Qualified"));
 				scholarQualification.setNotes(resultSet.getString("Notes"));
+				scholarQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
 				scholarQualification.setFilename(resultSet.getString("Filename"));
 				scholarQualification.setScholarId(resultSet.getInt("ScholarId"));
 			}
@@ -91,13 +97,14 @@ public class ScholarQualificationDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO scholarqualification(ScholarshipQualificationId, Qualified, Notes, Filename, ScholarId) VALUES (?, ?, ?, ?, ?)",
+					"INSERT INTO scholarqualification(ScholarshipQualificationId, Qualified, Notes, DateSubmitted, Filename, ScholarId) VALUES (?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, scholarQualification.getScholarshipQualificationId());
 			statement.setBoolean(2, scholarQualification.isQualified());
 			statement.setString(3, scholarQualification.getNotes());
-			statement.setString(4, scholarQualification.getFilename());
-			statement.setInt(5, scholarQualification.getScholarId());
+			statement.setDate(4, new Date(scholarQualification.getDateSubmitted().getTime()));
+			statement.setString(5, scholarQualification.getFilename());
+			statement.setInt(6, scholarQualification.getScholarId());
 
 			statement.executeUpdate();
 
@@ -123,13 +130,14 @@ public class ScholarQualificationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE scholarqualification SET ScholarshipQualificationId=?, Qualified=?, Notes=?, Filename=?, ScholarId=? WHERE ScholarQualificationId=?");
+			statement = connection.prepareStatement("UPDATE scholarqualification SET ScholarshipQualificationId=?, Qualified=?, Notes=?, DateSubmitted=?, Filename=?, ScholarId=? WHERE ScholarQualificationId=?");
 			statement.setInt(1, scholarQualification.getScholarshipQualificationId());
 			statement.setBoolean(2, scholarQualification.isQualified());
 			statement.setString(3, scholarQualification.getNotes());
-			statement.setString(4, scholarQualification.getFilename());
-			statement.setInt(5, scholarQualification.getScholarId());
-			statement.setInt(6, scholarQualification.getScholarQualificationId());
+			statement.setDate(4, new Date(scholarQualification.getDateSubmitted().getTime()));
+			statement.setString(5, scholarQualification.getFilename());
+			statement.setInt(6, scholarQualification.getScholarId());
+			statement.setInt(7, scholarQualification.getScholarQualificationId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

@@ -14,7 +14,6 @@ public class ScholarsByAgencyAndProgramReport extends Report<List<ScholarsByAgen
 	public ScholarsByAgencyAndProgramReport(String imagePath, String reportTitle,
 			List<ScholarsByAgencyAndProgramReportData> data, User preparedBy) {
 		super(imagePath, reportTitle, data, preparedBy);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

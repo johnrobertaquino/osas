@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -87,14 +86,16 @@
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    				<div id="programDiv">
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}" <s:if test="#program.programCode == organization.program.programCode">selected</s:if>>${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}" <s:if test="#program.programCode == organization.program.programCode">selected</s:if>>${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
+    				</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Adviser</span>

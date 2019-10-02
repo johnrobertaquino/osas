@@ -7,6 +7,8 @@ public class OrganizationRequirement {
 	
 	private String organizationRequirementName;
 
+	private boolean yearlyCheck;
+	
 	private Organization organization;
 	
 	private SemTerm semTerm;
@@ -64,6 +66,20 @@ public class OrganizationRequirement {
 	 */
 	public void setSemTerm(SemTerm semTerm) {
 		this.semTerm = semTerm;
+	}
+
+	/**
+	 * @return the yearlyCheck
+	 */
+	public boolean isYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	/**
+	 * @param yearlyCheck the yearlyCheck to set
+	 */
+	public void setYearlyCheck(boolean yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
 	}
 	
 }

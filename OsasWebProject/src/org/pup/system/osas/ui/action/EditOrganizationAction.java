@@ -17,6 +17,8 @@ public class EditOrganizationAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITORGANIZATION = "displayEditOrganization";
+	
 	private int organizationId;
 	
 	private String organizationName;
@@ -45,25 +47,35 @@ public class EditOrganizationAction extends AbstractAction {
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organization = organizationManager.getOrganization(organizationId);
 			
-			organization.setOrganizationId(organizationId);
-			organization.setOrganizationName(organizationName);
-			organization.setOrganizationType(new OrganizationType());
-			organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
-			organization.setProgram(new Program(program));
-			organization.setAdviser(adviser);
+			Organization existingOrganization = new Organization();
+			existingOrganization = organizationManager.validate(organizationName, getCurrentActiveTerm().getSemTermId());
 			
-			if(!StringUtils.isEmpty(logoFileNameFileName)) {
-				organization.setLogoFileName(logoFileNameFileName);
-				
-				String filePath = "C:/OSAS/Organization/Logo";
-				fileToCreate = new File(filePath, logoFileNameFileName);
-				
-				FileUtils.copyFile(logoFileName, fileToCreate);
+			if(existingOrganization != null) { 
+				notificationMessage = "Organization already exist.";
+				return FORWARD_DISPLAYEDITORGANIZATION;
 			}
-			
-			organizationManager.saveOrganization(organization);
-			
-			notificationMessage = "Changes to organization has been saved successfully.";
+			else
+			{
+				organization.setOrganizationId(organizationId);
+				organization.setOrganizationName(organizationName);
+				organization.setOrganizationType(new OrganizationType());
+				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
+				organization.setProgram(new Program(program));
+				organization.setAdviser(adviser);
+				
+				if(!StringUtils.isEmpty(logoFileNameFileName)) {
+					organization.setLogoFileName(logoFileNameFileName);
+					
+					String filePath = "C:/OSAS/Organization/Logo";
+					fileToCreate = new File(filePath, logoFileNameFileName);
+					
+					FileUtils.copyFile(logoFileName, fileToCreate);
+				}
+				
+				organizationManager.saveOrganization(organization);
+				
+				notificationMessage = "Changes to organization has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;

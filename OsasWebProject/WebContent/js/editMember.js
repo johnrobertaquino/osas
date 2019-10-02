@@ -3,16 +3,13 @@ $(document).ready(function() {
 		location.href = "displayMemberList";
 	});
 	
-	$("#studentNumber").keypress(function (e) {
-        var keyCode = e.keyCode || e.which;
-
-        //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[0-9]*\-?[0-9]*$/;
-
-        //Validate TextBox value against the Regex.
-        var isValid = regex.test(String.fromCharCode(keyCode));
-        return isValid;
-    });
+	$("#chkOfficer").click(function () {
+		if ($(this).is(":checked")) {
+			$("#divOfficer").show();
+		} else {
+			$("#divOfficer").hide();
+		}
+	});
 	
 	$("#contactNumber").keypress(function (e) {
         var keyCode = e.keyCode || e.which;
@@ -41,6 +38,40 @@ $(document).ready(function() {
 
         //Regex for Valid Characters i.e. Numbers.
         var regex = /^[0-9]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+	
+	
+	$("#firstName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+
+	$("#middleName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+
+	$("#lastName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));

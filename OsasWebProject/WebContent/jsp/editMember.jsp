@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -65,8 +64,28 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST">
+				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST" enctype="multipart/form-data">
 					<input name="MemberId" type="hidden" value="${member.memberId}">
+					<div class="rightPaneElement withTitle">
+    				    <span>Organization</span>
+    				    
+	    				<div style="height: 200px; overflow-y: scroll;">
+	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+			    				<div id="roleDiv">
+									<label for="organizationIdList">
+										<s:set var="checked"></s:set>
+										<s:iterator value="member.organizationList" status="rowStatus" var="memberOrganization">
+											<s:if test="#memberOrganization.organizationId == #organization.organizationId">
+												<s:set var="checked">checked</s:set>
+											</s:if>
+										</s:iterator>
+								    	<input type="checkbox" id="organizationIdList" name="organizationIdList" value="${organization.organizationId}" ${checked}/>
+								    	${organization.organizationName}
+									</label>
+								</div>
+							</s:iterator>
+						</div>
+					</div>
     				<div class="rightPaneElement withTitle">
     					<span>Student Number</span>
     					<div><input id="studentNumber" name="studentNumber" type="text" value="${member.studentNumber}"></div>
@@ -85,33 +104,45 @@
 					<span>Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${member.lastName}"></div>
     				</div>
-    				<div class="rightPaneElement withTitle">
-					<span>Position</span>
-    					<div><input id="position" name="position" type="text" value="${member.position}"></div>
-    				</div>
    					<div class="rightPaneElement withTitle">
     					<span>Gender</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="gender" name="gender" value="M" checked>
+		    				<input type="radio" id="gender" name="gender" value="M"  <s:if test='member.gender == "M"'>checked</s:if>>
 		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<input type="radio" id="gender" name="gender" value="F"  <s:if test='member.gender == "F"'>checked</s:if>>
 		    				<span>Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Officer</span>
-    					<div><input id="officer" name="officer" type="text" value="${member.officer}"></div>
+						<div id="roleDiv">
+							<label for="chkOfficer">
+							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test="member.officer">checked</s:if>/>
+							    Officer
+							</label>
+						</div>
     				</div>
-    			    <div class="rightPaneElement withTitle">
-    					<span>OfficerPhoto</span>
-    					<div><input id="officerPhoto" name="officerPhoto" type="text" value="${member.officerPhoto}"></div>
-    				</div>
+    			    <div class="rightPaneElement withTitle" <s:if test="!member.officer">style="display: none"</s:if>  id="divOfficer">
+	    			    <br><div>
+				    		<div class="rightPaneElement withTitle">
+		    					<div>
+		    						<s:if test='member.officerPhoto != null && member.officerPhoto != ""'>
+		    							<div id="officerPhotoDisplay"><img src="download?type=OF&fileName=${member.officerPhoto}" alt="logo"/></div>
+		    						</s:if>    						
+		    						<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
+		    					</div>
+		    				</div>
+			    			<div>
+								<span>Position</span>
+			    					<div><input id="position" name="position" type="text" value="${member.position}"></div>
+			    				</div>
+		    				</div>
+	    			</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}" <s:if test="#program.programCode == member.program.programCode">selected</s:if>>${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}" <s:if test="#programItem.programCode == member.program.programCode">selected</s:if>>${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>

@@ -11,6 +11,7 @@ import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.User;
 import org.pup.system.osas.core.manager.ReportManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
+import org.pup.system.osas.exception.BusinessException;
 import org.pup.system.osas.report.ScholarsByAgencyAndProgramReport;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
 
@@ -32,13 +33,12 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 
 	@Override
 	public String execute() throws Exception {
+		String actionResult = null;
+		
 		try {
 			response.setContentType("application/pdf");
 			String imagePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 					+ "/images";
-
-			// AgencyReport report = new AgencyReport(imagePath, "SCHOOL YEAR 2018-2019 -
-			// 1st SEM", getAgencyList(), getUser());
 
 			ReportManager reportManager = new ReportManager();
 			List<ScholarsByAgencyAndProgramReportData> scholarsByAgencyAndProgramReportDataList = reportManager
@@ -47,17 +47,33 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
 			ScholarshipProgram scholarshipProgram = scholarshipProgramManager
 					.getScholarshipProgram(scholarshipProgramId);
+			
+			if (scholarsByAgencyAndProgramReportDataList == null || scholarsByAgencyAndProgramReportDataList.isEmpty()) {
+				errorMessage = "No records found.";
+				actionResult = FORWARD_ERROR;
+			} else {
 
-			ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath,
-					scholarshipProgram.getScholarshipProgramName(), scholarsByAgencyAndProgramReportDataList,
-					(User) userSession.get(USER));
-
-			report.generateReport(response.getOutputStream());
+				ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath,
+						scholarshipProgram.getScholarshipProgramName(), scholarsByAgencyAndProgramReportDataList,
+						(User) userSession.get(USER));
+	
+				response.setContentType("application/octet-stream");
+				response.setHeader("Content-Disposition","attachment;filename=" + "Scholarship Agency/Program Report - " + scholarshipProgram.getScholarshipProgramName() + ".pdf");
+				report.generateReport(response.getOutputStream());
+				
+				actionResult = null;
+			}
+		} catch (BusinessException be) {
+			errorMessage = be.getMessage();
+			actionResult = FORWARD_ERROR;
+			be.printStackTrace();
 		} catch (Exception e) {
+			errorMessage = "System error occurred. Please contact administrator.";
+			actionResult = FORWARD_ERROR;
 			e.printStackTrace();
 		}
 
-		return null;
+		return actionResult;
 	}
 
 	@Override

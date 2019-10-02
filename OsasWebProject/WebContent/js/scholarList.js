@@ -36,6 +36,11 @@ $(document).ready(function() {
 	$('#addScholarExcelFileButton').click(function() {
 		location.href = "displayAddScholarExcelFile";
 	});
+	
+	 $("#filterSelect").change(function () {
+		$("#filterScholarForm #filter").val($('#filterSelect option:selected').val());
+		$("#filterScholarForm").submit();
+     });
 });
 
 function showScholarDeletePopup(scholarId) {

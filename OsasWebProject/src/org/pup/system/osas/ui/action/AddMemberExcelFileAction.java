@@ -66,19 +66,17 @@ public class AddMemberExcelFileAction extends AbstractAction {
 
 					}
 					memberList.add(member);
-					member.setOrganization(organization);
 				}
 
 				index++;
 			}
 			
 			if (memberList != null) {
-				for (Member member : memberList) {
-					MemberManager memberManager = new MemberManager();
-					memberManager.insertMember(member);
-				}
+
+				MemberManager memberManager = new MemberManager();
+				memberManager.insertMemberList(memberList, organization, getCurrentActiveTerm().getSemTermId());
 				
-				notificationMessage = "Scholar/s has been successfully added.";
+				notificationMessage = "Member/s has been successfully added.";
 			}
 		}
 			

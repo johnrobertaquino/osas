@@ -32,7 +32,23 @@ public class DownloadFileAction extends AbstractAction implements ServletRespons
 			if ("SQ".equalsIgnoreCase(type)) {
 				httpServletResponse.setContentType("application/octet-stream");
 				httpServletResponse.setHeader("Content-Disposition","attachment;filename=" + fileName);
-				FileInputStream in = new FileInputStream(new File("C:/OSAS/scholarAttachment/" + fileName));
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Scholar/ScholarAttachment/" + fileName));
+				
+				ServletOutputStream out = httpServletResponse.getOutputStream();
+	        	 
+		        byte[] outputByte = new byte[4096];
+		        //copy binary content to output stream
+		        while(in.read(outputByte, 0, 4096) != -1){
+		        	out.write(outputByte, 0, 4096);
+		        }
+		        in.close();
+		        out.flush();
+		        out.close();
+			}
+			if ("OQ".equalsIgnoreCase(type)) {
+				httpServletResponse.setContentType("application/octet-stream");
+				httpServletResponse.setHeader("Content-Disposition","attachment;filename=" + fileName);
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Organization/OrganizationAttachment/" + fileName));
 				
 				ServletOutputStream out = httpServletResponse.getOutputStream();
 	        	 
@@ -48,6 +64,21 @@ public class DownloadFileAction extends AbstractAction implements ServletRespons
 			else if("OL".equalsIgnoreCase(type)) {
 				httpServletResponse.setContentType("image/" + FilenameUtils.getExtension(fileName));
 				FileInputStream in = new FileInputStream(new File("C:/OSAS/Organization/Logo/" + fileName));
+				
+				ServletOutputStream out = httpServletResponse.getOutputStream();
+	        	 
+		        byte[] outputByte = new byte[4096];
+		        //copy binary content to output stream
+		        while(in.read(outputByte, 0, 4096) != -1){
+		        	out.write(outputByte, 0, 4096);
+		        }
+		        in.close();
+		        out.flush();
+		        out.close();
+			}
+			else if("OF".equalsIgnoreCase(type)) {
+				httpServletResponse.setContentType("image/" + FilenameUtils.getExtension(fileName));
+				FileInputStream in = new FileInputStream(new File("C:/OSAS/Organization/Member/" + fileName));
 				
 				ServletOutputStream out = httpServletResponse.getOutputStream();
 	        	 

@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -64,11 +63,7 @@
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form class="editProgramContent" id="editProgramForm" action="editProgram" method="POST">
-					<input name="programId" type="hidden" value="${program.programId}">
-    				<div class="rightPaneElement withTitle">
-    					<span>Program Code</span>
-    					<div><input id="programCode" name="programCode" type="text" value="${program.programCode}"></div>
-    				</div>
+					<input name="programCode" type="hidden" value="${program.programCode}">
     				<div class="rightPaneElement withTitle">
     					<span>Program Name</span>
     					<div><input id="programName" name="programName" type="text" value="${program.programName}"></div>

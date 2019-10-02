@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -64,6 +63,9 @@
 	<form id="showScholarQualificationForm" action="displayScholarQualificationList" method="POST">
   		<input type="hidden" id="scholarId" name="scholarId" />
 	</form>
+	<form id="filterScholarForm" action="displayScholarList" method="POST">
+  		<input type="hidden" id="filter" name="filter" />
+	</form>
 	<div id="scholarListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -79,9 +81,21 @@
 				<div class="button" id="searchScholarButton">SEARCH</div>
 				<div class="button" id="addScholarExcelFileButton">ADD SCHOLAR via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addScholarButton">ADD SCHOLAR</div>
-    			<div style="clear:both"></div>
+    			<div style="clear:both"></div><br><br>
+    			   
+    			<div class="rightPaneElement withTitle">
+    				    <span>Filter Status:</span>
+	    				<div>
+		    				<select id="filterSelect">
+		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+		    						<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
+		    						<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
+		    						<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
+							</select>
+						</div>
+				</div>
 			</div>
-			<div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Scholarship Program</th>
@@ -89,6 +103,7 @@
 					<th>First Name</th>
 					<th>Middle Name </th>
 					<th>Last Name</th>
+					<th>Gender</th>
 					<th>Contact Number</th>
 					<th>Program</th>
 					<th>Status</th>
@@ -101,6 +116,7 @@
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="middleName" /></td>
 						<td><s:property value="lastName" /></td>
+						<td><s:property value="gender" /></td>
 						<td><s:property value="contactNumber" /></td>
 						<td><s:property value="program.programCode" />&nbsp;<s:property value="year" />-<s:property value="section" /></td>
 						<td><s:property value="statusText" /></td>

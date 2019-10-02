@@ -37,7 +37,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -67,7 +66,7 @@
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div class="rightPaneElement withTitle">
 	    				<span>Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text"value="${user.lastName}"></div>
+    					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 	    				<span>First Name</span>

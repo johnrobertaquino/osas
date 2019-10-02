@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 
+import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
@@ -14,6 +15,8 @@ public class EditScholarAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1719224812724606894L;
 	
+	private static final String FORWARD_DISPLAYEDITSCHOLAR = "displayEditScholar";
+	
 	private int scholarId;
 	
 	private String studentNumber;
@@ -23,6 +26,8 @@ public class EditScholarAction extends AbstractAction {
 	private String middleName;
 	
 	private String lastName;
+	
+	private String gender;
 	
 	private String email;
 	
@@ -38,6 +43,8 @@ public class EditScholarAction extends AbstractAction {
 	
 	private String gwa;
 	
+	private int scholarshipProgramId;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -47,21 +54,32 @@ public class EditScholarAction extends AbstractAction {
 			ScholarManager scholarManager = new ScholarManager();
 			Scholar scholar = scholarManager.getScholar(scholarId);
 			
-			scholar.setScholarId(scholarId);
-			scholar.setStudentNumber(studentNumber);
-			scholar.setFirstName(firstName);
-			scholar.setMiddleName(middleName);
-			scholar.setLastName(lastName);
-			scholar.setEmail(email);
-			scholar.setContactNumber(contactNumber);
-			scholar.setProgram(new Program(program));
-			scholar.setYear(year);
-			scholar.setSection(section);
-			scholar.setGwa(gwa);
+			Scholar existingScholar = new Scholar();
+			existingScholar = scholarManager.getValidateScholar(studentNumber, firstName, lastName, scholarshipProgramId, getCurrentActiveTerm().getSemTermId());
 			
-			scholarManager.saveScholar(scholar);
-			
-			notificationMessage = "Changes to scholar has been saved successfully.";
+			if(existingScholar != null && scholarId != existingScholar.getScholarId()) { 
+				notificationMessage = "Failed to update! Scholar already exist.";
+				actionResult = FORWARD_DISPLAYEDITSCHOLAR;
+			}
+			else
+			{		
+				scholar.setScholarId(scholarId);
+				scholar.setStudentNumber(studentNumber);
+				scholar.setFirstName(firstName);
+				scholar.setMiddleName(middleName);
+				scholar.setLastName(lastName);
+				scholar.setGender(gender);
+				scholar.setEmail(email);
+				scholar.setContactNumber(contactNumber);
+				scholar.setProgram(new Program(program));
+				scholar.setYear(year);
+				scholar.setSection(section);
+				scholar.setGwa(gwa);
+				
+				scholarManager.saveScholar(scholar);
+				
+				notificationMessage = "Changes to scholar has been saved successfully.";
+			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
 			actionResult = FORWARD_ERROR;
@@ -251,6 +269,24 @@ public class EditScholarAction extends AbstractAction {
 	 */
 	public void setGwa(String gwa) {
 		this.gwa = gwa;
+	}
+
+
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }

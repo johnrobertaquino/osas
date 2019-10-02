@@ -1,20 +1,22 @@
 package org.pup.system.osas.core.domain;
 
+import java.util.Date;
+
 public class OrganizationQualification {
 
 	private int organizationQualificationId;
+	
+	private int organizationRequirementId;
 	
 	private boolean qualified;
 
 	private String notes;
 	
+	private Date dateSubmitted;
+	
 	private String fileName;
 
-	private Organization organization;
-	
-	private OrganizationRequirement organizationRequirement;
-	
-	private YearlyTerm yearlyTerm;
+	private int organizationId;
 
 	/**
 	 * @return the organizationQualificationId
@@ -57,60 +59,55 @@ public class OrganizationQualification {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
-	/**
-	 * @return the fileName
-	 */
+	
 	public String getFileName() {
 		return fileName;
 	}
 
-	/**
-	 * @param fileName the fileName to set
-	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-
 	/**
-	 * @return the organization
+	 * @return the dateSubmitted
 	 */
-	public Organization getOrganization() {
-		return organization;
+	public Date getDateSubmitted() {
+		return dateSubmitted;
 	}
 
 	/**
-	 * @param organization the organization to set
+	 * @param dateSubmitted the dateSubmitted to set
 	 */
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
+	public void setDateSubmitted(Date dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
 	}
 
 	/**
-	 * @return the organizationRequirement
+	 * @return the organizationRequirementId
 	 */
-	public OrganizationRequirement getOrganizationRequirement() {
-		return organizationRequirement;
+	public int getOrganizationRequirementId() {
+		return organizationRequirementId;
 	}
 
 	/**
-	 * @param organizationRequirement the organizationRequirement to set
+	 * @param organizationRequirementId the organizationRequirementId to set
 	 */
-	public void setOrganizationRequirement(OrganizationRequirement organizationRequirement) {
-		this.organizationRequirement = organizationRequirement;
+	public void setOrganizationRequirementId(int organizationRequirementId) {
+		this.organizationRequirementId = organizationRequirementId;
 	}
 
 	/**
-	 * @return the yearlyTerm
+	 * @return the organizationId
 	 */
-	public YearlyTerm getYearlyTerm() {
-		return yearlyTerm;
+	public int getOrganizationId() {
+		return organizationId;
 	}
 
 	/**
-	 * @param yearlyTerm the yearlyTerm to set
+	 * @param organizationId the organizationId to set
 	 */
-	public void setYearlyTerm(YearlyTerm yearlyTerm) {
-		this.yearlyTerm = yearlyTerm;
+	public void setOrganizationId(int organizationId) {
+		this.organizationId = organizationId;
 	}
+	
+	
 }

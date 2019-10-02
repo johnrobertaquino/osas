@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -86,10 +85,12 @@
 				<div class="button" id="backScholarQualification">BACK</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Qualification Name</th>
 					<th>Notes</th>
+					<th>Date Submitted</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
@@ -101,6 +102,7 @@
 								<s:property value="scholarQualification.notes" />
 							</s:if>
 						</td>
+						<td><s:date name="scholarQualification.dateSubmitted" format="MM/dd/yyyy" /></td>
 						<td><s:property value="statusText" /></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
@@ -119,7 +121,7 @@
   										<a onclick="showScholarQualificationApprovePopup('<s:property value="scholarQualification.scholarQualificationId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Approve</a>
   									</s:if>
   									<s:if test='scholarQualification.filename != null && scholarQualification.filename != ""'>
-  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> View Attachment</a>
+  										<a href="download?type=SQ&fileName=<s:property value="scholarQualification.filename" />" class="w3-bar-item w3-button"><img src="images/view_icon.png" class="dropdownicon"/> Download Attachment</a>
   									</s:if>
   								</div>
 							</div>
@@ -127,6 +129,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

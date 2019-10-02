@@ -33,7 +33,6 @@
 	<div id="navBar">
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -93,6 +92,12 @@
 					<div class ="menuLinks">
 						<div class="linkItemHolder">
 							<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="adminFunctionsManageAccounts">Manage Accounts</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+					<div class ="menuLinks">
+						<div class="linkItemHolder">
+							<div class="linkIcon"><img src="images/arrow.png"></div><div class="link" id="adminFunctionsManageProgram">Manage Program</div>
 							<div style="clear:both"></div>
 						</div>
 					</div>

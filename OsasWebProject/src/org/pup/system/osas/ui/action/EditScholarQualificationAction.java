@@ -1,6 +1,7 @@
 package org.pup.system.osas.ui.action;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 import org.apache.commons.io.FileUtils;
 import org.pup.system.osas.core.domain.Scholar;
@@ -21,6 +22,8 @@ public class EditScholarQualificationAction extends AbstractAction {
 	private int scholarQualificationId;
 
 	private String notes;
+	
+	private String dateSubmitted;
 
 	private File fileName;
 	
@@ -50,12 +53,13 @@ public class EditScholarQualificationAction extends AbstractAction {
 			ScholarQualification scholarQualification = scholarScholarshipQualificationManager.getScholarQualification(scholarQualificationId);
 			
 			scholarQualification.setNotes(notes);
+			scholarQualification.setDateSubmitted(new SimpleDateFormat("MM/dd/yyyy").parse(dateSubmitted));
 			scholarQualification.setQualified(false);
 			
 			if("on".equalsIgnoreCase(addAttachment)) {
 				scholarQualification.setFilename(fileNameFileName);
 			
-				String filePath = "C:/OSAS/scholarAttachment";
+				String filePath = "C:/OSAS/Scholar/ScholarAttachment";
 				fileToCreate = new File(filePath, fileNameFileName);
 			
 				FileUtils.copyFile(fileName, fileToCreate);
@@ -175,6 +179,20 @@ public class EditScholarQualificationAction extends AbstractAction {
 
 	public void setAddAttachment(String addAttachment) {
 		this.addAttachment = addAttachment;
+	}
+
+	/**
+	 * @return the dateSubmitted
+	 */
+	public String getDateSubmitted() {
+		return dateSubmitted;
+	}
+
+	/**
+	 * @param dateSubmitted the dateSubmitted to set
+	 */
+	public void setDateSubmitted(String dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
 	}
 	
 	

@@ -1,3 +1,21 @@
+#editMemberContentBody #contentBodyRightPane #officerPhotoDisplay  {
+	border: 1px solid;
+	height: 100px;
+	width: 100px;
+	margin: 0px auto 0px auto;
+}
+#editMemberContentBody #contentBodyRightPane #officerPhotoDisplay img  {
+	height: 100px;
+	width: 100px;
+}
+
+#editMemberContentBody #contentBodyRightPane #officerInput  {
+	border: none;
+    margin-left: 151px;
+    width: 180px;
+}
+
+
 #editMemberContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
     margin: 10px 0px;
     width: 500px;

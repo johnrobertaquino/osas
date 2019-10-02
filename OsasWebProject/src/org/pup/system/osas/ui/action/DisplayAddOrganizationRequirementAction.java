@@ -7,7 +7,7 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 	 */
 	private static final long serialVersionUID = 2936689632600612372L;
 	
-	private int organizationRequirementName;
+	private String organizationRequirementName;
 
 	@Override
 	public String execute() throws Exception {
@@ -19,14 +19,14 @@ public class DisplayAddOrganizationRequirementAction extends AbstractAction  {
 	/**
 	 * @return the organizationRequirementName
 	 */
-	public int getOrganizationRequirementName() {
+	public String getOrganizationRequirementName() {
 		return organizationRequirementName;
 	}
 
 	/**
 	 * @param organizationRequirementName the organizationRequirementName to set
 	 */
-	public void setOrganizationRequirementName(int organizationRequirementName) {
+	public void setOrganizationRequirementName(String organizationRequirementName) {
 		this.organizationRequirementName = organizationRequirementName;
 	}
 

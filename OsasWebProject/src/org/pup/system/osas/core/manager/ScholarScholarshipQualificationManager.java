@@ -58,8 +58,7 @@ public class ScholarScholarshipQualificationManager {
 
 		return scholarScholarshipQualificationList;
 	}
-	
-	
+		
 	public void insertScholarQualification(ScholarQualification scholarQualification) throws Exception {
 		ScholarQualificationDAO scholarQualificationDAO = null;
 		Connection connection = null;

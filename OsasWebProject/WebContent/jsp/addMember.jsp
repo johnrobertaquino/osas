@@ -38,7 +38,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -64,43 +63,52 @@
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form class="addMemberContent" id="memberForm" action="addMember" method="POST">
+				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
-	    				<div>
-		    				<select name="organizationId">
-		    					<s:iterator value="organizationList" status="rowStatus" var="organization">
-		    						<option value="${organization.organizationId}">${organization.organizationName}</option>
-		    					</s:iterator>
-							</select>
+	    				<div style="height: 200px; overflow-y: scroll;">
+	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
+			    				<div id="roleDiv">
+									<label for="organizationIdList">
+										<s:set var="checked"></s:set>
+										<s:iterator value="organizationIdList" status="rowStatus" var="organizationId">
+											<s:if test="#organizationId == #organization.organizationId">
+												<s:set var="checked">checked</s:set>
+											</s:if>
+										</s:iterator>
+								    	<input type="checkbox" id="organizationIdList" name="organizationIdList" value="${organization.organizationId}" ${checked}/>
+								    	${organization.organizationName}
+									</label>
+								</div>
+							</s:iterator>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>Student Number</span>
-	    					<div><input id="studentNumber" name="studentNumber" type="text"></div>
+	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text"></div>
+	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text"></div>
+	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
 	    					<span>Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text"></div>
+	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Program</span>
     					<div>
     						<select name="program">
-		    					<s:iterator value="programList" status="rowStatus" var="program">
-		    						<option value="${program.programCode}">${program.programName}</option>
+		    					<s:iterator value="programList" status="rowStatus" var="programItem">
+		    						<option value="${programItem.programCode}">${programItem.programName}</option>
 		    					</s:iterator>
 							</select>
 						</div>
@@ -108,20 +116,24 @@
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
-							    <input type="checkbox" id="chkOfficer" />
+							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test='officer == "on"'>checked</s:if>/>
 							    Officer
 							</label>
 						</div>
     				</div>
-    				<br><div class="rightPaneElement withTitle">
-    					<div id="divOfficer" style="display: none">
-	    					<div>
-	    						<div id="officerPhotoDisplay"><img src="" alt="photo"/></div>			 
-		    					<input id="officerInput" name="officerPhoto" type="file">
+    				<br><div class="rightPaneElement withTitle" id="divOfficer" <s:if test='!(officer == "on")'>style="display: none"</s:if>>
+    					<div>
+	    					<div>		 
+		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
 		    				</div>
 	    					<div>
 		    					<span>Position</span>
-		    					<div><input id="position" name="position" type="text"></div>
+		    					<s:if test='officer == "on"'>
+		    						<div><input id="position" name="position" type="text" value="${position}"></div>
+		    					</s:if>
+		    					<s:else>
+		    						<div><input id="position" name="position" type="text"></div>
+		    					</s:else>
 	    					</div>
     					</div>
     				</div>
@@ -130,21 +142,21 @@
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
 		    				<span>Male</span>
-		    				<input type="radio" id="gender" name="gender" value="F" checked>
+		    				<input type="radio" id="gender" name="gender" value="F">
 		    				<span>Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
-    					<div><input id="year" name="year" type="text"></div>
+    					<div><input id="year" name="year" type="text" value="${year}"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
     					<span>Section</span>
-    					<div><input id="section" name="section" type="text"></div>
+    					<div><input id="section" name="section" type="text" value="${section}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11"></div>
+    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

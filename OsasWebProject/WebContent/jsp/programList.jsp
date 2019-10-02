@@ -36,7 +36,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/userIconWhite.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -56,10 +55,10 @@
 </div>
 <div id="contentBody">
 	<form id="deleteProgramForm" action="deleteProgram" method="POST">
-  		<input type="hidden" id="programId" name="programId" />
+  		<input type="hidden" id="programCode" name="programCode" />
 	</form>
 	<form id="editProgramForm" action="displayEditProgram" method="POST">
-  		<input type="hidden" id="programId" name="programId" />
+  		<input type="hidden" id="programCode" name="programCode" />
 	</form>
 	<div id="programListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
@@ -79,11 +78,13 @@
 				<div class="button" id="addProgramButton">ADD PROGRAM</div>
     			<div style="clear:both"></div>
 			</div>
+			<div id="tableHolder">
 			<table>
 				<tr>
 					<th>Program Code</th>
 					<th>Program Name</th>
 					<th>Highest Year Level</th>
+					<th>Action</th>
 				</tr>
 				<s:iterator value="programList" status="rowStatus" var="program">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -97,14 +98,15 @@
   									<img src="images/arrow-down-01-512.png" />
   								</div>
   								<div class="tableMenuDropdown w3-dropdown-content w3-bar-block w3-border">	
-	    							<a onclick="displayEditprogram('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
-    									<a onclick="showprogramDeletePopup('<s:property value="programId" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
+	    							<a onclick="displayEditProgram('<s:property value="programCode" />')" class="w3-bar-item w3-button"><img src="images/edit_icon.png" class="dropdownicon"/> Edit</a>
+    									<a onclick="showProgramDeletePopup('<s:property value="programCode" />')" class="w3-bar-item w3-button"><img src="images/delete_icon.png" class="dropdownicon"/> Delete</a>
   								</div>
 							</div>
 						</td>
 					</tr>
 				</s:iterator>
 			</table>
+			</div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

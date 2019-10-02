@@ -38,7 +38,6 @@
 		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
-			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -66,36 +65,36 @@
 			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="agencyForm" action="addAgency" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Agency Name</span>
+    					<span class="title">Agency Name</span>
     					<div><input id="agencyName" name="agencyName" type="text" value="${agencyName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Address</span>
+    					<span class="title">Address</span>
     					<div><input id="address" name="address" type="text" value="${address}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Person</span>
+    					<span class="title">Contact Person</span>
     					<div><input id="contactPerson" name="contactPerson" type="text" value="${contactPerson}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Agency</span>
+								<span>ADD AGENCY</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
 					</div>
     			</form>
     		</div>
-    		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 
