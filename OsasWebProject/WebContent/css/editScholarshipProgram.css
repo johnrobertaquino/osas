@@ -1,3 +1,11 @@
+#editScholarshipProgramContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    margin: 10px 0px;
+    width: 505px;
+    height: 34px;
+    padding-left: 5px;
+    color: #444444;
+}
+
 @media only screen and (max-width: 1550px) {
 	#editScholarshipProgramContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;

@@ -1,12 +1,13 @@
 #addScholarContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
     margin: 10px 0px;
-    width: 500px;
-    height: 40px;
+    width: 504px;
+    height: 34px;
     border: 1px solid #420001;
-    padding-right: 10px;
+    padding-left: 5px;
+    color: #444444;
 }
 
-@media only screen and (max-width: 1550px) {
+/**@media only screen and (max-width: 1550px) {**/
 	#addScholarContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
@@ -18,7 +19,8 @@
 	{
     width: 200px;
 	}
-}
+/**}**/
+/**
 @media only screen and (max-width: 1110px) {
 	#addScholarContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -38,3 +40,4 @@
 	}
 
 }
+**/

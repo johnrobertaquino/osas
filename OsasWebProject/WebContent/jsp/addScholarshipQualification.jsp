@@ -69,28 +69,28 @@
 				<form class="addScholarhipQualificationContent" id="scholarshipQualificationForm" action="addScholarshipQualification" method="POST">
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Qualification Name</span>
+    					<span class="title">Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Requires Yearly Check</span>
+    					<span class="title">Requires Yearly Check</span>
     					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Qualification</span>
+								<span>ADD QUALIFICATION</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
 					</div>
     			</form>
     		</div>
-    		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 

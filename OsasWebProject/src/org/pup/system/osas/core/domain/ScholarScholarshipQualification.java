@@ -23,13 +23,13 @@ public class ScholarScholarshipQualification {
 	}
 	
 	public String getStatusText() {
-		String status = "NOT SUBMITTED";
+		String status = "Not Submitted";
 		String statusCode = getStatus();
 		
 		if ("A".equals(statusCode)) {
-			status = "APPROVED";
+			status = "Approved";
 		} else if ("P".equals(statusCode)) {
-			status = "PENDING APPROVAL";
+			status = "Pending Approval";
 		}
 		
 		return status;

@@ -65,7 +65,7 @@
 			<div id="rightPaneContentHolder">
 				<form class="addScholarContent" id="scholarExcelFileForm" action="addScholarExcelFile" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
-    				    <span>Scholarship Program</span>
+    				    <span class="title">Scholarship Program</span>
 	    				<div><s:set var="selectedScholarshipProgramId">${scholarshipProgramId}</s:set>
 		    				<select name="scholarshipProgramId">
 		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
@@ -80,18 +80,18 @@
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Scholar</span>
+								<span>ADD SCHOLAR</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
 					</div>
     			</form>
     		</div>
-    		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 
