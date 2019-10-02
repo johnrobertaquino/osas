@@ -9,6 +9,7 @@ import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirementQualification;
 import org.pup.system.osas.core.domain.OrganizationType;
+import org.pup.system.osas.core.domain.SemTerm;
 
 public class OrganizationManager {
 	
@@ -121,6 +122,42 @@ public class OrganizationManager {
 		
 		return organizationList;
 	}
+	
+	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId) throws Exception {
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
+		OrganizationType organizationType = null;
+		Connection connection = null;
+		SemTerm semTerm = new SemTerm();
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+		organizationDAO = new OrganizationDAO(connection);
+			
+		organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId);
+		
+		if (organizationList != null) {
+			OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
+			
+			for(Organization organization : organizationList) {
+				organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
+				organization.setOrganizationType(organizationType);
+				
+				organization.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTerm.getSemTermId()));
+			}
+		}	
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return organizationList;
+	}
+	
+	
 	
 	public List<Organization> getOrganizationList(int semTermId, String filter) throws Exception {
 		OrganizationDAO organizationDAO = null;

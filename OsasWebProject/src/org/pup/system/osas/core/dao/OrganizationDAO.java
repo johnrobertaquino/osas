@@ -11,6 +11,7 @@ import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.SemTerm;
+import org.pup.system.osas.core.domain.YearlyTerm;
 
 public class OrganizationDAO extends DAO {
 
@@ -149,6 +150,54 @@ public class OrganizationDAO extends DAO {
 			statement = connection.createStatement(); 
 			
 			resultSet = statement.executeQuery("SELECT  OrganizationId,  OrganizationName, Description, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE SemTermId=" + semTermId);  
+			
+			while (resultSet.next()) {
+				if (organizationList == null) {
+					organizationList = new ArrayList<Organization>();
+				}
+				
+				organization = new Organization();
+				organization.setOrganizationId(resultSet.getInt("OrganizationId"));
+				organization.setOrganizationName(resultSet.getString("OrganizationName"));
+				organization.setDescription(resultSet.getString("Description"));
+				organization.setProgram(new Program(resultSet.getString("Program")));
+				organization.setOrganizationTermId(resultSet.getInt("OrganizationTermId"));
+				organization.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organization.setAdviser(resultSet.getString("Adviser"));
+				organization.setLogoFileName(resultSet.getString("LogoFileName"));
+				
+				OrganizationType organizationType = new OrganizationType();
+				organizationType.setOrganizationTypeCode(resultSet.getString("OrganizationTypeCode"));
+				organization.setOrganizationType(organizationType);
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organization.setSemTerm(semTerm);
+				
+				organizationList.add(organization);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getorganizationList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return organizationList;
+	}
+	
+	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		 Organization  organization = null;
+		List< Organization>  organizationList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT  organization.OrganizationId,  organization.OrganizationName, organization.Description, organization.OrganizationTypeCode, organization.Program, organization.OrganizationTermId, organization.OrganizationRequirementId, organization.Adviser, organization.SemTermId, organization.LogoFileName FROM organization JOIN semTerm on organization.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE YearlyTermId=" + yearlyTermId);  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {
