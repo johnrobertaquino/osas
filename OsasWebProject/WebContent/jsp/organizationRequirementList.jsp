@@ -86,11 +86,13 @@
 			<table>
 				<tr>
 					<th>Requirement/s Name</th>
+					<th>Yearly Check</th>
 					<th>Action</th>
 				</tr>
 				<s:iterator value="organizationRequirementList" status="rowStatus" var="organizationRequirement">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="organizationRequirementName" /></td>
+						<td><s:if test="#organizationRequirement.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
 						<td>
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

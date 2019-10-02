@@ -28,7 +28,7 @@ public class OrganizationQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, YearlyCheck, Filename, OrganizationId FROM organizationqualification WHERE OrganizationRequirementId="
+					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM organizationqualification WHERE OrganizationRequirementId="
 							+ organizationRequirementId + " AND OrganizationId=" + organizationId);
 
 			if (resultSet.next()) {
@@ -38,7 +38,6 @@ public class OrganizationQualificationDAO extends DAO {
 				organizationQualification.setQualified(resultSet.getBoolean("Qualified"));
 				organizationQualification.setNotes(resultSet.getString("Notes"));
 				organizationQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
-				organizationQualification.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
 				organizationQualification.setFileName(resultSet.getString("Filename"));
 				organizationQualification.setOrganizationId(resultSet.getInt("OrganizationId"));
 			}
@@ -64,7 +63,7 @@ public class OrganizationQualificationDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, YearlyCheck, Filename, OrganizationId FROM organizationqualification WHERE OrganizationQualificationId="
+					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM organizationqualification WHERE OrganizationQualificationId="
 							+ organizationQualificationId);
 
 			if (resultSet.next()) {
@@ -74,7 +73,6 @@ public class OrganizationQualificationDAO extends DAO {
 				organizationQualification.setQualified(resultSet.getBoolean("Qualified"));
 				organizationQualification.setNotes(resultSet.getString("Notes"));
 				organizationQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
-				organizationQualification.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
 				organizationQualification.setFileName(resultSet.getString("Filename"));
 				organizationQualification.setOrganizationId(resultSet.getInt("OrganizationId"));
 			}
@@ -96,15 +94,14 @@ public class OrganizationQualificationDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO organizationqualification(OrganizationRequirementId, Qualified, Notes, DateSubmitted, YearlyCheck, Filename, OrganizationId) VALUES (?, ?, ?, ?, ?, ?, ?)",
+					"INSERT INTO organizationqualification(OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId) VALUES (?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, organizationQualification.getOrganizationRequirementId());
 			statement.setBoolean(2, organizationQualification.isQualified());
 			statement.setString(3, organizationQualification.getNotes());
 			statement.setDate(4, new Date(organizationQualification.getDateSubmitted().getTime()));
-			statement.setBoolean(5, organizationQualification.isYearlyCheck());
-			statement.setString(6, organizationQualification.getFileName());
-			statement.setInt(7, organizationQualification.getOrganizationId());
+			statement.setString(5, organizationQualification.getFileName());
+			statement.setInt(6, organizationQualification.getOrganizationId());
 
 			statement.executeUpdate();
 
@@ -130,15 +127,14 @@ public class OrganizationQualificationDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE organizationqualification SET OrganizationRequirementId=?, Qualified=?, Notes=?, DateSubmitted=?, YearlyCheck=?, Filename=?, OrganizationId=? WHERE OrganizationQualificationId=?");
+			statement = connection.prepareStatement("UPDATE organizationqualification SET OrganizationRequirementId=?, Qualified=?, Notes=?, DateSubmitted=?, Filename=?, OrganizationId=? WHERE OrganizationQualificationId=?");
 			statement.setInt(1, organizationQualification.getOrganizationRequirementId());
 			statement.setBoolean(2, organizationQualification.isQualified());
 			statement.setString(3, organizationQualification.getNotes());
 			statement.setDate(4, new Date(organizationQualification.getDateSubmitted().getTime()));
-			statement.setBoolean(5, organizationQualification.isYearlyCheck());
-			statement.setString(6, organizationQualification.getFileName());
-			statement.setInt(7, organizationQualification.getOrganizationId());
-			statement.setInt(8, organizationQualification.getOrganizationQualificationId());
+			statement.setString(5, organizationQualification.getFileName());
+			statement.setInt(6, organizationQualification.getOrganizationId());
+			statement.setInt(7, organizationQualification.getOrganizationQualificationId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

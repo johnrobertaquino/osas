@@ -18,8 +18,6 @@ public class OrganizationQualification {
 
 	private int organizationId;
 
-	private boolean yearlyCheck;
-
 	/**
 	 * @return the organizationQualificationId
 	 */
@@ -69,15 +67,6 @@ public class OrganizationQualification {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-
-	public boolean isYearlyCheck() {
-		return yearlyCheck;
-	}
-
-	public void setYearlyCheck(boolean yearlyCheck) {
-		this.yearlyCheck = yearlyCheck;
-	}
-
 	/**
 	 * @return the dateSubmitted
 	 */

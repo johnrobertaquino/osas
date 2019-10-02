@@ -27,8 +27,6 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 	private String notes;
 	
 	private String dateSubmitted;
-	
-	private String yearlyCheck;
 
 	private File fileName;
 	
@@ -59,7 +57,6 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 			
 			organizationQualification.setNotes(notes);
 			organizationQualification.setDateSubmitted(new SimpleDateFormat("MM/dd/yyyy").parse(dateSubmitted));
-			organizationQualification.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 			organizationQualification.setQualified(false);
 			
 			if("on".equalsIgnoreCase(addAttachment)) {
@@ -207,20 +204,6 @@ public class EditOrganizationQualificationAction extends AbstractAction {
 	 */
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
-	}
-
-	/**
-	 * @return the yearlyCheck
-	 */
-	public String getYearlyCheck() {
-		return yearlyCheck;
-	}
-
-	/**
-	 * @param yearlyCheck the yearlyCheck to set
-	 */
-	public void setYearlyCheck(String yearlyCheck) {
-		this.yearlyCheck = yearlyCheck;
 	}
 	
 }

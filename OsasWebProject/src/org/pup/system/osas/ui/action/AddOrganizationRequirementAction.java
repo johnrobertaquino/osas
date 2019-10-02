@@ -16,6 +16,8 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 	private int organizationRequirementId;
 
 	private String organizationRequirementName;
+	
+	private String yearlyCheck;
 
 	@Override
 	public String execute() throws Exception {
@@ -39,6 +41,7 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 				
 				OrganizationRequirement organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementName(organizationRequirementName);
+				organizationRequirement.setYearlyCheck("on".equalsIgnoreCase(yearlyCheck));
 				organizationRequirement.setSemTerm(getCurrentActiveTerm());
 
 				organizationRequirementManager.insertOrganizationRequirement(organizationRequirement);
@@ -73,6 +76,20 @@ public class AddOrganizationRequirementAction extends AbstractAction {
 
 	public void setOrganizationRequirementName(String organizationRequirementName) {
 		this.organizationRequirementName = organizationRequirementName;
+	}
+
+	/**
+	 * @return the yearlyCheck
+	 */
+	public String getYearlyCheck() {
+		return yearlyCheck;
+	}
+
+	/**
+	 * @param yearlyCheck the yearlyCheck to set
+	 */
+	public void setYearlyCheck(String yearlyCheck) {
+		this.yearlyCheck = yearlyCheck;
 	}
 
 }

@@ -71,6 +71,10 @@
     					<div><input id="organizationRequirementName" name="organizationRequirementName" type="text" value="${organizationRequirementName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
+    					<span>Requires Yearly Check</span>
+    					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test='yearlyCheck == "on"'>checked</s:if>></div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
 								<span>Cancel</span>

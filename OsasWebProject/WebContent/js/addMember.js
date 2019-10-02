@@ -25,6 +25,38 @@ $(document).ready(function() {
         return isValid;
     });
 	
+	$("#firstName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+
+	$("#middleName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
+
+	$("#lastName").keypress(function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        //Regex for Valid Characters i.e. Numbers.
+        var regex = /^[A-Za-z]+$/;
+
+        //Validate TextBox value against the Regex.
+        var isValid = regex.test(String.fromCharCode(keyCode));
+        return isValid;
+    });
 	 
 	$("#chkOfficer").click(function () {
 		if ($(this).is(":checked")) {
@@ -68,20 +100,6 @@ $(document).ready(function() {
 				errorMessage = errorMessage + "<br/>";
 			}
 			errorMessage = errorMessage + "Last name can\'t be blank.";
-			}
-		if($('#contactNumber').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Contact number can\'t be blank.";
-		}
-		if($('#program').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program can\'t be blank.";
 		}
 		if($('#year').val() === '')
 		{

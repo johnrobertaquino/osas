@@ -29,13 +29,14 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementName='"
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, YearlyCheck, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementName='"
 							+ organizationRequirementName + "' AND SemTermId="+semTermId);
 
 			if (resultSet.next()) {
 				organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
+				organizationRequirement.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
 
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
@@ -62,14 +63,15 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementId="
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, YearlyCheck, SemTermId FROM OrganizationRequirement WHERE OrganizationRequirementId="
 							+ organizationRequirementId);
 
 			if (resultSet.next()) {
 				organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
-
+				organizationRequirement.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
+				
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
 				organizationRequirement.setSemTerm(semTerm);
@@ -92,10 +94,11 @@ public class OrganizationRequirementDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"INSERT INTO OrganizationRequirement(OrganizationRequirementName, SemTermId) VALUES (?, ?)",
+					"INSERT INTO OrganizationRequirement(OrganizationRequirementName, YearlyCheck, SemTermId) VALUES (?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, organizationRequirement.getOrganizationRequirementName());
-			statement.setInt(2, organizationRequirement.getSemTerm().getSemTermId());
+			statement.setBoolean(2, organizationRequirement.isYearlyCheck());
+			statement.setInt(3, organizationRequirement.getSemTerm().getSemTermId());
 			statement.executeUpdate();
 
 			resultSet = statement.getGeneratedKeys();
@@ -125,7 +128,7 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM organizationrequirement WHERE SemTermId =" + semTermId);
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, YearlyCheck, SemTermId FROM organizationrequirement WHERE SemTermId =" + semTermId);
 
 			while (resultSet.next()) {
 				if (organizationRequirementList == null) {
@@ -134,6 +137,7 @@ public class OrganizationRequirementDAO extends DAO {
 				organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
+				organizationRequirement.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
 				
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
@@ -164,7 +168,7 @@ public class OrganizationRequirementDAO extends DAO {
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(
-					"SELECT OrganizationRequirementId, OrganizationRequirementName, SemTermId FROM organizationrequirement WHERE OrganizationRequirementName LIKE '%"
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, YearlyCheck, SemTermId FROM organizationrequirement WHERE OrganizationRequirementName LIKE '%"
 							+ organizationRequirementSearchText + "%' AND SemTermId="+ semTermId);
 
 			while (resultSet.next()) {
@@ -175,7 +179,8 @@ public class OrganizationRequirementDAO extends DAO {
 				organizationRequirement = new OrganizationRequirement();
 				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
 				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
-
+				organizationRequirement.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
+				
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
 				organizationRequirement.setSemTerm(semTerm);
@@ -199,9 +204,10 @@ public class OrganizationRequirementDAO extends DAO {
 			connection = getConnection();
 
 			statement = connection.prepareStatement(
-					"UPDATE organizationrequirement SET OrganizationRequirementName=? WHERE OrganizationRequirementId=?");
+					"UPDATE organizationrequirement SET OrganizationRequirementName=?, YearlyCheck=? WHERE OrganizationRequirementId=?");
 			statement.setString(1, organizationRequirement.getOrganizationRequirementName());
 			statement.setInt(2, organizationRequirement.getOrganizationRequirementId());
+			statement.setBoolean(3, organizationRequirement.isYearlyCheck());
 
 			statement.executeUpdate();
 		} catch (Exception e) {
