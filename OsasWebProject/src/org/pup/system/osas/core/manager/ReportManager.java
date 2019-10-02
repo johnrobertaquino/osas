@@ -7,10 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
+import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.dao.ScholarDAO;
 import org.pup.system.osas.core.dao.ScholarshipProgramDAO;
+import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.report.data.OrganizationReportData;
+import org.pup.system.osas.report.data.OrganizationsStatusReportData;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
 
 public class ReportManager {
@@ -79,4 +84,55 @@ public class ReportManager {
 		
 		return new ArrayList<ScholarsByAgencyAndProgramReportData>(scholarsByAgencyAndProgramReportDataMap.values());
 	}
+	
+	private List<OrganizationReportData> getOrganizationReportDataList(int semTermId, String organizationTypeCode) throws Exception {
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
+		List<OrganizationReportData> organizationReportDataList = null;
+		OrganizationType organizationType = null;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			organizationDAO = new OrganizationDAO(connection);
+				
+			organizationList = organizationDAO.getOrganizationList(semTermId);
+			
+			if (organizationList != null) {
+				OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
+				
+				organizationReportDataList =  new ArrayList<OrganizationReportData>();
+				
+				for(Organization organization : organizationList) {
+					
+					OrganizationReportData organizationReportData = new OrganizationReportData(organization);
+					
+					organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
+					organizationReportData.setOrganizationType(organizationType);
+					
+					organizationReportData.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTermId));
+					
+					organizationReportDataList.add(organizationReportData);
+				}
+			}	
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return organizationReportDataList;
+	}
+	/*
+	public OrganizationsStatusReportData OrganizationsStatusReportData(int semTermId, String organizationTypeCode) throws Exception {
+		OrganizationsStatusReportData organizationsStatusReportData = null;
+		
+		try {
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}*/
 }
