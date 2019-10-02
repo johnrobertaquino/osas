@@ -1,3 +1,7 @@
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
 		location.href = "displayScholarList";
@@ -51,7 +55,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+        var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
@@ -62,7 +66,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+        var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
@@ -73,12 +77,22 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+        var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
         return isValid;
     });
+	
+	function ValidateEmail(mail) 
+	{
+	 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+	  {
+	    return (true)
+	  }
+	    alert("You have entered an invalid email address!")
+	    return (false)
+	}
 	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
@@ -90,6 +104,19 @@ $(document).ready(function() {
 			}
 			errorMessage = errorMessage + "Student number can\'t be blank.";
 		}
+		
+		var $result = $("#result");
+		var email = $("#email").val();
+		$result.text("");
+
+		if (validateEmail(email)) {
+		} else {
+			if (errorMessage !== '') {
+			errorMessage = errorMessage + "<br/>";
+				}
+			errorMessage = errorMessage + "You entered invalid email address.";
+		}
+			
 		if($('#firstName').val() === '')
 		{
 			if (errorMessage !== '') {

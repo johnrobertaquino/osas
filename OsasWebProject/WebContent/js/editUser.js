@@ -18,7 +18,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+	     var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
@@ -29,7 +29,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+	     var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
@@ -40,7 +40,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+	     var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));
@@ -51,7 +51,7 @@ $(document).ready(function() {
         var keyCode = e.keyCode || e.which;
 
         //Regex for Valid Characters i.e. Numbers.
-        var regex = /^[A-Za-z]+$/;
+	     var regex = /^[a-zA-Z\s]+$/;
 
         //Validate TextBox value against the Regex.
         var isValid = regex.test(String.fromCharCode(keyCode));

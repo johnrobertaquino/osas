@@ -42,11 +42,13 @@
 		<action name="login" class="org.pup.system.osas.ui.action.LoginAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/login.jsp</result>
+			<result name="error">/jsp/login.jsp</result>
 		</action>
 
 		<action name="logout" class="org.pup.system.osas.ui.action.LogoutAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">login</result>
+			<result name="error">logout</result>
 		</action>
 		
 		<action name="processLogin" class="org.pup.system.osas.ui.action.ProcessLoginAction">
@@ -58,6 +60,7 @@
 		<action name="home" class="org.pup.system.osas.ui.action.HomeAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/home.jsp</result>
+			<result name="error">home</result>
 		</action>
 		
 		<!-- USER -->	
@@ -287,6 +290,7 @@
 		<action name="displayScholarshipQualificationList" class="org.pup.system.osas.ui.action.DisplayScholarshipQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/scholarshipQualificationList.jsp</result>
+			<result name="error">displayScholarshipProgramList</result>
 		</action>
 		
 		<action name="displayEditScholarshipQualification" class="org.pup.system.osas.ui.action.DisplayEditScholarshipQualificationAction">
@@ -311,6 +315,7 @@
 		<action name="displayAddScholarshipQualification" class="org.pup.system.osas.ui.action.DisplayAddScholarshipQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addScholarshipQualification.jsp</result>
+			<result type="chain" name="error">displayScholarshipQualificationList</result>
 		</action>
 		
 		<action name="addScholarshipQualification" class="org.pup.system.osas.ui.action.AddScholarshipQualificationAction">

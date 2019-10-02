@@ -148,11 +148,11 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Year</span>
-    					<div><input id="year" name="year" type="text" value="${year}"></div>
+    					<div><input id="year" name="year" type="text" value="${year}"  maxlength="1"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
     					<span>Section</span>
-    					<div><input id="section" name="section" type="text" value="${section}"></div>
+    					<div><input id="section" name="section" type="text" value="${section}"  maxlength="1"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Contact Number</span>

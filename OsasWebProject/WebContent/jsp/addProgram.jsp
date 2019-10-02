@@ -74,7 +74,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span>Highest Year Level</span>
-    					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${highestYearLevel}"></div>
+    					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${highestYearLevel}"  maxlength="1"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

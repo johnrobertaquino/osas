@@ -65,7 +65,7 @@
 			<div id="rightPaneContentHolder">
 				<form class="addScholarContent" id="scholarForm" action="addScholar" method="POST">
     				<div class="rightPaneElement withTitle">
-    				    <span>Scholarship Program</span>
+    				    <span class="title">Scholarship Program</span>
 	    				<div>
 		    				<select name="scholarshipProgramId">
 		    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
@@ -76,43 +76,43 @@
 					</div>
 					<div class="rightPaneElement withTitle">
 	    				<div>
-	    					<span>Student Number</span>
-	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
+	    					<span class="title">Student Number</span>
+	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"  maxlength="15"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
-	    					<span>First Name</span>
+	    					<span class="title">First Name</span>
 	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
-	    					<span>Middle Name</span>
+	    					<span class="title">Middle Name</span>
 	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
-	    					<span>Last Name</span>
+	    					<span class="title">Last Name</span>
 	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Gender</span>
+    					<span class="title">Gender</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
-		    				<span>Male</span>
+		    				<span class="title">Male</span>
 		    				<input type="radio" id="gender" name="gender" value="F">
-		    				<span>Female</span>
+		    				<span class="title">Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Email</span>
+    					<span class="title">Email</span>
     					<div><input id="email" name="email" type="text" value="${email}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
+    					<span class="title">Program</span>
     					<div>
     						<select name="program">
 		    					<s:iterator value="programList" status="rowStatus" var="programItem">
@@ -122,32 +122,32 @@
 						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Year</span>
-    					<div><input id="year" name="year" type="text" value="${year}"></div>
+    					<span class="title">Year</span>
+    					<div><input id="year" name="year" type="text" value="${year}"  maxlength="1"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
-    					<span>Section</span>
-    					<div><input id="section" name="section" type="text" value="${section}"></div>
+    					<span class="title">Section</span>
+    					<div><input id="section" name="section" type="text" value="${section}"  maxlength="1"></div>
     				</div>
     			    <div class="rightPaneElement withTitle">
-    					<span>GWA</span>
-    					<div><input id="gwa" name="gwa" type="text" value="${gwa}"></div>
+    					<span class="title">GWA</span>
+    					<div><input id="gwa" name="gwa" type="text" value="${gwa}"  maxlength="5"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Scholar</span>
+								<span>ADD SCHOLAR</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
 					</div>
     			</form>
     		</div>
-    		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
 	</div>
 </div>
 
