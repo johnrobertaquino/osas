@@ -183,5 +183,26 @@ public abstract class Report<T> {
 
 		return cell;
 	}
+	
+	protected Paragraph generateTableCellParagraph(String text) {
+		Text textObj = new Text(text);
+		textObj.setFontSize(9f);
+
+		Paragraph paragraph = new Paragraph();
+		paragraph.add(textObj);
+
+		return paragraph;
+	}
+	
+	protected Paragraph generateTableCellParagraphHeader(String text) {
+		Text textObj = new Text(text);
+		textObj.setFontSize(9f);
+		textObj.setBold();
+
+		Paragraph paragraph = new Paragraph();
+		paragraph.add(textObj);
+
+		return paragraph;
+	}
 
 }
