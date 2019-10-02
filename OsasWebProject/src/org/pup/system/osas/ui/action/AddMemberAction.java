@@ -62,10 +62,14 @@ public class AddMemberAction extends AbstractAction {
 		File fileToCreate = null;
 		
 		try {
+
+			
 			MemberManager memberManager = new MemberManager();
 
 			Member existingMember = null;
+
 			existingMember = memberManager.getMemberByStudentNumber(studentNumber, getCurrentActiveTerm().getSemTermId());			
+
 			if (existingMember != null) {
 				notificationMessage = "Member already exist.";
 				return FORWARD_DISPLAYADDMEMBER;

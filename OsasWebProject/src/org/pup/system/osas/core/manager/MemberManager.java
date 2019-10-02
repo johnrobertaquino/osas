@@ -50,14 +50,15 @@ public class MemberManager {
 
 			memberDAO.insertMember(member);
 
+			
 			organizationList = member.getOrganizationList();
-
-			if (member != null) {
+			
+			if (member!= null) {
 				for (Organization organization : organizationList) {
 					organizationDAO.insertOrganizationByMemberId(member.getMemberId(), organization);
 				}
 			}
-
+			
 			connection.commit();
 
 		} catch (Exception e) {
@@ -115,13 +116,11 @@ public class MemberManager {
 
 			member = memberDAO.getMemberByMemberId(memberId);
 
-			if (member != null) {
+			if(member != null) {
 				OrganizationManager organizationManager = new OrganizationManager();
-				List<Organization> organizationList = organizationManager
-						.getOrganizationListByMemberId(member.getMemberId());
+				List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
 				member.setOrganizationList(organizationList);
 			}
-
 		} catch (Exception e) {
 			ConnectionUtil.rollbackConnection(connection);
 			throw e;
@@ -174,16 +173,14 @@ public class MemberManager {
 			memberDAO = new MemberDAO(connection);
 
 			memberList = memberDAO.getMemberList(semTermId);
-
-			if (memberList != null) {
+			
+			if(memberList != null) {
 				OrganizationManager organizationManager = new OrganizationManager();
 				for (Member member : memberList) {
-					List<Organization> organizationList = organizationManager
-							.getOrganizationListByMemberId(member.getMemberId());
+					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
 					member.setOrganizationList(organizationList);
 				}
 			}
-
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -205,16 +202,14 @@ public class MemberManager {
 			memberDAO = new MemberDAO(connection);
 
 			memberList = memberDAO.getMemberListByMemberSearchText(memberSearchText, semTermId);
-
-			if (memberList != null) {
+			
+			if(memberList != null) {
 				OrganizationManager organizationManager = new OrganizationManager();
 				for (Member member : memberList) {
-					List<Organization> organizationList = organizationManager
-							.getOrganizationListByMemberId(member.getMemberId());
+					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
 					member.setOrganizationList(organizationList);
 				}
 			}
-
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -235,13 +230,14 @@ public class MemberManager {
 
 			memberDAO = new MemberDAO(connection);
 			organizationDAO = new OrganizationDAO(connection);
-
+			
 			memberDAO.saveMember(member);
 
+			
 			organizationDAO.deleteOrganizationByMemberId(member.getMemberId());
 			organizationList = member.getOrganizationList();
-
-			if (member != null) {
+			
+			if (member!= null) {
 				for (Organization organization : organizationList) {
 					organizationDAO.insertOrganizationByMemberId(member.getMemberId(), organization);
 				}
