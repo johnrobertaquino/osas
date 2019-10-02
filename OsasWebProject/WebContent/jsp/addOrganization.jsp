@@ -70,9 +70,15 @@
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Organization Name</span>
+    					<span>Organization Code</span>
     					<div><input id="organizationName" name="organizationName" type="text" value="${organizationName}"></div>
     				</div>
+    				<div class="rightPaneElement withTitle">
+	    				<div>
+	    					<span>Description</span>
+	    					<div><input id="description" name="description" type="text" value="${description}"></div>
+	    				</div>
+	    			</div>
     				<div class="rightPaneElement withTitle">
     					<span>Organization Type</span>
 	    				<div id="roleDiv">

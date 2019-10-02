@@ -77,11 +77,8 @@
 					<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span class="title">Student Number</span>
-<<<<<<< HEAD
 	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"  maxlength="15"></div>
-=======
-	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
+
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
@@ -127,27 +124,15 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Year</span>
-<<<<<<< HEAD
     					<div><input id="year" name="year" type="text" value="${year}"  maxlength="1"></div>
-=======
-    					<div><input id="year" name="year" type="text" value="${year}"></div>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
     				</div>
     			   <div class="rightPaneElement withTitle">
     					<span class="title">Section</span>
-<<<<<<< HEAD
     					<div><input id="section" name="section" type="text" value="${section}"  maxlength="1"></div>
-=======
-    					<div><input id="section" name="section" type="text" value="${section}"></div>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span class="title">GWA</span>
-<<<<<<< HEAD
     					<div><input id="gwa" name="gwa" type="text" value="${gwa}"  maxlength="5"></div>
-=======
-    					<div><input id="gwa" name="gwa" type="text" value="${gwa}"></div>
->>>>>>> branch 'master' of https://github.com/johnrobertaquino/osas.git
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

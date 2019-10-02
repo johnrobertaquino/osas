@@ -3,6 +3,10 @@ $(document).ready(function() {
 		location.href = "displayUserList";
 	});
 	
+	$(function() {
+		  $( "#birthday" ).datepicker({  maxDate: 0 });
+		});
+	
 	$("#contactNumber").keypress(function (e) {
         var keyCode = e.keyCode || e.which;
 

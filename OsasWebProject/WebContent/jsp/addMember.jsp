@@ -66,7 +66,7 @@
 				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span>Organization</span>
-	    				<div style="height: 200px; overflow-y: scroll;">
+	    				<br><br><div style="height: 200px; overflow-y: scroll;">
 	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
 			    				<div id="roleDiv">
 									<label for="organizationIdList">
@@ -82,7 +82,7 @@
 								</div>
 							</s:iterator>
 						</div>
-					</div>
+					</div><br>
 					<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span>Student Number</span>
@@ -123,9 +123,10 @@
     				</div>
     				<br><div class="rightPaneElement withTitle" id="divOfficer" <s:if test='!(officer == "on")'>style="display: none"</s:if>>
     					<div>
-	    					<div>		 
+	    					<div>
+	    						<label>Upload Photo</label>		 
 		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
-		    				</div>
+		    				</div><br>
 	    					<div>
 		    					<span>Position</span>
 		    					<s:if test='officer == "on"'>

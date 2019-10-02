@@ -82,8 +82,8 @@
     					<div><input type="text" name="birthday" id="birthday" value="${birthday}"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
-    							$("#birthday").datepicker();
-    							
+    							$("#birthday").datepicker({ maxDate: 0});
+    							maxDate:'0';
     						});
     					</script>
     				</div>
