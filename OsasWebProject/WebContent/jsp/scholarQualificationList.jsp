@@ -86,13 +86,13 @@
     			<div style="clear:both"></div>
 			</div>
 			<div id="tableHolder">
-			<table>
+			<table class="contentTable">
 				<tr>
 					<th>Qualification Name</th>
 					<th>Notes</th>
 					<th>Date Submitted</th>
 					<th>Status</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="scholarScholarshipQualificationList" status="rowStatus" var="scholarScholarshipQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -104,7 +104,7 @@
 						</td>
 						<td><s:date name="scholarQualification.dateSubmitted" format="MM/dd/yyyy" /></td>
 						<td><s:property value="statusText" /></td>
-						<td>
+						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />

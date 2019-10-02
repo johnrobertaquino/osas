@@ -69,20 +69,20 @@
 					<input name="scholarshipQualificationId" type="hidden" value="${scholarshipQualification.scholarshipQualificationId}">
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Scholarship Qualification Name</span>
+    					<span class="title">Scholarship Qualification Name</span>
     					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualification.scholarshipQualificationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Requires Yearly Check</span>
+    					<span class="title">Requires Yearly Check</span>
     					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test="%{scholarshipQualification.yearlyCheck}">checked</s:if>></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Save</span>
+								<span>SAVE</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

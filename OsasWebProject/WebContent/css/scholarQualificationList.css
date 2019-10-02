@@ -38,16 +38,16 @@
 }
 
 
-@media only screen and (max-width: 1550px) {
+/**@media only screen and (max-width: 1550px) {**/
   	#scholarQualificationListContentBody #contentBodyLeftPane	{
 		width: 200px;
 	}
 	#scholarQualificationListContentBody #contentBodyRightPane {
-		font-size: 13px;
+		font-size: 12px;
 	}
 	#scholarQualificationListContentBody #searchScholarQualification, #scholarQualificationListContentBody #contentBodyRightPane table {
-		margin-left: 50px;
-		width: 920px;
+		margin-left: 10px;
+		width: 940px;
 	}
 	#scholarQualificationListContentBody #searchScholarQualification img {
 		height: 32px;
@@ -60,8 +60,8 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
-}
-
+/**}**/
+/**
 @media only screen and (max-width: 1100px) {
   	#scholarQualificationListContentBody #contentBodyLeftPane	{
 		width: 200px;
@@ -115,3 +115,4 @@
 	}
 }
 }
+**/

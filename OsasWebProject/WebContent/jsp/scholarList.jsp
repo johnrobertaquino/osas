@@ -76,7 +76,7 @@
 			<div id="searchScholar">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchScholar" method="POST" id="searchScholarForm">
-					<input type="text" id="scholarSearchText" name="scholarSearchText" placeholder="Search scholar">
+					<input type="text" id="scholarSearchText" name="scholarSearchText" placeholder="Search Scholar">
 				</form>
 				<div class="button" id="searchScholarButton">SEARCH</div>
 				<div class="button" id="addScholarExcelFileButton">ADD SCHOLAR via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<div id="tableHolder">
-			<table>
+			<table class="contentTable">
 				<tr>
 					<th>Scholarship Program</th>
 					<th>Student Number</th>
@@ -107,7 +107,7 @@
 					<th>Contact Number</th>
 					<th>Program</th>
 					<th>Status</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="scholarList" status="rowStatus" var="scholar">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
@@ -137,6 +137,7 @@
 				</s:iterator>
 			</table>
 			</div>
+			<div style="clear:both"></div>
 		</div>
 		<div style="clear:both"></div>
 	</div>

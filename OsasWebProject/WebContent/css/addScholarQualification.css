@@ -13,7 +13,7 @@
 	border: none;
 }
 
-@media only screen and (max-width: 1550px) {
+/**@media only screen and (max-width: 1550px) {**/
 	#addScholarQualificationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
@@ -21,11 +21,8 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
-	#addScholarQualificationContentBody #contentBodyRightPane #rightPaneContentHolder .rightPaneElement.withTitle #buttonHolder .button 
-	{
-    width: 200px;
-	}
-}
+/**}**/
+/**
 @media only screen and (max-width: 1110px) {
 	#addScholarQualificationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -44,3 +41,4 @@
 		TEXT-ALIGN: center;
 	}
 }
+**/

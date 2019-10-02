@@ -70,11 +70,11 @@
 					<input type="hidden" name="scholarshipQualificationId" value="${scholarshipQualificationId}" />
 					<input type="hidden" name="scholarId" value="${scholarId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Notes</span>
+    					<span class="title">Notes</span>
     					<div><input id="notes" name="notes" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Date Submitted</span>
+    					<span class="title">Date Submitted</span>
     					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
     					 <script type="text/javascript">
     						$(document).ready(function() {
@@ -84,20 +84,20 @@
     					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Add Attachment</span>
+    					<span class="title">Add Attachment</span>
     					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle" id="fileNameHolder">
-    					<span>FileName</span>
+    					<span class="title">FileName</span>
     					<div><input id="fileName" name="fileName" type="file"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Save</span>
+								<span>SAVE</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

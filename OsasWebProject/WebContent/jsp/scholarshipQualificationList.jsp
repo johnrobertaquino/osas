@@ -87,17 +87,17 @@
     			<div style="clear:both"></div>
 			</div>
 			<div id="tableHolder">
-			<table>
+			<table class="contentTable">
 				<tr>
 					<th>Qualification Name</th>
 					<th>Yearly Check</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="scholarshipQualificationList" status="rowStatus" var="scholarshipQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="scholarshipQualificationName" /></td>
 						<td><s:if test="#scholarshipQualification.yearlyCheck">Yes</s:if><s:else>No</s:else></td>
-						<td>
+						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">
   									<img src="images/setting_game_configuration_option-512.png" />
