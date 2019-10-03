@@ -65,7 +65,7 @@
 			<div id="rightPaneContentHolder">
 				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
-    				    <span>Organization</span>
+    				    <span class="title">Organization</span>
 	    				<br><br><div style="height: 200px; overflow-y: scroll;">
 	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
 			    				<div id="roleDiv">
@@ -85,26 +85,26 @@
 					</div><br>
 					<div class="rightPaneElement withTitle">
 	    				<div>
-	    					<span>Student Number</span>
+	    					<span class="title">Student Number</span>
 	    					<div><input id="studentNumber" name="studentNumber" type="text" value="${studentNumber}"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
-	    					<span>First Name</span>
+	    					<span class="title">First Name</span>
 	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
 	    				</div>
 	    				<div>
-	    					<span>Middle Name</span>
+	    					<span class="title">Middle Name</span>
 	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
 	    				</div>
 	    				<div>
-	    					<span>Last Name</span>
+	    					<span class="title">Last Name</span>
 	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
+    					<span class="title">Program</span>
     					<div>
     						<select name="program">
 		    					<s:iterator value="programList" status="rowStatus" var="programItem">
@@ -124,11 +124,11 @@
     				<br><div class="rightPaneElement withTitle" id="divOfficer" <s:if test='!(officer == "on")'>style="display: none"</s:if>>
     					<div>
 	    					<div>
-	    						<label>Upload Photo</label>		 
+	    						<label class="title">Upload Photo</label>		 
 		    					<input id="officerInput" name="officerPhoto" type="file" accept="image/*">
 		    				</div><br>
 	    					<div>
-		    					<span>Position</span>
+		    					<span class="title">Position</span>
 		    					<s:if test='officer == "on"'>
 		    						<div><input id="position" name="position" type="text" value="${position}"></div>
 		    					</s:if>
@@ -139,7 +139,7 @@
     					</div>
     				</div>
    					<div class="rightPaneElement withTitle">
-    					<span>Gender</span>
+    					<span class="title">Gender</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
 		    				<span>Male</span>
@@ -148,15 +148,15 @@
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Year</span>
+    					<span class="title">Year</span>
     					<div><input id="year" name="year" type="text" value="${year}"  maxlength="1"></div>
     				</div>
     			   <div class="rightPaneElement withTitle">
-    					<span>Section</span>
+    					<span class="title">Section</span>
     					<div><input id="section" name="section" type="text" value="${section}"  maxlength="1"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

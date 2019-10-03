@@ -70,17 +70,17 @@
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Organization Code</span>
+    					<span class="title">Organization Code</span>
     					<div><input id="organizationName" name="organizationName" type="text" value="${organizationName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
-	    					<span>Description</span>
+	    					<span class="title">Description</span>
 	    					<div><input id="description" name="description" type="text" value="${description}"></div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Organization Type</span>
+    					<span class="title">Organization Type</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
 		    				<span>Academic</span>
@@ -90,7 +90,7 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     				<div id="programDiv">
-    					<span>Program</span>
+    					<span class="title">Program</span>
     					<div>
     						<select name="program">
 		    					<s:iterator value="programList" status="rowStatus" var="programItem">
@@ -101,7 +101,7 @@
     				</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
-    					<span>Adviser</span>
+    					<span class="title">Adviser</span>
     					<div><input id="adviser" name="adviser" type="text"value="${adviser}"></div>
     				</div>
     				

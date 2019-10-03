@@ -65,7 +65,7 @@
 			<div id="rightPaneContentHolder">
 				<form class="addMemberExcelFileContent" id="memberExcelFileForm" action="addMemberExcelFile" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
-    				    <span>Organization</span>
+    				    <span class="title">Organization</span>
 	    				<div>
 		    				<select name="organizationId">
 		    					<s:iterator value="organizationList" status="rowStatus" var="organization">

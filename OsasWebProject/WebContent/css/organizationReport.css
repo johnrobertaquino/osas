@@ -2,6 +2,10 @@
 	padding-top: 10px;
 }
 
+#organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle #roleDiv span {
+	top: 0px;
+}
+
 #organizationReportContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
     margin: 10px 0px;
     width: 510px;

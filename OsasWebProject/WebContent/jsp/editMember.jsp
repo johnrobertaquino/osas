@@ -67,7 +67,7 @@
 				<form class="editMemberContent" id="editMemberForm" action="editMember" method="POST" enctype="multipart/form-data">
 					<input name="MemberId" type="hidden" value="${member.memberId}">
 					<div class="rightPaneElement withTitle">
-    				    <span>Organization</span>
+    				    <span class="title">Organization</span>
     				    
 	    				<div style="height: 200px; overflow-y: scroll;">
 	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
@@ -87,25 +87,25 @@
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Student Number</span>
+    					<span class="title">Student Number</span>
     					<div><input id="studentNumber" name="studentNumber" type="text" value="${member.studentNumber}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>First Name</span>
+    					<span class="title">First Name</span>
     					<div><input id="firstName" name="firstName" type="text" value="${member.firstName}"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
-					<span>Middle Name</span>
+					<span class="title">Middle Name</span>
     					<div><input id="middleName" name="middleName" type="text" value="${member.middleName}"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
-					<span>Last Name</span>
+					<span class="title">Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${member.lastName}"></div>
     				</div>
    					<div class="rightPaneElement withTitle">
-    					<span>Gender</span>
+    					<span class="title">Gender</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M"  <s:if test='member.gender == "M"'>checked</s:if>>
 		    				<span>Male</span>
@@ -132,13 +132,13 @@
 		    					</div>
 		    				</div>
 			    			<div>
-								<span>Position</span>
+								<span class="title">Position</span>
 			    					<div><input id="position" name="position" type="text" value="${member.position}"></div>
 			    				</div>
 		    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program</span>
+    					<span class="title">Program</span>
     					<div>
     						<select name="program">
 		    					<s:iterator value="programList" status="rowStatus" var="programItem">
@@ -148,15 +148,15 @@
 						</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Year</span>
+    					<span class="title">Year</span>
     					<div><input id="year" name="year" type="text" value="${member.year}"></div>
     				</div>
     			   	<div class="rightPaneElement withTitle">
-    					<span>Section</span>
+    					<span class="title">Section</span>
     					<div><input id="section" name="section" type="text" value="${member.section}"></div>
     				</div>
     				 <div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${member.contactNumber}" placeholder="+63"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

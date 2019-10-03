@@ -65,15 +65,15 @@
 			<div id="rightPaneContentHolder">
 				<form class="addUserContent" id="programForm" action="addProgram" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Program Code</span>
+    					<span class="title">Program Code</span>
     					<div><input id="programCode" name="programCode" type="text" value="${programCode}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Program Name</span>
+    					<span class="title">Program Name</span>
     					<div><input id="programName" name="programName" type="text" value="${programName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Highest Year Level</span>
+    					<span class="title">Highest Year Level</span>
     					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${highestYearLevel}"  maxlength="1"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

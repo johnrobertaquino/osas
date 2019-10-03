@@ -70,11 +70,11 @@
 					<input type="hidden" name="organizationRequirementId" value="${organizationRequirementId}" />
 					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
-    					<span>Notes</span>
+    					<span class="title">Notes</span>
     					<div><input id="notes" name="notes" type="text"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Date Submitted</span>
+    					<span class="title">Date Submitted</span>
     					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
     					 <script type="text/javascript">
     						$(document).ready(function() {
@@ -84,11 +84,11 @@
     					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Add Attachment</span>
+    					<span class="title">Add Attachment</span>
     					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
     				</div>
     				<div class="rightPaneElement withTitle" id="fileNameHolder">
-    					<span>FileName</span>
+    					<span class="title">FileName</span>
     					<div><input id="fileName" name="fileName" type="file"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

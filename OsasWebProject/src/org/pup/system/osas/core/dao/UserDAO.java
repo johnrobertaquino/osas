@@ -21,16 +21,16 @@ public class UserDAO extends DAO {
 
 	public User getUserByFullName(String firstName, String middleName, String lastName) throws Exception {
 		Connection connection = null;
+		Statement statement = null;
 		ResultSet resultSet = null;
-		PreparedStatement statement = null;
 		User user = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND MiddleName='"+ middleName +"' AND LastName='" + lastName + "'"); 
+			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery();  
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND MiddleName='"+ middleName +"' AND LastName='" + lastName + "'");  
 			
 			if (resultSet.next()) {
 				user = new User();
@@ -55,16 +55,16 @@ public class UserDAO extends DAO {
 	
 	public User getUserByUserNameAndPassword(String userName, String password) throws Exception {
 		Connection connection = null;
-		PreparedStatement statement = null;
+		Statement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName='" + userName + "' and Password='" + password + "'"); 
+			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName='" + userName + "' and Password='" + password + "'");  
 			
 			if (resultSet.next()) {
 				user = new User();
@@ -131,7 +131,7 @@ public class UserDAO extends DAO {
 	
 	public List<User> getUserList() throws Exception {
 		Connection connection = null;
-		PreparedStatement statement = null;
+		Statement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		List<User> userList = null;
@@ -139,9 +139,9 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 			
-			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user");   
+			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user");  
 			
 			while (resultSet.next()) {
 				if (userList == null) {

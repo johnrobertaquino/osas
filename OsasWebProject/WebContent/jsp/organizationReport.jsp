@@ -65,7 +65,7 @@
 			<div id="rightPaneContentHolder">
 				<form id="organizationReportForm" action="organizationStatusReport" method="POST">
     				    <div class="rightPaneElement withTitle">
-    				    <span>Yearly Term</span>
+    				    <span class="title">Yearly Term</span>
 	    				<div>
 		    				<select name="yearlyTermId" id="yearlyTermId">
 		    					<s:iterator value="yearlyTermList" status="rowStatus" var="yearlyTerm">
@@ -73,14 +73,20 @@
 		    					</s:iterator>
 							</select>
 						</div>
+						<div style="clear:both"></div>
 					</div>
 					<div class="rightPaneElement withTitle">
-    					<span>Organization Type</span>
+    					<span class="title">Organization Type</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
-		    				<span>Academic</span>
-		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
-		    				<span>Non-Academic</span>
+	    					<div>
+			    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
+			    				<span>Academic</span>
+		    				</div><br>
+		    				<div>
+			    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
+			    				<span>Non-Academic</span>
+		    				</div>
+		    				<div style="clear:both"></div>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
