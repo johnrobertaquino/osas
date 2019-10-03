@@ -10,6 +10,7 @@ import org.pup.system.osas.report.data.OrganizationsStatusReportData;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 
 public class OrganizationsStatusReport extends Report<OrganizationsStatusReportData> {
 
@@ -29,16 +30,19 @@ public class OrganizationsStatusReport extends Report<OrganizationsStatusReportD
 
 		Cell dateSubmittedTextCell = new Cell(1, data.getOrganizationRequirementList().size());
 		dateSubmittedTextCell.add(generateTableCellParagraphHeader("DATE SUBMITTED"));
+		dateSubmittedTextCell.setTextAlignment(TextAlignment.CENTER);
 		table.addCell(dateSubmittedTextCell);
 
 		List<OrganizationRequirement> organizationRequirementList = data.getOrganizationRequirementList();
 
 		for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
-			table.addCell(generateTableCellParagraphHeader(organizationRequirement.getOrganizationRequirementName().toUpperCase()));
+			Paragraph requirementListCell = generateTableCellParagraphHeader(organizationRequirement.getOrganizationRequirementName().toUpperCase());
+			requirementListCell.setTextAlignment(TextAlignment.CENTER);
+			table.addCell(requirementListCell);
 		}
 
 		Cell organizationTypeCell = new Cell(1, data.getOrganizationRequirementList().size() + 1);
-		organizationTypeCell.add(generateTableCellParagraphHeader(data.getOrganizationType().getOrganizationTypeName()));
+		organizationTypeCell.add(generateTableCellParagraphHeader(data.getOrganizationType().getOrganizationTypeName().toUpperCase() + " ORGANIZATION"));
 		table.addCell(organizationTypeCell);
 
 		List<OrganizationReportData> organizationReportDataList = data.getOrganizationReportDataList();
@@ -50,7 +54,9 @@ public class OrganizationsStatusReport extends Report<OrganizationsStatusReportD
 			for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
 				String dateStatus = organizationReportData.getDateStatusByOrganizationRequirementId(
 						organizationRequirement.getOrganizationRequirementId());
-				table.addCell(generateTableCellParagraph(dateStatus));
+				Paragraph dateStatusParagraph = generateTableCellParagraph(dateStatus);
+				dateStatusParagraph.setTextAlignment(TextAlignment.CENTER);
+				table.addCell(dateStatusParagraph);
 			}
 		}
 
