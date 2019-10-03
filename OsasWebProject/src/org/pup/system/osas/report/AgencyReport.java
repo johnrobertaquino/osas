@@ -10,8 +10,8 @@ import com.itextpdf.layout.element.Table;
 
 public class AgencyReport extends Report<List<Agency>> {
 
-	public AgencyReport(String imagePath, String reportTitle, List<Agency> data, User preparedBy) {
-		super(imagePath, reportTitle, data, preparedBy);
+	public AgencyReport(String imagePath, String reportTitle, List<Agency> data, User preparedBy, boolean landscape) {
+		super(imagePath, reportTitle, data, preparedBy, landscape);
 	}
 
 	@Override

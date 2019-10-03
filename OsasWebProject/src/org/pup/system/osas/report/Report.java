@@ -6,6 +6,7 @@ import org.pup.system.osas.core.domain.User;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
@@ -28,12 +29,15 @@ public abstract class Report<T> {
 	private T data;
 
 	private User preparedBy;
+	
+	private boolean landscape;
 
-	public Report(String imagePath, String reportTitle, T data, User preparedBy) {
+	public Report(String imagePath, String reportTitle, T data, User preparedBy, boolean landscape) {
 		this.imagePath = imagePath;
 		this.reportTitle = reportTitle;
 		this.data = data;
 		this.preparedBy = preparedBy;
+		this.landscape = landscape;
 	}
 
 	public abstract Table generateContentTable(T data) throws Exception;
@@ -45,7 +49,13 @@ public abstract class Report<T> {
 
 		PdfDocument pdfDoc = new PdfDocument(writer);
 
-		Document document = new Document(pdfDoc);
+		Document document = null;
+				
+		if (landscape) {
+			document = new Document(pdfDoc, PageSize.A4.rotate());
+		} else {
+			document = new Document(pdfDoc);
+		}
 
 		document.add(generateHeader());
 		SolidLine line = new SolidLine(1f);

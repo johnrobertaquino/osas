@@ -16,8 +16,8 @@ import com.itextpdf.layout.property.VerticalAlignment;
 public class OrganizationsStatusReport extends Report<OrganizationsStatusReportData> {
 
 	public OrganizationsStatusReport(String imagePath, String reportTitle, OrganizationsStatusReportData data,
-			User preparedBy) {
-		super(imagePath, reportTitle, data, preparedBy);
+			User preparedBy, boolean landscape) {
+		super(imagePath, reportTitle, data, preparedBy, landscape);
 	}
 
 	@Override

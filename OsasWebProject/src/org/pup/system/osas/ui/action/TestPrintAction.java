@@ -35,7 +35,7 @@ public class TestPrintAction extends AbstractAction implements ServletResponseAw
 			ReportManager reportManager = new ReportManager();
 			List<ScholarsByAgencyAndProgramReportData> scholarsByAgencyAndProgramReportDataList = reportManager.getScholarsByAgencyAndProgramReportData(1, 1, "BSIT");
 			
-			ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath, "Tanauan City Scholarship Foundation", scholarsByAgencyAndProgramReportDataList, getUser());	
+			ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath, "Tanauan City Scholarship Foundation", scholarsByAgencyAndProgramReportDataList, getUser(), false);	
 
 			report.generateReport(response.getOutputStream());
 		} catch (Exception e) {

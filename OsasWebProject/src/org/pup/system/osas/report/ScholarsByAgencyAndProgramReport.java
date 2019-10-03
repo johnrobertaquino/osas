@@ -12,8 +12,8 @@ import com.itextpdf.layout.element.Table;
 public class ScholarsByAgencyAndProgramReport extends Report<List<ScholarsByAgencyAndProgramReportData>>{
 
 	public ScholarsByAgencyAndProgramReport(String imagePath, String reportTitle,
-			List<ScholarsByAgencyAndProgramReportData> data, User preparedBy) {
-		super(imagePath, reportTitle, data, preparedBy);
+			List<ScholarsByAgencyAndProgramReportData> data, User preparedBy, boolean landscape) {
+		super(imagePath, reportTitle, data, preparedBy, landscape);
 	}
 
 	@Override
