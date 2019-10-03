@@ -52,7 +52,7 @@ public class OrganizationReportData extends Organization {
 		if (organizationRequirementQualificationMap != null) {
 			OrganizationRequirementQualification organizationRequirementQualification = organizationRequirementQualificationMap.get(organizationRequirementId);
 			
-			if (organizationRequirementQualification != null) {
+			if (organizationRequirementQualification != null && organizationRequirementQualification.getOrganizationQualification() != null) {
 				Date dateSubmitted = organizationRequirementQualification.getOrganizationQualification().getDateSubmitted();
 				
 				if (dateSubmitted != null) {

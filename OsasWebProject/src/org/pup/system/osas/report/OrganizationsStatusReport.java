@@ -23,7 +23,7 @@ public class OrganizationsStatusReport extends Report<OrganizationsStatusReportD
 
 		Table table = new Table(data.getOrganizationRequirementList().size() + 1).useAllAvailableWidth();
 
-		Cell nameOfOrganizationTextCell = new Cell(1, 2);
+		Cell nameOfOrganizationTextCell = new Cell(2, 1);
 		nameOfOrganizationTextCell.add(generateTableCellParagraphHeader("NAME OF ORGANIZATION"));
 		table.addCell(nameOfOrganizationTextCell);
 
@@ -34,18 +34,18 @@ public class OrganizationsStatusReport extends Report<OrganizationsStatusReportD
 		List<OrganizationRequirement> organizationRequirementList = data.getOrganizationRequirementList();
 
 		for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
-			table.addCell(generateTableCellParagraphHeader(organizationRequirement.getOrganizationRequirementName()));
+			table.addCell(generateTableCellParagraphHeader(organizationRequirement.getOrganizationRequirementName().toUpperCase()));
 		}
 
 		Cell organizationTypeCell = new Cell(1, data.getOrganizationRequirementList().size() + 1);
-		organizationTypeCell.add(new Paragraph(data.getOrganizationType().getOrganizationTypeName()));
+		organizationTypeCell.add(generateTableCellParagraphHeader(data.getOrganizationType().getOrganizationTypeName()));
 		table.addCell(organizationTypeCell);
 
 		List<OrganizationReportData> organizationReportDataList = data.getOrganizationReportDataList();
 
 		int ctr = 0;
 		for (OrganizationReportData organizationReportData : organizationReportDataList) {
-			table.addCell(generateTableCellParagraph((ctr++) + organizationReportData.getOrganizationName()));
+			table.addCell(generateTableCellParagraph((++ctr) + ". " + organizationReportData.getOrganizationName()));
 
 			for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
 				String dateStatus = organizationReportData.getDateStatusByOrganizationRequirementId(
