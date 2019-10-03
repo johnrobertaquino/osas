@@ -1,3 +1,8 @@
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 $(document).ready(function() {
 	$('#cancelButton').click(function(event) {
 		location.href = "displayScholarList";
@@ -79,6 +84,16 @@ $(document).ready(function() {
         var isValid = regex.test(String.fromCharCode(keyCode));
         return isValid;
     });
+	
+	function ValidateEmail(mail) 
+	{
+	 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+	  {
+	    return (true)
+	  }
+	    alert("You have entered an invalid email address!")
+	    return (false)
+	}
 
 	$('#submitButton').click(function(event) {	
 		
@@ -96,7 +111,7 @@ $(document).ready(function() {
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "First can\'t be blank.";
+			errorMessage = errorMessage + "First name can\'t be blank.";
 		}
 		if($('#lastName').val() === '')
 		{
@@ -113,14 +128,18 @@ $(document).ready(function() {
 			errorMessage = errorMessage + "Year can\'t be blank.";
 		}
 		
-		if($('#email').val() !== /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "You enterd invalid email.";
-		}
+		var $result = $("#result");
+		var email = $("#email").val();
+		$result.text("");
 
+		if (validateEmail(email)) {
+		} else {
+			if (errorMessage !== '') {
+			errorMessage = errorMessage + "<br/>";
+				}
+			errorMessage = errorMessage + "You entered invalid email address.";
+		}
+			
 		if($('#section').val() === '')
 		{
 			if (errorMessage !== '') {
