@@ -1,0 +1,135 @@
+#organizationReportContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    margin: 10px 0px;
+    width: 510px;
+    height: 40px;
+}
+
+@charset "ISO-8859-1";
+#organizationReportContentBody #contentBodyRightPane {
+	width: inherit;
+}
+#organizationReportContentBody #searchOrganizationButton {
+		float: left;
+}
+#organizationReportContentBody #addOrganizationExcelFileButton {
+		float: right;
+		margin-left: 5px;
+}
+
+#organizationReportContentBody #excelImage {
+		height: 20px;
+}
+
+
+#organizationReportContentBody #addOrganizationButton {
+		float: right;
+}
+
+
+#organizationReportContentBody #searchOrganization {
+	margin-left: 100px;
+	margin-bottom: 35px;
+	margin-top: 50px;
+}
+#organizationReportContentBody input {
+	border: 1px solid #420001;
+	height: 15px;
+	width: 300px;
+	padding-left: 10px;
+	float: left;
+	margin-right: 20px;
+}
+
+#organizationReportContentBody #searchOrganizationButton {
+	float: left;
+}
+
+@media only screen and (max-width: 1550px) {
+  	#organizationReportContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#organizationReportContentBody #contentBodyRightPane {
+		font-size: 13px;
+	}
+	#organizationReportContentBody #searchOrganization {
+		margin-left: 50px;
+		width: 900px;
+	}
+	#organizationReportContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+		width: inherit;
+		overflow-x: auto;
+	}
+	#organizationReportContentBody #searchOrganization img {
+		height: 32px;
+		float: left;
+		margin-left: 0px;
+	}
+	#organizationReportContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+  	#organizationReportContentBody #contentBodyLeftPane	{
+		width: 200px;
+	}
+	#organizationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#organizationListContentBody #searchOrganization {
+		margin-left: 40px;
+		width: 800px;
+	}
+	
+	#organizationListContentBody #contentBodyRightPane table {
+		margin-left: 40px;
+		width: inherit;
+	}
+	
+	#organizationListContentBody #searchOrganization img {
+		height: 32px;
+		float: left;
+		margin-left: 0px;
+	}
+	#organizationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+  	#organizationListContentBody #contentBodyLeftPane	{
+		width: 160px;
+	}
+	#organizationListContentBody #contentBodyRightPane {
+		font-size: 10px;
+	}
+	#organizationListContentBody #searchOrganization {
+		margin-left: 120px;
+		 width: 800px;
+	}
+	#organizationListContentBody #contentBodyRightPane table {
+			margin-left: 120px;
+			width: inherit;
+	}
+	#organizationListContentBody #searchOrganization img {
+		height: 32px;
+		float: left;
+		margin-left: 0px;
+	}
+	#organizationListContentBody #contentBodyLeftPane #title {
+		margin: 25px auto 0px auto;
+		font-weight: bold;
+		font-size: 22px;
+		color: #4d4d4d;
+		TEXT-ALIGN: center
+	}
+}

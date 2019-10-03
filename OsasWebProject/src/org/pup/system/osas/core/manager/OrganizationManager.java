@@ -128,7 +128,6 @@ public class OrganizationManager {
 		List<Organization> organizationList = null;
 		OrganizationType organizationType = null;
 		Connection connection = null;
-		SemTerm semTerm = new SemTerm();
 		
 		try {
 			connection = ConnectionUtil.createConnection();
@@ -144,7 +143,7 @@ public class OrganizationManager {
 				organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
 				organization.setOrganizationType(organizationType);
 				
-				organization.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTerm.getSemTermId()));
+				organization.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationListByYearlyTerm(organization.getOrganizationId(), yearlyTermId));
 			}
 		}	
 			

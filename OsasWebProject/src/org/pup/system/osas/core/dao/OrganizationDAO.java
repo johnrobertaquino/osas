@@ -197,7 +197,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT  organization.OrganizationId,  organization.OrganizationName, organization.Description, organization.OrganizationTypeCode, organization.Program, organization.OrganizationTermId, organization.OrganizationRequirementId, organization.Adviser, organization.SemTermId, organization.LogoFileName FROM organization JOIN semTerm on organization.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE YearlyTermId=" + yearlyTermId);  
+			resultSet = statement.executeQuery("SELECT  organization.OrganizationId,  organization.OrganizationName, organization.Description, organization.OrganizationTypeCode, organization.Program, organization.OrganizationTermId, organization.OrganizationRequirementId, organization.Adviser, organization.SemTermId, organization.LogoFileName FROM organization JOIN semTerm on organization.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE yearlyTerm.YearlyTermId=" + yearlyTermId);  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {

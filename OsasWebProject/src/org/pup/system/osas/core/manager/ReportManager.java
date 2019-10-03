@@ -14,6 +14,7 @@ import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.core.domain.SemTerm;
 import org.pup.system.osas.report.data.OrganizationReportData;
 import org.pup.system.osas.report.data.OrganizationsStatusReportData;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
@@ -85,7 +86,7 @@ public class ReportManager {
 		return new ArrayList<ScholarsByAgencyAndProgramReportData>(scholarsByAgencyAndProgramReportDataMap.values());
 	}
 	
-	private List<OrganizationReportData> getOrganizationReportDataList(int semTermId, String organizationTypeCode) throws Exception {
+	private List<OrganizationReportData> getOrganizationReportDataList(int yearlyTermId, String organizationTypeCode) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		List<Organization> organizationList = null;
 		List<OrganizationReportData> organizationReportDataList = null;
@@ -97,7 +98,7 @@ public class ReportManager {
 			
 			organizationDAO = new OrganizationDAO(connection);
 				
-			organizationList = organizationDAO.getOrganizationList(semTermId);
+			organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId);
 			
 			if (organizationList != null) {
 				OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
@@ -111,7 +112,7 @@ public class ReportManager {
 					organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
 					organizationReportData.setOrganizationType(organizationType);
 					
-					organizationReportData.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organization.getOrganizationId(), semTermId));
+					organizationReportData.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationListByYearlyTerm(organization.getOrganizationId(), yearlyTermId));
 					
 					organizationReportDataList.add(organizationReportData);
 				}
@@ -125,14 +126,35 @@ public class ReportManager {
 		
 		return organizationReportDataList;
 	}
-	/*
-	public OrganizationsStatusReportData OrganizationsStatusReportData(int semTermId, String organizationTypeCode) throws Exception {
+	
+	public OrganizationsStatusReportData getOrganizationsStatusReportData(int yearlyTermId, String organizationTypeCode) throws Exception {
 		OrganizationsStatusReportData organizationsStatusReportData = null;
+		Connection connection = null;
+		OrganizationDAO organizationDAO = null;
+		OrganizationType organizationType = null;
 		
 		try {
+			organizationsStatusReportData = new OrganizationsStatusReportData();
+			
+			connection = ConnectionUtil.createConnection();
+			
+			organizationDAO = new OrganizationDAO(connection);
+			
+			OrganizationRequirementManager organizationRequirementnManager = new OrganizationRequirementManager();
+					
+			organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organizationTypeCode);
+
+			organizationsStatusReportData.setOrganizationType(organizationType);	
+			
+			organizationsStatusReportData.setOrganizationRequirementList(organizationRequirementnManager.getOrganizationRequirementListByYearlyTerm(yearlyTermId));
+			
+			organizationsStatusReportData.setOrganizationReportDataList(getOrganizationReportDataList(yearlyTermId, organizationTypeCode));
 			
 		} catch (Exception e) {
 			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
 		}
-	}*/
+		return organizationsStatusReportData;
+	}
 }
