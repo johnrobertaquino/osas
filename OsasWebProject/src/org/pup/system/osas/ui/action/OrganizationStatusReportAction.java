@@ -48,10 +48,13 @@ public class OrganizationStatusReportAction extends AbstractAction
 				errorMessage = "No records found.";
 				actionResult = FORWARD_ERROR;
 			} else {
-
+				boolean landscape = false;
+				if (organizationsStatusReportData.getOrganizationReportDataList().size() > 4) {
+					landscape = true;
+				}
 				OrganizationsStatusReport report = new OrganizationsStatusReport(imagePath,
 						yearlyTerm.getYearlyTermName() + " CHECKLIST", organizationsStatusReportData,
-						(User) userSession.get(USER));
+						(User) userSession.get(USER), landscape);
 	
 				response.setContentType("application/octet-stream");
 				response.setHeader("Content-Disposition","attachment;filename=" + "Organization Status Report - " + yearlyTerm.getYearlyTermName() + ".pdf");
