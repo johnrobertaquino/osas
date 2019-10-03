@@ -2,9 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
-import org.pup.system.osas.core.domain.SemTerm;
 import org.pup.system.osas.core.domain.YearlyTerm;
-import org.pup.system.osas.core.manager.SemTermManager;
 import org.pup.system.osas.core.manager.YearlyTermManager;
 import org.pup.system.osas.exception.BusinessException;
 

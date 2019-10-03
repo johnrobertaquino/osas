@@ -50,7 +50,7 @@ public class OrganizationStatusReportAction extends AbstractAction
 			} else {
 
 				OrganizationsStatusReport report = new OrganizationsStatusReport(imagePath,
-						yearlyTerm.getYearlyTermName(), organizationsStatusReportData,
+						yearlyTerm.getYearlyTermName() + " CHECKLIST", organizationsStatusReportData,
 						(User) userSession.get(USER));
 	
 				response.setContentType("application/octet-stream");

@@ -11,8 +11,7 @@ import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.SemTerm;
-import org.pup.system.osas.core.domain.YearlyTerm;
-
+	
 public class OrganizationDAO extends DAO {
 
 	public OrganizationDAO(Connection connection) {
