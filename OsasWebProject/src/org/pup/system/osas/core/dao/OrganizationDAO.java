@@ -11,8 +11,7 @@ import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.SemTerm;
-import org.pup.system.osas.core.domain.YearlyTerm;
-
+	
 public class OrganizationDAO extends DAO {
 
 	public OrganizationDAO(Connection connection) {
@@ -185,7 +184,7 @@ public class OrganizationDAO extends DAO {
 		return organizationList;
 	}
 	
-	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId) throws Exception {
+	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId, String organizationTypeCode) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -197,7 +196,7 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT  organization.OrganizationId,  organization.OrganizationName, organization.Description, organization.OrganizationTypeCode, organization.Program, organization.OrganizationTermId, organization.OrganizationRequirementId, organization.Adviser, organization.SemTermId, organization.LogoFileName FROM organization JOIN semTerm on organization.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE yearlyTerm.YearlyTermId=" + yearlyTermId);  
+			resultSet = statement.executeQuery("SELECT  organization.OrganizationId,  organization.OrganizationName, organization.Description, organization.OrganizationTypeCode, organization.Program, organization.OrganizationTermId, organization.OrganizationRequirementId, organization.Adviser, organization.SemTermId, organization.LogoFileName FROM organization JOIN organizationtype on organization.OrganizationTypeCode = organizationtype.OrganizationTypeCode JOIN semTerm on organization.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE yearlyTerm.YearlyTermId=" + yearlyTermId + " AND organizationtype.OrganizationTypeCode='"+organizationTypeCode+"'");  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {

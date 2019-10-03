@@ -14,11 +14,10 @@ import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.SemTerm;
 import org.pup.system.osas.report.data.OrganizationReportData;
 import org.pup.system.osas.report.data.OrganizationsStatusReportData;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
-
+	
 public class ReportManager {
 
 	public List<ScholarsByAgencyAndProgramReportData> getScholarsByAgencyAndProgramReportData(int semTermId, int scholarProgramId, String program) throws Exception {
@@ -98,7 +97,7 @@ public class ReportManager {
 			
 			organizationDAO = new OrganizationDAO(connection);
 				
-			organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId);
+			organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId, organizationTypeCode);
 			
 			if (organizationList != null) {
 				OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();

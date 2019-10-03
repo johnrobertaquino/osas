@@ -123,7 +123,7 @@ public class OrganizationManager {
 		return organizationList;
 	}
 	
-	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId) throws Exception {
+	public List<Organization> getOrganizationListByYearlyTermId(int yearlyTermId, String organizationTypeCode) throws Exception {
 		OrganizationDAO organizationDAO = null;
 		List<Organization> organizationList = null;
 		OrganizationType organizationType = null;
@@ -134,7 +134,7 @@ public class OrganizationManager {
 			
 		organizationDAO = new OrganizationDAO(connection);
 			
-		organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId);
+		organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId, organizationTypeCode);
 		
 		if (organizationList != null) {
 			OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();

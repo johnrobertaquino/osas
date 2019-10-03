@@ -78,7 +78,7 @@
     					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
     					 <script type="text/javascript">
     						$(document).ready(function() {
-    							$("#dateSubmitted").datepicker();
+    							$("#dateSubmitted").datepicker({  maxDate: 0 });
     							
     						});
     					</script>
