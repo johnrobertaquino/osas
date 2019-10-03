@@ -57,8 +57,16 @@ public class OrganizationReportData extends Organization {
 				
 				if (dateSubmitted != null) {
 					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+					
+					String status = "";
+					
+					if("A".equals(organizationRequirementQualification.getStatus())) {
+						status =  " - Approved";
+					} else if("P".equals(organizationRequirementQualification.getStatus())) {
+						status =  " - Pending Approval";
+					}
 
-					dateStatus = format.format(dateSubmitted);
+					dateStatus = format.format(dateSubmitted) + status;
 				}
 			}
 		}
