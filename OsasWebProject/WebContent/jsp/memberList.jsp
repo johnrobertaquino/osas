@@ -90,7 +90,7 @@
 					<th>Position </th>
 				 	<th>Gender </th>
 				 	<th>Contact Number</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="memberList" status="rowStatus" var="member">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>

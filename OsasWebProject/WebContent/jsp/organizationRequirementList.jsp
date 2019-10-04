@@ -87,7 +87,7 @@
 				<tr>
 					<th>Requirement/s Name</th>
 					<th>Yearly Check</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="organizationRequirementList" status="rowStatus" var="organizationRequirement">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>

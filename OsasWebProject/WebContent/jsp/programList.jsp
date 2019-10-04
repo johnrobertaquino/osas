@@ -84,7 +84,7 @@
 					<th>Program Code</th>
 					<th>Program Name</th>
 					<th>Highest Year Level</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="programList" status="rowStatus" var="program">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>

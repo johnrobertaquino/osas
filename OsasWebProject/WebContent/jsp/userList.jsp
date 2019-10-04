@@ -90,7 +90,7 @@
 					<th>Contact number</th>
 					<th>Position</th>
 					<th>Role</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="userList" status="rowStatus" var="user">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>

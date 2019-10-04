@@ -91,7 +91,7 @@
 					<th>Notes</th>
 					<th>Date Submitted</th>
 					<th>Status</th>
-					<th>Action</th>
+					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="organizationRequirementQualificationList" status="rowStatus" var="organizationRequirementQualification">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
