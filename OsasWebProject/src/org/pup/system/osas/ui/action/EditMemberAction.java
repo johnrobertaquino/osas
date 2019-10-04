@@ -88,11 +88,22 @@ public class EditMemberAction extends AbstractAction {
 			member.setYear(year);
 			member.setSection(section);
 			member.setContactNumber(contactNumber);
-
+			
+			int acadCtr = 0;
+			
 			if (organizationIdList != null) {
 				member.setOrganizationList(new ArrayList<Organization>());
 				for (Integer organizationId : organizationIdList) {
 					Organization organization = new Organization(organizationId);
+					
+					if("A".equals(organization.getOrganizationType().getOrganizationTypeCode())) {
+						acadCtr++;
+					}
+					
+					if(acadCtr > 1) {
+						throw new BusinessException("You can't select more than 1 Academic Organization.");
+					}
+					
 					member.getOrganizationList().add(organization);
 				}
 				
