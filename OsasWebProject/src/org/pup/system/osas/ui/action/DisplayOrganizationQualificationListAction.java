@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirementQualification;
 import org.pup.system.osas.core.manager.OrganizationManager;
@@ -18,6 +19,10 @@ public class DisplayOrganizationQualificationListAction extends AbstractAction {
 	private List<OrganizationRequirementQualification> organizationRequirementQualificationList;
 	
 	private int organizationId;
+	
+	private String search;
+	
+	private String organizationQualificationSearchText;
 
 
 	@Override
@@ -28,7 +33,11 @@ public class DisplayOrganizationQualificationListAction extends AbstractAction {
 
 		try {
 			OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
-			organizationRequirementQualificationList = organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organizationId, getCurrentActiveTerm().getSemTermId());
+			if ("Y".equals(search) && !StringUtils.isBlank(organizationQualificationSearchText)) {
+				organizationRequirementQualificationList = organizationRequirementQualificationManager.searchOrganizationRequirementQualificationList(organizationQualificationSearchText, organizationId, getCurrentActiveTerm().getSemTermId());
+			}else {
+				organizationRequirementQualificationList = organizationRequirementQualificationManager.getOrganizationRequirementQualificationList(organizationId, getCurrentActiveTerm().getSemTermId());
+			}
 			
 			OrganizationManager organizationManager = new OrganizationManager();
 			Organization organization = organizationManager.getOrganization(organizationId);
@@ -70,4 +79,22 @@ public class DisplayOrganizationQualificationListAction extends AbstractAction {
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getOrganizationQualificationSearchText() {
+		return organizationQualificationSearchText;
+	}
+
+	public void setOrganizationQualificationSearchText(String organizationQualificationSearchText) {
+		this.organizationQualificationSearchText = organizationQualificationSearchText;
+	}
+	
+	
 }

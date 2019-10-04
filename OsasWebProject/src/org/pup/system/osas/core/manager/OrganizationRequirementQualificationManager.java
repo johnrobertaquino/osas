@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
 import org.pup.system.osas.core.dao.OrganizationQualificationDAO;
-import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationQualification;
 import org.pup.system.osas.core.domain.OrganizationRequirement;
 import org.pup.system.osas.core.domain.OrganizationRequirementQualification;
@@ -26,6 +25,50 @@ public class OrganizationRequirementQualificationManager {
 			
 			organizationRequirementManager = new OrganizationRequirementManager();
 			organizationRequirementList = organizationRequirementManager.getOrganizationRequirementList(semTermId);
+
+			if (organizationRequirementList != null) {
+				organizationQualificationDAO = new OrganizationQualificationDAO(connection);
+
+				for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
+					if (organizationRequirementQualificationList == null) {
+						organizationRequirementQualificationList = new ArrayList<OrganizationRequirementQualification>();
+					}
+					
+					OrganizationRequirementQualification organizationRequirementQualification = new OrganizationRequirementQualification();
+					organizationRequirementQualification.setOrganizationRequirement(organizationRequirement);
+					
+					OrganizationQualification organizationQualification = organizationQualificationDAO.getOrganizationQualificationByOrganizationRequirementIdAndOrganizationId(organizationRequirement.getOrganizationRequirementId(), organizationId);
+					if	(organizationQualification != null) {
+						organizationRequirementQualification.setOrganizationQualification(organizationQualification);
+					}
+					
+					organizationRequirementQualificationList.add(organizationRequirementQualification);
+				}
+			}
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return organizationRequirementQualificationList;
+	}
+	
+	public List<OrganizationRequirementQualification> searchOrganizationRequirementQualificationList(String search, int organizationId, int semTermId) throws Exception {
+		OrganizationQualificationDAO organizationQualificationDAO = null;
+		OrganizationRequirementManager organizationRequirementManager = null;
+		List<OrganizationRequirement> organizationRequirementList = null;
+		List<OrganizationRequirementQualification> organizationRequirementQualificationList = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			organizationRequirementManager = new OrganizationRequirementManager();
+			//organizationRequirementList = organizationRequirementManager.getOrganizationRequirementList(semTermId);
+			organizationRequirementList = organizationRequirementManager.getOrganizationRequirementListByOrganizationRequirementSearchText(search, semTermId);
 
 			if (organizationRequirementList != null) {
 				organizationQualificationDAO = new OrganizationQualificationDAO(connection);

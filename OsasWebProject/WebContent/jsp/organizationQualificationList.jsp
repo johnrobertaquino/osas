@@ -77,8 +77,10 @@
 		<div id="contentBodyRightPane">
 			<div id="searchOrganizationQualification">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchOrganizationQualification" method="POST" id="searchOrganizationQualificationForm">
+				<form action="displayOrganizationQualificationList" method="POST" id="searchOrganizationQualificationForm">
 					<input type="text" id="organizationQualificationSearchText" name="organizationQualificationSearchText" placeholder="Search Organization Requirement">
+					<input type="hidden" id="organizationId" name="organizationId" value="${organizationId}"/>
+					<input type="hidden" name="search" value="Y" />
 				</form>
 				<div class="button" id="searchOrganizationQualificationButton">SEARCH</div>
 				<div class="button" id="backOrganizationQualification">BACK</div>

@@ -26,6 +26,10 @@ $(document).ready(function() {
 		$("#backOrganizationQualificationForm").submit();
 	});
 	
+	$('#searchOrganizationQualificationButton').click(function(event) {
+		$("#searchOrganizationQualificationForm").submit();
+	});
+	
 });
 
 function showOrganizationQualificationApprovePopup(organizationQualificationId) {
