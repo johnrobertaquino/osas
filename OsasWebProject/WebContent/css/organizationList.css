@@ -1,6 +1,7 @@
 @charset "ISO-8859-1";
 #organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle {
    margin-top: 20px;
+   font-size: 12px;
 }
 
 #organizationListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
@@ -58,7 +59,7 @@
 		width: 200px;
 	}
 	#organizationListContentBody #contentBodyRightPane {
-		font-size: 14px;
+		font-size: 12px;
 	}
 	#organizationListContentBody #searchOrganization, #organizationListContentBody #contentBodyRightPane table {
 		margin-left: 50px;

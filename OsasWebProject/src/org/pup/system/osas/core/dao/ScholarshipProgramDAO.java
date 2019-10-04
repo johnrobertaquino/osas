@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.SemTerm;
 
 public class ScholarshipProgramDAO extends DAO {
 

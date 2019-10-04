@@ -60,6 +60,9 @@
 	<form id="editMemberForm" action="displayEditMember" method="POST">
   		<input type="hidden" id="memberId" name="memberId" />
 	</form>
+	<form id="filterMemberForm" action="displayMemberList" method="POST">
+  		<input type="hidden" id="filter" name="filter" />
+	</form>
 	<div id="memberListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
@@ -76,6 +79,14 @@
 				<div class="button" id="addMemberExcelFileButton">ADD MEMBER via EXCEL FILE <!--<img id="excelImage" src="images/excel.png">  --></div>
 				<div class="button" id="addMemberButton">ADD MEMBER</div>
     			<div style="clear:both"></div>
+    			<div class="rightPaneElement withTitle">
+    			<span>Filter By Organization:</span>
+	    				<div>
+		    				<select id="filterSelect">
+		    						<option value="organizationListDisplay" <s:if test='filter == "member.organizationListDisplay"'>selected</s:if>>${member.organizationListDisplay}</option>
+							</select>
+						</div>
+				</div>
 			</div>
 			<div id="tableHolder">
 			<table>

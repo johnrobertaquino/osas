@@ -72,7 +72,7 @@
 						<input id="confirmPassword" type="password" placeholder="Confirm Password">
 					</div>
 					<div class="passwordElement">
-						<div id="passwordButtonDiv" class="button"><span>Change Password and Username</span></div>
+						<div id="passwordButtonDiv" class="button"><span>CHANGE PASSWORD AND USERNAME</span></div>
 					</div>
 					<div style="clear:both"></div>
 				</form>

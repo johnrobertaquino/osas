@@ -84,6 +84,7 @@
     			<div style="clear:both"></div><br><br>
     			   
     			<div class="rightPaneElement withTitle">
+    			<div>
     				    <span>Filter Status:</span>
 	    				<div>
 		    				<select id="filterSelect">
@@ -94,7 +95,20 @@
 							</select>
 						</div>
 				</div>
-			</div>
+				</div>
+			    <div class="rightPaneElement withTitle">
+				    <div id = searchByScholarshipProgramAgency>
+		    			<span>Filter By Scholarship Program:</span>
+			    				<div>
+				    				<select id="filterSelect" name="scholarshipProgram.ScholarshipProgramName">
+				    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
+				    						<option value="${scholarshipprogram.scholarshipProgramId}" <s:if test='filter == "scholarshipprogram.organizationListDisplay"'>selected</s:if>>${scholarshipprogram.ScholarshipProgramName}</option>
+				    					</s:iterator>
+									</select>
+								</div>
+						</div>
+					</div>
+				</div>
 			<div id="tableHolder">
 			<table class="contentTable">
 				<tr>

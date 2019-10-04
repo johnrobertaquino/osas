@@ -1,6 +1,32 @@
 @charset "ISO-8859-1";
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle {
+   margin-top: 20px;
+}
+
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
+   float: left;
+   margin-left: 10px;
+}
+
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle select {
+    width: 100px;
+    height: 20px;
+    border: 1px solid #420001;
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle {
+   margin-top: 20px;
+}
+
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
+   float: left;
+   margin-left: 10px;
+}
 #memberListContentBody #contentBodyRightPane {
 	width: inherit;
+	font-size: 12px;
 }
 #memberListContentBody #searchMemberButton {
 		float: left;

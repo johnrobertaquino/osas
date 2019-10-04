@@ -59,7 +59,7 @@
 	<div id="addMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/organizationIcon.png"/></div>
-			<div id="title">ADD<br> MEMBER<br> via EXCEL FILE</div>
+			<div id="title">ADD<br>OFFICER<br> via EXCEL FILE</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
@@ -80,10 +80,10 @@
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Member</span>
+								<span>ADD MEMBER</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

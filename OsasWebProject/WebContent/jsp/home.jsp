@@ -12,7 +12,7 @@
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/home.js?${dateTimeStamp}"></script>
 </head>
-<body>
+<body class="scaled">
 <div id="header">
 	<div id="headerHomeDiv">
 		<div id="logoDiv"><img alt="" src="images/PUPLogo.png"></div>

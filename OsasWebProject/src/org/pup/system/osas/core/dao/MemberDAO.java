@@ -17,7 +17,7 @@ public class MemberDAO extends DAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member getMemberByMemberNameAndStudentNumber(String studentNumber, String firstName, String middleName, String lastName, int semTermId) throws Exception {
+	/*public Member getMemberByMemberNameAndStudentNumber(String studentNumber, String firstName, String middleName, String lastName, int semTermId) throws Exception {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -55,7 +55,7 @@ public class MemberDAO extends DAO {
 		}
 		
 		return member;
-	}
+	}*/
 	
 	public Member getMemberByMemberId(int memberId) throws Exception {
 		Connection connection = null;

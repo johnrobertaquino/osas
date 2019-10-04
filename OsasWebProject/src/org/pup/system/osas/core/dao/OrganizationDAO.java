@@ -111,7 +111,7 @@ public class OrganizationDAO extends DAO {
 
 			statement = connection.prepareStatement("INSERT INTO organization(OrganizationName, Description, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, organization.getOrganizationName());
-			statement.setString(2, organization.getProgram().getProgramCode());
+			statement.setString(2, organization.getDescription());
 			statement.setString(3, organization.getOrganizationType().getOrganizationTypeCode());
 			statement.setString(4, organization.getProgram().getProgramCode());
 			statement.setInt(5, organization.getOrganizationTermId());
@@ -244,8 +244,8 @@ public class OrganizationDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, Description, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE OrganizationName LIKE '%"
-					+ organizationSearchText + "%' AND SemTermId =" + semTermId);  
+			resultSet = statement.executeQuery("SELECT OrganizationId, OrganizationName, Description, OrganizationTypeCode, Program, OrganizationTermId, OrganizationRequirementId, Adviser, SemTermId, LogoFileName FROM organization WHERE (OrganizationName LIKE '%"
+					+ organizationSearchText + "%' OR Description LIKE '%" + organizationSearchText + "%') AND SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (organizationList == null) {
