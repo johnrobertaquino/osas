@@ -470,7 +470,7 @@
 		<action name="addMember" class="org.pup.system.osas.ui.action.AddMemberAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success" type="chain">displayMemberList</result>
-			<result name="error"  type="chain">/jsp/addMember.jsp</result>
+			<result name="error" type="chain">displayAddMember</result>
 			<result name="displayAddMember"  type="chain">displayAddMember</result>
 		</action>
 		
@@ -483,7 +483,7 @@
 		<action name="editMember" class="org.pup.system.osas.ui.action.EditMemberAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result type="chain" name="success">displayMemberList</result>
-			<result type="chain" name="error">displayMemberList</result>
+			<result name="error" type="chain">displayEditMember</result>
 		</action>
 		
 		<action name="searchMember" class="org.pup.system.osas.ui.action.SearchMemberAction">

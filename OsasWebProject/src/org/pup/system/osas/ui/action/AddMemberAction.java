@@ -10,6 +10,7 @@ import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.manager.MemberManager;
+import org.pup.system.osas.core.manager.OrganizationManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class AddMemberAction extends AbstractAction {
@@ -65,6 +66,7 @@ public class AddMemberAction extends AbstractAction {
 
 			
 			MemberManager memberManager = new MemberManager();
+			OrganizationManager organizationManager = new OrganizationManager();
 
 			Member existingMember = null;
 
@@ -100,10 +102,20 @@ public class AddMemberAction extends AbstractAction {
 				member.setSection(section);
 				member.setContactNumber(contactNumber);
 
+				int acadCtr = 0;
+				
 				if(organizationIdList != null) {
 					member.setOrganizationList(new ArrayList<Organization>());
 					for (Integer organizationId : organizationIdList) {
-						Organization organization = new Organization(organizationId);
+						Organization organization = organizationManager.getOrganization(organizationId);
+						if("A".equals(organization.getOrganizationType().getOrganizationTypeCode())) {
+							acadCtr++;
+						}
+						
+						if(acadCtr > 1) {
+							throw new BusinessException("You cannot select more than 1 Academic Organization.");
+						}
+						
 						member.getOrganizationList().add(organization);
 					}
 					
