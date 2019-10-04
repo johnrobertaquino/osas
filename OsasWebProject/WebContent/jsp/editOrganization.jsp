@@ -92,7 +92,7 @@
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    				<div id="programDiv">
+    				<div id="programDiv" <s:if test='organization.organizationType.organizationTypeCode == "N"'>style="display: none;"</s:if>>
     					<span class="title">Program</span>
     					<div>
     						<select name="program">
