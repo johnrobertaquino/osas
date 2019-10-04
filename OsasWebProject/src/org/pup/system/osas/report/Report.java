@@ -157,7 +157,11 @@ public abstract class Report<T> {
 		Cell schoolDetailCell = new Cell(1, 1);
 		schoolDetailCell.add(schoolDetail);
 		schoolDetailCell.setBorder(Border.NO_BORDER);
-		schoolDetailCell.setWidth(272);
+		if(landscape) {
+			schoolDetailCell.setWidth(518);
+		} else {
+			schoolDetailCell.setWidth(272);
+		}
 
 		table.addCell(logoCell);
 		table.addCell(schoolDetailCell);

@@ -49,7 +49,7 @@ public class OrganizationStatusReportAction extends AbstractAction
 				actionResult = FORWARD_ERROR;
 			} else {
 				boolean landscape = false;
-				if (organizationsStatusReportData.getOrganizationReportDataList().size() > 4) {
+				if (organizationsStatusReportData.getOrganizationRequirementList() != null && organizationsStatusReportData.getOrganizationRequirementList().size() > 4) {
 					landscape = true;
 				}
 				OrganizationsStatusReport report = new OrganizationsStatusReport(imagePath,
