@@ -21,16 +21,19 @@ public class UserDAO extends DAO {
 
 	public User getUserByFullName(String firstName, String middleName, String lastName) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
-			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName='" + firstName + "' AND MiddleName='"+ middleName +"' AND LastName='" + lastName + "'");  
+			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position FROM user WHERE FirstName=? AND MiddleName=? AND LastName=?");  
+			statement.setString(1, firstName);
+			statement.setString(2, middleName);
+			statement.setString(3, lastName);
+
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next()) {
 				user = new User();
@@ -55,16 +58,17 @@ public class UserDAO extends DAO {
 	
 	public User getUserByUserNameAndPassword(String userName, String password) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
-			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName='" + userName + "' and Password='" + password + "'");  
+			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName=? and Password=?");  
+			statement.setString(1, userName);
+			statement.setString(2, password);
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next()) {
 				user = new User();
@@ -93,16 +97,17 @@ public class UserDAO extends DAO {
 	
 	public User getUserByUserId(int userId) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
+			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserId=?");   
+			statement.setInt(1, userId);
+			resultSet = statement.executeQuery();
 			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserId=" + userId);  
 			
 			if (resultSet.next()) {
 				user = new User();
@@ -131,7 +136,7 @@ public class UserDAO extends DAO {
 	
 	public List<User> getUserList() throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		List<User> userList = null;
@@ -139,9 +144,9 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
+			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user");
 			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user");  
+			resultSet = statement.executeQuery();
 			
 			while (resultSet.next()) {
 				if (userList == null) {
@@ -176,7 +181,7 @@ public class UserDAO extends DAO {
 	
 	public List<User> getUserListByUserSearchText(String userSearchText) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = null;
 		List<User> userList = null;
@@ -184,10 +189,14 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
+			statement = connection.prepareStatement("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName LIKE ? OR FirstName LIKE ? OR MiddleName LIKE ? OR LastName LIKE ?");   
+			statement.setString(1, "%" + userSearchText + "%");
+			statement.setString(2, "%" + userSearchText + "%");
+			statement.setString(3, "%" + userSearchText + "%");
+			statement.setString(4, "%" + userSearchText + "%");
+
 			
-			resultSet = statement.executeQuery("SELECT UserId, UserName, Password, FirstName, MiddleName, LastName, Birthday, ContactNumber, Position, FirstTimeLoginCode FROM user WHERE UserName LIKE '%"
-					+ userSearchText + "%' OR FirstName LIKE '%" + userSearchText + "%' OR MiddleName LIKE '%" + userSearchText + "%' OR LastName LIKE '%" + userSearchText + "%'");  
+			resultSet = statement.executeQuery();
 			
 			while (resultSet.next()) {
 				if (userList == null) {
@@ -222,16 +231,16 @@ public class UserDAO extends DAO {
 	
 	public FirstTimeLoginReference getFirstTimeLoginByFirstTimeLoginCode(String firstTimeLoginCode) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		FirstTimeLoginReference firstTimeLoginReference = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
-			
-			resultSet = statement.executeQuery("SELECT FirstTimeLoginCode, Description FROM firstTimeLoginReference WHERE FirstTimeLoginCode='" + firstTimeLoginCode + "'");  
+			statement = connection.prepareStatement("SELECT FirstTimeLoginCode, Description FROM firstTimeLoginReference WHERE FirstTimeLoginCode=?");  
+			statement.setString(1, firstTimeLoginCode);
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next()) {
 				firstTimeLoginReference = new FirstTimeLoginReference();
@@ -250,7 +259,7 @@ public class UserDAO extends DAO {
 	
 	public List<UserRole> getUserRoleListByUserId(int userId) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		UserRole userRole = null;
 		List<UserRole> userRoleList = null;
@@ -258,9 +267,9 @@ public class UserDAO extends DAO {
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
-			
-			resultSet = statement.executeQuery("SELECT UserRoleId, UserId, UserRoleReferenceCode FROM userRole WHERE userId=" + userId);  
+			statement = connection.prepareStatement("SELECT UserRoleId, UserId, UserRoleReferenceCode FROM userRole WHERE userId=?");  
+			statement.setInt(1, userId);
+			resultSet = statement.executeQuery();
 			
 			while (resultSet.next()) {
 				if (userRoleList == null) {
@@ -289,16 +298,16 @@ public class UserDAO extends DAO {
 	
 	public UserRoleReference getUserRoleReferenceByUserRoleReferenceCode(String userRoleReferenceCode) throws Exception {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		UserRoleReference userRoleReference = null;
 		
 		try {
 			connection = getConnection();
 			
-			statement = connection.createStatement(); 
-			
-			resultSet = statement.executeQuery("SELECT UserRoleReferenceCode, UserRoleName, Verbiage FROM userRoleReference WHERE UserRoleReferenceCode='" + userRoleReferenceCode + "'");  
+			statement = connection.prepareStatement("SELECT UserRoleReferenceCode, UserRoleName, Verbiage FROM userRoleReference WHERE UserRoleReferenceCode=?");  
+			statement.setString(1, userRoleReferenceCode);
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next()) {
 				userRoleReference = new UserRoleReference();
