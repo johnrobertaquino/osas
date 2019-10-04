@@ -77,9 +77,10 @@
 		<div id="contentBodyRightPane">
 			<div id="searchScholarQualification">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
-				<form action="searchScholarQualification" method="POST" id="searchScholarQualificationForm">
+				<form action="displayScholarQualificationList" method="POST" id="searchScholarQualificationForm">
 					<input type="text" id="scholarQualificationSearchText" name="scholarQualificationSearchText" placeholder="Search Scholar Qualification">
-					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
+					<input type="hidden" name="scholarId" value="${scholarId}" />
+					<input type="hidden" name="search" value="Y" />
 				</form>
 				<div class="button" id="searchScholarQualificationButton">SEARCH</div>
 				<div class="button" id="backScholarQualification">BACK</div>

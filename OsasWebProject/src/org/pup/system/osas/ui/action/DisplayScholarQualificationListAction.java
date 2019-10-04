@@ -2,6 +2,7 @@ package org.pup.system.osas.ui.action;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarScholarshipQualification;
 import org.pup.system.osas.core.manager.ScholarManager;
@@ -19,6 +20,10 @@ public class DisplayScholarQualificationListAction extends AbstractAction {
 	
 	private int scholarId;
 	
+	private String search;
+	
+	private String scholarQualificationSearchText;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar > Qualifications";
@@ -27,7 +32,11 @@ public class DisplayScholarQualificationListAction extends AbstractAction {
 
 		try {
 			ScholarScholarshipQualificationManager scholarshipQualificationManager = new ScholarScholarshipQualificationManager();
-			scholarScholarshipQualificationList = scholarshipQualificationManager.getScholarScholarshipQualificationList(scholarId, getCurrentActiveTerm().getSemTermId());
+			if ("Y".equals(search) && !StringUtils.isBlank(scholarQualificationSearchText)) {
+				scholarScholarshipQualificationList = scholarshipQualificationManager.searchScholarScholarshipQualificationList(scholarQualificationSearchText, scholarId, getCurrentActiveTerm().getSemTermId());
+			}else {
+				scholarScholarshipQualificationList = scholarshipQualificationManager.getScholarScholarshipQualificationList(scholarId, getCurrentActiveTerm().getSemTermId());
+			}
 			
 			ScholarManager scholarManager = new ScholarManager();
 			Scholar scholar = scholarManager.getScholar(scholarId);
@@ -64,5 +73,20 @@ public class DisplayScholarQualificationListAction extends AbstractAction {
 		this.scholarId = scholarId;
 	}
 
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getScholarQualificationSearchText() {
+		return scholarQualificationSearchText;
+	}
+
+	public void setScholarQualificationSearchText(String scholarQualificationSearchText) {
+		this.scholarQualificationSearchText = scholarQualificationSearchText;
+	}
 	
 }

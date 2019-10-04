@@ -27,12 +27,9 @@ $(document).ready(function() {
 	});
 	
 	
-	/*$('#searchScholarQualificationButton').click(function(event) {
-		if($('#scholarQualificationSearchText').val().trim() == '') {
-			$('#searchScholarQualificationForm').attr("action","displayScholarQualificationList");
-		}
-		$('#searchScholarshipQualificationForm').submit();
-	});*/
+	$('#searchScholarQualificationButton').click(function(event) {
+		$('#searchScholarQualificationForm').submit();
+	});
 });
 
 function showScholarQualificationApprovePopup(scholarQualificationId) {

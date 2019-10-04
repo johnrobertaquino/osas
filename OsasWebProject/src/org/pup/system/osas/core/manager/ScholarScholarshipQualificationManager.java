@@ -58,6 +58,53 @@ public class ScholarScholarshipQualificationManager {
 
 		return scholarScholarshipQualificationList;
 	}
+	
+	public List<ScholarScholarshipQualification> searchScholarScholarshipQualificationList(String search, int scholarId, int semTermId) throws Exception {
+		ScholarQualificationDAO scholarQualificationDAO = null;
+		ScholarshipQualificationManager scholarshipQualificationManager = null;
+		ScholarManager scholarManager = null;
+		List<ScholarshipQualification> scholarshipQualificationList = null;
+		List<ScholarScholarshipQualification> scholarScholarshipQualificationList = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			scholarManager = new ScholarManager();
+			Scholar scholar = scholarManager.getScholar(scholarId);
+			scholarshipQualificationManager = new ScholarshipQualificationManager();
+			//scholarshipQualificationList = scholarshipQualificationManager.getScholarshipQualificationList(scholar.getScholarshipProgram().getScholarshipProgramId(), semTermId);
+			scholarshipQualificationList = scholarshipQualificationManager.getScholarshipQualificationListByScholarshipQualificationSearchText(search, scholar.getScholarshipProgram().getScholarshipProgramId());
+
+			if (scholarshipQualificationList != null) {
+				scholarQualificationDAO = new ScholarQualificationDAO(connection);
+
+				for (ScholarshipQualification scholarshipQualification : scholarshipQualificationList) {
+					if (scholarScholarshipQualificationList == null) {
+						scholarScholarshipQualificationList = new ArrayList<ScholarScholarshipQualification>();
+					}
+					
+					ScholarScholarshipQualification scholarScholarshipQualification = new ScholarScholarshipQualification();
+					scholarScholarshipQualification.setScholarshipQualification(scholarshipQualification);
+					
+					ScholarQualification scholarQualification = scholarQualificationDAO.getScholarQualificationByScholarshipQualificationIdAndScholarId(scholarshipQualification.getScholarshipQualificationId(), scholarId);
+					if	(scholarQualification != null) {
+						scholarScholarshipQualification.setScholarQualification(scholarQualification);
+					}
+					
+					scholarScholarshipQualificationList.add(scholarScholarshipQualification);
+				}
+			}
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return scholarScholarshipQualificationList;
+	}
 		
 	public void insertScholarQualification(ScholarQualification scholarQualification) throws Exception {
 		ScholarQualificationDAO scholarQualificationDAO = null;
