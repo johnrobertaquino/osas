@@ -96,6 +96,7 @@ public class EditMemberAction extends AbstractAction {
 			if (organizationIdList != null) {
 				member.setOrganizationList(new ArrayList<Organization>());
 				for (Integer organizationId : organizationIdList) {
+
 					Organization organization = organizationManager.getOrganization(organizationId);
 					
 					if("A".equals(organization.getOrganizationType().getOrganizationTypeCode())) {
