@@ -119,7 +119,7 @@
 						<td><s:property value="organizationName" /></td>
 						<td><s:property value="description" /></td>
 						<td><s:property value="organizationType.organizationTypeName" /></td>
-						<td><s:property value="program.programCode" /></td>
+						<td><s:if test='organizationType.organizationTypeCode == "A"'><s:property value="program.programCode" /></s:if></td>
  						<td><s:property value="adviser" /></td>
  						<td><s:property value="statusText" /></td>
 						<td>
