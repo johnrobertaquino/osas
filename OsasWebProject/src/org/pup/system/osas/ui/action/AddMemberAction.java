@@ -106,11 +106,14 @@ public class AddMemberAction extends AbstractAction {
 						Organization organization = new Organization(organizationId);
 						member.getOrganizationList().add(organization);
 					}
+					
+					memberManager.insertMember(member);
+					
+					notificationMessage = "Member has been successfully added.";
+				} else {
+					errorMessage = "Please select atleast 1 organization.";
+					actionResult = FORWARD_ERROR;
 				}
-			
-				memberManager.insertMember(member);
-				
-				notificationMessage = "Member has been successfully added.";
 			}
 		
 		} catch (BusinessException be) {

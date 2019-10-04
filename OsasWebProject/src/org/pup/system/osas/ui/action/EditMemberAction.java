@@ -95,11 +95,14 @@ public class EditMemberAction extends AbstractAction {
 					Organization organization = new Organization(organizationId);
 					member.getOrganizationList().add(organization);
 				}
+				
+				memberManager.saveMember(member);
+				
+				notificationMessage = "Changes to member has been saved successfully.";
+			} else {
+				errorMessage = "Please select atleast 1 organization.";
+				actionResult = FORWARD_ERROR;
 			}
-
-			memberManager.saveMember(member);
-
-			notificationMessage = "Changes to member has been saved successfully.";
 
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
