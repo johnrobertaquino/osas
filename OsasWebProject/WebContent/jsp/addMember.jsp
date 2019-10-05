@@ -66,7 +66,7 @@
 				<form class="addMemberContent" id="memberForm" action="addMember" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     				    <span class="title">Organization</span>
-	    				<br><br><div style="height: 200px; overflow-y: scroll;">
+	    				<br><br><div style="height: 200px; overflow-y: scroll; border: solid 1px;">
 	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
 			    				<div id="roleDiv">
 									<label for="organizationIdList">

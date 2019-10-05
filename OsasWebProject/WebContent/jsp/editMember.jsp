@@ -69,7 +69,7 @@
 					<div class="rightPaneElement withTitle">
     				    <span class="title">Organization</span>
     				    
-	    				<div style="height: 200px; overflow-y: scroll;">
+	    				<div style="height: 200px; overflow-y: scroll; border: solid 1px;">
 	    					<s:iterator value="organizationList" status="rowStatus" var="organization">
 			    				<div id="roleDiv">
 									<label for="organizationIdList">
