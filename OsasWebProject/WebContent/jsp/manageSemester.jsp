@@ -12,6 +12,7 @@
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/manageSemester.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
