@@ -638,6 +638,17 @@
 		
 		<action name="getProgramListRestWS" class="org.pup.system.osas.ui.action.restws.GetProgramListRestWS">
 		</action>
+		
+		<action name="displayManageSemester" class="org.pup.system.osas.ui.action.DisplayManageSemesterAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success">/jsp/manageSemester.jsp</result>
+		</action>
+		
+		<action name="changeSemester" class="org.pup.system.osas.ui.action.ChangeSemesterAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="success" type="chain">home</result>
+			<result name="error" type="chain">home</result>
+		</action>
 	</package>
 
 </struts>	

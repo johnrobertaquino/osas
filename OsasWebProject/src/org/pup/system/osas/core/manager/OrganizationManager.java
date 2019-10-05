@@ -9,8 +9,7 @@ import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationRequirementQualification;
 import org.pup.system.osas.core.domain.OrganizationType;
-import org.pup.system.osas.core.domain.SemTerm;
-
+		
 public class OrganizationManager {
 	
 	public Organization validate(String organizationName, int semTermId) throws Exception {

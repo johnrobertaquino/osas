@@ -12,7 +12,6 @@
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/organizationReport.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -58,43 +57,25 @@
 	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/organizationIcon.png"/></div>
-			<div id="title">ORGANIZATION REPORT</div>
+			<div id="title">MANAGE SEMESTER</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form id="organizationReportForm" action="organizationStatusReport" method="POST">
+				<form id="manageSemesterForm" action="changeSemester" method="POST">
     				    <div class="rightPaneElement withTitle">
-    				    <span class="title">Yearly Term</span>
-	    				<div>
-		    				<select name="yearlyTermId" id="yearlyTermId">
-		    					<s:iterator value="yearlyTermList" status="rowStatus" var="yearlyTerm">
-		    						<option value="${yearlyTerm.yearlyTermId}">${yearlyTerm.yearlyTermName}</option>
-		    					</s:iterator>
-							</select>
-						</div>
-						<div style="clear:both"></div>
+    				    <span class="title">Current Semester is : ${session.SEMTERM.semTermName}</span>
+	    			
 					</div><br>
 					<div class="rightPaneElement withTitle">
-    					<span class="title">Organization Type</span>
-	    				<div id="roleDiv"><br>
-	    					<div>
-			    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
-			    				<span class="title">Academic</span>
-		    				</div><br>
-		    				<div>
-			    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
-			    				<span class="title">Non-Academic</span>
-		    				</div>
-		    				<div style="clear:both"></div>
-		    			</div>
+    					<span class="title">Do you want to end this term and generate a new term?</span>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>CANCEL</span>
+								<span>NO</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>DONWLOAD REPORT</span>
+								<span>YES</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

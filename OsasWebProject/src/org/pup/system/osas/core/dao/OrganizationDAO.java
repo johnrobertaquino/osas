@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pup.system.osas.core.domain.MemberOrganizationReference;
 import org.pup.system.osas.core.domain.Organization;
 import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Program;
@@ -432,6 +433,59 @@ public class OrganizationDAO extends DAO {
 		} finally {
 			ConnectionUtil.closeDbResources(statement);
 		}
+	}
+	
+	public void insertMemberOrganizationReference(MemberOrganizationReference memberOrganizationReference) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement("INSERT INTO memberorganizationreference (MemberId, OrganizationId) VALUES (?,?)");
+			statement.setInt(1,memberOrganizationReference.getMemberId());
+			statement.setInt(2,memberOrganizationReference.getOrganization().getOrganizationId());
+			
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing insertMemberOrganizationReference method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
+	
+	public List<MemberOrganizationReference> getMemberOrganizationReferenceList(int memberId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<MemberOrganizationReference> memberOrganizationReferenceList = null;
+		MemberOrganizationReference memberOrganizationReference = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT MemberId, OrganizationId from memberorganizationreference WHERE MemberId=" + memberId);
+			
+			while (resultSet.next()) {
+				if(memberOrganizationReferenceList == null) {
+					memberOrganizationReferenceList = new ArrayList<MemberOrganizationReference>();
+				}
+				
+				memberOrganizationReference = new MemberOrganizationReference();
+				
+				memberOrganizationReference.setMemberId(resultSet.getInt("MemberId"));
+				memberOrganizationReference.setOrganization(new Organization(resultSet.getInt("OrganizationId")));
+				
+				memberOrganizationReferenceList.add(memberOrganizationReference);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getMemberOrganizationList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return memberOrganizationReferenceList;
 	}
 
 }

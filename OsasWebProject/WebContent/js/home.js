@@ -12,6 +12,11 @@ $(document).ready(function() {
 		location.href = "displayProgramList";
 	});
 	
+	$('#adminFunctionsManageSemester').click(function() {
+		event.stopPropagation();
+		location.href = "displayManageSemester";
+	});
+	
 	$('#scholarshipManagementAgencyLink').click(function() {
 		event.stopPropagation();
 		location.href = "displayAgencyList";

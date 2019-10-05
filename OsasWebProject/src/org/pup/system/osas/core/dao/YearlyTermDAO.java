@@ -60,6 +60,7 @@ public class YearlyTermDAO extends DAO {
 			statement.setString(2, yearlyTerm.getDeadline());
 			statement.setString(3, yearlyTerm.getStartDate());
 			statement.setString(4, yearlyTerm.getEndDate());
+			statement.setBoolean(5, yearlyTerm.isActive());
 			
 			statement.executeUpdate();
 			
@@ -74,6 +75,26 @@ public class YearlyTermDAO extends DAO {
 			throw new Exception("Error occurred while doing insertSemTerm method", e);
 		} finally {
 			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+	}
+	
+	public void setInactiveYearlyTerm(YearlyTerm yearlyTerm) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+
+			statement = connection.prepareStatement("UPDATE yearlyterm set Active = false where YearlyTermId=?");
+			statement.setInt(1, yearlyTerm.getYearlyTermId());
+			
+			statement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Error occurred while doing setInactiveYearlyTerm method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
 		}
 	}
 

@@ -87,5 +87,9 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 		}	
 	}
 	
+	protected void setCurrentActiveTerm(SemTerm semTerm) {
+		userSession.put(SEMTERM, semTerm);
+	}
+	
 	
 }

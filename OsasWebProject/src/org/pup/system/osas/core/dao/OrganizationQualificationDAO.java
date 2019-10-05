@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.pup.system.osas.core.domain.OrganizationQualification;
 
@@ -48,6 +50,46 @@ public class OrganizationQualificationDAO extends DAO {
 		}
 
 		return organizationQualification;
+	}
+	
+	public List<OrganizationQualification> getOrganizationQualificationByOrganizationId(int organizationId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		OrganizationQualification organizationQualification = null;
+		List<OrganizationQualification> organizationQualificationList = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT OrganizationQualificationId, OrganizationRequirementId, Qualified, Notes, DateSubmitted, Filename, OrganizationId FROM organizationqualification WHERE OrganizationId=" + organizationId);
+
+			while (resultSet.next()) {
+				if(organizationQualificationList == null) {
+					organizationQualificationList = new ArrayList<OrganizationQualification>();
+				}
+				
+				organizationQualification = new OrganizationQualification();
+				organizationQualification.setOrganizationQualificationId(resultSet.getInt("OrganizationQualificationId"));
+				organizationQualification.setOrganizationRequirementId(resultSet.getInt("OrganizationQualificationId"));
+				organizationQualification.setQualified(resultSet.getBoolean("Qualified"));
+				organizationQualification.setNotes(resultSet.getString("Notes"));
+				organizationQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
+				organizationQualification.setFileName(resultSet.getString("Filename"));
+				organizationQualification.setOrganizationId(resultSet.getInt("OrganizationId"));
+				
+				organizationQualificationList.add(organizationQualification);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationQualificationByOrganizationId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return organizationQualificationList;
 	}
 	
 	public OrganizationQualification getOrganizationQualificationByOrganizationQualificationId(

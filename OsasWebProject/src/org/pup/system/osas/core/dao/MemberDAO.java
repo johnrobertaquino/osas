@@ -104,20 +104,19 @@ public class MemberDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO member(MemberId, StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, member.getMemberId());
-			statement.setString(2, member.getStudentNumber());
-			statement.setString(3, member.getFirstName());
-			statement.setString(4, member.getMiddleName());
-			statement.setString(5, member.getLastName());
-			statement.setString(6, member.getProgram().getProgramCode());
-			statement.setBoolean(7, member.isOfficer());
-			statement.setString(8, member.getOfficerPhoto());
-			statement.setString(9, member.getPosition());
-			statement.setString(10, member.getGender());
-			statement.setString(11, member.getYear());
-			statement.setString(12, member.getSection());
-			statement.setString(13, member.getContactNumber());
+			statement = connection.prepareStatement("INSERT INTO member(StudentNumber, FirstName, MiddleName, LastName, Program, Officer, OfficerPhoto, Position, Gender, Year, Section, ContactNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, member.getStudentNumber());
+			statement.setString(2, member.getFirstName());
+			statement.setString(3, member.getMiddleName());
+			statement.setString(4, member.getLastName());
+			statement.setString(5, member.getProgram().getProgramCode());
+			statement.setBoolean(6, member.isOfficer());
+			statement.setString(7, member.getOfficerPhoto());
+			statement.setString(8, member.getPosition());
+			statement.setString(9, member.getGender());
+			statement.setString(10, member.getYear());
+			statement.setString(11, member.getSection());
+			statement.setString(12, member.getContactNumber());
 			
 			statement.executeUpdate();
 			
