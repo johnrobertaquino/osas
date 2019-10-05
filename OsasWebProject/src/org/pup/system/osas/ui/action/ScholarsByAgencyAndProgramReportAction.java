@@ -55,7 +55,7 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 
 				ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath,
 						scholarshipProgram.getScholarshipProgramName(), scholarsByAgencyAndProgramReportDataList,
-						(User) userSession.get(USER));
+						(User) userSession.get(USER), false);
 	
 				response.setContentType("application/octet-stream");
 				response.setHeader("Content-Disposition","attachment;filename=" + "Scholarship Agency/Program Report - " + scholarshipProgram.getScholarshipProgramName() + ".pdf");

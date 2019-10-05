@@ -21,6 +21,8 @@ public class AddOrganizationAction extends AbstractAction {
 	
 	private String organizationName;
 	
+	private String description;
+	
 	private String organizationTypeCode;
 	
 	private String logoFileNameContentType;
@@ -56,6 +58,7 @@ public class AddOrganizationAction extends AbstractAction {
 			{
 				organization = new Organization();
 				organization.setOrganizationName(organizationName);
+				organization.setDescription(description);
 				organization.setOrganizationType(new OrganizationType());
 				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
 				organization.setProgram(new Program(program));
@@ -189,6 +192,18 @@ public class AddOrganizationAction extends AbstractAction {
 	 */
 	public void setLogoFileNameFileName(String logoFileNameFileName) {
 		this.logoFileNameFileName = logoFileNameFileName;
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

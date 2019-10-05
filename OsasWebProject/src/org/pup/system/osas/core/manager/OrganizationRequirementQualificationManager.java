@@ -56,6 +56,49 @@ public class OrganizationRequirementQualificationManager {
 		return organizationRequirementQualificationList;
 	}
 	
+	public List<OrganizationRequirementQualification> getOrganizationRequirementQualificationListByYearlyTerm(int organizationId, int yearlyTermId) throws Exception {
+		OrganizationQualificationDAO organizationQualificationDAO = null;
+		OrganizationRequirementManager organizationRequirementManager = null;
+		List<OrganizationRequirement> organizationRequirementList = null;
+		List<OrganizationRequirementQualification> organizationRequirementQualificationList = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			organizationRequirementManager = new OrganizationRequirementManager();
+			organizationRequirementList = organizationRequirementManager.getOrganizationRequirementListByYearlyTerm(yearlyTermId);
+
+			if (organizationRequirementList != null) {
+				organizationQualificationDAO = new OrganizationQualificationDAO(connection);
+
+				for (OrganizationRequirement organizationRequirement : organizationRequirementList) {
+					if (organizationRequirementQualificationList == null) {
+						organizationRequirementQualificationList = new ArrayList<OrganizationRequirementQualification>();
+					}
+					
+					OrganizationRequirementQualification organizationRequirementQualification = new OrganizationRequirementQualification();
+					organizationRequirementQualification.setOrganizationRequirement(organizationRequirement);
+					
+					OrganizationQualification organizationQualification = organizationQualificationDAO.getOrganizationQualificationByOrganizationRequirementIdAndOrganizationId(organizationRequirement.getOrganizationRequirementId(), organizationId);
+					if	(organizationQualification != null) {
+						organizationRequirementQualification.setOrganizationQualification(organizationQualification);
+					}
+					
+					organizationRequirementQualificationList.add(organizationRequirementQualification);
+				}
+			}
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return organizationRequirementQualificationList;
+	}
+	
 	
 	public void insertOrganizationQualification(OrganizationQualification organizationQualification) throws Exception {
 		OrganizationQualificationDAO organizationQualificationDAO = null;

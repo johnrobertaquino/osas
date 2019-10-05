@@ -67,11 +67,11 @@
 				</form>
 				<form class="addOrganizationRequirementContent" id="organizationRequirementForm" action="addOrganizationRequirement" method="POST">
     				<div class="rightPaneElement withTitle">
-    					<span>Organization Requirement Name</span>
+    					<span class="title">Organization Requirement Name</span>
     					<div><input id="organizationRequirementName" name="organizationRequirementName" type="text" value="${organizationRequirementName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Requires Yearly Check</span>
+    					<span class="title">Requires Yearly Check</span>
     					<div><input id="yearlyCheck" name="yearlyCheck" type="checkbox" <s:if test='yearlyCheck == "on"'>checked</s:if>></div>
     				</div>
     				<div class="rightPaneElement withTitle">

@@ -101,7 +101,8 @@
 			<table>
 				<tr>
 					<th>Logo</th>
-					<th>Organization name</th>
+					<th>Organization Code</th>
+					<th>Description</th>
 					<th>Organization Type</th>
 					<th>Program </th>
 					<th>Adviser</th>
@@ -116,6 +117,7 @@
 							</s:if>
 						</td>
 						<td><s:property value="organizationName" /></td>
+						<td><s:property value="description" /></td>
 						<td><s:property value="organizationType.organizationTypeName" /></td>
 						<td><s:property value="program.programCode" /></td>
  						<td><s:property value="adviser" /></td>

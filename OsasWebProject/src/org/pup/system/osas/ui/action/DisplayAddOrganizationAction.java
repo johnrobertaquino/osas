@@ -15,6 +15,8 @@ public class DisplayAddOrganizationAction extends AbstractAction  {
 	
 	private String organizationName;
 	
+	private String description;
+	
 	private String organizationTypeCode;
 	
 	private String program;
@@ -124,6 +126,20 @@ public class DisplayAddOrganizationAction extends AbstractAction  {
 
 	public void setProgramList(List<Program> programList) {
 		this.programList = programList;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

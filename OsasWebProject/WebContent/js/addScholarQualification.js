@@ -3,6 +3,11 @@ $(document).ready(function() {
 		$("#cancelScholarQualificationForm").submit();
 	});
 	
+	
+	$(function() {
+		  $( "#dateSubmitted" ).datepicker({  maxDate: 0 });
+		});
+	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
 	

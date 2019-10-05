@@ -6,15 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SASS</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.css?${dateTimeStamp}">
+<link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" type="text/css" href="css/main.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/scholarQualificationList.css?${dateTimeStamp}">
-<link rel="stylesheet" type="text/css" href="css/addScholarQualification.css?${dateTimeStamp}">
+<link rel="stylesheet" type="text/css" href="css/organizationReport.css?${dateTimeStamp}">
 <link rel="shortcut icon" type="image/png" href="images/PUPLogo.png" />
 <script type="text/javascript" src="js/jquery-3.4.1.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
-<script type="text/javascript" src="js/addScholarQualification.js?${dateTimeStamp}"></script>
+<script type="text/javascript" src="js/organizationReport.js?${dateTimeStamp}"></script>
 </head>
 <body>
 <div id="header">
@@ -35,9 +33,10 @@
 	<div id="headerMiddleSeparatorDiv"></div>
 	<div id="headerSeparatorDiv"></div>
 	<div id="navBar">
-		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/scholarshipIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
+		<s:if test="%{pageName!=null}"><div id="pageNameIcon"><img src="images/organizationIconURL.png"/></div><div id="pageName"><span>${pageName}</span></div></s:if>
 		<div id="accountSettings">
 			<span class="clickable" id="homeLink">Home</span><span>|</span>
+			<span class="clickable">Alumni Site</span><span>|</span>
 			<div id="userAccount" class="clickable">
 				<div><span id="firstname">${session.USER.firstName}</span></div>
 				<div id="userTypeDiv">
@@ -56,48 +55,47 @@
 	</div>
 </div>
 <div id="contentBody">
-	<div id="addScholarQualificationContentBody" class="featureContent">
+	<div id="organizationReportContentBody" class="featureContent" >
+	<div id="contentBodyHolder">
 		<div id="contentBodyLeftPane">
-			<div id="icon"><img src="images/scholarshipIcon.png"/></div>
-			<div id="title">ADD SCHOLAR QUALIFICATION</div>
+			<div id="icon"><img src="images/organizationIcon.png"/></div>
+			<div id="title">ORGANIZATION REPORT</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
-				<form id="cancelScholarQualificationForm" action="displayScholarQualificationList" method="POST">
-					<input type="hidden" name="scholarId" value="${scholarId}" />
-				</form>
-				<form class="addScholarQualificationContent" id="addScholarQualificationForm" action="addScholarQualification" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="scholarshipQualificationId" value="${scholarshipQualificationId}" />
-					<input type="hidden" name="scholarId" value="${scholarId}" />
-    				<div class="rightPaneElement withTitle">
-    					<span class="title">Notes</span>
-    					<div><input id="notes" name="notes" type="text"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span class="title">Date Submitted</span>
-    					<div><input id="dateSubmitted" name="dateSubmitted" type="text"></div>
-    					 <script type="text/javascript">
-    						$(document).ready(function() {
-    							$("#dateSubmitted").datepicker({  maxDate: 0 });
-    							
-    						});
-    					</script>
-    				</div>
-    				<div class="rightPaneElement withTitle">
-    					<span class="title">Add Attachment</span>
-    					<div><input id="addAttachment" name="addAttachment" id="addAttachment" type="checkbox"></div>
-    				</div>
-    				<div class="rightPaneElement withTitle" id="fileNameHolder">
-    					<span class="title">FileName</span>
-    					<div><input id="fileName" name="fileName" type="file"></div>
+				<form id="organizationReportForm" action="organizationStatusReport" method="POST">
+    				    <div class="rightPaneElement withTitle">
+    				    <span class="title">Yearly Term</span>
+	    				<div>
+		    				<select name="yearlyTermId" id="yearlyTermId">
+		    					<s:iterator value="yearlyTermList" status="rowStatus" var="yearlyTerm">
+		    						<option value="${yearlyTerm.yearlyTermId}">${yearlyTerm.yearlyTermName}</option>
+		    					</s:iterator>
+							</select>
+						</div>
+						<div style="clear:both"></div>
+					</div>
+					<div class="rightPaneElement withTitle">
+    					<span class="title">Organization Type</span>
+	    				<div id="roleDiv">
+	    					<div>
+			    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
+			    				<span>Academic</span>
+		    				</div><br>
+		    				<div>
+			    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
+			    				<span>Non-Academic</span>
+		    				</div>
+		    				<div style="clear:both"></div>
+		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>CANCEL</span>
+								<span>Cancel</span>
 							</div>
-							<div id=submitButton class="button left">
-								<span>SAVE</span>
+							<div id="submitButton" class="button left">
+								<span>Download Report</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
@@ -106,9 +104,10 @@
     		</div>
     		<div style="clear:both"></div>
 		</div>
+		<div style="clear:both"></div>
+	</div>
 	</div>
 </div>
-
 <div id="footer">
 	<div id="footerSeparatorDiv">
 		<div id="officeDiv"><span>Office of the Student Affairs and Services</span></div>

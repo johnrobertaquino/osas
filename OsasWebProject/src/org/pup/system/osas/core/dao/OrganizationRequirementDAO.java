@@ -153,6 +153,45 @@ public class OrganizationRequirementDAO extends DAO {
 
 		return organizationRequirementList;
 	}
+	
+	public List<OrganizationRequirement> getOrganizationRequirementListByYearlyTerm(int yearlyTermId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		OrganizationRequirement organizationRequirement = null;
+		List<OrganizationRequirement> organizationRequirementList = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT OrganizationRequirementId, OrganizationRequirementName, YearlyCheck, organizationrequirement.SemTermId FROM organizationrequirement JOIN semTerm on organizationrequirement.SemTermId = semTerm.SemTermId JOIN yearlyTerm on semTerm.YearlyTermId = yearlyTerm.YearlyTermId WHERE yearlyTerm.YearlyTermId =" + yearlyTermId);
+
+			while (resultSet.next()) {
+				if (organizationRequirementList == null) {
+					organizationRequirementList = new ArrayList<OrganizationRequirement>();
+				}
+				organizationRequirement = new OrganizationRequirement();
+				organizationRequirement.setOrganizationRequirementId(resultSet.getInt("OrganizationRequirementId"));
+				organizationRequirement.setOrganizationRequirementName(resultSet.getString("OrganizationRequirementName"));
+				organizationRequirement.setYearlyCheck(resultSet.getBoolean("YearlyCheck"));
+				
+				SemTerm semTerm = new SemTerm();
+				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
+				organizationRequirement.setSemTerm(semTerm);
+
+				organizationRequirementList.add(organizationRequirement);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getOrganizationRequirementList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return organizationRequirementList;
+	}
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
 		String organizationRequirementSearchText, int semTermId) throws Exception {

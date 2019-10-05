@@ -3,6 +3,10 @@ $(document).ready(function() {
 		$("#cancelOrganizationQualificationForm").submit();
 	});
 	
+	$(function() {
+		  $( "#dateSubmitted" ).datepicker({  maxDate: 0 });
+		});
+	
 	$('#submitButton').click(function(event) {
 		var errorMessage = '';
 	

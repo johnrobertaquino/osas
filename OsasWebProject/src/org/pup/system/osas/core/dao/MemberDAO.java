@@ -243,8 +243,13 @@ public class MemberDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, member.Section, member.ContactNumber FROM member JOIN organization on member.OrganizationId = organization.OrganizationId WHERE (StudentNumber LIKE '%"
-					+ memberSearchText + "%' OR member.FirstName LIKE '%" + memberSearchText + "%' OR member.MiddleName LIKE '%" + memberSearchText + "%' OR member.LastName LIKE '%" + memberSearchText + "%' OR member.Program LIKE '%" + memberSearchText + "%' OR member.Position LIKE '%" + memberSearchText + "%') AND organization.SemTermId=" + semTermId);  
+			resultSet = statement.executeQuery("SELECT distinct member.MemberId, member.StudentNumber, member.FirstName, member.MiddleName, member.LastName, " +
+										"member.Program, member.Officer, member.OfficerPhoto, member.Position, member.Gender, member.Year, " +  
+										"member.Section, member.ContactNumber FROM member " + 
+										"JOIN memberorganizationreference on member.memberId = memberorganizationreference.memberId " +  
+										"WHERE memberorganizationreference.OrganizationId in " +  
+										"(Select organization.OrganizationId FROM organization WHERE organization.SemTermId=" + semTermId + ") " +
+										"AND member.StudentNumber= '%" + memberSearchText + "%' OR member.FirstName LIKE '%" + memberSearchText + "%' OR member.MiddleName LIKE '%" + memberSearchText + "%' OR member.LastName LIKE '%" + memberSearchText + "%' OR member.Program LIKE '%" + memberSearchText + "%' OR member.Position LIKE '%" + memberSearchText + "%'");  
 			
 			while (resultSet.next()) {
 				if (memberList == null) {

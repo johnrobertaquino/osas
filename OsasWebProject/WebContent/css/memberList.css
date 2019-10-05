@@ -37,11 +37,11 @@
 }
 
 #memberListContentBody #contentBodyRightPane #tableHolder {
-	padding-bottom: 50px;
+	padding-bottom: 150px;
 }
 
-
-@media only screen and (max-width: 1550px) {
+/*
+ @media only screen and (max-width: 1550px) { */ 
   	#memberListContentBody #contentBodyLeftPane	{
 		width: 200px;
 	}
@@ -65,7 +65,7 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
-}
+/*}
 
 @media only screen and (max-width: 1100px) {
   	#memberListContentBody #contentBodyLeftPane	{
@@ -116,4 +116,4 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center
 	}
-}
+}*/

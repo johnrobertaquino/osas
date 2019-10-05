@@ -122,7 +122,7 @@ $(document).ready(function() {
 			if (errorMessage !== '') {
 				errorMessage = errorMessage + "<br/>";
 			}
-			errorMessage = errorMessage + "First can\'t be blank.";
+			errorMessage = errorMessage + "First name can\'t be blank.";
 		}
 		if($('#lastName').val() === '')
 		{

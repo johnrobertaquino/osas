@@ -22,6 +22,8 @@ public class Organization {
 	
 	private String logoFileName;
 	
+	private String description;
+	
 	private List<OrganizationRequirementQualification> organizationRequirementQualificationList;
 	
 	public Organization() {
@@ -151,6 +153,15 @@ public class Organization {
 	 */
 	public void setSemTerm(SemTerm semTerm) {
 		this.semTerm = semTerm;
+	}
+
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<OrganizationRequirementQualification> getOrganizationRequirementQualificationList() {

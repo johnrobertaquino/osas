@@ -96,6 +96,29 @@ public class OrganizationRequirementManager {
 
 		return organizationRequirementList;
 	}
+	
+	public List<OrganizationRequirement> getOrganizationRequirementListByYearlyTerm(int yearlyTermId) throws Exception {
+		OrganizationRequirementDAO organizationRequirementDAO = null;
+		List<OrganizationRequirement> organizationRequirementList = null;
+
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+
+			organizationRequirementDAO = new OrganizationRequirementDAO(connection);
+
+			organizationRequirementList = organizationRequirementDAO.getOrganizationRequirementListByYearlyTerm(yearlyTermId);
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return organizationRequirementList;
+	}
+
 
 	public List<OrganizationRequirement> getOrganizationRequirementListByOrganizationRequirementSearchText(
 			String organizationRequirementSearchText, int semTermId) throws Exception {

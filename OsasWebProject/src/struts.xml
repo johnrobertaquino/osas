@@ -623,6 +623,11 @@
 			<result name="error" type="chain">home</result>  
 		</action>	
 		
+		<action name="organizationStatusReport" class="org.pup.system.osas.ui.action.OrganizationStatusReportAction">
+			<interceptor-ref name="userSessionStack"/>
+			<result name="error" type="chain">displayOrganizationReport</result>   
+		</action>
+		
 		<!-- DOWNLOAD -->
 		<action name="download" class="org.pup.system.osas.ui.action.DownloadFileAction">
 		</action>

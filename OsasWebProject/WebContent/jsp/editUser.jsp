@@ -65,19 +65,19 @@
 				<form class="editUserContent" id="editUserForm" action="editUser" method="POST">
 					<input name="userId" type="hidden" value="${user.userId}">
     				<div class="rightPaneElement withTitle">
-	    				<span>Last Name</span>
+	    				<span class="title">Last Name</span>
     					<div><input id="lastName" name="lastName" type="text" value="${user.lastName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-	    				<span>First Name</span>
+	    				<span class="title">First Name</span>
     					<div><input id="firstName" name="firstName" type="text" value="${user.firstName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Middle Name</span>
+    					<span class="title">Middle Name</span>
     					<div><input id="middleName" name="middleName" type="text" value="${user.middleName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Birthday</span>
+    					<span class="title">Birthday</span>
     					<div><input type="text" id="birthday" name="birthday" id="birthday"></div>
     					<script type="text/javascript">
     						$(document).ready(function() {
@@ -87,15 +87,15 @@
     					</script>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Contact Number</span>
+    					<span class="title">Contact Number</span>
     					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${user.contactNumber}" placeholder="+63"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Position</span>
+    					<span class="title">Position</span>
     					<div><input id="position" name="position" type="text" value="${user.position}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Role</span>
+    					<span class="title">Role</span>
 	    				<div id="roleDiv">
 		    				<input type="checkbox" id="adCheck" name="roleReferenceCodeList" value="AD" <s:if test="user.admin">checked</s:if>>
 		    				<span>Administrator</span>

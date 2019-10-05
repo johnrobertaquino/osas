@@ -7,12 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.pup.system.osas.core.dao.ConnectionUtil;
+import org.pup.system.osas.core.dao.OrganizationDAO;
 import org.pup.system.osas.core.dao.ScholarDAO;
 import org.pup.system.osas.core.dao.ScholarshipProgramDAO;
+import org.pup.system.osas.core.domain.Organization;
+import org.pup.system.osas.core.domain.OrganizationType;
 import org.pup.system.osas.core.domain.Scholar;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
+import org.pup.system.osas.report.data.OrganizationReportData;
+import org.pup.system.osas.report.data.OrganizationsStatusReportData;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
-
+	
 public class ReportManager {
 
 	public List<ScholarsByAgencyAndProgramReportData> getScholarsByAgencyAndProgramReportData(int semTermId, int scholarProgramId, String program) throws Exception {
@@ -78,5 +83,77 @@ public class ReportManager {
 		}
 		
 		return new ArrayList<ScholarsByAgencyAndProgramReportData>(scholarsByAgencyAndProgramReportDataMap.values());
+	}
+	
+	private List<OrganizationReportData> getOrganizationReportDataList(int yearlyTermId, String organizationTypeCode) throws Exception {
+		OrganizationDAO organizationDAO = null;
+		List<Organization> organizationList = null;
+		List<OrganizationReportData> organizationReportDataList = null;
+		OrganizationType organizationType = null;
+		Connection connection = null;
+		
+		try {
+			connection = ConnectionUtil.createConnection();
+			
+			organizationDAO = new OrganizationDAO(connection);
+				
+			organizationList = organizationDAO.getOrganizationListByYearlyTermId(yearlyTermId, organizationTypeCode);
+			
+			if (organizationList != null) {
+				OrganizationRequirementQualificationManager organizationRequirementQualificationManager = new OrganizationRequirementQualificationManager();
+				
+				organizationReportDataList =  new ArrayList<OrganizationReportData>();
+				
+				for(Organization organization : organizationList) {
+					
+					OrganizationReportData organizationReportData = new OrganizationReportData(organization);
+					
+					organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organization.getOrganizationType().getOrganizationTypeCode());
+					organizationReportData.setOrganizationType(organizationType);
+					
+					organizationReportData.setOrganizationRequirementQualificationList(organizationRequirementQualificationManager.getOrganizationRequirementQualificationListByYearlyTerm(organization.getOrganizationId(), yearlyTermId));
+					
+					organizationReportDataList.add(organizationReportData);
+				}
+			}	
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		
+		return organizationReportDataList;
+	}
+	
+	public OrganizationsStatusReportData getOrganizationsStatusReportData(int yearlyTermId, String organizationTypeCode) throws Exception {
+		OrganizationsStatusReportData organizationsStatusReportData = null;
+		Connection connection = null;
+		OrganizationDAO organizationDAO = null;
+		OrganizationType organizationType = null;
+		
+		try {
+			organizationsStatusReportData = new OrganizationsStatusReportData();
+			
+			connection = ConnectionUtil.createConnection();
+			
+			organizationDAO = new OrganizationDAO(connection);
+			
+			OrganizationRequirementManager organizationRequirementnManager = new OrganizationRequirementManager();
+					
+			organizationType = organizationDAO.getOrganizationTypeNameByOrganizationTypeCode(organizationTypeCode);
+
+			organizationsStatusReportData.setOrganizationType(organizationType);	
+			
+			organizationsStatusReportData.setOrganizationRequirementList(organizationRequirementnManager.getOrganizationRequirementListByYearlyTerm(yearlyTermId));
+			
+			organizationsStatusReportData.setOrganizationReportDataList(getOrganizationReportDataList(yearlyTermId, organizationTypeCode));
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+		return organizationsStatusReportData;
 	}
 }

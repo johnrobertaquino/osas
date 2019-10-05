@@ -65,11 +65,11 @@
 				<form class="editProgramContent" id="editProgramForm" action="editProgram" method="POST">
 					<input name="programCode" type="hidden" value="${program.programCode}">
     				<div class="rightPaneElement withTitle">
-    					<span>Program Name</span>
+    					<span class="title">Program Name</span>
     					<div><input id="programName" name="programName" type="text" value="${program.programName}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
-    					<span>Highest Year Level</span>
+    					<span class="title">Highest Year Level</span>
     					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${program.highestYearLevel}"></div>
     				</div>
     				<div class="rightPaneElement withTitle">

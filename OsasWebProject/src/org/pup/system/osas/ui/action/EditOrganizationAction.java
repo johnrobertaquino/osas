@@ -23,6 +23,8 @@ public class EditOrganizationAction extends AbstractAction {
 	
 	private String organizationName;
 	
+	private String description;
+	
 	private String organizationTypeCode;
 	
 	private String program;
@@ -50,7 +52,7 @@ public class EditOrganizationAction extends AbstractAction {
 			Organization existingOrganization = new Organization();
 			existingOrganization = organizationManager.validate(organizationName, getCurrentActiveTerm().getSemTermId());
 			
-			if(existingOrganization != null) { 
+			if(existingOrganization != null && organizationId != existingOrganization.getOrganizationId()) { 
 				notificationMessage = "Organization already exist.";
 				return FORWARD_DISPLAYEDITORGANIZATION;
 			}
@@ -58,6 +60,7 @@ public class EditOrganizationAction extends AbstractAction {
 			{
 				organization.setOrganizationId(organizationId);
 				organization.setOrganizationName(organizationName);
+				organization.setDescription(description);				
 				organization.setOrganizationType(new OrganizationType());
 				organization.getOrganizationType().setOrganizationTypeCode(organizationTypeCode);
 				organization.setProgram(new Program(program));
@@ -181,6 +184,20 @@ public class EditOrganizationAction extends AbstractAction {
 
 	public void setLogoFileNameFileName(String logoFileNameFileName) {
 		this.logoFileNameFileName = logoFileNameFileName;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}	
 
 }
