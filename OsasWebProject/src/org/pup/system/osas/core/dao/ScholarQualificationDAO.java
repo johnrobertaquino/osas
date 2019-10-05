@@ -1,15 +1,14 @@
 package org.pup.system.osas.core.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
+
 import org.pup.system.osas.core.domain.ScholarQualification;
-import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.ScholarshipQualification;
 
 public class ScholarQualificationDAO extends DAO {
 
@@ -53,6 +52,46 @@ public class ScholarQualificationDAO extends DAO {
 		return scholarQualification;
 	}
 	
+	public List<ScholarQualification> getScholarQualificationByScholarIdList(int scholarId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ScholarQualification scholarQualification = null;
+		List<ScholarQualification> scholarQualificationList = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, DateSubmitted, Filename, ScholarId FROM scholarqualification WHERE ScholarId=" + scholarId);
+
+			while (resultSet.next()) {
+				if(scholarQualificationList == null) {
+					scholarQualificationList = new ArrayList<ScholarQualification>();
+				}
+			
+				scholarQualification = new ScholarQualification();
+				scholarQualification.setScholarQualificationId(resultSet.getInt("ScholarQualificationId"));
+				scholarQualification.setScholarshipQualificationId(resultSet.getInt("ScholarshipQualificationId"));
+				scholarQualification.setQualified(resultSet.getBoolean("Qualified"));
+				scholarQualification.setNotes(resultSet.getString("Notes"));
+				scholarQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
+				scholarQualification.setFilename(resultSet.getString("Filename"));
+				scholarQualification.setScholarId(resultSet.getInt("ScholarId"));
+				
+				scholarQualificationList.add(scholarQualification);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarQualificationByScholarId method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return scholarQualificationList;
+	}
+	
 	public ScholarQualification getScholarQualificationByScholarQualificationId(
 			int scholarQualificationId) throws Exception {
 		Connection connection = null;
@@ -86,6 +125,48 @@ public class ScholarQualificationDAO extends DAO {
 		}
 
 		return scholarQualification;
+	}
+	
+	public List<ScholarQualification> getScholarQualificationListByScholarQualificationSearchText(
+		String scholarQualificationSearchText, int semTermId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ScholarQualification scholarQualification = null;
+		List<ScholarQualification> scholarQualificationList = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT ScholarQualificationId, ScholarshipQualificationId, Qualified, Notes, DateSubmitted, Filename, ScholarId FROM scholarqualification WHERE DateSubmitted="
+							+ scholarQualificationSearchText);
+
+			while (resultSet.next()) {
+				if(scholarQualificationList == null) {
+					scholarQualificationList = new ArrayList<ScholarQualification>();
+				}
+				scholarQualification = new ScholarQualification();
+				scholarQualification.setScholarQualificationId(resultSet.getInt("ScholarQualificationId"));
+				scholarQualification.setScholarshipQualificationId(resultSet.getInt("ScholarshipQualificationId"));
+				scholarQualification.setQualified(resultSet.getBoolean("Qualified"));
+				scholarQualification.setNotes(resultSet.getString("Notes"));
+				scholarQualification.setDateSubmitted(resultSet.getDate("DateSubmitted"));
+				scholarQualification.setFilename(resultSet.getString("Filename"));
+				scholarQualification.setScholarId(resultSet.getInt("ScholarId"));
+				
+				scholarQualificationList.add(scholarQualification);
+
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarshipProgramList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return scholarQualificationList;
 	}
 	
 	public void insertScholarQualification(ScholarQualification scholarQualification) throws Exception {

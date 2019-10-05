@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.pup.system.osas.core.domain.Agency;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
-import org.pup.system.osas.core.domain.SemTerm;
 
 public class ScholarshipProgramDAO extends DAO {
 
@@ -127,6 +126,44 @@ public class ScholarshipProgramDAO extends DAO {
 
 			resultSet = statement.executeQuery(
 					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.AgencyId FROM scholarshipprogram JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId=" + semTermId);
+
+			while (resultSet.next()) {
+				if (scholarshipProgramList == null) {
+					scholarshipProgramList = new ArrayList<ScholarshipProgram>();
+				}
+				scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholarshipProgram.setScholarshipProgramName(resultSet.getString("ScholarshipProgramName"));
+
+				Agency agency = new Agency();
+				agency.setAgencyId(resultSet.getInt("AgencyId"));
+				scholarshipProgram.setAgency(agency);
+
+				scholarshipProgramList.add(scholarshipProgram);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarshipProgramList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+
+		return scholarshipProgramList;
+	}
+	
+	public List<ScholarshipProgram> getScholarshipProgramListByAgencyId(int agencyId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ScholarshipProgram scholarshipProgram = null;
+		List<ScholarshipProgram> scholarshipProgramList = null;
+
+		try {
+			connection = getConnection();
+
+			statement = connection.createStatement();
+
+			resultSet = statement.executeQuery(
+					"SELECT scholarshipprogram.ScholarshipProgramId, scholarshipprogram.ScholarshipProgramName, scholarshipprogram.AgencyId FROM scholarshipprogram WHERE scholarshipprogram.AgencyId =" + agencyId);
 
 			while (resultSet.next()) {
 				if (scholarshipProgramList == null) {

@@ -29,7 +29,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholar.StudentNumber='" + studentNumber+ "' AND scholar.FirstName='" +firstName+ "' AND scholar.LastName='"+lastName+"' AND scholar.ScholarshipProgramId="+scholarshipProgramId+" AND agency.SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholar.StudentNumber='" + studentNumber+ "' OR (scholar.FirstName='" +firstName+ "' AND scholar.LastName='"+lastName+"' AND scholar.ScholarshipProgramId="+scholarshipProgramId+") AND agency.SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				scholar = new Scholar();
@@ -153,6 +153,54 @@ public class ScholarDAO extends DAO {
 			statement = connection.createStatement(); 
 			
 			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE agency.SemTermId =" + semTermId);
+			
+			while (resultSet.next()) {
+				if (scholarList == null) {
+					scholarList = new ArrayList<Scholar>();
+				}
+				
+				scholar = new Scholar();
+				scholar.setScholarId(resultSet.getInt("ScholarId"));
+				scholar.setStudentNumber(resultSet.getString("StudentNumber"));
+				scholar.setFirstName(resultSet.getString("FirstName"));
+				scholar.setMiddleName(resultSet.getString("MiddleName"));
+				scholar.setLastName(resultSet.getString("LastName"));
+				scholar.setGender(resultSet.getString("Gender"));
+				scholar.setEmail(resultSet.getString("Email"));
+				scholar.setContactNumber(resultSet.getString("ContactNumber"));
+				scholar.setProgram(new Program(resultSet.getString("Program")));
+				scholar.setYear(resultSet.getString("Year"));
+				scholar.setSection(resultSet.getString("Section"));
+				scholar.setGwa(resultSet.getString("GWA"));
+				
+				ScholarshipProgram scholarshipProgram = new ScholarshipProgram();
+				scholarshipProgram.setScholarshipProgramId(resultSet.getInt("ScholarshipProgramId"));
+				scholar.setScholarshipProgram(scholarshipProgram);
+				
+				scholarList.add(scholar);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error occurred while doing getScholarList method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(resultSet, statement);
+		}
+		
+		return scholarList;
+	}
+	
+	public List<Scholar> getScholarListByScholarshipProgramId(int scholarshipProgramId) throws Exception {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Scholar scholar = null;
+		List<Scholar> scholarList = null;
+		
+		try {
+			connection = getConnection();
+			
+			statement = connection.createStatement(); 
+			
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar WHERE scholar.ScholarshipProgramId =" + scholarshipProgramId);
 			
 			while (resultSet.next()) {
 				if (scholarList == null) {
