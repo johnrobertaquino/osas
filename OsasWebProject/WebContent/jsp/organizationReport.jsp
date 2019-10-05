@@ -74,17 +74,17 @@
 							</select>
 						</div>
 						<div style="clear:both"></div>
-					</div>
+					</div><br>
 					<div class="rightPaneElement withTitle">
     					<span class="title">Organization Type</span>
-	    				<div id="roleDiv">
+	    				<div id="roleDiv"><br>
 	    					<div>
 			    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
-			    				<span>Academic</span>
+			    				<span class="title">Academic</span>
 		    				</div><br>
 		    				<div>
 			    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
-			    				<span>Non-Academic</span>
+			    				<span class="title">Non-Academic</span>
 		    				</div>
 		    				<div style="clear:both"></div>
 		    			</div>

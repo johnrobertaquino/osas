@@ -117,7 +117,7 @@
 						<div id="roleDiv">
 							<label for="chkOfficer">
 							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test='officer == "on"'>checked</s:if>/>
-							    Officer
+							    <span class="title">Officer</span>
 							</label>
 						</div>
     				</div>
@@ -142,9 +142,9 @@
     					<span class="title">Gender</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M" checked>
-		    				<span>Male</span>
+		    				<span class="title">Male</span>
 		    				<input type="radio" id="gender" name="gender" value="F">
-		    				<span>Female</span>
+		    				<span class="title">Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">

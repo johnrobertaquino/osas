@@ -66,7 +66,7 @@
 				<form class="addOrganizationContent" id="organizationForm" action="addOrganization" method="POST" enctype="multipart/form-data">
     				<div class="rightPaneElement withTitle">
     					<div>
-    						<div id="orglogoInput"><span>Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
+    						<div id="orglogoInput"><span class="title">Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
@@ -83,9 +83,9 @@
     					<span class="title">Organization Type</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" <s:if test='organizationTypeCode == "A"'>checked</s:if>>
-		    				<span>Academic</span>
+		    				<span class="title">Academic</span>
 		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organizationTypeCode == "N"'>checked</s:if>>
-		    				<span>Non-Academic</span>
+		    				<span class="title">Non-Academic</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle" id="programDiv" <s:if test='!(organizationTypeCode == "A")'>style="display: none"</s:if>>

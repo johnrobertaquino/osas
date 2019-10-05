@@ -108,16 +108,16 @@
     					<span class="title">Gender</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="gender" name="gender" value="M"  <s:if test='member.gender == "M"'>checked</s:if>>
-		    				<span>Male</span>
+		    				<span class="title">Male</span>
 		    				<input type="radio" id="gender" name="gender" value="F"  <s:if test='member.gender == "F"'>checked</s:if>>
-		    				<span>Female</span>
+		    				<span class="title">Female</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="roleDiv">
 							<label for="chkOfficer">
 							    <input type="checkbox" id="chkOfficer" name="officer" <s:if test="member.officer">checked</s:if>/>
-							    Officer
+							    <span class="title">Officer</span>
 							</label>
 						</div>
     				</div>

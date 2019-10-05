@@ -9,7 +9,7 @@
 	width: 20px;
 }
 
-@media only screen and (max-width: 1550px) {
+/* @media only screen and (max-width: 1550px) { */ 
 	#addScholarshipQualificationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
@@ -21,7 +21,7 @@
 	{
     width: 200px;
 	}
-}
+/* }
 @media only screen and (max-width: 1110px) {
 	#addScholarshipQualificationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
@@ -40,3 +40,4 @@
 		TEXT-ALIGN: center;
 	}
 }
+*/ 

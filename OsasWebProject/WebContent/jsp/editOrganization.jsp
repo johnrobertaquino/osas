@@ -69,7 +69,7 @@
     						<s:if test='organization.logoFileName != null && organization.logoFileName != ""'>
     							<div id="orglogo"><img src="download?type=OL&fileName=${organization.logoFileName}" alt="logo"/></div>
     						</s:if>    						
-    						<div id="orglogoInput"><span>Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
+    						<div id="orglogoInput"><span class="title">Logo</span><input id="organizationLogo" name="logoFileName" type="file" accept="image/*"></div>
     					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
@@ -86,9 +86,9 @@
     					<span class="title">Organization Type</span>
 	    				<div id="roleDiv">
 		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" <s:if test='organization.organizationType.organizationTypeCode == "A"'>checked</s:if>>
-		    				<span>Academic</span>
+		    				<span class="title">Academic</span>
 		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organization.organizationType.organizationTypeCode == "N"'>checked</s:if>>
-		    				<span>Non-Academic</span>
+		    				<span class="title">Non-Academic</span>
 		    			</div>
     				</div>
     				<div class="rightPaneElement withTitle">

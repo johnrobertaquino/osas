@@ -22,7 +22,7 @@
     padding-right: 10px;
 }
 
-@media only screen and (max-width: 1550px) {
+/* @media only screen and (max-width: 1550px) { */
 	#editOrganizationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
@@ -30,8 +30,8 @@
 		color: #4d4d4d;
 		TEXT-ALIGN: center;
 	}
-}
-@media only screen and (max-width: 1110px) {
+/* }
+ @media only screen and (max-width: 1110px) {
 	#editOrganizationContentBody #contentBodyLeftPane #title {
 		margin: 25px auto 0px auto;
 		font-weight: bold;
@@ -49,3 +49,4 @@
 		TEXT-ALIGN: center
 	}
 }
+*/ 

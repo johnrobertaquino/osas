@@ -86,7 +86,7 @@
     			   
     			<div class="rightPaneElement withTitle">
 	    			<div class="filterDiv">
-						<span>Filter By Status:</span>
+						<span class="title">Filter By Status:</span>
 		    			<div>
 			    			<select id="filterSelect">
 			    				<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
@@ -97,7 +97,7 @@
 						</div>
 					</div>
 					<div class="filterDiv">
-		    			<span>Filter By Scholarship Program:</span>
+		    			<span class="title">Filter By Scholarship Program:</span>
 			    		<div>
 				    		<select id="scholarshipProgramFilterSelect">
 				    			<option value="all" <s:if test='scholarshipProgramFilter == "all"'>selected</s:if>>All</option>
