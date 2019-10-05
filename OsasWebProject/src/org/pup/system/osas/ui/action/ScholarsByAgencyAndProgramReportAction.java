@@ -7,16 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
-import org.pup.system.osas.core.domain.Program;
 import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.domain.User;
-import org.pup.system.osas.core.manager.ProgramManager;
 import org.pup.system.osas.core.manager.ReportManager;
 import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 import org.pup.system.osas.report.ScholarsByAgencyAndProgramReport;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
-
+	
 public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 		implements ServletResponseAware, ServletRequestAware {
 
@@ -50,17 +48,13 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 			ScholarshipProgram scholarshipProgram = scholarshipProgramManager
 					.getScholarshipProgram(scholarshipProgramId);
 			
-			Program program = new Program();
-			ProgramManager programManager = new ProgramManager();
-			program = programManager.getProgram(program.getProgramCode(), semTermId);
-			
 			if (scholarsByAgencyAndProgramReportDataList == null || scholarsByAgencyAndProgramReportDataList.isEmpty()) {
 				errorMessage = "No records found.";
 				actionResult = FORWARD_ERROR;
 			} else {
 
 				ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath,
-						scholarshipProgram.getScholarshipProgramName() + "-" + program.getProgramCode(), scholarsByAgencyAndProgramReportDataList,
+						scholarshipProgram.getScholarshipProgramName() + " - " + program, scholarsByAgencyAndProgramReportDataList,
 						(User) userSession.get(USER), false);
 	
 				response.setContentType("application/octet-stream");
@@ -117,5 +111,4 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 		this.program = program;
 	}
 
-	
 }
