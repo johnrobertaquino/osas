@@ -3,6 +3,7 @@ package org.pup.system.osas.ui.action;
 import java.util.List;
 
 import org.pup.system.osas.core.manager.MemberManager;
+import org.pup.system.osas.core.manager.OrganizationManager;
 import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Member;
 import org.pup.system.osas.core.domain.Organization;
@@ -28,8 +29,12 @@ public class DisplayMemberListAction extends AbstractAction
 
 		try {
 			MemberManager memberManager = new MemberManager();
+			OrganizationManager organizationManager = new OrganizationManager();
+			
 			memberList = memberManager.getMemberList(getCurrentActiveTerm().getSemTermId());
-			if(StringUtils.isEmpty(filter)) {
+			organizationList = organizationManager.getOrganizationList(getCurrentActiveTerm().getSemTermId());
+			
+			if(StringUtils.isEmpty(filter) || "all".equals(filter)) {
 				memberList = memberManager.getMemberList(getCurrentActiveTerm().getSemTermId());
 			} else {
 				memberList = memberManager.getMemberList(getCurrentActiveTerm().getSemTermId(), filter);

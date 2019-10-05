@@ -16,6 +16,10 @@
     margin-left: 5px;
 }
 
+#memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle #filterSelect {
+	width: 170px;
+}
+
 #memberListContentBody #contentBodyRightPane .rightPaneElement.withTitle {
    margin-top: 20px;
 }

@@ -83,7 +83,10 @@
     			<span>Filter By Organization:</span>
 	    				<div>
 		    				<select id="filterSelect">
-		    						<option value="organizationListDisplay" <s:if test='filter == "member.organizationListDisplay"'>selected</s:if>>${member.organizationListDisplay}</option>
+		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+		    						<s:iterator value="organizationList" status="rowStatus" var="organization">
+		    							<option value="${organization.organizationId}" <s:if test='filter == #organization.organizationId'>selected</s:if>>${organization.organizationName}</option>
+		    						</s:iterator>
 							</select>
 						</div>
 				</div>

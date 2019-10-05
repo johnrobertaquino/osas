@@ -193,7 +193,7 @@ public class MemberManager {
 	public List<Member> getMemberList(int semTermId, String filter) throws Exception {
 		MemberDAO memberDAO = null;
 		List<Member> memberList = null;
-		List<Member> filteredMemberListList = null;
+
 		Connection connection = null;
 
 		try {
@@ -201,23 +201,13 @@ public class MemberManager {
 
 			memberDAO = new MemberDAO(connection);
 
-			memberList = memberDAO.getMemberList(semTermId);
+			memberList = memberDAO.getMemberList(Integer.parseInt(filter), semTermId);
 			
 			if(memberList != null) {
 				OrganizationManager organizationManager = new OrganizationManager();
 				for (Member member : memberList) {
 					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
 					member.setOrganizationList(organizationList);
-				
-					String organizationName = member.getOrganizationListDisplay();
-					
-					if(organizationName.equalsIgnoreCase(filter)) {
-						if(filteredMemberListList == null) {
-							filteredMemberListList = new ArrayList<Member>();
-						}
-						
-						filteredMemberListList.add(member);
-				}
 				}
 			}
 		} catch (Exception e) {
@@ -226,7 +216,7 @@ public class MemberManager {
 			ConnectionUtil.closeDbConnection(connection);
 		}
 
-		return filteredMemberListList;
+		return memberList;
 	}
 
 	public List<Member> getMemberListByMemberSearchText(String memberSearchText, int semTermId) throws Exception {
