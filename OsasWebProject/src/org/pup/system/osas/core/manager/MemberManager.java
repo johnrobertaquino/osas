@@ -11,7 +11,7 @@ import org.pup.system.osas.core.domain.Organization;
 
 public class MemberManager {
 
-	public Member validate(String studentNumber, String firstName, String middleName, String lastName, int semTermId)
+	/*public Member validateMember(String studentNumber, String firstName, String middleName, String lastName, int semTermId)
 			throws Exception {
 		MemberDAO memberDAO = null;
 		Member member = null;
@@ -34,7 +34,7 @@ public class MemberManager {
 		}
 
 		return member;
-	}
+	}*/
 
 	public void insertMember(Member member) throws Exception {
 		MemberDAO memberDAO = null;
@@ -188,6 +188,45 @@ public class MemberManager {
 		}
 
 		return memberList;
+	}
+	
+	public List<Member> getMemberList(int semTermId, String filter) throws Exception {
+		MemberDAO memberDAO = null;
+		List<Member> memberList = null;
+		List<Member> filteredMemberListList = null;
+		Connection connection = null;
+
+		try {
+			connection = ConnectionUtil.createConnection();
+
+			memberDAO = new MemberDAO(connection);
+
+			memberList = memberDAO.getMemberList(semTermId);
+			
+			if(memberList != null) {
+				OrganizationManager organizationManager = new OrganizationManager();
+				for (Member member : memberList) {
+					List<Organization> organizationList = organizationManager.getOrganizationListByMemberId(member.getMemberId());
+					member.setOrganizationList(organizationList);
+				
+					String organizationName = member.getOrganizationListDisplay();
+					
+					if(organizationName.equalsIgnoreCase(filter)) {
+						if(filteredMemberListList == null) {
+							filteredMemberListList = new ArrayList<Member>();
+						}
+						
+						filteredMemberListList.add(member);
+				}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			ConnectionUtil.closeDbConnection(connection);
+		}
+
+		return filteredMemberListList;
 	}
 
 	public List<Member> getMemberListByMemberSearchText(String memberSearchText, int semTermId) throws Exception {

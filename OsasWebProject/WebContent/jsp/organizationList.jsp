@@ -80,7 +80,7 @@
 			<div id="searchOrganization">
 				<img src="images/Search_Magnifying_Glass_Find-512.png">
 				<form action="searchOrganization" method="POST" id="searchOrganizationForm">
-					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization Name">
+					<input type="text" id="organizationSearchText" name="organizationSearchText" placeholder="Search Organization Code / Description">
 				</form>
 				<div class="button" id="searchOrganizationButton">SEARCH</div>
 				<div class="button" id="addOrganizationButton">ADD ORGANIZATION</div>

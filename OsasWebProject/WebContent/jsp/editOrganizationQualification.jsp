@@ -94,10 +94,10 @@
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Save</span>
+								<span>SAVE</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

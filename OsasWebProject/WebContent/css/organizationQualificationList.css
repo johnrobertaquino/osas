@@ -1,6 +1,7 @@
 @charset "ISO-8859-1";
 #organizationQualificationListContentBody #contentBodyRightPane {
 	width: inherit;
+	font-size: 12px;
 }
 #organizationQualificationListContentBody #searchOrganizationQualificationButton {
 		float: left;
@@ -43,7 +44,6 @@
 		width: 200px;
 	}
 	#organizationQualificationListContentBody #contentBodyRightPane {
-		font-size: 13px;
 	}
 	#organizationQualificationListContentBody #searchOrganizationQualification, #organizationQualificationListContentBody #contentBodyRightPane table {
 		margin-left: 50px;

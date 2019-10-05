@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/common.js?${dateTimeStamp}"></script>
 <script type="text/javascript" src="js/agencyList.js?${dateTimeStamp}"></script>
 </head>
-<body>
+<body class="bodyResponse">
 <div id="header">
 	<div id="headerHomeDiv">
 		<div id="logoDiv"><img alt="" src="images/PUPLogo.png"></div>

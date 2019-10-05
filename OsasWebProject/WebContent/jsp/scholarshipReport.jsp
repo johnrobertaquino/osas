@@ -70,7 +70,7 @@
 			<div id="rightPaneContentHolder">
 				<form id="scholarshipReportForm" action="scholarsByAgencyAndProgramReport" method="POST">
     				<div class="rightPaneElement withTitle">
-    				    <span>Semester</span>
+    				    <span class="title">Semester</span>
 	    				<div>
 		    				<select name="semTermId" id="semTermId">
 		    					<s:iterator value="semTermList" status="rowStatus" var="semTerm">
@@ -80,14 +80,14 @@
 						</div>
 					</div>
     				<div class="rightPaneElement withTitle">
-    				    <span>Scholarship Program</span>
+    				    <span class="title">Scholarship Program</span>
 	    				<div>
 		    				<select name="scholarshipProgramId" id="scholarshipProgramId">
 							</select>
 						</div>
 					</div>
 					<div class="rightPaneElement withTitle">
-						<span>Program</span>
+						<span class="title">Program</span>
 	    				<div>
 		    				<select name="program" id="program">
 							</select>
@@ -96,10 +96,10 @@
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id="submitButton" class="button left">
-								<span>Download Report</span>
+								<span>DOWNLOAD REPORT</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>

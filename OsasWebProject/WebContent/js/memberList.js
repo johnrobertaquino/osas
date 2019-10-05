@@ -22,6 +22,12 @@ $(document).ready(function() {
 		$(this).parent().find(".tableMenuDropdown").toggleClass("w3-show");
 	});
 	
+	
+	 $("#filterSelect").change(function () {
+		$("#filterMemberForm #filter").val($('#filterSelect option:selected').val());
+		$("#filterMemberForm").submit();
+   });
+	
 	$('#searchMemberButton').click(function(event) {
 		if($('#memberSearchText').val().trim() == '') {
 			$('#searchMemberForm').attr("action","displayMemberList");

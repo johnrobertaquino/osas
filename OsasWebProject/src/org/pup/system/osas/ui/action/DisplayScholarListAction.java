@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.pup.system.osas.core.domain.Scholar;
+import org.pup.system.osas.core.domain.ScholarshipProgram;
 import org.pup.system.osas.core.manager.ScholarManager;
+import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 
 public class DisplayScholarListAction extends AbstractAction
@@ -13,6 +15,8 @@ public class DisplayScholarListAction extends AbstractAction
 	private static final long serialVersionUID = 4251608337401003937L;
 	
 	private List<Scholar> scholarList;
+	
+	private List<ScholarshipProgram> scholarshipProgramList;
 	
 	private String filter;
 	
@@ -23,6 +27,9 @@ public class DisplayScholarListAction extends AbstractAction
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
+			ScholarshipProgramManager scholarshipProgramManager = new ScholarshipProgramManager();
+			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());
+			
 			ScholarManager scholarshipManager = new ScholarManager();
 			if(StringUtils.isEmpty(filter)) {
 				scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId());
@@ -63,6 +70,20 @@ public class DisplayScholarListAction extends AbstractAction
 
 	public void setFilter(String filter) {
 		this.filter = filter;
+	}
+
+	/**
+	 * @return the scholarshipProgramList
+	 */
+	public List<ScholarshipProgram> getScholarshipProgramList() {
+		return scholarshipProgramList;
+	}
+
+	/**
+	 * @param scholarshipProgramList the scholarshipProgramList to set
+	 */
+	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
+		this.scholarshipProgramList = scholarshipProgramList;
 	}
 	
 	

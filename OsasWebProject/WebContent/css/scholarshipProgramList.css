@@ -1,6 +1,7 @@
 @charset "ISO-8859-1";
 #scholarshipProgramListContentBody #contentBodyRightPane {
 	width: inherit;
+	font-size: 12px;
 }
 #scholarshipProgramListContentBody #searchScholarshipProgramButton {
 		float: left;

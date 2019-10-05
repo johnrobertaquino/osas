@@ -82,14 +82,14 @@
     				<div class="rightPaneElement withTitle">
     					<span class="title">Organization Type</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A">
+		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" <s:if test='organizationTypeCode == "A"'>checked</s:if>>
 		    				<span>Academic</span>
-		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked>
+		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organizationTypeCode == "N"'>checked</s:if>>
 		    				<span>Non-Academic</span>
 		    			</div>
     				</div>
-    				<div class="rightPaneElement withTitle">
-    				<div id="programDiv">
+    				<div class="rightPaneElement withTitle" id="programDiv" <s:if test='!(organizationTypeCode == "A")'>style="display: none"</s:if>>
+    				<div>
     					<span class="title">Program</span>
     					<div>
     						<select name="program">
@@ -108,10 +108,10 @@
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
 							<div id="cancelButton" class="button">
-								<span>Cancel</span>
+								<span>CANCEL</span>
 							</div>
 							<div id=submitButton class="button left">
-								<span>Add Organization</span>
+								<span>ADD ORGANIZATION</span>
 							</div>
 							<div style="clear:both"></div>
 						</div>
