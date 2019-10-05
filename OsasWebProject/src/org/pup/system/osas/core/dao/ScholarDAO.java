@@ -29,7 +29,7 @@ public class ScholarDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE scholar.StudentNumber='" + studentNumber+ "' OR (scholar.FirstName='" +firstName+ "' AND scholar.LastName='"+lastName+"' AND scholar.ScholarshipProgramId="+scholarshipProgramId+") AND agency.SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT scholar.ScholarId, scholar.StudentNumber, scholar.FirstName, scholar.MiddleName, scholar.LastName, scholar.Gender, scholar.Email, scholar.ContactNumber, scholar.Program, scholar.Year, scholar.Section, scholar.GWA, scholar.ScholarshipProgramId FROM scholar JOIN scholarshipprogram on scholar.ScholarshipProgramId = scholarshipprogram.ScholarshipProgramId JOIN agency on scholarshipprogram.AgencyId = agency.AgencyId WHERE (scholar.StudentNumber='" + studentNumber+ "' OR (scholar.FirstName='" +firstName+ "' AND scholar.LastName='"+lastName+"' AND scholar.ScholarshipProgramId="+scholarshipProgramId+")) AND agency.SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				scholar = new Scholar();

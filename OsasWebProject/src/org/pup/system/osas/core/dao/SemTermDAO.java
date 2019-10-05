@@ -112,6 +112,25 @@ public class SemTermDAO extends DAO {
 			ConnectionUtil.closeDbResources(resultSet, statement);
 		}
 	}
+	
+	public void setToInactive(SemTerm semTerm) throws Exception {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = getConnection();
+
+			statement = connection.prepareStatement("UPDATE semterm set Active = false WHERE SemTermId = ?");
+			statement.setInt(1, semTerm.getSemTermId());
+			
+			statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Error occurred while doing setToInactive method", e);
+		} finally {
+			ConnectionUtil.closeDbResources(statement);
+		}
+	}
 
 	public List<SemTerm> getSemTermList() throws Exception {
 		Connection connection = null;
