@@ -65,6 +65,7 @@
 	</form>
 	<form id="filterScholarForm" action="displayScholarList" method="POST">
   		<input type="hidden" id="filter" name="filter" />
+  		<input type="hidden" id="scholarshipProgramFilter" name="scholarshipProgramFilter" />
 	</form>
 	<div id="scholarListContentBody" class="featureContent" >
 	<div id="contentBodyHolder">
@@ -84,31 +85,30 @@
     			<div style="clear:both"></div><br><br>
     			   
     			<div class="rightPaneElement withTitle">
-    			<div>
-    				    <span>Filter Status:</span>
-	    				<div>
-		    				<select id="filterSelect">
-		    						<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
-		    						<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
-		    						<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
-		    						<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
+	    			<div class="filterDiv">
+						<span>Filter By Status:</span>
+		    			<div>
+			    			<select id="filterSelect">
+			    				<option value="all" <s:if test='filter == "all"'>selected</s:if>>All</option>
+			    				<option value="pending" <s:if test='filter == "pending"'>selected</s:if>>Pending Approval</option>
+			    					<option value="approved" <s:if test='filter == "approved"'>selected</s:if>>Approved</option>
+			    					<option value="incomplete" <s:if test='filter == "incomplete"'>selected</s:if>>Incomplete</option>
 							</select>
 						</div>
-				</div>
-				</div>
-			    <div class="rightPaneElement withTitle">
-				    <div id = searchByScholarshipProgramAgency>
+					</div>
+					<div class="filterDiv">
 		    			<span>Filter By Scholarship Program:</span>
-			    				<div>
-				    				<select id="filterSelect" name="scholarshipProgram.ScholarshipProgramName">
-				    					<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
-				    						<option value="${scholarshipprogram.scholarshipProgramId}" <s:if test='filter == "scholarshipprogram.organizationListDisplay"'>selected</s:if>>${scholarshipprogram.ScholarshipProgramName}</option>
-				    					</s:iterator>
-									</select>
-								</div>
+			    		<div>
+				    		<select id="scholarshipProgramFilterSelect">
+				    			<option value="all" <s:if test='scholarshipProgramFilter == "all"'>selected</s:if>>All</option>
+				    			<s:iterator value="scholarshipProgramList" status="rowStatus" var="scholarshipProgram">
+				    				<option value="${scholarshipProgram.scholarshipProgramId}" <s:if test='scholarshipProgramFilter == #scholarshipProgram.scholarshipProgramId'>selected</s:if>>${scholarshipProgram.scholarshipProgramName}</option>
+				    			</s:iterator>
+							</select>
 						</div>
 					</div>
 				</div>
+			</div>
 			<div id="tableHolder">
 			<table class="contentTable">
 				<tr>

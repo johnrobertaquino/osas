@@ -1,10 +1,22 @@
-#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle #searchByScholarshipProgramAgency {
-	margin-top: 15px;
-}
-
 #scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle span {
    float: left;
    margin-left: 10px;
+}
+
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle .filterDiv {
+	display: inline-block;
+}
+
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle .filterDiv div {
+	display: inline;
+}
+
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle .filterDiv div #filterSelect {
+	width: 120px;
+}
+
+#scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle .filterDiv div #scholarshipProgramFilterSelect {
+	width: 250px;
 }
 
 #scholarListContentBody #contentBodyRightPane .rightPaneElement.withTitle select {

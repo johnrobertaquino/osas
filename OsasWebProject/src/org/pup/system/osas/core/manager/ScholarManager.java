@@ -135,7 +135,7 @@ public class ScholarManager
 		return scholarList;
 	}
 	
-	public List<Scholar> getScholarList(int semTermId, String filter) throws Exception {
+	public List<Scholar> getScholarList(int semTermId, String filter, String scholarshipProgramFilter) throws Exception {
 		ScholarDAO scholarDAO = null;
 		ScholarshipProgramManager scholarshipProgramManager = null;
 		ScholarScholarshipQualificationManager scholarScholarshipQualificationManager = null;
@@ -149,7 +149,12 @@ public class ScholarManager
 			
 			scholarDAO = new ScholarDAO(connection);
 			
-			scholarList = scholarDAO.getScholarList(semTermId);
+			if("all".equalsIgnoreCase(scholarshipProgramFilter)) {
+				scholarList = scholarDAO.getScholarList(semTermId);
+			} 
+			else {
+				scholarList = scholarDAO.getScholarListByScholarshipProgramId(Integer.parseInt(scholarshipProgramFilter));
+			}
 			
 			if (scholarList != null) {
 				scholarshipProgramManager = new ScholarshipProgramManager();

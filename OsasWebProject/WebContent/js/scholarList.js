@@ -39,8 +39,15 @@ $(document).ready(function() {
 	
 	 $("#filterSelect").change(function () {
 		$("#filterScholarForm #filter").val($('#filterSelect option:selected').val());
+		$("#filterScholarForm #scholarshipProgramFilter").val($('#scholarshipProgramFilterSelect option:selected').val());
 		$("#filterScholarForm").submit();
      });
+	 
+	 $("#scholarshipProgramFilterSelect").change(function () {
+		$("#filterScholarForm #filter").val($('#filterSelect option:selected').val());
+		$("#filterScholarForm #scholarshipProgramFilter").val($('#scholarshipProgramFilterSelect option:selected').val());
+		$("#filterScholarForm").submit();
+	 });
 });
 
 function showScholarDeletePopup(scholarId) {

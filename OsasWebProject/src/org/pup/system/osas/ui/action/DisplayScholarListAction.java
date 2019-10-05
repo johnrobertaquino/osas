@@ -20,6 +20,8 @@ public class DisplayScholarListAction extends AbstractAction
 	
 	private String filter;
 	
+	private String scholarshipProgramFilter;
+	
 	@Override
 	public String execute() throws Exception {
 		pageName = "Manage Scholar";
@@ -31,10 +33,10 @@ public class DisplayScholarListAction extends AbstractAction
 			scholarshipProgramList = scholarshipProgramManager.getScholarshipProgramList(getCurrentActiveTerm().getSemTermId());
 			
 			ScholarManager scholarshipManager = new ScholarManager();
-			if(StringUtils.isEmpty(filter)) {
+			if(StringUtils.isEmpty(filter) || StringUtils.isEmpty(scholarshipProgramFilter)) {
 				scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId());
 			} else {
-				scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId(), filter);
+				scholarList = scholarshipManager.getScholarList(getCurrentActiveTerm().getSemTermId(), filter, scholarshipProgramFilter);
 			}
 		} catch (BusinessException be) {
 			errorMessage = be.getMessage();
@@ -84,6 +86,14 @@ public class DisplayScholarListAction extends AbstractAction
 	 */
 	public void setScholarshipProgramList(List<ScholarshipProgram> scholarshipProgramList) {
 		this.scholarshipProgramList = scholarshipProgramList;
+	}
+
+	public String getScholarshipProgramFilter() {
+		return scholarshipProgramFilter;
+	}
+
+	public void setScholarshipProgramFilter(String scholarshipProgramFilter) {
+		this.scholarshipProgramFilter = scholarshipProgramFilter;
 	}
 	
 	
