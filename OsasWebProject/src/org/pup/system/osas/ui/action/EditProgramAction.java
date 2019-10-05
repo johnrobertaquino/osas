@@ -25,6 +25,7 @@ public class EditProgramAction extends AbstractAction {
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
+	
 			ProgramManager programManager = new ProgramManager();
 			Program program = programManager.getProgramCode(programCode);
 		
@@ -32,7 +33,7 @@ public class EditProgramAction extends AbstractAction {
 			program.setProgramCode(programCode);
 			program.setProgramName(programName);
 			program.setHighestYearLevel(highestYearLevel);
-				
+			program.setSemTerm(getCurrentActiveTerm());
 			programManager.saveProgram(program);
 				
 			notificationMessage = "Changes to program has been saved successfully.";
