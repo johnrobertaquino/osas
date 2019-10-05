@@ -63,7 +63,7 @@
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
 				<form class="editProgramContent" id="editProgramForm" action="editProgram" method="POST">
-					<input name="programCode" type="hidden" value="${program.programCode}">
+					<input name="programCode" type="hidden" value="${program.programCode}" maxlength="5">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Name</span>
     					<div><input id="programName" name="programName" type="text" value="${program.programName}"></div>

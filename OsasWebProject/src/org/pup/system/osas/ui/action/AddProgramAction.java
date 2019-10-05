@@ -43,7 +43,7 @@ public class AddProgramAction extends AbstractAction {
 				program.setHighestYearLevel(highestYearLevel);
 				program.setSemTerm(getCurrentActiveTerm());
 				programManager.insertProgram(program);
-				notificationMessage = "Agency has been successfully added.";
+				notificationMessage = "Program has been successfully added.";
 			}
 
 		} catch (BusinessException be) {

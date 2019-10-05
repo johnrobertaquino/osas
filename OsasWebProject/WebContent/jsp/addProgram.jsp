@@ -66,7 +66,7 @@
 				<form class="addUserContent" id="programForm" action="addProgram" method="POST">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Code</span>
-    					<div><input id="programCode" name="programCode" type="text" value="${programCode}"></div>
+    					<div><input id="programCode" name="programCode" type="text" value="${programCode}" maxlength="5"></div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Name</span>
