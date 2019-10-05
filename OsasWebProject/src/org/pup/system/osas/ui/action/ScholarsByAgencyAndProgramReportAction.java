@@ -14,7 +14,7 @@ import org.pup.system.osas.core.manager.ScholarshipProgramManager;
 import org.pup.system.osas.exception.BusinessException;
 import org.pup.system.osas.report.ScholarsByAgencyAndProgramReport;
 import org.pup.system.osas.report.data.ScholarsByAgencyAndProgramReportData;
-
+	
 public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 		implements ServletResponseAware, ServletRequestAware {
 
@@ -54,7 +54,7 @@ public class ScholarsByAgencyAndProgramReportAction extends AbstractAction
 			} else {
 
 				ScholarsByAgencyAndProgramReport report = new ScholarsByAgencyAndProgramReport(imagePath,
-						scholarshipProgram.getScholarshipProgramName(), scholarsByAgencyAndProgramReportDataList,
+						scholarshipProgram.getScholarshipProgramName() + " - " + program, scholarsByAgencyAndProgramReportDataList,
 						(User) userSession.get(USER), false);
 	
 				response.setContentType("application/octet-stream");
