@@ -16,22 +16,19 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {	
 		
-		var errorMessage = '';
-		
 		if($('#scholarshipProgramName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Scholarship Program name can\'t be blank.";
+			$('#scholarshipProgramError').show();
+			$('#scholarshipProgramError').html("Scholarship Program name can\'t be blank.");
 		}
-		if (errorMessage == '') {
+		else if ($('#scholarshipProgramName').val() !== '')
+		{
+			$('#scholarshipProgramError').hide();
+		}
+		if ($('#scholarshipProgramName').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this scholarship program?", function() {
 				$("#editScholarshipProgramForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

@@ -80,36 +80,55 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {	
 		
-		var errorMessage = '';
-		
 		if($('#studentNumber').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Student number can\'t be blank.";
+			$('#studentNumberError').show();
+			$('#studentNumberError').html("Student Number can\'t be blank.");
+		}
+		else if($('#studentNumber').val() !== '')
+		{
+			$('#studentNumberError').hide();
 		}
 		if($('#firstName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "First can\'t be blank.";
+			$('#firstNameError').show();
+			$('#firstNameError').html("First name can\'t be blank.");
+		}
+		else if($('#firstName').val() !== '')
+		{
+			$('#firstNameError').hide();
 		}
 		if($('#lastName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Last name can\'t be blank.";
-			}
-		if (errorMessage == '') {
+			$('#lastNameError').show();
+			$('#lastNameError').html("Last name can\'t be blank.");
+		}
+		else if($('#lastName').val() !== '')
+		{
+			$('#lastNameError').hide();
+		}
+		if($('#year').val() === '')
+		{
+			$('#yearError').show();
+			$('#yearError').html("Year can\'t be blank.");
+		}
+		else if($('#year').val() !== '')
+		{
+			$('#yearError').hide();
+		}
+		if($('#section').val() === '')
+		{
+			$('#sectionError').show();
+			$('#sectionError').html("Section can\'t be blank.");
+		}
+		else if($('#section').val() !== '')
+		{
+			$('#sectionError').hide();
+		}
+		if ($('#studentNumber').val() !== '' && $('#firstName').val() !== '' && $('#lastName').val() !== '' && $('#year').val() !== '' && $('#section').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this member?", function() {
 				$("#editMemberForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});	
 });

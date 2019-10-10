@@ -15,22 +15,21 @@ $(document).ready(function() {
     });
 	
 	$('#submitButton').click(function(event) {
-		var errorMessage = '';
 	
-		if($('#scholarshipProgram').val() === '')
+		if($('#scholarshipProgramName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Scholarship Program Name can\'t be blank.";
+			$('#scholarshipProgramError').show();
+			$('#scholarshipProgramError').html("Scholarship Program name can\'t be blank.");
 		}
-		if (errorMessage == '') {
+		else if($('#scholarshipProgramName').val() !== '')
+		{
+			$('#scholarshipProgramError').hide();
+		}
+		
+		if ($('#scholarshipProgramName').val() !== '') {
 			popUpOkCancel("Do you want to add this scholarship program?", function() {
 				$("#scholarshipProgramForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 });

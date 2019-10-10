@@ -70,7 +70,10 @@
 					<input type="hidden" name="scholarshipProgramId" value="${scholarshipProgramId}" />
     				<div class="rightPaneElement withTitle">
     					<span class="title">Scholarship Qualification Name</span>
-    					<div><input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualificationName}"></div>
+    					<div>
+    						<input id="scholarshipQualificationName" name="scholarshipQualificationName" type="text" value="${scholarshipQualificationName}">
+    						<p class="error" id="scholarshipQualificationNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Requires Yearly Check</span>

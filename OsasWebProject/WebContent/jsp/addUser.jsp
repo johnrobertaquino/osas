@@ -66,20 +66,31 @@
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span class="title">First Name</span>
-	    					<div><input id="firstName" name="firstName" type="text" value="${firstName}"></div>
+	    					<div>
+	    						<input id="firstName" name="firstName" type="text" value="${firstName}">
+	    						<p class="error" id="firstNameError"></p>
+	    					</div>
 	    				</div>
 	    				<div>
 	    					<span class="title">Middle Name</span>
-	    					<div><input id="middleName" name="middleName" type="text" value="${middleName}"></div>
+	    					<div>
+	    						<input id="middleName" name="middleName" type="text" value="${middleName}">
+	    					</div>
 	    				</div>
 	    				<div>
 	    					<span class="title">Last Name</span>
-	    			    	<div><input id="lastName" name="lastName" type="text" value="${lastName}"></div>
+	    			    	<div>
+	    			    		<input id="lastName" name="lastName" type="text" value="${lastName}">
+	    			    		<p class="error" id="lastNameError"></p>
+	    			    	</div>
 	    			    </div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Birthday</span>
-    					<div><input type="text" name="birthday" id="birthday" value="${birthday}"></div>
+    					<div>
+    						<input type="text" name="birthday" id="birthday" value="${birthday}">
+    						<p class="error" id="birthdayError"></p>
+    					</div>
     					<script type="text/javascript">
     						$(document).ready(function() {
     							$("#birthday").datepicker({ maxDate: 0});
@@ -89,11 +100,17 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
+    					<div>
+    						<input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}">
+    						<p class="error" id="contactNumberError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Position</span>
-    					<div><input id="position" name="position" type="text" value="${position}"></div>
+    					<div>
+    						<input id="position" name="position" type="text" value="${position}">
+    						<p class="error" id="positionError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Role</span>
@@ -105,6 +122,7 @@
 		    				<input type="checkbox" id="usCheck" name="roleReferenceCodeList" value="US" <s:if test="user.user">checked</s:if>>
 		    				<span>User</span>
 		    			</div>
+		    			<p class="error" id="roleError"></p>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

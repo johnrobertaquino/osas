@@ -83,16 +83,18 @@
 				<tr>
 					<th>Agency name</th>
 					<th>Address</th>
-					<th>Contact number</th>
 					<th>Contact person</th>
+					<th>Position</th>
+					<th>Contact number</th>
 					<th class="tdAction">Action</th>
 				</tr>
 				<s:iterator value="agencyList" status="rowStatus" var="agency">
 					<tr <s:if test="#rowStatus.odd == true ">class="odd"</s:if>>
 						<td><s:property value="agencyName" /></td>
 						<td><s:property value="address" /></td>
-						<td><s:property value="contactNumber" /></td>
 						<td><s:property value="contactPerson" /></td>
+						<td><s:property value="position" /></td>
+						<td><s:property value="contactNumber" /></td>
 						<td class="tdAction">
 							<div class="w3-dropdown-click tableMenu">
   								<div class="tableMenuButton">

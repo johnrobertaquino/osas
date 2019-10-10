@@ -38,29 +38,38 @@ $(document).ready(function() {
     });
 	
 	$('#submitButton').click(function(event) {
-		var errorMessage = '';
 		
 		if($('#programCode').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program code can\'t be blank.";
+			$('#programCodeError').show();
+			$('#programCodeError').html("Program code can\'t be blank.")
+		}
+		else if($('#programCode').val() !== '')
+		{
+			$('#programCodeError').hide();			
 		}
 		if($('#programName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program name can\'t be blank.";
+			$('#programNameError').show();
+			$('#programNameError').html("Program name can\'t be blank.")
 		}
-		if (errorMessage == '') {
+		else if($('#programName').val() !== '')
+		{
+			$('#programNameError').hide();			
+		}
+		if($('#highestYearLevel').val() === '')
+		{
+			$('#highestYearLevelError').show();
+			$('#highestYearLevelError').html("Highest Year Level can\'t be blank.")
+		}
+		else if($('#highestYearLevel').val() !== '')
+		{
+			$('#highestYearLevelError').hide();			
+		}
+		if ($('#programCode').val() !== '' && $('#programName').val() !== '' && $('#highestYearLevel').val() !== '') {
 			popUpOkCancel("Do you want to add this program?", function() {
 				$("#programForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

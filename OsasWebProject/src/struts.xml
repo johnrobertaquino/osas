@@ -296,7 +296,7 @@
 		<action name="displayEditScholarshipQualification" class="org.pup.system.osas.ui.action.DisplayEditScholarshipQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/editScholarshipQualification.jsp</result>
-			<result name="error" type="chain">home</result>
+			<result name="error" type="chain">displayScholarshipProgramList</result>
 		</action>
 		
 		<action name="editScholarshipQualification" class="org.pup.system.osas.ui.action.EditScholarshipQualificationAction">
@@ -378,6 +378,7 @@
 		<action name="displayAddScholar" class="org.pup.system.osas.ui.action.DisplayAddScholarAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addScholar.jsp</result>
+			<result name="error" type="chain">displayScholarList</result>  
 		</action> 
 		
 		<action name="addScholar" class="org.pup.system.osas.ui.action.AddScholarAction">
@@ -416,6 +417,7 @@
 		<action name="displayOrganizationList" class="org.pup.system.osas.ui.action.DisplayOrganizationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/organizationList.jsp</result> 
+			<result name="error" type="chain">home</result>  
 		</action>		
 			
 		<action name="displayAddOrganization" class="org.pup.system.osas.ui.action.DisplayAddOrganizationAction">
@@ -460,11 +462,13 @@
 		<action name="displayMemberList" class="org.pup.system.osas.ui.action.DisplayMemberListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/memberList.jsp</result> 
+			<result name="error" type="chain">home</result>  
 		</action>	
 		
 		<action name="displayAddMember" class="org.pup.system.osas.ui.action.DisplayAddMemberAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addMember.jsp</result>
+			<result name="error" type="chain">displayMemberList</result>  
 		</action> 
 		
 		<action name="addMember" class="org.pup.system.osas.ui.action.AddMemberAction">
@@ -503,6 +507,7 @@
 		<action name="displayOrganizationRequirementList" class="org.pup.system.osas.ui.action.DisplayOrganizationRequirementListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/organizationRequirementList.jsp</result>
+			<result name="error" type="chain">home</result>  
 		</action>
 		
 		<action name="displayEditOrganizationRequirement" class="org.pup.system.osas.ui.action.DisplayEditOrganizationRequirementAction">
@@ -527,6 +532,7 @@
 		<action name="displayAddOrganizationRequirement" class="org.pup.system.osas.ui.action.DisplayAddOrganizationRequirementAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addOrganizationRequirement.jsp</result>
+			<result name="error" type="chain">displayOrganizationRequirementList</result>  
 		</action>
 		
 		<action name="addOrganizationRequirement" class="org.pup.system.osas.ui.action.AddOrganizationRequirementAction">
@@ -546,11 +552,13 @@
 		<action name="displayOrganizationQualificationList" class="org.pup.system.osas.ui.action.DisplayOrganizationQualificationListAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/organizationQualificationList.jsp</result>
+			<result name="error" type="chain">displayOrganizationList</result>  
 		</action>
 		
 		<action name="displayAddOrganizationQualification" class="org.pup.system.osas.ui.action.DisplayAddOrganizationQualificationAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addOrganizationQualification.jsp</result>
+			<result name="error">/jsp/addMemberExcelFile.jsp</result>
 		</action>
 		
 		<action name="displayEditOrganizationQualification" class="org.pup.system.osas.ui.action.DisplayEditOrganizationQualificationAction">
@@ -599,6 +607,7 @@
 		<action name="displayAddMemberExcelFile" class="org.pup.system.osas.ui.action.DisplayAddMemberExcelFileAction">
 			<interceptor-ref name="userSessionStack"/>
 			<result name="success">/jsp/addMemberExcelFile.jsp</result>
+			<result name="error">/jsp/addMemberExcelFile.jsp</result>
 		</action>
 		
 		<!-- SCHOLARSHIP REPORT -->
@@ -630,6 +639,7 @@
 		
 		<!-- DOWNLOAD -->
 		<action name="download" class="org.pup.system.osas.ui.action.DownloadFileAction">
+		<interceptor-ref name="userSessionStack"/>
 		</action>
 		
 		<!-- REST WS -->

@@ -46,36 +46,29 @@ $(document).ready(function() {
 	    });
 	
 	$('#submitButton').click(function(event) {
-		var errorMessage = '';
-		
+	
 		if($('#organizationName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Organization name can\'t be blank.";
+			$('#organizationNameError').show();
+			$('#organizationNameError').html("Organization name can\'t be blank.")
 		}
-		if($('#organizationTypeCode').val() === '')
+		else if($('#organizationName').val() !== '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Organization Type can\'t be blank.";
+			$('#organizationNameError').hide();
 		}
-		if($('#adviser').val() === '')
+		if($('#description').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Adviser can\'t be blank.";
+			$('#descriptionError').show();
+			$('#descriptionError').html("Description can\'t be blank.");
 		}
-		if (errorMessage == '') {
+		else if($('#description').val() !== '')
+		{
+			$('#descriptionError').hide();
+		}
+		if ($('#organizationName').val() !== '' && $('#description').val() !== '') {
 			popUpOkCancel("Do you want to add this organization?", function() {
 				$("#organizationForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

@@ -27,7 +27,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyName='" + agencyName + "' AND SemTermId="+semTermId);  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, Position, ContactNumber, SemTermId FROM agency WHERE AgencyName='" + agencyName + "' AND SemTermId="+semTermId);  
 			
 			if (resultSet.next()) {
 				agency = new Agency();
@@ -35,6 +35,7 @@ public class AgencyDAO extends DAO {
 				agency.setAddress(resultSet.getString("Address"));
 				agency.setAgencyName(resultSet.getString("AgencyName"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
+				agency.setPosition(resultSet.getString("Position"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
 
 				SemTerm semTerm = new SemTerm();
@@ -61,7 +62,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE AgencyId=" + agencyId);  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, Position, ContactNumber, SemTermId FROM agency WHERE AgencyId=" + agencyId);  
 			
 			if (resultSet.next()) {
 				agency = new Agency();
@@ -69,6 +70,7 @@ public class AgencyDAO extends DAO {
 				agency.setAddress(resultSet.getString("Address"));
 				agency.setAgencyName(resultSet.getString("AgencyName"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
+				agency.setPosition(resultSet.getString("Position"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
 
 				SemTerm semTerm = new SemTerm();
@@ -92,12 +94,13 @@ public class AgencyDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, ContactNumber, SemTermId) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement("INSERT INTO agency(AgencyName, Address, ContactPerson, Position, ContactNumber, SemTermId) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, agency.getAgencyName());
 			statement.setString(2, agency.getAddress());
 			statement.setString(3, agency.getContactPerson());
-			statement.setString(4, agency.getContactNumber());
-			statement.setInt(5, agency.getSemTerm().getSemTermId());
+			statement.setString(4, agency.getPosition());
+			statement.setString(5, agency.getContactNumber());
+			statement.setInt(6, agency.getSemTerm().getSemTermId());
 			
 			statement.executeUpdate();
 			
@@ -127,7 +130,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactNumber, ContactPerson, SemTermId FROM agency WHERE SemTermId =" + semTermId);  
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, Position, ContactNumber, SemTermId FROM agency WHERE SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
 				if (agencyList == null) {
@@ -138,8 +141,9 @@ public class AgencyDAO extends DAO {
 				agency.setAgencyId(resultSet.getInt("AgencyId"));
 				agency.setAgencyName(resultSet.getString("AgencyName"));
 				agency.setAddress(resultSet.getString("Address"));
-				agency.setContactNumber(resultSet.getString("ContactNumber"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
+				agency.setPosition(resultSet.getString("Position"));
+				agency.setContactNumber(resultSet.getString("ContactNumber"));
 
 				SemTerm semTerm = new SemTerm();
 				semTerm.setSemTermId(resultSet.getInt("SemTermId"));
@@ -168,7 +172,7 @@ public class AgencyDAO extends DAO {
 			
 			statement = connection.createStatement(); 
 			
-			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, ContactNumber, SemTermId FROM agency WHERE (AgencyName LIKE '%"
+			resultSet = statement.executeQuery("SELECT AgencyId, AgencyName, Address, ContactPerson, Position, ContactNumber, SemTermId FROM agency WHERE (AgencyName LIKE '%"
 					+ agencySearchText + "%' OR Address LIKE '%" + agencySearchText + "%') AND SemTermId =" + semTermId);  
 			
 			while (resultSet.next()) {
@@ -181,6 +185,7 @@ public class AgencyDAO extends DAO {
 				agency.setAgencyName(resultSet.getString("AgencyName"));
 				agency.setAddress(resultSet.getString("Address"));
 				agency.setContactPerson(resultSet.getString("ContactPerson"));
+				agency.setPosition(resultSet.getString("Position"));
 				agency.setContactNumber(resultSet.getString("ContactNumber"));
 
 				SemTerm semTerm = new SemTerm();
@@ -205,12 +210,13 @@ public class AgencyDAO extends DAO {
 		try {
 			connection = getConnection();
 
-			statement = connection.prepareStatement("UPDATE agency SET AgencyName=?, Address=?, ContactPerson=?, ContactNumber=? WHERE AgencyId=?");
+			statement = connection.prepareStatement("UPDATE agency SET AgencyName=?, Address=?, ContactPerson=?, Position=?, ContactNumber=? WHERE AgencyId=?");
 			statement.setString(1, agency.getAgencyName());
 			statement.setString(2, agency.getAddress());
 			statement.setString(3, agency.getContactPerson());
-			statement.setString(4, agency.getContactNumber());
-			statement.setInt(5, agency.getAgencyId());
+			statement.setString(4, agency.getPosition());
+			statement.setString(5, agency.getContactNumber());
+			statement.setInt(6, agency.getAgencyId());
 			
 			statement.executeUpdate();
 		} catch (Exception e) {

@@ -71,12 +71,16 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Organization Code</span>
-    					<div><input id="organizationName" name="organizationName" type="text" value="${organizationName}"></div>
+    					<div>
+    						<input id="organizationName" name="organizationName" onclick="return IsEmpty();" type="text" value="${organizationName}" required pattern="\S+">
+    						<p class="error" id="organizationNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span class="title">Description</span>
 	    					<div><input id="description" name="description" type="text" value="${description}"></div>
+	    					<p class="error" id="descriptionError"></p>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
@@ -84,9 +88,10 @@
 	    				<div id="roleDiv">
 		    				<input type="radio" id="acadCheck" name="organizationTypeCode" value="A" <s:if test='organizationTypeCode == "A"'>checked</s:if>>
 		    				<span class="title">Academic</span>
-		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organizationTypeCode == "N"'>checked</s:if>>
+		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" checked <s:if test='organizationTypeCode == "N"'>checked</s:if>>
 		    				<span class="title">Non-Academic</span>
 		    			</div>
+		    				<p class="error" id="orgTypeError"></p>
     				</div>
     				<div class="rightPaneElement withTitle" id="programDiv" <s:if test='!(organizationTypeCode == "A")'>style="display: none"</s:if>>
     				<div>
@@ -102,7 +107,7 @@
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span class="title">Adviser</span>
-    					<div><input id="adviser" name="adviser" type="text"value="${adviser}"></div>
+    					<div><input id="adviser" name="adviser" type="text"value="${adviser}" required pattern="\S+"></div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

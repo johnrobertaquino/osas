@@ -66,19 +66,38 @@
 				<form class="addUserContent" id="agencyForm" action="addAgency" method="POST">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Agency Name</span>
-    					<div><input id="agencyName" name="agencyName" type="text" value="${agencyName}" maxlength="50"></div>
+    					<div>
+    						<input id="agencyName" name="agencyName" type="text" value="${agencyName}" maxlength="50">
+    						<p class="error" id="agencyNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Address</span>
-    					<div><input id="address" name="address" type="text" value="${address}" maxlength="100"></div>
+    					<div>
+    						<input id="address" name="address" type="text" value="${address}" maxlength="100">
+    						<p class="error" id="addressError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Person</span>
-    					<div><input id="contactPerson" name="contactPerson" type="text" value="${contactPerson}" maxlength="50"></div>
+    					<div>
+    						<input id="contactPerson" name="contactPerson" type="text" value="${contactPerson}" maxlength="50">
+    						<p class="error" id="contactPersonError"></p>
+    					</div>
+    				</div>
+    				<div class="rightPaneElement withTitle">
+    					<span class="title">Position</span>
+    					<div>
+    						<input id="position" name="position" type="text" value="${position}" maxlength="50">
+    						<p class="error" id="contactPersonError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}"></div>
+    					<div>
+    						<input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${contactNumber}">
+    						<p class="error" id="contactNumberError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

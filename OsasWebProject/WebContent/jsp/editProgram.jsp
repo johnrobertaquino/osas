@@ -66,11 +66,17 @@
 					<input name="programCode" type="hidden" value="${program.programCode}" maxlength="5">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Name</span>
-    					<div><input id="programName" name="programName" type="text" value="${program.programName}"></div>
+    					<div>
+    						<input id="programName" name="programName" type="text" value="${program.programName}">
+    						<p class="error" id="programNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Highest Year Level</span>
-    					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${program.highestYearLevel}"></div>
+    					<div>
+    						<input id="highestYearLevel" name="highestYearLevel" type="text" value="${program.highestYearLevel}"  maxlength="1">
+    						<p class="error" id="highestYearLevelError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

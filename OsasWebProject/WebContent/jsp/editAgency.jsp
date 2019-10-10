@@ -66,19 +66,37 @@
 					<input name="agencyId" type="hidden" value="${agency.agencyId}">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Agency Name</span>
-    					<div><input id="agencyName" name="agencyName" type="text" value="${agency.agencyName}"></div>
+    					<div>
+    						<input id="agencyName" name="agencyName" type="text" value="${agency.agencyName}">
+    						<p class="error" id="agencyNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Address</span>
-    					<div><input id="address" name="address" type="text" value="${agency.address}"></div>
+    					<div>
+    						<input id="address" name="address" type="text" value="${agency.address}">
+    							<p class="error" id="addressError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Person</span>
-    					<div><input id="contactPerson" name="contactPerson" type="text" value="${agency.contactPerson}"></div>
+    					<div>
+    						<input id="contactPerson" name="contactPerson" type="text" value="${agency.contactPerson}">
+    						<p class="error" id="contactPersonError"></p>
+    					</div>
+    				</div>
+    				 <div class="rightPaneElement withTitle">
+    					<span class="title">Position</span>
+    					<div>
+    						<input id="position" name="position" type="text" value="${agency.position}">
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}" placeholder="+63"></div>
+    					<div>
+    						<input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${agency.contactNumber}">
+    						<p class="error" id="contactNumberError"></p>
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
