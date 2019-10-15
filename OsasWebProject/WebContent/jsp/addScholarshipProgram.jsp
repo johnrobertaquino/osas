@@ -76,7 +76,10 @@
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Scholarship Program Name</span>
-    					<div><input id="scholarshipProgram" name="scholarshipProgramName" type="text" value="${scholarshipProgramName}"></div>
+    					<div>
+    						<input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgramName}">
+    						<p class="error" id="scholarshipProgramError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

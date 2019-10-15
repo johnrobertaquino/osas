@@ -74,12 +74,18 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Organization Code</span>
-    					<div><input id="organizationName" name="organizationName" type="text" value="${organization.organizationName}"></div>
+    					<div>
+    						<input id="organizationName" name="organizationName" type="text" value="${organization.organizationName}">
+    						<p class="error" id="organizationNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 	    				<div>
 	    					<span class="title">Description</span>
-	    					<div><input id="description" name="description" type="text" value="${organization.description}"></div>
+	    					<div>
+	    						<input id="description" name="description" type="text" value="${organization.description}">
+	    						<p class="error" id="descriptionError"></p>
+	    					</div>
 	    				</div>
 	    			</div>
     				<div class="rightPaneElement withTitle">
@@ -90,6 +96,7 @@
 		    				<input type="radio" id="nonAcadCheck" name="organizationTypeCode" value="N" <s:if test='organization.organizationType.organizationTypeCode == "N"'>checked</s:if>>
 		    				<span class="title">Non-Academic</span>
 		    			</div>
+		    				<p class="error" id="orgTypeError"></p>
     				</div>
     				<div class="rightPaneElement withTitle">
     				<div id="programDiv" <s:if test='organization.organizationType.organizationTypeCode == "N"'>style="display: none;"</s:if>>
@@ -105,7 +112,9 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Adviser</span>
-    					<div><input id="adviser" name="adviser" type="text" value="${organization.adviser}"></div>
+    					<div>
+    						<input id="adviser" name="adviser" type="text" value="${organization.adviser}">
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">

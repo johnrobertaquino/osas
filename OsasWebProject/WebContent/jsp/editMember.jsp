@@ -88,26 +88,37 @@
 					</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Student Number</span>
-    					<div><input id="studentNumber" name="studentNumber" type="text" value="${member.studentNumber}"></div>
+    					<div>
+    						<input id="studentNumber" name="studentNumber" type="text" value="${member.studentNumber}">
+    						<p class="error" id="studentNumberError"></p>	
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">First Name</span>
-    					<div><input id="firstName" name="firstName" type="text" value="${member.firstName}"></div>
+    					<div>
+    						<input id="firstName" name="firstName" type="text" value="${member.firstName}">
+    						<p class="error" id="firstNameError"></p>	
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
 					<span class="title">Middle Name</span>
-    					<div><input id="middleName" name="middleName" type="text" value="${member.middleName}"></div>
+    					<div>
+    					<input id="middleName" name="middleName" type="text" value="${member.middleName}">
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
 					<span class="title">Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text" value="${member.lastName}"></div>
+    					<div>
+    						<input id="lastName" name="lastName" type="text" value="${member.lastName}">
+    						<p class="error" id="lastNameError"></p>	
+    					</div>
     				</div>
    					<div class="rightPaneElement withTitle">
     					<span class="title">Gender</span>
 	    				<div id="roleDiv">
-		    				<input type="radio" id="gender" name="gender" value="M"  <s:if test='member.gender == "M"'>checked</s:if>>
+		    				<input type="radio" id="gender" name="gender" value="M" checked <s:if test='member.gender == "M"'>checked</s:if>>
 		    				<span class="title">Male</span>
 		    				<input type="radio" id="gender" name="gender" value="F"  <s:if test='member.gender == "F"'>checked</s:if>>
 		    				<span class="title">Female</span>
@@ -149,15 +160,24 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Year</span>
-    					<div><input id="year" name="year" type="text" value="${member.year}"></div>
+    					<div>
+    						<input id="year" name="year" type="text" value="${member.year}" maxlength="1">
+    						<p class="error" id="yearError"></p>	
+    					</div>
     				</div>
     			   	<div class="rightPaneElement withTitle">
     					<span class="title">Section</span>
-    					<div><input id="section" name="section" type="text" value="${member.section}"></div>
+    					<div>
+    						<input id="section" name="section" type="text" value="${member.section}"  maxlength="1">
+    						<p class="error" id="sectionError"></p>	
+    					</div>
     				</div>
     				 <div class="rightPaneElement withTitle">
     					<span class="title">Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${member.contactNumber}" placeholder="+63"></div>
+    					<div>
+    						<input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${member.contactNumber}">
+    						<p class="error" id="contactNumberError"></p>	
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

@@ -66,7 +66,10 @@
 					<input name="scholarshipProgramId" type="hidden" value="${scholarshipProgram.scholarshipProgramId}">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Scholarship Program Name</span>
-    					<div><input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgram.scholarshipProgramName}"></div>
+    					<div>
+    						<input id="scholarshipProgramName" name="scholarshipProgramName" type="text" value="${scholarshipProgram.scholarshipProgramName}">
+    						<p class="error" id="scholarshipProgramError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

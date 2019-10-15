@@ -68,21 +68,32 @@
 					<input name="scholarId" type="hidden" value="${scholar.scholarId}">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Student Number</span>
-    					<div><input id="studentNumber" name="studentNumber" type="text" value="${scholar.studentNumber}"></div>
+    					<div>
+    						<input id="studentNumber" name="studentNumber" type="text" value="${scholar.studentNumber}">
+    					    <p class="error" id="studentNumberError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">First Name</span>
-    					<div><input id="firstName" name="firstName" type="text" value="${scholar.firstName}"></div>
+    					<div>
+    						<input id="firstName" name="firstName" type="text" value="${scholar.firstName}">
+    					    <p class="error" id="firstNameError"></p>
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
 					<span class="title">Middle Name</span>
-    					<div><input id="middleName" name="middleName" type="text" value="${scholar.middleName}"></div>
+    					<div>
+    						<input id="middleName" name="middleName" type="text" value="${scholar.middleName}">
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
 					<span class="title">Last Name</span>
-    					<div><input id="lastName" name="lastName" type="text" value="${scholar.lastName}"></div>
+    					<div>
+    						<input id="lastName" name="lastName" type="text" value="${scholar.lastName}">
+    					    <p class="error" id="lastNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Gender</span>
@@ -95,12 +106,18 @@
     				</div>
     				<div class="rightPaneElement withTitle">
 					<span class="title">Email</span>
-    					<div><input id="email" name="email" type="text" value="${scholar.email}"></div>
+    					<div>
+    						<input id="email" name="email" type="text" value="${scholar.email}">
+    				   		 <p class="error" id="emailError"></p>
+    					</div>
     				</div>
     				
     				<div class="rightPaneElement withTitle">
     					<span class="title">Contact Number</span>
-    					<div><input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${scholar.contactNumber}" placeholder="+63"></div>
+    					<div>
+    						<input id="contactNumber" name="contactNumber" type="text" maxlength="11" value="${scholar.contactNumber}">
+    					    <p class="error" id="contactNumberError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program</span>
@@ -114,11 +131,17 @@
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Year</span>
-    					<div><input id="year" name="year" type="text" value="${scholar.year}"></div>
+    					<div>
+    						<input id="year" name="year" type="text" value="${scholar.year}" maxlength="1">
+    					    <p class="error" id="yearError"></p>
+    					</div>
     				</div>
     			   	<div class="rightPaneElement withTitle">
     					<span class="title">Section</span>
-    					<div><input id="section" name="section" type="text" value="${scholar.section}"></div>
+    					<div>
+    						<input id="section" name="section" type="text" value="${scholar.section}" maxlength="1">
+    					    <p class="error" id="sectionError"></p>
+    					</div>
     				</div>
     			    <div class="rightPaneElement withTitle">
     					<span class="title">GWA</span>

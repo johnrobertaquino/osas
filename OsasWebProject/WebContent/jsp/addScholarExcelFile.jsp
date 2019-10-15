@@ -75,7 +75,10 @@
 						</div>
 					</div>
 					<div><br>
-						<input type="file" name="file" id="file">
+						<div>
+							<input type="file" name="file" id="file">
+						</div>
+						<br><p class="error" id="fileError"></p>
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

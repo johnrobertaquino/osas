@@ -39,29 +39,28 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {	
 		
-		var errorMessage = '';
-		
-		if($('#programCode').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program code can\'t be blank.";
-		}
 		if($('#programName').val() === '')
 		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program name can\'t be blank.";
+			$('#programNameError').show();
+			$('#programNameError').html("Program name can\'t be blank.")
 		}
-		if (errorMessage == '') {
+		else if($('#programName').val() !== '')
+		{
+			$('#programNameError').hide();			
+		}
+		if($('#highestYearLevel').val() === '')
+		{
+			$('#highestYearLevelError').show();
+			$('#highestYearLevelError').html("Highest Year Level can\'t be blank.")
+		}
+		else if($('#highestYearLevel').val() !== '')
+		{
+			$('#highestYearLevelError').hide();			
+		}
+		if ($('#programCode').val() !== '' && $('#programName').val() !== '' && $('#highestYearLevel').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this program?", function() {
 				$("#editProgramForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

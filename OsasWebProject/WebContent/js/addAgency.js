@@ -27,43 +27,47 @@ $(document).ready(function() {
 
 	
 	$('#submitButton').click(function(event) {
-		var errorMessage = '';
 		
 		if($('#agencyName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Agency name can\'t be blank.";
+			$('#agencyNameError').show();
+			$('#agencyNameError').html("Agency name can\'t be blank.")
+		}
+		else if($('#agencyName').val() !== '')
+		{
+			$('#agencyNameError').hide();			
 		}
 		if($('#address').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Address can\'t be blank.";
+			$('#addressError').show();
+			$('#addressError').html("Addres can\'t be blank.")
+		}
+		else if ($('#address').val() !== '')
+		{
+			$('#addressError').hide();	
 		}
 		if($('#contactPerson').val() === '')
 		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Contact Person can\'t be blank.";
+			$('#contactPersonError').show();
+			$('#contactPersonError').html("Contact Person can\'t be blank.")
+		}
+		else if ($('#contactPerson').val() !== '')
+		{
+			$('#contactPersonError').hide();	
 		}
 		if($('#contactNumber').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Contact Number can\'t be blank.";
+			$('#contactNumberError').show();
+			$('#contactNumberError').html("Contact Number can\'t be blank.")
 		}
-		if (errorMessage == '') {
+		else if ($('#contactNumber').val() !== '')
+		{
+			$('#contactNumberError').hide();	
+		}
+		if ($('#agencyName').val() !== '' && $('#address').val() !== '' && $('#contactPerson').val() !== '' && $('#contactNumber').val() !== '') {
 			popUpOkCancel("Do you want to add this agency?", function() {
 				$("#agencyForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

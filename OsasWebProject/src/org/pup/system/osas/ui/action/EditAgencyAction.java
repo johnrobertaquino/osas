@@ -22,6 +22,8 @@ public class EditAgencyAction extends AbstractAction {
 	
 	private String contactPerson;
 	
+	private String position;
+	
 	private String contactNumber;
 	
 	@Override
@@ -47,6 +49,7 @@ public class EditAgencyAction extends AbstractAction {
 				agency.setAgencyName(agencyName);
 				agency.setAddress(address);
 				agency.setContactPerson(contactPerson);
+				agency.setPosition(position);
 				agency.setContactNumber(contactNumber);
 				
 				agencyManager.saveAgency(agency);
@@ -123,6 +126,20 @@ public class EditAgencyAction extends AbstractAction {
 	 */
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	/**
+	 * @return the position
+	 */
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * @param position the position to set
+	 */
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 

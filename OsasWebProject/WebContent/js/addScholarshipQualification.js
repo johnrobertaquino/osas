@@ -19,12 +19,14 @@ $(document).ready(function() {
 	
 		if($('#scholarshipQualificationName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Scholarship Qualification Name can\'t be blank.";
+			$('#scholarshipQualificationNameError').show();
+			$('#scholarshipQualificationNameError').html("Scholarship Qualification Name can\'t be blank.");
 		}
-		if (errorMessage == '') {
+		else if ($('#scholarshipQualificationName').val() !== '')
+		{
+			$('#scholarshipQualificationNameError').hide();
+		}
+		if ($('#scholarshipQualificationName').val() !== '') {
 			popUpOkCancel("Do you want to add this scholarship qualification?", function() {
 				$("#scholarshipQualificationForm").submit();
 			});
