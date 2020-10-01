@@ -9,19 +9,18 @@ $(document).ready(function() {
 		
 		if ($('#file').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Please select an excel file.";
+			$('#fileError').show();
+			$('#fileError').html("Please select an excel file.")
+		}
+		if ($('#file').val() !== '')
+		{
+			$('#fileError').hide();
 		}
 		
-		if (errorMessage == '') {
+		if ($('#file').val() !== '') {
 			popUpOkCancel("Do you want to add the member/s from this file?", function() {
 				$("#memberExcelFileForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

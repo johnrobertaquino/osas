@@ -97,35 +97,14 @@ $(document).ready(function() {
 
 	$('#submitButton').click(function(event) {	
 		
-		var errorMessage = '';
-		
 		if($('#studentNumber').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Student number can\'t be blank.";
+			$('#studentNumberError').show();
+			$('#studentNumberError').html("Student Number can\'t be blank.")
 		}
-		if($('#firstName').val() === '')
+		else if($('#studentNumber').val() !== '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "First name can\'t be blank.";
-		}
-		if($('#lastName').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Last name can\'t be blank.";
-		}
-		if($('#year').val() === '')
-		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Year can\'t be blank.";
+			$('#studentNumberError').hide();
 		}
 		
 		var $result = $("#result");
@@ -133,32 +112,61 @@ $(document).ready(function() {
 		$result.text("");
 
 		if (validateEmail(email)) {
+			$('#emailError').hide();
 		} else {
-			if (errorMessage !== '') {
-			errorMessage = errorMessage + "<br/>";
-				}
-			errorMessage = errorMessage + "You entered invalid email address.";
+			$('#emailError').show();
+			$('#emailError').html("You entered invalid email address.")
 		}
 			
+		if($('#firstName').val() === '')
+		{
+			$('#firstNameError').show();
+			$('#firstNameError').html("First name can\'t be blank.")
+		}
+		else if($('#firstName').val() !== '')
+		{
+			$('#firstNameError').hide();
+		}
+		if($('#lastName').val() === '')
+		{
+			$('#lastNameError').show();
+			$('#lastNameError').html("Last name can\'t be blank.")
+		}
+		else if($('#lastName').val() !== '')
+		{
+			$('#lastNameError').hide();
+		}
+		if($('#contactNumber').val() === '')
+		{
+			$('#contactNumberError').show();
+			$('#contactNumberError').html("Contact number can\'t be blank.")
+		}
+		else if($('#contactNumber').val() !== '')
+		{
+			$('#contactNumberError').hide();
+		}
+		if($('#year').val() === '')
+		{
+			$('#yearError').show();
+			$('#yearError').html("Year can\'t be blank.")
+		}
+		else if($('#year').val() !== '')
+		{
+			$('#yearError').hide();
+		}
 		if($('#section').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Section can\'t be blank.";
+			$('#sectionError').show();
+			$('#sectionError').html("Section can\'t be blank.")
 		}
-		if (errorMessage == '') {
-			popUpOkCancel("Do you want to add this scholar?", function() {
-				$("#scholarForm").submit();
-			});
+		else if($('#section').val() !== '')
+		{
+			$('#sectionError').hide();
 		}
-		if (errorMessage == '') {
+		if ($('#studentNumber').val() !== '' && $('#firstName').val() !== '' && $('#contactNumber').val() !== '' && validateEmail(email) && $('#lastName').val() !== '' && $('#year').val() !== '' && $('#section').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this scholar?", function() {
 				$("#editScholarForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

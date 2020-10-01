@@ -53,6 +53,11 @@ body {
   opacity: 1;
 }
 
+.error {
+	color: red;
+	margin: -3px 2px 15px 0px;
+}
+
 input {
  	outline:none;
 }

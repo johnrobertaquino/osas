@@ -17,6 +17,8 @@ public class AddAgencyAction extends AbstractAction {
 	
 	private String address;
 	
+	private String position;
+	
 	private String contactPerson;
 	
 	private String contactNumber;
@@ -42,6 +44,7 @@ public class AddAgencyAction extends AbstractAction {
 				agency.setAgencyName(agencyName);
 				agency.setAddress(address);
 				agency.setContactPerson(contactPerson);
+				agency.setPosition(position);
 				agency.setContactNumber(contactNumber);
 				agency.setSemTerm(getCurrentActiveTerm());
 				agencyManager.insertAgency(agency);
@@ -91,5 +94,19 @@ public class AddAgencyAction extends AbstractAction {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	/**
+	 * @return the position
+	 */
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * @param position the position to set
+	 */
+	public void setPosition(String position) {
+		this.position = position;
 	}
 }

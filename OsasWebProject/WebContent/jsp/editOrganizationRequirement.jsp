@@ -70,7 +70,10 @@
   					<input type="hidden" name="organizationId" value="${organizationId}" />
     				<div class="rightPaneElement withTitle">
     					<span class="title">Organization Requirement Name</span>
-    					<div><input id="organizationRequirementName" name="organizationRequirementName" type="text" value="${organizationRequirement.organizationRequirementName}"></div>
+    					<div>
+    						<input id="organizationRequirementName" name="organizationRequirementName" type="text" value="${organizationRequirement.organizationRequirementName}">
+    						<p class="error" id="organizationRequirementNameError"></p>
+    					</div>
     				</div>
     			 	<div class="rightPaneElement withTitle">
     					<span class="title">Requires Yearly Check</span>

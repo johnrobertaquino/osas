@@ -73,63 +73,71 @@ $(document).ready(function() {
 			}
         });
 		
-		var errorMessage = '';
-		
 		if (selectedRoleCount > 1 && isUserRoleSelected) {
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Administrator/Approver role can't be selected if User role is already selected.";
+			$('#roleError').show();
+			$('#roleError').html("Administrator/Approver role can't be selected if User role is already selected.");
+		}
+		else if (!(selectedRoleCount > 1 && isUserRoleSelected)) {
+			$('#roleError').hide();
 		}
 		if($('#firstName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "First name can\'t be blank.";
+			$('#firstNameError').show();
+			$('#firstNameError').html("First name can\'t be blank.");
+		}
+		else if($('#firstName').val() !== '')
+		{
+			$('#firstNameError').hide();
 		}
 		if($('#lastName').val() === '')
 		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Last name can\'t be blank.";
+			$('#lastNameError').show();
+			$('#lastNameError').html("Last name can\'t be blank.");
+		}
+		else if($('#lastName').val() !== '')
+		{
+			$('#lastNameError').hide();
 		}
 		if($('#birthday').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Birthday can\'t be blank.";
+			$('#birthdayError').show();
+			$('#birthdayError').html("Birthday can\'t be blank.");
+		}
+		else if($('#birthday').val() !== '')
+		{
+			$('#birthdayError').hide();
 		}
 		if($('#contactNumber').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Contact Number can\'t be blank.";
+			$('#contactNumberError').show();
+			$('#contactNumberError').html("Contact number can\'t be blank.");
+		}
+		else if($('#contactNumber').val() !== '')
+		{
+			$('#contactNumberError').hide();
 		}
 		if($('#position').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Position can\'t be blank.";
+			$('#positionError').show();
+			$('#positionError').html("Position can\'t be blank.");
+		}
+		else if($('#position').val() !== '')
+		{
+			$('#positionError').hide();
 		}
 		if(selectedRoleCount === 0)
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "No User role selected.";
+			$('#roleError').show();
+			$('#roleError').html("No User role selected.");
 		}
-		if (errorMessage == '') {
+		else if(selectedRoleCount !== 0)
+		{
+			$('#fileError').hide();
+		}
+		if (!(selectedRoleCount > 1 && isUserRoleSelected) && $('#firstName').val() !== '' && $('#lastName').val() !== '' && $('#birthday').val() !== '' && $('#contactNumber').val() !== '' && $('#position').val() !== '' && selectedRoleCount !== 0) {
 			popUpOkCancel("Do you want to add this user?", function() {
 				$("#addUserForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

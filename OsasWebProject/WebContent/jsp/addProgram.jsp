@@ -66,15 +66,24 @@
 				<form class="addUserContent" id="programForm" action="addProgram" method="POST">
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Code</span>
-    					<div><input id="programCode" name="programCode" type="text" value="${programCode}" maxlength="5"></div>
+    					<div>
+    						<input id="programCode" name="programCode" type="text" value="${programCode}" maxlength="5">
+    						<p class="error" id="programCodeError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Program Name</span>
-    					<div><input id="programName" name="programName" type="text" value="${programName}"></div>
+    					<div>
+    						<input id="programName" name="programName" type="text" value="${programName}">
+    						<p class="error" id="programNameError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
     					<span class="title">Highest Year Level</span>
-    					<div><input id="highestYearLevel" name="highestYearLevel" type="text" value="${highestYearLevel}"  maxlength="1"></div>
+    					<div>
+    						<input id="highestYearLevel" name="highestYearLevel" type="text" value="${highestYearLevel}"  maxlength="1">
+    						<p class="error" id="highestYearLevelError"></p>
+    					</div>
     				</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">

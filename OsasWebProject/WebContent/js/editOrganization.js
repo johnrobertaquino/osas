@@ -44,44 +44,29 @@ $(document).ready(function() {
 	 });
 	
 	$('#submitButton').click(function(event) {	
-		
-		var errorMessage = '';
-		
+
 		if($('#organizationName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Organization name can\'t be blank.";
+			$('#organizationNameError').show();
+			$('#organizationNameError').html("Organization name can\'t be blank.")
 		}
-		if($('#organizationTypeCode').val() === '')
+		else if($('#organizationName').val() !== '')
 		{
-			if (errorMessage != '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Organization Type can\'t be blank.";
+			$('#organizationNameError').hide();
 		}
-		if($('#program').val() === '')
+		if($('#description').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Program can\'t be blank.";
+			$('#descriptionError').show();
+			$('#descriptionError').html("Description can\'t be blank.");
 		}
-		if($('#adviser').val() === '')
+		else if($('#description').val() !== '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Adviser can\'t be blank.";
+			$('#descriptionError').hide();
 		}
-		if (errorMessage == '') {
+		if ($('#organizationName').val() !== '' && $('#description').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this organization?", function() {
 				$("#editOrganizationForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

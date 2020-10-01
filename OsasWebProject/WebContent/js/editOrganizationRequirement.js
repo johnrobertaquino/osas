@@ -16,22 +16,15 @@ $(document).ready(function() {
 	
 	$('#submitButton').click(function(event) {	
 		
-		var errorMessage = '';
-		
-		if($('#OrganizationRequirementName').val() === '')
+		if($('#organizationRequirementName').val() === '')
 		{
-			if (errorMessage !== '') {
-				errorMessage = errorMessage + "<br/>";
-			}
-			errorMessage = errorMessage + "Organization Requirement name can\'t be blank.";
+			$('#organizationRequirementNameError').show();
+			$('#organizationRequirementNameError').html("Organization Requirement name can\'t be blank.")
 		}
-		if (errorMessage == '') {
+		if ($('#organizationRequirementName').val() !== '') {
 			popUpOkCancel("Do you want to save changes to this organization requirement?", function() {
 				$("#editOrganizationRequirementForm").submit();
 			});
-		}
-		else {
-			popUp(errorMessage);
 		}
 	});
 	

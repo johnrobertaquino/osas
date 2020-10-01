@@ -11,6 +11,8 @@ public class Agency {
 	private String contactPerson;
 	
 	private String contactNumber;
+	
+	private String position;
 
 	private SemTerm semTerm;
 	
@@ -66,6 +68,20 @@ public class Agency {
 	 */
 	public void setSemTerm(SemTerm semTerm) {
 		this.semTerm = semTerm;
+	}
+
+	/**
+	 * @return the position
+	 */
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * @param position the position to set
+	 */
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 }

@@ -59,7 +59,7 @@
 	<div id="addMemberContentBody" class="featureContent">
 		<div id="contentBodyLeftPane">
 			<div id="icon"><img src="images/organizationIcon.png"/></div>
-			<div id="title">ADD<br>OFFICER<br> via EXCEL FILE</div>
+			<div id="title">ADD<br>MEMBER<br> via EXCEL FILE</div>
 		</div>
 		<div id="contentBodyRightPane">
 			<div id="rightPaneContentHolder">
@@ -75,7 +75,10 @@
 						</div>
 					</div>
 					<div><br>
-						<input type="file" name="file">
+						<div>
+							<input type="file" name="file" id="file">
+						</div>
+						<br><p class="error" id="fileError"></p>
 					</div>
     				<div class="rightPaneElement withTitle">
 						<div id="buttonHolder">
