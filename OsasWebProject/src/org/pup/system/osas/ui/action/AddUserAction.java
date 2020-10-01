@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pup.system.osas.apiclient.UserApiClient;
 import org.pup.system.osas.core.domain.User;
 import org.pup.system.osas.core.domain.UserRole;
 import org.pup.system.osas.core.domain.UserRoleReference;
@@ -45,9 +46,13 @@ public class AddUserAction extends AbstractAction{
 		String actionResult = FORWARD_SUCCESS;
 
 		try {
-			User existingUser = new User();
+			//test
+			UserApiClient userApiClient = new UserApiClient();
 			UserManager userManager = new UserManager();
-			existingUser = userManager.checkFullName(firstName, middleName, lastName);
+			
+			User existingUser = new User();
+			
+			existingUser = userApiClient.checkFullName(firstName, middleName, lastName);
 			
 			if(existingUser != null)
 			{
